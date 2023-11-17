@@ -1,0 +1,77 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    {{ parent() }}
+    <div class="container mt-5">
+        <h2 class="mb-4">All Line Orders</h2>
+        <div class="table-responsive">
+            <table class="table table-bordered">
+                <thead>
+                    <tr>
+                        <th>Product</th>
+                        <th>Quantity</th>
+                        <th>Price</th>
+                        <th>Actions</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for lineorder in lineorders %}
+                        <tr>
+                            <td>{{ lineorder.productname }}</td>
+                            <td>
+                                <form action="{{ path('edit_lineorder', {'id': lineorder.idO}) }}" method="post">
+                                    <input type="number" name="quantity" value="{{ lineorder.quantite }}" min="1">
+                                    <button type="submit" class="btn btn-link" data-toggle="tooltip" data-placement="top" title="Edit">
+                                        <i class="fas fa-edit"></i>
+                                    </button>
+                                </form>
+                            </td>
+                            <td>{{ lineorder.prix }} €</td>
+                            <td>
+                                <a href="{{ path('delete_lineorder', {'id': lineorder.idO}) }}" onclick="return confirm('Are you sure you want to delete this line order?')" title="Delete" data-toggle="tooltip" data-placement="top">
+                                    <i class="fas fa-trash-alt"></i>
+                                </a>
+                            </td>
+                        </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        </div>
+
+        {# Confirm All Orders Form #}
+        <div class="mt-5">
+            <h2 class="mb-4">Confirm All Orders</h2>
+            <form action="{{ path('confirm_all_orders') }}" method="post" id="confirmAllOrdersForm" style="display: none;">
+                <div class="mb-3">
+                    {{ form_row(confirmationForm.nomc) }}
+                </div>
+                <div class="mb-3">
+                    {{ form_row(confirmationForm.adresse) }}
+                </div>
+                <div class="mb-3">
+                    {{ form_row(confirmationForm.numtel) }}
+                </div>
+                <div class="mb-3">
+                    {{ form_row(confirmationForm.email) }}
+                </div>
+
+                <button type="submit" class="btn btn-primary">
+                    Confirm All Orders
+                </button>
+            </form>
+
+            <button type="button" class="btn btn-primary mt-3" id="showConfirmFormBtn">
+                Show Confirm Form
+            </button>
+        </div>
+
+        <script>
+            $(document).ready(function() {
+                // Show the confirmation form when the button is clicked
+                $('#showConfirmFormBtn').click(function() {
+                    $('#confirmAllOrdersForm').show();
+                });
+            });
+        </script>
+    </div>
+{% endblock %}
