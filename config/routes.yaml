@@ -1,7 +1,0 @@
-controllers:
-    resource: ../src/Controller/
-    type: attribute
-app_event_generate_qr:
-    path: '/event/generate-qr/{id}'
-    controller: 'App\Controller\EventUserController@generateQrCode'
-    methods: ['GET']
