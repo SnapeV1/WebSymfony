@@ -112,13 +112,17 @@ public function delete(ProductRepository $repo,ManagerRegistry $manager,$id):Res
 }
 
 #[Route('/search/products', name: 'search_products')]
-public function searchByCriteria(Request $request, ProductRepository $productRepository): JsonResponse
+public function searchCriteria(Request $request, ProductRepository $productRepository): JsonResponse
 {
-    $nom = $request->query->get('nom');
-    $criteria = ['nom' => $nom];
-
-    // Check if 'nom' exists in criteria
-    if (is_array($criteria) && array_key_exists('nom', $criteria)) {
+    $criteria = [
+        'nom' => $request->query->get('nom'),
+        'min_price' => $request->query->get('minPrice'),
+        'max_price' => $request->query->get('maxPrice'),
+    ];
+    $min = $request->query->get('minPrice');
+ 
+    // Check if at least one filter is provided
+    if (array_filter($criteria)&& array_key_exists('nom', $criteria)&& array_key_exists('min_price', $criteria)&& array_key_exists('max_price', $criteria)) {
         $products = $productRepository->searchByCriteria($criteria);
 
         // Transform the products array into a format suitable for JSON response
@@ -129,10 +133,6 @@ public function searchByCriteria(Request $request, ProductRepository $productRep
                 'id' => $product->getIdpdts(),
                 'nom' => $product->getNom(),
                 'prix' => $product->getPrix(),
-                'qte' => $product->getQte(),
-                'categ' => $product->getCateg(),
-                'matiere' => $product->getMatiere(),
-                'description' => $product->getDescription(),
                 'image' => $product->getImage(),
             ];
         }
@@ -141,7 +141,7 @@ public function searchByCriteria(Request $request, ProductRepository $productRep
         return new JsonResponse(['produit' => $formattedProducts]);
     }
 
-    // If 'nom' is not provided, return an empty JSON response or an error message
+    // If no filters are provided, return an empty JSON response or an error message
     return new JsonResponse(['error' => 'Invalid request'], JsonResponse::HTTP_BAD_REQUEST);
 }
 }

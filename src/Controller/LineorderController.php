@@ -15,6 +15,7 @@ use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Component\HttpFoundation\Request;
 use Doctrine\ORM\EntityManagerInterface;
 use Doctrine\Persistence\ManagerRegistry;
+use Symfony\Component\HttpFoundation\JsonResponse;
 use Symfony\Component\HttpFoundation\Session\SessionInterface;
 
 class LineorderController extends AbstractController
@@ -96,7 +97,6 @@ class LineorderController extends AbstractController
             'editForm' => $editForm->createView(),
             'confirmationForm' => $confirmationForm->createView(),
         ]);
-        
     }
     
     
@@ -121,6 +121,8 @@ public function deleteLineorder($id, EntityManagerInterface $entityManager): Res
     // Redirect to the page displaying all line orders
     return $this->redirectToRoute('view_cart');
 }
+// Handle form submission using AJAX
+
 #[Route('/edit-lineorder/{id}', name: 'edit_lineorder')]
 public function editLineorder($id, EntityManagerInterface $entityManager, Request $request): Response
 {
@@ -135,22 +137,28 @@ public function editLineorder($id, EntityManagerInterface $entityManager, Reques
 
     if ($form->isSubmitted() && $form->isValid()) {
         // Update the quantity in the Lineorder entity
-        $lineorder->setQuantite($form->get('quantite')->getData());
+        $newQuantity = $form->get('quantite')->getData();
+        $lineorder->setQuantite($newQuantity);
 
         // Persist the changes to the database
+        $entityManager->persist($lineorder);
+
         $entityManager->flush();
 
-        // Add a flash message or perform other actions as needed
+        // Debugging: Log the new quantity
+        error_log('New Quantity: ' . $newQuantity);
 
-        // Redirect back to the page with the line orders
+        // Return a JSON response with the updated quantity
         return $this->redirectToRoute('view_cart');
     }
 
     // Render the form or handle the error as needed
 
     return $this->render('lineorder/edit.html.twig', [
-        'form' => $form->createView(),]);
-    }
+        'form' => $form->createView(),
+    ]);
+}
+
     // In your LineorderController
 }
 
