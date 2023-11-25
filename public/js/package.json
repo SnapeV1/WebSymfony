@@ -1,6 +1,0 @@
-{
-  "dependencies": {
-    "aes-js": "^3.1.2",
-    "toastify-js": "^1.12.0"
-  }
-}
