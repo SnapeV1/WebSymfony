@@ -1,0 +1,189 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    {{ parent() }}
+    <script src="https://cdn.ckeditor.com/4.22.1/standard/ckeditor.js"></script>
+
+    <!-- In the head section -->
+    <style>
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            text-align: center; /* Center table content */
+        }
+
+        th, td {
+            padding: 8px;
+            text-align: center; /* Center table cell content */
+            border-bottom: 1px solid #ddd;
+        }
+
+        th {
+            background-color: #f2f2f2;
+        }
+
+        tr:nth-child(even) {
+            background-color: #f2f2f2;
+        }
+
+        tr:hover {
+            background-color: #ddd;
+        }
+        .display {
+            text-align: center;
+        }
+      .delete-button,
+    .edit-button {
+        padding: 8px 12px; /* Adjust padding for both buttons */
+        border-radius: 5px;
+        border: none; /* Remove border */
+        color: black;
+        cursor: pointer;
+        text-decoration: none; /* Remove default link styling */
+    }
+
+    .delete-button {
+        
+        margin-bottom: 15px; /* Margin between the buttons */
+    }
+
+    .edit-button {
+       
+        margin-bottom: 150px; /* Increased margin for more spacing */
+    }
+
+    .delete-button:hover {
+        background-color: #d32f2f; /* Change background color on hover */
+    }
+
+    .edit-button:hover {
+        background-color: #388e3c; /* Change background color on hover */
+        color: black;
+    }
+    </style>
+
+    <h1 style="text-align: center;">Members of the Group</h1>
+  
+<div style="display: flex; justify-content: center;">
+    <table style="width: 70%;">
+        <tr>
+            <th>Username</th>
+            <th>CIN</th>
+            <th>Email</th>
+            <th>Date of Birth</th>
+            <th>Role</th>
+            <th></th>
+        </tr>
+      {% for member in members %}
+    <tr>
+        <td>{{ member.getUser().getUsername() }}</td>
+        <td>{{ member.getUser().getCin() }}</td>
+        <td>{{ member.getUser().getEmail() }}</td>
+        <td>{{ member.getUser().getDateNaissance()|date('Y-m-d') }}</td>
+        <td>{{ member.getRole() }}</td>
+       <td>
+    <form action="{{ path('delete_member', {'groupId': app.request.get('id'), 'userId': member.getUser().getId()}) }}" method="post">
+        <button type="submit" class="delete-button">Delete</button>
+    </form>
+    <a href="#" class="edit-button" onclick="return editmember({{ member.getUser().getid() }})">Edit</a>
+</td>
+
+
+
+
+
+       
+    </tr>
+
+
+<tr id="editForm_{{ member.getUser().getid() }}" style="display: none;">
+    <td colspan="4" style="padding: 10px;">
+       
+<form action="{{ path('update_member', {'memberid': member.getUser().getId(), 'groupid': app.request.get('id'), 'userid': userid}) }}" method="post">   
+   <select name="member_role">
+   <option value="Member">Member</option>
+    <option value="Moderator" >Moderator</option>
+    
+</select>
+
+    <button type="submit">Save</button>
+</form>
+    </td>
+</tr>
+    
+{% endfor %}
+
+           
+    </table>
+    
+</div>
+
+<div style="text-align: center;">
+    <a href="javascript:void(0);" onclick="toggleAddMembersSection()" class="add-member-button">Add Members</a>
+</div>
+<div id="addMembersSection" style="display: none; text-align: center;">
+    <br><br>
+<form id="add-members-form" action="{{ path('addmember', {'id': app.request.get('id'), 'userId': userid}) }}" method="POST" onsubmit="submitMembers(event)">
+        <label for="member-email" style="display: block; margin-bottom: 10px;">Member Email:</label>
+        <input type="email" id="member-email" name="memberEmail" required style="padding: 8px;"><br><br>
+        <!-- Additional form fields for member details -->
+        <button type="submit" style="padding: 8px 20px; background-color: #4CAF50; color: white; border: none;">Add Member</button>
+    </form>
+</div>
+<div style="text-align: center;">
+<form action="{{ path('sendEmailToAllMembers', {'id': app.request.get('id'), 'userId': userid}) }}" method="post">
+    <label for="email-content" style="display: block; margin-bottom: 10px;">Email Content:</label>
+    <textarea id="email-content" name="emailContent" rows="4" cols="50" required></textarea><br><br>
+
+    <button type="submit" class="delete-button">Send Email to All</button>
+</form>
+</div>
+
+<script>
+                        CKEDITOR.replace( 'emailContent' );
+                </script>
+
+
+
+    <script>
+function toggleAddMembersSection() {
+    var section = document.getElementById('addMembersSection');
+    if (section.style.display === 'none') {
+        section.style.display = 'block';
+    } else {
+        section.style.display = 'none';
+    }
+}
+
+function editmember(memberid) {
+    var editForm = document.getElementById("editForm_" + memberid);
+
+    if (editForm) {
+        editForm.style.display = "table-row"; // Display the edit form
+    }
+
+    return false;
+}
+
+
+
+document.addEventListener('DOMContentLoaded', function() {
+    document.querySelectorAll('.send-email-button').forEach(function(button) {
+        button.addEventListener('click', function(event) {
+            event.preventDefault();
+            
+            var form = document.createElement('form');
+            form.setAttribute('method', 'POST');
+            form.setAttribute('action', button.getAttribute('data-action'));
+            
+            document.body.appendChild(form);
+            form.submit();
+        });
+    });
+});
+
+
+
+
+</script>
+{% endblock %}

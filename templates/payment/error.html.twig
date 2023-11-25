@@ -1,0 +1,10 @@
+{# templates/payment/error.html.twig #}
+
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    {{ parent() }}
+
+    <h2>Error Processing Payment</h2>
+    <p>{{ errorMessage }}</p>
+{% endblock %}
