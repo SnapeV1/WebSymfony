@@ -10,12 +10,6 @@
         <meta charset="UTF-8">
         <title>Invoice</title>
         <style>
-            @media print {
-                body.invoice-print .footer {
-                    display: none;
-                }
-            }
-
             body {
                 text-align: center;
             }
@@ -36,8 +30,8 @@
                 text-align: left;
             }
 
-            /* Style the Print Invoice button */
-            button {
+            /* Style the Print Invoice button for screen */
+            .print-button-screen {
                 background-color: #2ecc71; /* Change the color as needed */
                 color: #fff;
                 padding: 10px 20px;
@@ -46,6 +40,14 @@
                 border: none;
                 border-radius: 5px;
                 margin-top: 20px; /* Add margin for better spacing */
+            }
+
+            /* Style for print media */
+            @media print {
+                .footer,
+                .print-button-screen {
+                    display: none;
+                }
             }
         </style>
     </head>
@@ -65,20 +67,18 @@
                 </tr>
             </thead>
             <tbody>
-                  {% for historiqueRecord in historiqueRecords %}
-                <tr>
-                    <td>{{ historiqueRecord.product }}</td>
-                    <td>{{ historiqueRecord.quantite }}</td>
-                    <td>{{ historiqueRecord.prix }}$</td>
-                </tr>
-            {% endfor %}
-       
-     
+                {% for historiqueRecord in historiqueRecords %}
+                    <tr>
+                        <td>{{ historiqueRecord.product }}</td>
+                        <td>{{ historiqueRecord.quantite }}</td>
+                        <td>{{ historiqueRecord.prix }}$</td>
+                    </tr>
+                {% endfor %}
             </tbody>
         </table>
 
-        <!-- Add a Print button -->
-        <button onclick="window.print()">Print Invoice</button>
+        <!-- Add a Print button for screen -->
+        <button class="print-button-screen" onclick="window.print()">Print Invoice</button>
     </body>
     </html>
 {% endblock %}
