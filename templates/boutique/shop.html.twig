@@ -1,8 +1,26 @@
 {% extends 'base.html.twig' %}
 
 {% block body %}
+  
     {{ parent() }}
     <div class="container mt-5">
+    
+        {# Display success flash messages as alerts #}
+        {% for flashMessage in app.flashes('success') %}
+            <div class="alert alert-success alert-dismissible fade show" role="alert">
+                {{ flashMessage }}
+                <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+            </div>
+        {% endfor %}
+
+        {# Display warning flash messages as alerts #}
+        {% for flashMessage in app.flashes('warning') %}
+            <div class="alert alert-warning alert-dismissible fade show" role="alert">
+                {{ flashMessage }}
+                <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+            </div>
+        {% endfor %}
+
         <div class="row">
             <div class="col-md-6">
                 <form id="filter-form" class="mb-3">
@@ -42,8 +60,10 @@
                     </div><div class="row">
                 {% endif %}
             {% endfor %}
+            
         </div>
     </div>
+  
 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/noUiSlider/14.7.0/nouislider.min.js"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/noUiSlider/14.7.0/nouislider.min.css" />

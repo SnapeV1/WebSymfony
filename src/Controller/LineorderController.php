@@ -4,11 +4,13 @@ namespace App\Controller;
 
 use App\Entity\Commande;
 use App\Entity\Lineorder;
+use App\Entity\Notification;
 use App\Form\LineorderType;
 use App\Entity\Product;
 use App\Form\CommandeType;
 use App\Repository\ProductRepository;
 use App\Repository\LineorderRepository;
+use App\Repository\NotificationRepository;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
@@ -26,18 +28,44 @@ class LineorderController extends AbstractController
         ProductRepository $productRepository,
         EntityManagerInterface $entityManager,
         SessionInterface $session,
-        Request $request
+        Request $request,
+        ProductController $productController,
+        ManagerRegistry $man
     ): Response {
         $product = $productRepository->find($id);
     
         // Get quantity from the form submission
         $quantity = $request->request->get('quantity');
+        if ($product->getQte() >= $quantity) {
+            $lineorder = new Lineorder();
+            $lineorder->setProductname($product->getNom());
+            $lineorder->setQuantite($quantity);
+            $lineorder->setPrix($product->getPrix());
+            $product->setQte($product->getQte() - $quantity);
+    
+            // Vérifiez et supprimez le produit si la quantité est zéro
+            if ($product->getQte() === 0) {
+                $notification = new Notification();
+                $notification->setContent('Stock shortage for ' . $product->getNom());
+                $notification->setNotifDate(new \DateTime());
+                // Set the admin user ID (you might need to adjust this based on your user setup)
+                $notification->setIduser(2);
+            
+                // Persist the notification
+                $entityManager->persist($notification);
+                $entityManager->flush();
+            
+                // Appeler la méthode du contrôleur Product pour supprimer le produit
+                $productController->deleteProductIfQuantityZero($id, $man);
+            }
+        } else {
+            // Display a warning if the requested quantity is greater than the available stock
+            $this->addFlash('warning', 'Stock insuffisant. La quantité demandée n\'est pas disponible.');
+            return $this->redirectToRoute('shopping'); // Adjust the route accordingly
+        }
     
         // Create a Lineorder entity and set its properties
-        $lineorder = new Lineorder();
-        $lineorder->setProductname($product->getNom());
-        $lineorder->setQuantite($quantity);
-        $lineorder->setPrix($product->getPrix()); // Set the price from the product
+ // Set the price from the product
     
         // Persist the Lineorder entity
         $entityManager->persist($lineorder);
@@ -51,9 +79,9 @@ class LineorderController extends AbstractController
         $this->addFlash('success', 'Product added to the cart successfully!');
     
         // Redirect back to the shop page
-        
         return $this->redirectToRoute('shopping');
     }
+    
     #[Route('/get-lineorders', name: 'view_cart')]
     public function getLineorders(ManagerRegistry $man, Request $request): Response
     {
@@ -159,6 +187,18 @@ public function editLineorder($id, EntityManagerInterface $entityManager, Reques
     ]);
 }
 
-    // In your LineorderController
-}
+#[Route('/notif', name: 'notif')]
+    public function yourControllerAction(EntityManagerInterface $entityManager, NotificationRepository $notificationRepository): Response
+    {
+        // Fetch the logged-in user (you need to adapt this based on your authentication system)
+        $userId = 2; // Replace with the ID of the user you want to check
 
+        // Fetch the unread notification count
+        $unreadNotificationCount = $notificationRepository->countUnreadNotifications($userId);
+    
+        // Render your Twig template and pass the unreadNotificationCount variable
+        return $this->render('boutique/shop.html.twig', [
+            'unreadNotificationCount' => $unreadNotificationCount,
+        ]);
+}
+}

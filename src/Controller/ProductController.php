@@ -13,7 +13,6 @@ use App\Form\ProductType;
 use App\Repository\ProductRepository;
 use Symfony\Component\HttpFoundation\JsonResponse;
 
-
 class ProductController extends AbstractController
 {
     #[Route('/product', name: 'app_product')]
@@ -48,7 +47,7 @@ public function addProduct(ManagerRegistry $man, Request $req, FileUploader $fil
 
         $imageFile = $form->get('image')->getData();
         if ($imageFile) {
-            $imageFileName = $fileUploader->uploadP($imageFile);
+            $imageFileName = $fileUploader->upload($imageFile);
             $product->setImage($imageFileName);
         }
 
@@ -77,7 +76,7 @@ public function updateproduct(Request $requ,ManagerRegistry $manager,$id,Product
         $imageFile = $form->get('image')->getData();
         if ($imageFile) 
         {
-            $imageFileName = $fileUploader->uploadP($imageFile);
+            $imageFileName = $fileUploader->upload($imageFile);
             $product->setImage($imageFileName);
         }
     $mR->persist($product);
@@ -110,7 +109,6 @@ public function delete(ProductRepository $repo,ManagerRegistry $manager,$id):Res
     return $this->redirectToRoute('OnShowAddProduct');
 
 }
-
 #[Route('/search/products', name: 'search_products')]
 public function searchCriteria(Request $request, ProductRepository $productRepository): JsonResponse
 {
@@ -143,5 +141,24 @@ public function searchCriteria(Request $request, ProductRepository $productRepos
 
     // If no filters are provided, return an empty JSON response or an error message
     return new JsonResponse(['error' => 'Invalid request'], JsonResponse::HTTP_BAD_REQUEST);
+}
+#[Route('/delete_product_if_quantity_zero/{id}', name: 'delete_product_if_quantity_zero')]
+public function deleteProductIfQuantityZero($id, ManagerRegistry $doctrine): Response
+{
+    $product = $doctrine->getRepository(Product::class)->find($id);
+
+    // Vérifiez si la quantité est épuisée avant la suppression
+    if ($product && $product->getQte() === 0) {
+        $manager = $doctrine->getManager();
+        $manager->remove($product);
+        $manager->flush();
+
+        $this->addFlash('success', 'Le produit a été supprimé car la quantité est épuisée.');
+    } else {
+        // Ajouter un message d'erreur ou de notification si la quantité n'est pas épuisée
+        $this->addFlash('warning', 'Impossible de supprimer le produit car la quantité n\'est pas épuisée.');
+    }
+
+    return $this->redirectToRoute('OnShowAddProduct');
 }
 }
