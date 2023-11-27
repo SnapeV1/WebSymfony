@@ -5,6 +5,8 @@ namespace App\Entity;
 use Doctrine\DBAL\Types\Types;
 use Doctrine\ORM\Mapping as ORM;
 use App\Repository\UtilisateurRepository;
+use Doctrine\Common\Collections\ArrayCollection;
+use Doctrine\Common\Collections\Collection;
 use Symfony\Component\Validator\Constraints as Assert;
 
 #[ORM\Entity(repositoryClass: UtilisateurRepository::class)]
@@ -47,6 +49,8 @@ class Utilisateur
     #[Assert\Email(message:"Invalid Email")]
     #[ORM\Column(length:100)]
     private ?string $email=null;
+    #[ORM\OneToMany(targetEntity: Commande ::class,mappedBy:'Utilisateur')]
+    private Collection $commande;
 
     #[ORM\Column(length:15)]
     private ?string $type;
@@ -176,5 +180,13 @@ class Utilisateur
         return $this;
     }
 
+    public function __construct()
+    {
+        $this->commande = new ArrayCollection();
 
+    }
+    public function getcommande(): Collection
+    {
+        return $this->commande;
+    }
 }

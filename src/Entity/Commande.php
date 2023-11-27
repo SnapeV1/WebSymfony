@@ -25,6 +25,7 @@ class Commande
     private ? string $nomc=null;
 
     #[ORM\Column]
+
     private ?int $id_client=null;
 
     #[Assert\NotBlank(message:"Name can't be empty")]

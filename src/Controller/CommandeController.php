@@ -1,7 +1,7 @@
 <?php
 
 namespace App\Controller;
-
+use App\Entity\Utilisateur;
 use Dompdf\Dompdf;
 use Dompdf\Options;
 use App\Entity\Commande;
@@ -11,15 +11,18 @@ use App\Entity\Lineorder;
 use App\Repository\CommandeRepository;
 use App\Repository\HistoriqueRepository;
 use App\Repository\LineorderRepository;
+use App\Repository\UtilisateurRepository;
 use Doctrine\Persistence\ManagerRegistry;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\ResponseHeaderBag;
+use Symfony\Component\HttpFoundation\Session\SessionInterface;
 
 class CommandeController extends AbstractController
 {
+   
     #[Route('/commande', name: 'app_commande')]
     public function index(): Response
     {
@@ -29,16 +32,23 @@ class CommandeController extends AbstractController
     }
 
     #[Route('/confirm-all-orders', name: 'confirm_all_orders')]
-    public function confirmOrder(Request $request, ManagerRegistry $man, LineorderRepository $lineorderRepository): Response
+    public function confirmOrder(Request $request, ManagerRegistry $man, LineorderRepository $lineorderRepository,UtilisateurRepository $utilisateurRepository ): Response
     {
         $entityManager = $man->getManager();
         $commande = new Commande();
     
         $form = $this->createForm(CommandeType::class, $commande);
         $form->handleRequest($request);
-    
-        // Update the existing Commande entity with confirmation details
-        $commande->setId_client(1);
+      
+
+
+
+// Create a new Commande entity
+
+
+// Set the id_client using the user entity
+
+        $commande->setId_client(2);
         $commande->setDate(new \DateTime());
     
         // Fetch line orders from the database

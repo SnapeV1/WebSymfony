@@ -48,7 +48,7 @@ public function addProduct(ManagerRegistry $man, Request $req, FileUploader $fil
 
         $imageFile = $form->get('image')->getData();
         if ($imageFile) {
-            $imageFileName = $fileUploader->upload($imageFile);
+            $imageFileName = $fileUploader->uploadP($imageFile);
             $product->setImage($imageFileName);
         }
 
@@ -77,7 +77,7 @@ public function updateproduct(Request $requ,ManagerRegistry $manager,$id,Product
         $imageFile = $form->get('image')->getData();
         if ($imageFile) 
         {
-            $imageFileName = $fileUploader->upload($imageFile);
+            $imageFileName = $fileUploader->uploadP($imageFile);
             $product->setImage($imageFileName);
         }
     $mR->persist($product);
