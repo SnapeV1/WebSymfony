@@ -1,0 +1,134 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    {{ parent() }}
+    <!-- Your HTML head section -->
+    <!DOCTYPE html>
+    <html lang="en">
+    <head>
+        <!-- Include any necessary meta tags, stylesheets, and other head elements -->
+        <title>Your Page Title</title>
+    </head>
+    <body>
+
+        <!-- Your HTML body section -->
+        <h1>{{ formation.titre }}</h1>
+        <p>{{ formation.description }}</p>
+
+        {% if formation.video is not null %}
+            <video controls width="560" height="315">
+                <source src="{{ asset('uploads/' ~ formation.video) }}" type="video/mp4">
+                Your browser does not support the video tag.
+            </video>
+        {% else %}
+            No Video
+        {% endif %}
+
+        {# Afficher les commentaires dans un tableau #}
+        {% if commentaires is not empty %}
+            <h2>Commentaires</h2>
+            <table class="table">
+                <thead>
+                    <tr>
+                        <th>Texte</th>
+                        <th>Date</th>
+                        <th>Évaluation</th>
+                        <th>Actions</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for comment in commentaires %}
+                        <tr>
+                            <td>{{ comment.text }}</td>
+                            <td>{{ comment.date|date('Y-m-d H:i:s') }}</td>
+                            <td>{{ comment.evaluation }}</td>
+                            <td>
+                                <!-- Bouton Delete sous forme d'icône -->
+                                <a href="{{ path('delete_commentaire', {'id': comment.id}) }}" class="btn btn-danger btn-sm" onclick="return confirm('Are you sure you want to delete this comment?');">
+                                    <i class="fas fa-trash"></i>
+                                </a>
+
+                                <!-- Bouton Edit sous forme d'icône -->
+                                <a href="{{ path('edit_commentaire', {'id': comment.id}) }}" class="btn btn-primary btn-sm">
+                                    <i class="fas fa-edit"></i>
+                                </a>
+                            </td>
+                        </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        {% else %}
+            <p>Aucun commentaire pour le moment.</p>
+        {% endif %}
+
+        <h2>Ajouter un commentaire</h2>
+        <!-- Your form section -->
+        <form id="comment-form" method="post" action="{{ path('add_commentaire', {'idFormation': formation.id}) }}">
+            <div class="form-group row">
+                <div class="col-md-6">
+                    <label for="comment_text">Comment</label>
+                    <textarea class="form-control" rows="8" placeholder="Saisissez votre commentaire ici..." id="comment_text" name="comment_text"></textarea>
+                </div>
+
+                <div class="col-md-1">
+                    <label for="evaluation">Evaluation</label>
+                    <select class="form-control" id="evaluation" name="evaluation">
+                        <option value="1">1</option>
+                        <option value="2">2</option>
+                        <option value="3">3</option>
+                        <option value="4">4</option>
+                        <option value="5">5</option>
+                    </select>
+                </div>
+            </div>
+            <button type="submit" class="btn btn-primary">Ajouter un commentaire</button>
+        </form>
+        <!-- Facebook SDK script -->
+    <script async defer crossorigin="anonymous" src="https://connect.facebook.net/en_US/sdk.js#xfbml=1&version=v13.0&appId=788068436664746&autoLogAppEvents=1" nonce="none"></script>
+
+    <!-- Facebook Share Button -->
+    <div class="fb-share-button" data-href="https://beanmate.my.canva.site/ecoartformation" data-layout="button_count" data-size="small">
+        <a target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=https://beanmate.my.canva.site/ecoartformation" class="fb-xfbml-parse-ignore">Share</a>
+    </div>
+
+
+        <!-- Your script section -->
+        <script>
+            document.addEventListener('DOMContentLoaded', function () {
+                var commentForm = document.getElementById('comment-form');
+                var badWordCount = 0;
+
+                commentForm.addEventListener('submit', function (event) {
+                    var commentText = commentForm.querySelector('#comment_text').value;
+                    var badWords = ['badword1', 'badword2', 'badword3'];
+
+                    // Check for bad words
+                    if (containsBadWords(commentText, badWords)) {
+                        badWordCount++;
+
+                        // Redirect if badWordCount is 3 or more
+                        if (badWordCount >= 3) {
+                            window.location.href = "{{ path('app_commentaire') }}";
+                        }
+
+                        alert('The comment contains inappropriate words. Please remove them.');
+                        event.preventDefault(); // Prevent form submission
+                    }
+                });
+
+                function containsBadWords(text, badWords) {
+                    var lowerCaseText = text.toLowerCase();
+                    for (var i = 0; i < badWords.length; i++) {
+                        if (lowerCaseText.includes(badWords[i].toLowerCase())) {
+                            return true;
+                        }
+                    }
+                    return false;
+                }
+            });
+        </script>
+
+    </body>
+    </html>
+
+{% endblock %}
