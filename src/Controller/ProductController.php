@@ -1,7 +1,8 @@
 <?php
 
 namespace App\Controller;
-
+use Dompdf\Dompdf;
+use Dompdf\Options;
 use App\Entity\Product;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Response;
@@ -11,7 +12,11 @@ use Symfony\Component\HttpFoundation\Request;
 use App\Service\FileUploader;
 use App\Form\ProductType;
 use App\Repository\ProductRepository;
+use Endroid\QrCode\Writer\Result\PdfResult;
 use Symfony\Component\HttpFoundation\JsonResponse;
+use PhpOffice\PhpSpreadsheet\Spreadsheet;
+use PhpOffice\PhpSpreadsheet\Writer\Xlsx;
+use Symfony\Component\HttpFoundation\StreamedResponse;
 
 class ProductController extends AbstractController
 {
@@ -160,5 +165,128 @@ public function deleteProductIfQuantityZero($id, ManagerRegistry $doctrine): Res
     }
 
     return $this->redirectToRoute('OnShowAddProduct');
+}
+
+
+#[Route('/export/pdf', name: 'export_pdf')]
+public function exportPdf(Request $request, ProductRepository $repo): Response
+{
+    // Fetch the list of products from the repository
+    $list = $repo->findAll();
+
+    // Create a Dompdf instance with appropriate options
+    $pdfOptions = new Options();
+    $pdfOptions->set('defaultFont', 'Arial'); // Set the default font (adjust as needed)
+    $productId = $list[0]->getIdpdts();
+   
+
+    $dompdf = new Dompdf($pdfOptions);
+    $base64Image = base64_encode(file_get_contents('pictures/' .  $repo->findImageById($productId)));
+
+
+    // Render the PDF template with the list of products
+    $html = $this->renderView('product/pdf.html.twig', ['list' => $list,'base64Image' => $base64Image]);
+
+    // Load HTML content into Dompdf
+    $dompdf->loadHtml($html);
+
+    // Set paper size (A4 is used here)
+    $dompdf->setPaper('A4', 'portrait');
+
+    // Render PDF (first output the HTML content to PDF, then output the PDF content)
+    $dompdf->render();
+
+    // Stream the file to the browser with appropriate headers
+    $response = new Response($dompdf->output());
+    $response->headers->set('Content-Type', 'application/pdf');
+    $response->headers->set('Content-Disposition', 'inline; filename="export.pdf"');
+
+    return $response;
+}
+#[Route('/export/excel', name: 'export_excel')]
+public function exportExcel(Request $request, ProductRepository $repo): Response
+{
+    // Fetch the list of products from the repository
+    $list = $repo->findAll();
+
+    // Create a new PhpSpreadsheet instance
+    $spreadsheet = new Spreadsheet();
+    $sheet = $spreadsheet->getActiveSheet();
+
+    // Add headers to the Excel file
+    $sheet->setCellValue('A1', 'NameProduct');
+    $sheet->setCellValue('B1', 'Price');
+    $sheet->setCellValue('C1', 'Quantity');
+    $sheet->setCellValue('D1', 'Category');
+    $sheet->setCellValue('E1', 'Material');
+    $sheet->setCellValue('F1', 'Description');
+    $sheet->setCellValue('G1', 'Picture');
+
+    // Add product data to the Excel file
+    $row = 2;
+    foreach ($list as $product) {
+        $sheet->setCellValue('A' . $row, $product->getNom());
+        $sheet->setCellValue('B' . $row, $product->getPrix());
+        $sheet->setCellValue('C' . $row, $product->getQte());
+        $sheet->setCellValue('D' . $row, $product->getCateg());
+        $sheet->setCellValue('E' . $row, $product->getMatiere());
+        $sheet->setCellValue('F' . $row, $product->getDescription());
+        $sheet->setCellValue('G' . $row, $product->getImage());
+        $row++;
+    }
+
+    // Create a response with the Excel file
+
+    $writer = new Xlsx($spreadsheet);
+
+    $response = new StreamedResponse(function () use ($writer) {
+        $writer->save('php://output');
+    });
+    
+    // Set headers for Excel download
+    $response->headers->set('Content-Type', 'application/vnd.openxmlformats-officedocument.spreadsheetml.sheet');
+    $response->headers->set('Content-Disposition', 'attachment;filename=export.xlsx');
+    $response->headers->set('Cache-Control', 'max-age=0');
+
+    // Set headers for Excel download
+
+    return $response;
+}
+#[Route('/export/xml', name: 'export_xml')]
+public function exportXml(Request $request, ProductRepository $repo): Response
+{
+    // Fetch the list of products from the repository
+    $list = $repo->findAll();
+
+    // Create an XML string
+    $xmlString = '<?xml version="1.0" encoding="UTF-8"?>
+        <products>';
+
+    // Add product data to the XML string
+    foreach ($list as $product) {
+        $xmlString .= '
+            <product>
+                <NameProduct>' . $product->getNom() . '</NameProduct>
+                <Price>' . $product->getPrix() . '</Price>
+                <Quantity>' . $product->getQte() . '</Quantity>
+                <Category>' . $product->getCateg() . '</Category>
+                <Material>' . $product->getMatiere() . '</Material>
+                <Description>' . $product->getDescription() . '</Description>
+                <Picture>' . $product->getImage() . '</Picture>
+            </product>';
+    }
+
+    $xmlString .= '
+        </products>';
+
+    // Create a response with the XML file
+    $response = new Response($xmlString);
+
+    // Set headers for XML download
+    $response->headers->set('Content-Type', 'application/xml');
+    $response->headers->set('Content-Disposition', 'attachment;filename=export.xml');
+    $response->headers->set('Cache-Control', 'max-age=0');
+
+    return $response;
 }
 }

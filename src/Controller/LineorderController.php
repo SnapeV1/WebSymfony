@@ -46,8 +46,9 @@ class LineorderController extends AbstractController
             // Vérifiez et supprimez le produit si la quantité est zéro
             if ($product->getQte() === 0) {
                 $notification = new Notification();
-                $notification->setContent('Stock shortage for ' . $product->getNom());
+                $notification->setContent('Stock shortage for '.$product->getNom());
                 $notification->setNotifDate(new \DateTime());
+                
                 // Set the admin user ID (you might need to adjust this based on your user setup)
                 $notification->setIduser(2);
             
@@ -124,6 +125,7 @@ class LineorderController extends AbstractController
             'lineorders' => $lineorders,
             'editForm' => $editForm->createView(),
             'confirmationForm' => $confirmationForm->createView(),
+
         ]);
     }
     
@@ -187,18 +189,4 @@ public function editLineorder($id, EntityManagerInterface $entityManager, Reques
     ]);
 }
 
-#[Route('/notif', name: 'notif')]
-    public function yourControllerAction(EntityManagerInterface $entityManager, NotificationRepository $notificationRepository): Response
-    {
-        // Fetch the logged-in user (you need to adapt this based on your authentication system)
-        $userId = 2; // Replace with the ID of the user you want to check
-
-        // Fetch the unread notification count
-        $unreadNotificationCount = $notificationRepository->countUnreadNotifications($userId);
-    
-        // Render your Twig template and pass the unreadNotificationCount variable
-        return $this->render('boutique/shop.html.twig', [
-            'unreadNotificationCount' => $unreadNotificationCount,
-        ]);
-}
 }

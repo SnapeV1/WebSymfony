@@ -21,8 +21,6 @@ class Notification
 
     #[ORM\Column]
     private ?int $iduser = null; // Assuming this is the id column in Utilisateur
-    #[ORM\Column(type: 'boolean')]
-    private bool $read = false;
 
     public function getId(): ?int
     {

@@ -46,20 +46,35 @@ class ProductRepository extends ServiceEntityRepository
 //        ;
 //    }
 public function searchByCriteria(array $criteria): array
-    {
-        $qb = $this->createQueryBuilder('p');
+{
+    $qb = $this->createQueryBuilder('p');
 
-        // Customize the query based on your criteria
-        if (!empty($criteria['nom'])) {
-            $qb->andWhere('p.nom LIKE :nom')
-                ->setParameter('nom', '%' . $criteria['nom'] . '%');
-        }
-
-        // Add more conditions for other criteria if needed
-
-        return $qb->getQuery()->getResult();
+    // Customize the query based on your criteria
+    if (!empty($criteria['nom'])) {
+        $qb->andWhere('p.nom LIKE :nom')
+            ->setParameter('nom', '%' . $criteria['nom'] . '%');
     }
 
+    // Add a condition for the price range if both min and max prices are provided
+    if (!empty($criteria['min_price']) && !empty($criteria['max_price'])) {
+        $qb->andWhere('p.prix BETWEEN :min_price AND :max_price')
+            ->setParameter('min_price', $criteria['min_price'])
+            ->setParameter('max_price', $criteria['max_price']);
+    }
 
+    // You can add more conditions for other criteria if needed
+
+    return $qb->getQuery()->getResult();
 }
+public function findImageById($productId)
+{
+    return $this->createQueryBuilder('p')
+        ->select('p.image')
+        ->andWhere('p.idpdts = :idpdts')
+        ->setParameter('idpdts', $productId)
+        ->getQuery()
+        ->getSingleScalarResult();
+}
+}
+
 
