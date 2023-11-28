@@ -22,7 +22,8 @@
         <link href="{{ asset('lib/animate/animate.min.css') }}" rel="stylesheet">
         <link href="{{ asset('lib/owlcarousel/assets/owl.carousel.min.css') }}" rel="stylesheet">
         <link href="{{ asset('lib/lightbox/css/lightbox.min.css') }}" rel="stylesheet">
-     
+             <link rel="stylesheet" href="https://unpkg.com/leaflet/dist/leaflet.css" />
+
 <link rel="stylesheet" type="text/css" href="{{ asset('js/toastify/src/toastify.css') }}">
         <!-- Customized Bootstrap Stylesheet -->
         <link href="{{ asset('css/bootstrap.min.css') }}" rel="stylesheet">
@@ -185,6 +186,8 @@
                     <div id="weather-info">
       <span>Loading weather...</span>
 </div>
+        <div id="map" style="height: 200px; width:200px "></div>
+
                     <div class="col-md-6 text-center text-md-end">
                         <!--/*** This template is free as long as you keep the footer author’s credit link/attribution link/backlink. If you'd like to use the template without the footer author’s credit link/attribution link/backlink, you can purchase the Credit Removal License from "https://htmlcodex.com/credit-removal". Thank you for your support. ***/-->
                         Designed By <a class="border-bottom" href="https://htmlcodex.com">HTML Codex</a>
@@ -200,6 +203,8 @@
  {% endblock %}
     {% block javascripts %}
         <!-- JavaScript Libraries -->
+        <script src="https://unpkg.com/leaflet/dist/leaflet.js"></script>
+
         <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
         <script src="{{ asset('https://cdn.jsdelivr.net/npm/bootstrap@5.0.0/dist/js/bootstrap.bundle.min.js') }}"></script>
         <script src="{{ asset('lib/wow/wow.min.js') }}"></script>
@@ -213,6 +218,18 @@
         <!-- Template Javascript -->
         <script src="{{ asset('js/main.js') }}"></script>
         <script>
+        // Use your desired initial coordinates
+    var initialCoordinates = [36.9003, 10.1959];
+    var initialZoom = 14;
+
+    // Initialize the map
+    var map = L.map('map').setView(initialCoordinates, initialZoom);
+
+    // Add the OpenStreetMap layer
+    L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+        attribution: '© OpenStreetMap contributors',
+    }).addTo(map);
+
 function getWeather() {
     const apiKey = "07b37dc5bf0427456ba8f735878830bb";
     const city = "Gouvernorat de l’Ariana, TN";
