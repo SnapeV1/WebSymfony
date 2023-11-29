@@ -1,0 +1,85 @@
+{% extends 'base.html.twig' %}
+
+{% block body_class %}invoice-print{% endblock %}
+
+{% block body %}
+
+    {{ parent() }}
+    <!DOCTYPE html>
+    <html>
+    <head>
+        <meta charset="UTF-8">
+        <title>Invoice</title>
+        <style>
+            body {
+                text-align: center;
+            }
+
+            h1 {
+                color: #3498db; /* Change the color as needed */
+            }
+
+            table {
+                width: 100%;
+                border-collapse: collapse;
+                margin-top: 20px; /* Add margin for better spacing */
+            }
+
+            th, td {
+                border: 1px solid black;
+                padding: 8px;
+                text-align: left;
+            }
+
+            /* Style the Print Invoice button for screen */
+            .print-button-screen {
+                background-color: #2ecc71; /* Change the color as needed */
+                color: #fff;
+                padding: 10px 20px;
+                font-size: 16px;
+                cursor: pointer;
+                border: none;
+                border-radius: 5px;
+                margin-top: 20px; /* Add margin for better spacing */
+            }
+
+            /* Style for print media */
+            @media print {
+                .footer,
+                .print-button-screen {
+                    display: none;
+                }
+            }
+        </style>
+    </head>
+    <body>
+        <h1>Your Invoice number {{ commande.id_c }}</h1>
+
+        <p>nom: {{commande.nomC}}</p>
+        <p>Date: {{ commande.date|date('Y-m-d') }}</p>
+        <p>Total: {{ commande.total }}$</p>
+
+        <table>
+            <thead>
+                <tr>
+                    <th>Product</th>
+                    <th>Quantity</th>
+                    <th>Price</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for historiqueRecord in historiqueRecords %}
+                    <tr>
+                        <td>{{ historiqueRecord.product }}</td>
+                        <td>{{ historiqueRecord.quantite }}</td>
+                        <td>{{ historiqueRecord.prix }}$</td>
+                    </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+
+        <!-- Add a Print button for screen -->
+        <button class="print-button-screen" onclick="window.print()">Print Invoice</button>
+    </body>
+    </html>
+{% endblock %}

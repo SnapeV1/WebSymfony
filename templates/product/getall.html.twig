@@ -1,0 +1,82 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    {{ parent() }}
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+
+    <!-- jQuery -->
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+
+    <!-- Display success flash messages as alerts -->
+    {% for flashMessage in app.flashes('success') %}
+        <div class="alert alert-success alert-dismissible fade show" role="alert">
+            {{ flashMessage }}
+            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+        </div>
+    {% endfor %}
+
+    <div class="d-flex justify-content-between align-items-center">
+        <h1>All products</h1>
+
+        <!-- Export button -->
+        <div class="export-button-container">
+            <div class="btn-group mt-3">
+                <button type="button" class="btn btn-primary dropdown-toggle" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                    Export
+                </button>
+                <div class="dropdown-menu">
+                    <a class="dropdown-item" href="{{ path('export_pdf') }}">Export as PDF</a>
+                    <a class="dropdown-item" href="{{ path('export_xml') }}">Export as XML</a>
+                    <a class="dropdown-item" href="{{ path('export_excel') }}">Export as Excel</a>
+                </div>
+            </div>
+        </div>
+    </div>
+    <br>
+    <br>
+    <!-- Table to display products -->
+    <table class="table">
+        <!-- Table headers -->
+        <thead>
+            <tr>
+                <th>NameProduct</th>
+                <th>Price</th>
+                <th>Quantity</th>
+                <th>Category</th>
+                <th>Material</th>
+                <th>Description</th>
+                <th>Picture</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+            <!-- Table rows -->
+            {% for p in list %}
+                <tr>
+                    <!-- Cell content -->
+                    <td>{{ p.nom }}</td>
+                    <td>{{ p.prix }}</td>
+                    <td>{{ p.qte }}</td>
+                    <td>{{ p.categ }}</td>
+                    <td>{{ p.matiere }}</td>
+                    <td>{{ p.description }}</td>
+                    <td>
+                        {% if p.image is not null %}
+                            <img src="{{ asset('pictures/' ~ p.image) }}" alt="{{ p.nom }}" width="200" height="120">
+                        {% else %}
+                            No image
+                        {% endif %}
+                    </td>
+                    <td>
+                        <!-- Action links -->
+                        <a href="{{ path('Product_updated', {'id': p.idpdts}) }}">Edit</a>
+                        <a href="{{ path('delete_product', {'id': p.idpdts}) }}">Delete</a>
+                    </td>
+                </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+
+    <!-- Add product button -->
+    <a href="{{ path('add_product') }}">Add product</a>
+{% endblock %}

@@ -1,0 +1,72 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    {{ parent() }}
+    <div class="container mt-5">
+        <!-- Your existing code for displaying success and warning messages -->
+        
+        <!-- Notification icon with badge -->
+        <button id="notification-icon" class="btn btn-secondary">
+            {% if unreadNotificationCount > 0 %}
+                <span class="badge badge-danger">{{ unreadNotificationCount }}</span>
+            {% endif %}
+            <i class="fas fa-bell"></i>
+        </button>
+
+        <!-- Notification list (initially hidden) -->
+        <div id="notification-list" style="display: none;">
+            <!-- Notification items will be dynamically added here -->
+        </div>
+
+        <!-- Your existing code for product filtering and display -->
+
+    </div>
+
+    <!-- Your existing scripts for product filtering -->
+
+    <!-- Script to toggle visibility of the notification list and fetch notifications -->
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            var notificationIcon = document.getElementById('notification-icon');
+            var notificationList = document.getElementById('notification-list');
+
+            // Toggle the visibility of the notification list
+            notificationIcon.addEventListener('click', function () {
+                if (notificationList.style.display === 'none' || notificationList.style.display === '') {
+                    // Show the notification list
+                    notificationList.style.display = 'block';
+
+                    // Fetch notifications using AJAX
+                    fetchNotifications("{{ path('fetch_notifications') }}");
+                } else {
+                    // Hide the notification list
+                    notificationList.style.display = 'none';
+                }
+            });
+
+            // Function to fetch notifications using AJAX
+            function fetchNotifications(url) {
+                fetch(url)
+                    .then(response => response.json())
+                    .then(data => updateNotificationList(data))
+                    .catch(error => console.error('Error fetching notifications:', error));
+            }
+
+            // Function to update the notification list
+            function updateNotificationList(data) {
+                var notifications = data.notifications;
+                var notificationListContainer = document.getElementById('notification-list');
+                notificationListContainer.innerHTML = '';
+
+                notifications.forEach(function (notification) {
+                    var notificationItem = document.createElement('div');
+                    notificationItem.textContent = notification.content;
+                    notificationListContainer.appendChild(notificationItem);
+
+                    var hrElement = document.createElement('hr');
+                    notificationListContainer.appendChild(hrElement);
+                });
+            }
+        });
+    </script>
+{% endblock %}
