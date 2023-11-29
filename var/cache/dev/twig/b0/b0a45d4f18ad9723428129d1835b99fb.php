@@ -1,0 +1,262 @@
+<?php
+
+use Twig\Environment;
+use Twig\Error\LoaderError;
+use Twig\Error\RuntimeError;
+use Twig\Extension\SandboxExtension;
+use Twig\Markup;
+use Twig\Sandbox\SecurityError;
+use Twig\Sandbox\SecurityNotAllowedTagError;
+use Twig\Sandbox\SecurityNotAllowedFilterError;
+use Twig\Sandbox\SecurityNotAllowedFunctionError;
+use Twig\Source;
+use Twig\Template;
+
+/* event_user/add.html.twig */
+class __TwigTemplate_e76b60335a10b0d4428d05e2f49aac78 extends Template
+{
+    private $source;
+    private $macros = [];
+
+    public function __construct(Environment $env)
+    {
+        parent::__construct($env);
+
+        $this->source = $this->getSourceContext();
+
+        $this->blocks = [
+            'body' => [$this, 'block_body'],
+        ];
+    }
+
+    protected function doGetParent(array $context)
+    {
+        // line 3
+        return "base.html.twig";
+    }
+
+    protected function doDisplay(array $context, array $blocks = [])
+    {
+        $macros = $this->macros;
+        $__internal_5a27a8ba21ca79b61932376b2fa922d2 = $this->extensions["Symfony\\Bundle\\WebProfilerBundle\\Twig\\WebProfilerExtension"];
+        $__internal_5a27a8ba21ca79b61932376b2fa922d2->enter($__internal_5a27a8ba21ca79b61932376b2fa922d2_prof = new \Twig\Profiler\Profile($this->getTemplateName(), "template", "event_user/add.html.twig"));
+
+        $__internal_6f47bbe9983af81f1e7450e9a3e3768f = $this->extensions["Symfony\\Bridge\\Twig\\Extension\\ProfilerExtension"];
+        $__internal_6f47bbe9983af81f1e7450e9a3e3768f->enter($__internal_6f47bbe9983af81f1e7450e9a3e3768f_prof = new \Twig\Profiler\Profile($this->getTemplateName(), "template", "event_user/add.html.twig"));
+
+        $this->parent = $this->loadTemplate("base.html.twig", "event_user/add.html.twig", 3);
+        $this->parent->display($context, array_merge($this->blocks, $blocks));
+        
+        $__internal_5a27a8ba21ca79b61932376b2fa922d2->leave($__internal_5a27a8ba21ca79b61932376b2fa922d2_prof);
+
+        
+        $__internal_6f47bbe9983af81f1e7450e9a3e3768f->leave($__internal_6f47bbe9983af81f1e7450e9a3e3768f_prof);
+
+    }
+
+    // line 5
+    public function block_body($context, array $blocks = [])
+    {
+        $macros = $this->macros;
+        $__internal_5a27a8ba21ca79b61932376b2fa922d2 = $this->extensions["Symfony\\Bundle\\WebProfilerBundle\\Twig\\WebProfilerExtension"];
+        $__internal_5a27a8ba21ca79b61932376b2fa922d2->enter($__internal_5a27a8ba21ca79b61932376b2fa922d2_prof = new \Twig\Profiler\Profile($this->getTemplateName(), "block", "body"));
+
+        $__internal_6f47bbe9983af81f1e7450e9a3e3768f = $this->extensions["Symfony\\Bridge\\Twig\\Extension\\ProfilerExtension"];
+        $__internal_6f47bbe9983af81f1e7450e9a3e3768f->enter($__internal_6f47bbe9983af81f1e7450e9a3e3768f_prof = new \Twig\Profiler\Profile($this->getTemplateName(), "block", "body"));
+
+        // line 6
+        echo "    ";
+        $this->displayParentBlock("body", $context, $blocks);
+        echo "
+    <div class=\"container\">
+        <div class=\"container text-center\">
+            <h1>Ajouter un événement</h1>
+        </div>
+        <div class=\"row justify-content-center\">
+            <div class=\"col-md-6\">
+                ";
+        // line 13
+        echo         $this->env->getRuntime('Symfony\Component\Form\FormRenderer')->renderBlock((isset($context["f"]) || array_key_exists("f", $context) ? $context["f"] : (function () { throw new RuntimeError('Variable "f" does not exist.', 13, $this->source); })()), 'form_start', ["attr" => ["novalidate" => "novalidate"]]);
+        echo "
+                <div class=\"form-group\">
+                    ";
+        // line 15
+        echo $this->env->getRuntime('Symfony\Component\Form\FormRenderer')->searchAndRenderBlock(twig_get_attribute($this->env, $this->source, (isset($context["f"]) || array_key_exists("f", $context) ? $context["f"] : (function () { throw new RuntimeError('Variable "f" does not exist.', 15, $this->source); })()), "nom", [], "any", false, false, false, 15), 'label', ["label" => "Nom de l'événement"]);
+        echo "
+                    ";
+        // line 16
+        echo $this->env->getRuntime('Symfony\Component\Form\FormRenderer')->searchAndRenderBlock(twig_get_attribute($this->env, $this->source, (isset($context["f"]) || array_key_exists("f", $context) ? $context["f"] : (function () { throw new RuntimeError('Variable "f" does not exist.', 16, $this->source); })()), "nom", [], "any", false, false, false, 16), 'widget', ["attr" => ["class" => "form-control"]]);
+        echo "
+                    ";
+        // line 17
+        echo $this->env->getRuntime('Symfony\Component\Form\FormRenderer')->searchAndRenderBlock(twig_get_attribute($this->env, $this->source, (isset($context["f"]) || array_key_exists("f", $context) ? $context["f"] : (function () { throw new RuntimeError('Variable "f" does not exist.', 17, $this->source); })()), "nom", [], "any", false, false, false, 17), 'errors');
+        echo "
+                </div>
+
+                <div class=\"form-group\">
+                    ";
+        // line 21
+        echo $this->env->getRuntime('Symfony\Component\Form\FormRenderer')->searchAndRenderBlock(twig_get_attribute($this->env, $this->source, (isset($context["f"]) || array_key_exists("f", $context) ? $context["f"] : (function () { throw new RuntimeError('Variable "f" does not exist.', 21, $this->source); })()), "date", [], "any", false, false, false, 21), 'label', ["label" => "Date de l'événement"]);
+        echo "
+                    ";
+        // line 22
+        echo $this->env->getRuntime('Symfony\Component\Form\FormRenderer')->searchAndRenderBlock(twig_get_attribute($this->env, $this->source, (isset($context["f"]) || array_key_exists("f", $context) ? $context["f"] : (function () { throw new RuntimeError('Variable "f" does not exist.', 22, $this->source); })()), "date", [], "any", false, false, false, 22), 'widget', ["attr" => ["class" => "form-control"]]);
+        echo "
+                    ";
+        // line 23
+        echo $this->env->getRuntime('Symfony\Component\Form\FormRenderer')->searchAndRenderBlock(twig_get_attribute($this->env, $this->source, (isset($context["f"]) || array_key_exists("f", $context) ? $context["f"] : (function () { throw new RuntimeError('Variable "f" does not exist.', 23, $this->source); })()), "date", [], "any", false, false, false, 23), 'errors');
+        echo "
+                </div>
+
+                <div class=\"form-group\">
+                    ";
+        // line 27
+        echo $this->env->getRuntime('Symfony\Component\Form\FormRenderer')->searchAndRenderBlock(twig_get_attribute($this->env, $this->source, (isset($context["f"]) || array_key_exists("f", $context) ? $context["f"] : (function () { throw new RuntimeError('Variable "f" does not exist.', 27, $this->source); })()), "lieu", [], "any", false, false, false, 27), 'label', ["label" => "Lieu"]);
+        echo "
+                    ";
+        // line 28
+        echo $this->env->getRuntime('Symfony\Component\Form\FormRenderer')->searchAndRenderBlock(twig_get_attribute($this->env, $this->source, (isset($context["f"]) || array_key_exists("f", $context) ? $context["f"] : (function () { throw new RuntimeError('Variable "f" does not exist.', 28, $this->source); })()), "lieu", [], "any", false, false, false, 28), 'widget', ["attr" => ["class" => "form-control"]]);
+        echo "
+                    ";
+        // line 29
+        echo $this->env->getRuntime('Symfony\Component\Form\FormRenderer')->searchAndRenderBlock(twig_get_attribute($this->env, $this->source, (isset($context["f"]) || array_key_exists("f", $context) ? $context["f"] : (function () { throw new RuntimeError('Variable "f" does not exist.', 29, $this->source); })()), "lieu", [], "any", false, false, false, 29), 'errors');
+        echo "
+                </div>
+
+                <div class=\"form-group\">
+                    ";
+        // line 33
+        echo $this->env->getRuntime('Symfony\Component\Form\FormRenderer')->searchAndRenderBlock(twig_get_attribute($this->env, $this->source, (isset($context["f"]) || array_key_exists("f", $context) ? $context["f"] : (function () { throw new RuntimeError('Variable "f" does not exist.', 33, $this->source); })()), "description", [], "any", false, false, false, 33), 'label', ["label" => "Description"]);
+        echo "
+                    ";
+        // line 34
+        echo $this->env->getRuntime('Symfony\Component\Form\FormRenderer')->searchAndRenderBlock(twig_get_attribute($this->env, $this->source, (isset($context["f"]) || array_key_exists("f", $context) ? $context["f"] : (function () { throw new RuntimeError('Variable "f" does not exist.', 34, $this->source); })()), "description", [], "any", false, false, false, 34), 'widget', ["attr" => ["class" => "form-control"]]);
+        echo "
+                    ";
+        // line 35
+        echo $this->env->getRuntime('Symfony\Component\Form\FormRenderer')->searchAndRenderBlock(twig_get_attribute($this->env, $this->source, (isset($context["f"]) || array_key_exists("f", $context) ? $context["f"] : (function () { throw new RuntimeError('Variable "f" does not exist.', 35, $this->source); })()), "description", [], "any", false, false, false, 35), 'errors');
+        echo "
+                </div>
+
+                <div class=\"form-group\">
+                    ";
+        // line 39
+        echo $this->env->getRuntime('Symfony\Component\Form\FormRenderer')->searchAndRenderBlock(twig_get_attribute($this->env, $this->source, (isset($context["f"]) || array_key_exists("f", $context) ? $context["f"] : (function () { throw new RuntimeError('Variable "f" does not exist.', 39, $this->source); })()), "image", [], "any", false, false, false, 39), 'label', ["label" => "Image"]);
+        echo "
+                    ";
+        // line 40
+        echo $this->env->getRuntime('Symfony\Component\Form\FormRenderer')->searchAndRenderBlock(twig_get_attribute($this->env, $this->source, (isset($context["f"]) || array_key_exists("f", $context) ? $context["f"] : (function () { throw new RuntimeError('Variable "f" does not exist.', 40, $this->source); })()), "image", [], "any", false, false, false, 40), 'widget', ["attr" => ["class" => "form-control"]]);
+        echo "
+                    ";
+        // line 41
+        echo $this->env->getRuntime('Symfony\Component\Form\FormRenderer')->searchAndRenderBlock(twig_get_attribute($this->env, $this->source, (isset($context["f"]) || array_key_exists("f", $context) ? $context["f"] : (function () { throw new RuntimeError('Variable "f" does not exist.', 41, $this->source); })()), "image", [], "any", false, false, false, 41), 'errors');
+        echo "
+                </div>
+
+                <div class=\"form-group\">
+                    ";
+        // line 45
+        echo $this->env->getRuntime('Symfony\Component\Form\FormRenderer')->searchAndRenderBlock(twig_get_attribute($this->env, $this->source, (isset($context["f"]) || array_key_exists("f", $context) ? $context["f"] : (function () { throw new RuntimeError('Variable "f" does not exist.', 45, $this->source); })()), "prix", [], "any", false, false, false, 45), 'label', ["label" => "Prix"]);
+        echo "
+                    ";
+        // line 46
+        echo $this->env->getRuntime('Symfony\Component\Form\FormRenderer')->searchAndRenderBlock(twig_get_attribute($this->env, $this->source, (isset($context["f"]) || array_key_exists("f", $context) ? $context["f"] : (function () { throw new RuntimeError('Variable "f" does not exist.', 46, $this->source); })()), "prix", [], "any", false, false, false, 46), 'widget', ["attr" => ["class" => "form-control"]]);
+        echo "
+                    ";
+        // line 47
+        echo $this->env->getRuntime('Symfony\Component\Form\FormRenderer')->searchAndRenderBlock(twig_get_attribute($this->env, $this->source, (isset($context["f"]) || array_key_exists("f", $context) ? $context["f"] : (function () { throw new RuntimeError('Variable "f" does not exist.', 47, $this->source); })()), "prix", [], "any", false, false, false, 47), 'errors');
+        echo "
+                </div>
+
+                <button type=\"submit\" class=\"btn btn-primary\">Ajouter</button>
+                ";
+        // line 51
+        echo         $this->env->getRuntime('Symfony\Component\Form\FormRenderer')->renderBlock((isset($context["f"]) || array_key_exists("f", $context) ? $context["f"] : (function () { throw new RuntimeError('Variable "f" does not exist.', 51, $this->source); })()), 'form_end');
+        echo "
+            </div>
+        </div>
+    </div>
+";
+        
+        $__internal_6f47bbe9983af81f1e7450e9a3e3768f->leave($__internal_6f47bbe9983af81f1e7450e9a3e3768f_prof);
+
+        
+        $__internal_5a27a8ba21ca79b61932376b2fa922d2->leave($__internal_5a27a8ba21ca79b61932376b2fa922d2_prof);
+
+    }
+
+    public function getTemplateName()
+    {
+        return "event_user/add.html.twig";
+    }
+
+    public function isTraitable()
+    {
+        return false;
+    }
+
+    public function getDebugInfo()
+    {
+        return array (  174 => 51,  167 => 47,  163 => 46,  159 => 45,  152 => 41,  148 => 40,  144 => 39,  137 => 35,  133 => 34,  129 => 33,  122 => 29,  118 => 28,  114 => 27,  107 => 23,  103 => 22,  99 => 21,  92 => 17,  88 => 16,  84 => 15,  79 => 13,  68 => 6,  58 => 5,  35 => 3,);
+    }
+
+    public function getSourceContext()
+    {
+        return new Source("{# templates/event_user/add.html.twig #}
+
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    {{ parent() }}
+    <div class=\"container\">
+        <div class=\"container text-center\">
+            <h1>Ajouter un événement</h1>
+        </div>
+        <div class=\"row justify-content-center\">
+            <div class=\"col-md-6\">
+                {{ form_start(f, {'attr': {'novalidate': 'novalidate'}}) }}
+                <div class=\"form-group\">
+                    {{ form_label(f.nom, 'Nom de l\\'événement') }}
+                    {{ form_widget(f.nom, { 'attr': {'class': 'form-control'} }) }}
+                    {{ form_errors(f.nom) }}
+                </div>
+
+                <div class=\"form-group\">
+                    {{ form_label(f.date, 'Date de l\\'événement') }}
+                    {{ form_widget(f.date, { 'attr': {'class': 'form-control' } }) }}
+                    {{ form_errors(f.date) }}
+                </div>
+
+                <div class=\"form-group\">
+                    {{ form_label(f.lieu, 'Lieu') }}
+                    {{ form_widget(f.lieu, { 'attr': {'class': 'form-control' } }) }}
+                    {{ form_errors(f.lieu) }}
+                </div>
+
+                <div class=\"form-group\">
+                    {{ form_label(f.description, 'Description') }}
+                    {{ form_widget(f.description, { 'attr': {'class': 'form-control' } }) }}
+                    {{ form_errors(f.description) }}
+                </div>
+
+                <div class=\"form-group\">
+                    {{ form_label(f.image, 'Image') }}
+                    {{ form_widget(f.image, { 'attr': {'class': 'form-control' } }) }}
+                    {{ form_errors(f.image) }}
+                </div>
+
+                <div class=\"form-group\">
+                    {{ form_label(f.prix, 'Prix') }}
+                    {{ form_widget(f.prix, { 'attr': {'class': 'form-control' } }) }}
+                    {{ form_errors(f.prix) }}
+                </div>
+
+                <button type=\"submit\" class=\"btn btn-primary\">Ajouter</button>
+                {{ form_end(f) }}
+            </div>
+        </div>
+    </div>
+{% endblock %}
+", "event_user/add.html.twig", "C:\\Users\\hamad\\OneDrive\\Desktop\\WebSymfony\\templates\\event_user\\add.html.twig");
+    }
+}
