@@ -31,6 +31,7 @@
         <!-- Template Stylesheet -->
         <link href="{{ asset('css/style.css') }}" rel="stylesheet">
     {% endblock %}
+        <link rel="stylesheet" href="{{asset('https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css')}}">
 </head>
 <body>
     {% block body %}
@@ -110,7 +111,8 @@
                         <a href="404.html" class="dropdown-item">404 Page</a>
                     </div>
                 </div>
-                <a href="contact.html" class="nav-item nav-link">Contact</a>
+                <a href={{path('my_reclamation')}} class="nav-item nav-link">Contact</a>
+                 <a href={{path('logout_utilisateur')}} class="nav-item nav-link">Log out</a>
           
 <!-- Add the shopping basket and notification icons here -->
 <a href="{{ path('view_cart') }}" class="nav-item nav-link" style="text-decoration: none;">
@@ -199,6 +201,10 @@
     <!-- Footer End -->
 
 
+        <link href="{{asset('https://cdn.jsdelivr.net/npm/simple-datatables@7.1.2/dist/style.min.css')}}" rel="stylesheet" />
+        <link href="{{asset('https://cdn.jsdelivr.net/npm/simple-datatables@7.1.2/dist/style.min.css')}}" rel="stylesheet" />
+            <script src="{{('https://cdn.jsdelivr.net/npm/simple-datatables@7.1.2/dist/umd/simple-datatables.min.js')}}" crossorigin="anonymous"></script>
+            <script src="{{asset('js/datatables-simple-demo.js')}}"></script>
 
  {% endblock %}
     {% block javascripts %}

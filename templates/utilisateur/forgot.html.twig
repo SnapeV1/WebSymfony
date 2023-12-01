@@ -1,0 +1,77 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+
+        <div id="layoutAuthentication">
+            <div id="layoutAuthentication_content">
+                <main>
+                    <div class="container">
+                        <div class="row justify-content-center">
+                            <div class="col-lg-5">
+                                <div class="card shadow-lg border-0 rounded-lg mt-5">
+                                    <div class="card-header"><h3 class="text-center font-weight-light my-4">Login</h3></div>
+                                    <div class="card-body">
+
+
+                                    {% if not s%}
+                                    {{form_start(f)}}
+
+
+                                    {{form_label(f.username)}}
+                                    {{form_widget(f.username)}}
+                                    {{form_errors(f.username)}}
+                                    <br>
+
+
+                                    {{form_widget(f.Send)}}
+                                    <br>
+                                    {{ form_end(f) }}
+
+                                    {% endif %}
+
+                                    {% if s %}
+                                    {{form_start(ff)}}
+
+
+                                    {{form_label(ff.code)}}
+                                    {{form_widget(ff.code)}}
+                                    {{form_errors(ff.code)}}
+
+                                    
+                                    <br>
+                                    
+                                    
+
+
+
+                                    {{form_widget(ff.Confirm)}}
+                                    {{ form_end(ff) }}
+
+                                    {% endif %}
+
+                                    
+
+
+
+
+
+
+
+
+                                        </div>
+                                    <div class="card-footer text-center py-3">
+                                        <div class="small"><a href={{path('add_utilisateur')}}>Need an account? Sign up!</a></div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </main>
+            </div
+            </div>
+
+
+
+
+
+{% endblock %}

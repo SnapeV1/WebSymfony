@@ -14,6 +14,7 @@ use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\File\UploadedFile;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
+use Symfony\Component\HttpFoundation\Session\SessionInterface;
 use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Component\Validator\Validator\ValidatorInterface;
 
@@ -71,8 +72,9 @@ class GroupController extends AbstractController
 
 
     #[Route('/addGroup/{userid}', name: 'addgroup')]
-    public function addGroup(EntityManagerInterface $entityManager,ManagerRegistry $manager, Request $req,ValidatorInterface $validator,int $userid): Response
+    public function addGroup(EntityManagerInterface $entityManager,ManagerRegistry $manager, Request $req,ValidatorInterface $validator,int $userid,SessionInterface $session): Response
     {
+        $user=$session->get('user');
         $em = $manager->getManager();
         $groups = new Groups();
         $form = $this->createForm(GroupType::class, $groups);

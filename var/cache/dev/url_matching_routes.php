@@ -50,8 +50,28 @@ return [
         '/ajouterproduit' => [[['_route' => 'add_product', '_controller' => 'App\\Controller\\ProductController::addProduct'], null, null, null, false, false, null]],
         '/produits' => [[['_route' => 'OnShowAddProduct', '_controller' => 'App\\Controller\\ProductController::getAll'], null, null, null, false, false, null]],
         '/search/products' => [[['_route' => 'search_products', '_controller' => 'App\\Controller\\ProductController::searchCriteria'], null, null, null, false, false, null]],
+        '/reclamation' => [[['_route' => 'app_reclamation', '_controller' => 'App\\Controller\\ReclamationController::index'], null, null, null, false, false, null]],
+        '/reclamationall' => [[['_route' => 'all_reclamation', '_controller' => 'App\\Controller\\ReclamationController::getAll'], null, null, null, false, false, null]],
+        '/reclamer' => [[['_route' => 'add_reclamation', '_controller' => 'App\\Controller\\ReclamationController::add'], null, null, null, false, false, null]],
+        '/mymessages' => [[['_route' => 'my_reclamation', '_controller' => 'App\\Controller\\ReclamationController::getReclamationById'], null, null, null, false, false, null]],
         '/training' => [[['_route' => 'app_training', '_controller' => 'App\\Controller\\TrainingController::index'], null, null, null, false, false, null]],
         '/train' => [[['_route' => 'training', '_controller' => 'App\\Controller\\TrainingController::shop'], null, null, null, false, false, null]],
+        '/utilisateur' => [[['_route' => 'app_utilisateur', '_controller' => 'App\\Controller\\UtilisateurController::index'], null, null, null, false, false, null]],
+        '/inscription' => [[['_route' => 'add_utilisateur', '_controller' => 'App\\Controller\\UtilisateurController::addUtilisateur'], null, null, null, false, false, null]],
+        '/verification' => [[['_route' => 'addInBase_utilisateur', '_controller' => 'App\\Controller\\UtilisateurController::savePerson'], null, null, null, false, false, null]],
+        '/utilisateurs' => [[['_route' => 'all_utilisateur', '_controller' => 'App\\Controller\\UtilisateurController::getAll'], null, null, null, false, false, null]],
+        '/profil' => [[['_route' => 'profil_utilisateur', '_controller' => 'App\\Controller\\UtilisateurController::Profil'], null, null, null, false, false, null]],
+        '/login' => [[['_route' => 'login_utilisateur', '_controller' => 'App\\Controller\\UtilisateurController::login'], null, null, null, false, false, null]],
+        '/Accountrecover' => [[['_route' => 'passwordForgot_utilisateur', '_controller' => 'App\\Controller\\UtilisateurController::forgotPassword'], null, null, null, false, false, null]],
+        '/verif2' => [[['_route' => 'verif2_utilisateur', '_controller' => 'App\\Controller\\UtilisateurController::codeVerifTwo'], null, null, null, false, false, null]],
+        '/passwordrez' => [[['_route' => 'MDPRez_utilisateur', '_controller' => 'App\\Controller\\UtilisateurController::entryPasswd'], null, null, null, false, false, null]],
+        '/emailconnect' => [[['_route' => 'emailConnection_utilisateur', '_controller' => 'App\\Controller\\UtilisateurController::emailConnection'], null, null, null, false, false, null]],
+        '/verif' => [[['_route' => 'verif_utilisateur', '_controller' => 'App\\Controller\\UtilisateurController::codeVerif'], null, null, null, false, false, null]],
+        '/logout' => [[['_route' => 'logout_utilisateur', '_controller' => 'App\\Controller\\UtilisateurController::logout'], null, null, null, false, false, null]],
+        '/getUser' => [[['_route' => 'get_current_utilisateur', '_controller' => 'App\\Controller\\UtilisateurController::getcurrent'], null, null, null, false, false, null]],
+        '/testmail' => [[['_route' => 'mailing', '_controller' => 'App\\Controller\\UtilisateurController::sendEmail'], null, null, null, false, false, null]],
+        '/take-photo' => [[['_route' => 'take_photo', '_controller' => 'App\\Controller\\UtilisateurController::takePic'], null, null, null, false, false, null]],
+        '/capture-photo' => [[['_route' => 'capture_photo', '_controller' => 'App\\Controller\\UtilisateurController::capturePhoto'], null, null, null, false, false, null]],
     ],
     [ // $regexpList
         0 => '{^(?'
@@ -71,88 +91,103 @@ return [
                         .'|(*:194)'
                     .')'
                 .')'
-                .'|/update(?'
-                    .'|addproduct/([^/]++)(*:233)'
-                    .'|Comm/([^/]++)(*:254)'
-                    .'|Event(?'
-                        .'|Admin/([^/]++)(*:284)'
-                        .'|/([^/]++)(*:301)'
+                .'|/u(?'
+                    .'|pdate(?'
+                        .'|addproduct/([^/]++)(*:236)'
+                        .'|Comm/([^/]++)(*:257)'
+                        .'|Event(?'
+                            .'|Admin/([^/]++)(*:287)'
+                            .'|/([^/]++)(*:304)'
+                        .')'
+                        .'|_reservation/([^/]++)(*:334)'
+                        .'|formation/([^/]++)(*:360)'
+                        .'|product/([^/]++)(*:384)'
+                        .'|utilisateur/([^/]++)(*:412)'
                     .')'
-                    .'|_reservation/([^/]++)(*:331)'
-                    .'|formation/([^/]++)(*:357)'
-                    .'|product/([^/]++)(*:381)'
+                    .'|tilisateurs(?'
+                        .'|/([^/]++)(*:444)'
+                        .'|delete/([^/]++)(*:467)'
+                    .')'
                 .')'
                 .'|/ad(?'
                     .'|min(?'
-                        .'|delete/([^/]++)(*:417)'
+                        .'|delete/([^/]++)(*:504)'
                         .'|/(?'
-                            .'|deletegroup/([^/]++)(*:449)'
-                            .'|editgroup/([^/]++)(*:475)'
+                            .'|deletegroup/([^/]++)(*:536)'
+                            .'|editgroup/([^/]++)(*:562)'
                         .')'
                     .')'
                     .'|d(?'
-                        .'|Comm/([^/]++)(*:502)'
-                        .'|Group/([^/]++)(*:524)'
-                        .'|\\-to\\-cart/([^/]++)(*:551)'
-                        .'|member/([^/]++)/([^/]++)(*:583)'
+                        .'|Comm/([^/]++)(*:589)'
+                        .'|Group/([^/]++)(*:611)'
+                        .'|\\-to\\-cart/([^/]++)(*:638)'
+                        .'|member/([^/]++)/([^/]++)(*:670)'
                     .')'
                 .')'
-                .'|/view\\-invoice/([^/]++)(*:616)'
+                .'|/view\\-invoice/([^/]++)(*:703)'
                 .'|/delete(?'
-                    .'|commentaire/([^/]++)(*:654)'
+                    .'|commentaire/([^/]++)(*:741)'
                     .'|Event(?'
-                        .'|Admin/([^/]++)(*:684)'
-                        .'|/([^/]++)(*:701)'
+                        .'|Admin/([^/]++)(*:771)'
+                        .'|/([^/]++)(*:788)'
                     .')'
-                    .'|revAdmin/([^/]++)(*:727)'
-                    .'|formation/([^/]++)(*:753)'
-                    .'|group/([^/]++)/([^/]++)(*:784)'
-                    .'|\\-lineorder/([^/]++)(*:812)'
+                    .'|revAdmin/([^/]++)(*:814)'
+                    .'|formation/([^/]++)(*:840)'
+                    .'|group/([^/]++)/([^/]++)(*:871)'
+                    .'|\\-lineorder/([^/]++)(*:899)'
                     .'|_(?'
-                        .'|member/([^/]++)/([^/]++)(*:848)'
-                        .'|product_if_quantity_zero/([^/]++)(*:889)'
+                        .'|member/([^/]++)/([^/]++)(*:935)'
+                        .'|product_if_quantity_zero/([^/]++)(*:976)'
                     .')'
                 .')'
-                .'|/Sharecommentaire/([^/]++)(*:925)'
-                .'|/conversations/([^/]++)/([^/]++)(*:965)'
+                .'|/Sharecommentaire/([^/]++)(*:1012)'
+                .'|/conversations/([^/]++)/([^/]++)(*:1053)'
                 .'|/s(?'
                     .'|e(?'
-                        .'|lect\\-receiver/([^/]++)(*:1005)'
+                        .'|lect\\-receiver/([^/]++)(*:1094)'
                         .'|nd(?'
-                            .'|message/([^/]++)/([^/]++)(*:1044)'
-                            .'|emailMembers/([^/]++)/([^/]++)(*:1083)'
+                            .'|message/([^/]++)/([^/]++)(*:1133)'
+                            .'|emailMembers/([^/]++)/([^/]++)(*:1172)'
                         .')'
                     .')'
-                    .'|se\\-conversations/([^/]++)/([^/]++)(*:1129)'
+                    .'|se\\-conversations/([^/]++)/([^/]++)(*:1218)'
                 .')'
-                .'|/messageDel/([^/]++)/([^/]++)/([^/]++)(*:1177)'
+                .'|/m(?'
+                    .'|essageDel/([^/]++)/([^/]++)/([^/]++)(*:1269)'
+                    .'|dpreset/([^/]++)(*:1294)'
+                .')'
                 .'|/li(?'
-                    .'|st_resv/([^/]++)(*:1208)'
-                    .'|ke/([^/]++)(*:1228)'
+                    .'|st_resv/([^/]++)(*:1326)'
+                    .'|ke/([^/]++)(*:1346)'
                 .')'
                 .'|/ge(?'
-                    .'|nerate\\-pdf/([^/]++)(*:1264)'
+                    .'|nerate\\-pdf/([^/]++)(*:1382)'
                     .'|t(?'
-                        .'|Groups/([^/]++)(*:1292)'
-                        .'|members/([^/]++)/([^/]++)(*:1326)'
+                        .'|Groups/([^/]++)(*:1410)'
+                        .'|members/([^/]++)/([^/]++)(*:1444)'
                     .')'
                 .')'
                 .'|/e(?'
                     .'|vent/generate\\-qr/([^/]++)(?'
-                        .'|(*:1371)'
+                        .'|(*:1489)'
                     .')'
                     .'|dit(?'
-                        .'|group/([^/]++)/([^/]++)(*:1410)'
-                        .'|\\-lineorder/([^/]++)(*:1439)'
-                        .'|member/([^/]++)/([^/]++)/([^/]++)(*:1481)'
+                        .'|group/([^/]++)/([^/]++)(*:1528)'
+                        .'|\\-lineorder/([^/]++)(*:1557)'
+                        .'|member/([^/]++)/([^/]++)/([^/]++)(*:1599)'
                     .')'
                 .')'
-                .'|/formation/([^/]++)(*:1511)'
+                .'|/formation/([^/]++)(*:1629)'
                 .'|/pro(?'
-                    .'|cesspayment/([^/]++)(*:1547)'
-                    .'|ductdelete/([^/]++)(*:1575)'
+                    .'|cesspayment/([^/]++)(*:1665)'
+                    .'|ductdelete/([^/]++)(*:1693)'
                 .')'
-                .'|/booktraining/([^/]++)(*:1607)'
+                .'|/reclamation(?'
+                    .'|/([^/]++)(*:1727)'
+                    .'|delete/([^/]++)(*:1751)'
+                    .'|answer/([^/]++)(*:1775)'
+                .')'
+                .'|/booktraining/([^/]++)(*:1807)'
             .')/?$}sDu',
     ],
     [ // $dynamicRoutes
@@ -164,53 +199,60 @@ return [
         171 => [[['_route' => '_profiler_exception', '_controller' => 'web_profiler.controller.exception_panel::body'], ['token'], null, null, false, false, null]],
         184 => [[['_route' => '_profiler_exception_css', '_controller' => 'web_profiler.controller.exception_panel::stylesheet'], ['token'], null, null, false, false, null]],
         194 => [[['_route' => '_profiler', '_controller' => 'web_profiler.controller.profiler::panelAction'], ['token'], null, null, false, true, null]],
-        233 => [[['_route' => 'Product_updated_admin', '_controller' => 'App\\Controller\\AdminController::updateproduct'], ['id'], null, null, false, true, null]],
-        254 => [[['_route' => 'edit_commentaire', '_controller' => 'App\\Controller\\CommentaireController::updatecommentaire'], ['id'], null, null, false, true, null]],
-        284 => [[['_route' => 'eventadmin_update', '_controller' => 'App\\Controller\\EventAdminController::updateEvent'], ['id'], null, null, false, true, null]],
-        301 => [[['_route' => 'event_update', '_controller' => 'App\\Controller\\EventUserController::updateEvent'], ['id'], null, null, false, true, null]],
-        331 => [[['_route' => 'eventadmin_updaterev', '_controller' => 'App\\Controller\\EventAdminController::updaterevA'], ['id'], null, null, false, true, null]],
-        357 => [[['_route' => 'update_formation', '_controller' => 'App\\Controller\\FormationController::updateformation'], ['id'], null, null, false, true, null]],
-        381 => [[['_route' => 'Product_updated', '_controller' => 'App\\Controller\\ProductController::updateproduct'], ['id'], null, null, false, true, null]],
-        417 => [[['_route' => 'delete_product_admin', '_controller' => 'App\\Controller\\AdminController::delete'], ['id'], null, null, false, true, null]],
-        449 => [[['_route' => 'admin_deletegroup', '_controller' => 'App\\Controller\\GroupController::Admin_deletegroup'], ['id'], null, null, false, true, null]],
-        475 => [[['_route' => 'admin_updategroup', '_controller' => 'App\\Controller\\GroupController::AdminupdateGroup'], ['id'], null, null, false, true, null]],
-        502 => [[['_route' => 'add_commentaire', '_controller' => 'App\\Controller\\CommentaireController::addCommentaire'], ['idFormation'], null, null, false, true, null]],
-        524 => [[['_route' => 'addgroup', '_controller' => 'App\\Controller\\GroupController::addGroup'], ['userid'], null, null, false, true, null]],
-        551 => [[['_route' => 'add_to_cart', '_controller' => 'App\\Controller\\LineorderController::addToCart'], ['id'], null, null, false, true, null]],
-        583 => [[['_route' => 'addmember', '_controller' => 'App\\Controller\\MembreController::addMemberToGroup'], ['id', 'userId'], null, null, false, true, null]],
-        616 => [[['_route' => 'view_invoice', '_controller' => 'App\\Controller\\CommandeController::viewInvoice'], ['id'], null, null, false, true, null]],
-        654 => [[['_route' => 'delete_commentaire', '_controller' => 'App\\Controller\\CommentaireController::delete'], ['id'], null, null, false, true, null]],
-        684 => [[['_route' => 'eventadmin_delete', '_controller' => 'App\\Controller\\EventAdminController::deleteEventForm'], ['id'], null, null, false, true, null]],
-        701 => [[['_route' => 'event_delete', '_controller' => 'App\\Controller\\EventUserController::deleteEventForm'], ['id'], null, null, false, true, null]],
-        727 => [[['_route' => 'eventadmin_deleterev', '_controller' => 'App\\Controller\\EventAdminController::deleterev'], ['id'], null, null, false, true, null]],
-        753 => [[['_route' => 'delete_formation', '_controller' => 'App\\Controller\\FormationController::delete'], ['id'], null, null, false, true, null]],
-        784 => [[['_route' => 'deletegroup', '_controller' => 'App\\Controller\\GroupController::deletegroup'], ['id', 'userid'], null, null, false, true, null]],
-        812 => [[['_route' => 'delete_lineorder', '_controller' => 'App\\Controller\\LineorderController::deleteLineorder'], ['id'], null, null, false, true, null]],
-        848 => [[['_route' => 'delete_member', '_controller' => 'App\\Controller\\MembreController::deleteMember'], ['groupId', 'userId'], null, null, false, true, null]],
-        889 => [[['_route' => 'delete_product_if_quantity_zero', '_controller' => 'App\\Controller\\ProductController::deleteProductIfQuantityZero'], ['id'], null, null, false, true, null]],
-        925 => [[['_route' => 'Share_commentaire', '_controller' => 'App\\Controller\\CommentaireController::shareOnFacebook'], ['id'], null, null, false, true, null]],
-        965 => [[['_route' => 'display_conversations', '_controller' => 'App\\Controller\\ConversationController::displayConversations'], ['user1Id', 'user2Id'], null, null, false, true, null]],
-        1005 => [[['_route' => 'select_receiver', '_controller' => 'App\\Controller\\ConversationController::selectReceiver'], ['user1Id'], null, null, false, true, null]],
-        1044 => [[['_route' => 'send_message', '_controller' => 'App\\Controller\\ConversationController::sendMessage'], ['user1Id', 'user2Id'], null, null, false, true, null]],
-        1083 => [[['_route' => 'sendEmailToAllMembers', '_controller' => 'App\\Controller\\MembreController::sendEmail'], ['id', 'userId'], null, null, false, true, null]],
-        1129 => [[['_route' => 'sse_conversations', '_controller' => 'App\\Controller\\ConversationController::sseConversations'], ['user1Id', 'user2Id'], null, null, false, true, null]],
-        1177 => [[['_route' => 'delete_message', '_controller' => 'App\\Controller\\ConversationController::delete_message'], ['id', 'user1Id', 'user2Id'], null, null, false, true, null]],
-        1208 => [[['_route' => 'resv_affiche', '_controller' => 'App\\Controller\\EventUserController::afficher_reserv'], ['id'], null, null, false, true, null]],
-        1228 => [[['_route' => 'like_formation', '_controller' => 'App\\Controller\\TrainingController::likeFormation'], ['id'], null, null, false, true, null]],
-        1264 => [[['_route' => 'generate_pdf', '_controller' => 'App\\Controller\\EventUserController::generatePdf'], ['id'], null, null, false, true, null]],
-        1292 => [[['_route' => 'groups_getall', '_controller' => 'App\\Controller\\GroupController::getAllForUser'], ['userid'], null, null, false, true, null]],
-        1326 => [[['_route' => 'members_getall', '_controller' => 'App\\Controller\\MembreController::getMembers'], ['id', 'userid'], null, null, false, true, null]],
-        1371 => [
+        236 => [[['_route' => 'Product_updated_admin', '_controller' => 'App\\Controller\\AdminController::updateproduct'], ['id'], null, null, false, true, null]],
+        257 => [[['_route' => 'edit_commentaire', '_controller' => 'App\\Controller\\CommentaireController::updatecommentaire'], ['id'], null, null, false, true, null]],
+        287 => [[['_route' => 'eventadmin_update', '_controller' => 'App\\Controller\\EventAdminController::updateEvent'], ['id'], null, null, false, true, null]],
+        304 => [[['_route' => 'event_update', '_controller' => 'App\\Controller\\EventUserController::updateEvent'], ['id'], null, null, false, true, null]],
+        334 => [[['_route' => 'eventadmin_updaterev', '_controller' => 'App\\Controller\\EventAdminController::updaterevA'], ['id'], null, null, false, true, null]],
+        360 => [[['_route' => 'update_formation', '_controller' => 'App\\Controller\\FormationController::updateformation'], ['id'], null, null, false, true, null]],
+        384 => [[['_route' => 'Product_updated', '_controller' => 'App\\Controller\\ProductController::updateproduct'], ['id'], null, null, false, true, null]],
+        412 => [[['_route' => 'utilisateur_update', '_controller' => 'App\\Controller\\UtilisateurController::updateAuthor'], ['id'], null, null, false, true, null]],
+        444 => [[['_route' => 'one_utilisateur', '_controller' => 'App\\Controller\\UtilisateurController::getOne'], ['id'], null, null, false, true, null]],
+        467 => [[['_route' => 'delete_utilisateur', '_controller' => 'App\\Controller\\UtilisateurController::delete'], ['id'], null, null, false, true, null]],
+        504 => [[['_route' => 'delete_product_admin', '_controller' => 'App\\Controller\\AdminController::delete'], ['id'], null, null, false, true, null]],
+        536 => [[['_route' => 'admin_deletegroup', '_controller' => 'App\\Controller\\GroupController::Admin_deletegroup'], ['id'], null, null, false, true, null]],
+        562 => [[['_route' => 'admin_updategroup', '_controller' => 'App\\Controller\\GroupController::AdminupdateGroup'], ['id'], null, null, false, true, null]],
+        589 => [[['_route' => 'add_commentaire', '_controller' => 'App\\Controller\\CommentaireController::addCommentaire'], ['idFormation'], null, null, false, true, null]],
+        611 => [[['_route' => 'addgroup', '_controller' => 'App\\Controller\\GroupController::addGroup'], ['userid'], null, null, false, true, null]],
+        638 => [[['_route' => 'add_to_cart', '_controller' => 'App\\Controller\\LineorderController::addToCart'], ['id'], null, null, false, true, null]],
+        670 => [[['_route' => 'addmember', '_controller' => 'App\\Controller\\MembreController::addMemberToGroup'], ['id', 'userId'], null, null, false, true, null]],
+        703 => [[['_route' => 'view_invoice', '_controller' => 'App\\Controller\\CommandeController::viewInvoice'], ['id'], null, null, false, true, null]],
+        741 => [[['_route' => 'delete_commentaire', '_controller' => 'App\\Controller\\CommentaireController::delete'], ['id'], null, null, false, true, null]],
+        771 => [[['_route' => 'eventadmin_delete', '_controller' => 'App\\Controller\\EventAdminController::deleteEventForm'], ['id'], null, null, false, true, null]],
+        788 => [[['_route' => 'event_delete', '_controller' => 'App\\Controller\\EventUserController::deleteEventForm'], ['id'], null, null, false, true, null]],
+        814 => [[['_route' => 'eventadmin_deleterev', '_controller' => 'App\\Controller\\EventAdminController::deleterev'], ['id'], null, null, false, true, null]],
+        840 => [[['_route' => 'delete_formation', '_controller' => 'App\\Controller\\FormationController::delete'], ['id'], null, null, false, true, null]],
+        871 => [[['_route' => 'deletegroup', '_controller' => 'App\\Controller\\GroupController::deletegroup'], ['id', 'userid'], null, null, false, true, null]],
+        899 => [[['_route' => 'delete_lineorder', '_controller' => 'App\\Controller\\LineorderController::deleteLineorder'], ['id'], null, null, false, true, null]],
+        935 => [[['_route' => 'delete_member', '_controller' => 'App\\Controller\\MembreController::deleteMember'], ['groupId', 'userId'], null, null, false, true, null]],
+        976 => [[['_route' => 'delete_product_if_quantity_zero', '_controller' => 'App\\Controller\\ProductController::deleteProductIfQuantityZero'], ['id'], null, null, false, true, null]],
+        1012 => [[['_route' => 'Share_commentaire', '_controller' => 'App\\Controller\\CommentaireController::shareOnFacebook'], ['id'], null, null, false, true, null]],
+        1053 => [[['_route' => 'display_conversations', '_controller' => 'App\\Controller\\ConversationController::displayConversations'], ['user1Id', 'user2Id'], null, null, false, true, null]],
+        1094 => [[['_route' => 'select_receiver', '_controller' => 'App\\Controller\\ConversationController::selectReceiver'], ['user1Id'], null, null, false, true, null]],
+        1133 => [[['_route' => 'send_message', '_controller' => 'App\\Controller\\ConversationController::sendMessage'], ['user1Id', 'user2Id'], null, null, false, true, null]],
+        1172 => [[['_route' => 'sendEmailToAllMembers', '_controller' => 'App\\Controller\\MembreController::sendEmail'], ['id', 'userId'], null, null, false, true, null]],
+        1218 => [[['_route' => 'sse_conversations', '_controller' => 'App\\Controller\\ConversationController::sseConversations'], ['user1Id', 'user2Id'], null, null, false, true, null]],
+        1269 => [[['_route' => 'delete_message', '_controller' => 'App\\Controller\\ConversationController::delete_message'], ['id', 'user1Id', 'user2Id'], null, null, false, true, null]],
+        1294 => [[['_route' => 'passwordreset_utilisateur', '_controller' => 'App\\Controller\\UtilisateurController::resetPasword'], ['id'], null, null, false, true, null]],
+        1326 => [[['_route' => 'resv_affiche', '_controller' => 'App\\Controller\\EventUserController::afficher_reserv'], ['id'], null, null, false, true, null]],
+        1346 => [[['_route' => 'like_formation', '_controller' => 'App\\Controller\\TrainingController::likeFormation'], ['id'], null, null, false, true, null]],
+        1382 => [[['_route' => 'generate_pdf', '_controller' => 'App\\Controller\\EventUserController::generatePdf'], ['id'], null, null, false, true, null]],
+        1410 => [[['_route' => 'groups_getall', '_controller' => 'App\\Controller\\GroupController::getAllForUser'], ['userid'], null, null, false, true, null]],
+        1444 => [[['_route' => 'members_getall', '_controller' => 'App\\Controller\\MembreController::getMembers'], ['id', 'userid'], null, null, false, true, null]],
+        1489 => [
             [['_route' => 'event_generate_qr', '_controller' => 'App\\Controller\\EventUserController::generateQrCode'], ['id'], null, null, false, true, null],
             [['_route' => 'app_event_generate_qr', '_controller' => 'App\\Controller\\EventUserController@generateQrCode'], ['id'], ['GET' => 0], null, false, true, null],
         ],
-        1410 => [[['_route' => 'update_group', '_controller' => 'App\\Controller\\GroupController::updateGroup'], ['id', 'userid'], null, null, false, true, null]],
-        1439 => [[['_route' => 'edit_lineorder', '_controller' => 'App\\Controller\\LineorderController::editLineorder'], ['id'], null, null, false, true, null]],
-        1481 => [[['_route' => 'update_member', '_controller' => 'App\\Controller\\MembreController::updateGroup'], ['memberid', 'userid', 'groupid'], null, null, false, true, null]],
-        1511 => [[['_route' => 'one_formation', '_controller' => 'App\\Controller\\FormationController::getOne'], ['id'], null, null, false, true, null]],
-        1547 => [[['_route' => 'process_payment', '_controller' => 'App\\Controller\\PaymentController::processPayment'], ['id'], null, null, false, true, null]],
-        1575 => [[['_route' => 'delete_product', '_controller' => 'App\\Controller\\ProductController::delete'], ['id'], null, null, false, true, null]],
-        1607 => [
+        1528 => [[['_route' => 'update_group', '_controller' => 'App\\Controller\\GroupController::updateGroup'], ['id', 'userid'], null, null, false, true, null]],
+        1557 => [[['_route' => 'edit_lineorder', '_controller' => 'App\\Controller\\LineorderController::editLineorder'], ['id'], null, null, false, true, null]],
+        1599 => [[['_route' => 'update_member', '_controller' => 'App\\Controller\\MembreController::updateGroup'], ['memberid', 'userid', 'groupid'], null, null, false, true, null]],
+        1629 => [[['_route' => 'one_formation', '_controller' => 'App\\Controller\\FormationController::getOne'], ['id'], null, null, false, true, null]],
+        1665 => [[['_route' => 'process_payment', '_controller' => 'App\\Controller\\PaymentController::processPayment'], ['id'], null, null, false, true, null]],
+        1693 => [[['_route' => 'delete_product', '_controller' => 'App\\Controller\\ProductController::delete'], ['id'], null, null, false, true, null]],
+        1727 => [[['_route' => 'one_reclamation', '_controller' => 'App\\Controller\\ReclamationController::getOne'], ['id'], null, null, false, true, null]],
+        1751 => [[['_route' => 'delete_reclamation', '_controller' => 'App\\Controller\\ReclamationController::delete'], ['id'], null, null, false, true, null]],
+        1775 => [[['_route' => 'answer_reclamation', '_controller' => 'App\\Controller\\ReclamationController::answer'], ['id'], null, null, false, true, null]],
+        1807 => [
             [['_route' => 'book_training', '_controller' => 'App\\Controller\\TrainingController::bookTraining'], ['idFormation'], null, null, false, true, null],
             [null, null, null, null, false, false, 0],
         ],
