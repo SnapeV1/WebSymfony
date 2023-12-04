@@ -5,16 +5,25 @@
 
  
     <div class="container mt-5">
-          </div>
+           <div class="col-md-12 d-flex justify-content-end mt-1">
+    {% if L %}
+        <a href="{{ path('add_product') }}" class="btn-link">
+            <i class="fas fa-plus-circle"></i> Add Product
+        </a>
+    {% endif %}
+</div>
+
             <div class="col-md-3">
+            
                 <!-- Notification icon with badge -->
                 <button id="notification-icon" class="btn btn-primary">
                     Notifications
                     {% if notifications|length > 0 %}
                         <span class="badge badge-danger">{{ notifications|length }}</span>
                     {% endif %}
+                   
                 </button>
-
+ 
                 <!-- Notification list (initially hidden) -->
                 <div id="notification-list" style="display: none;">
                     {% for notification in notifications %}
@@ -23,14 +32,18 @@
                     {% endfor %}
                 </div>
             </div>
+            
         </div>
+        
     </div>
+    
         <!-- Notification list (initially hidden) -->
         <div id="notification-list" style="display: none;">
             {% for notification in notifications %}
                 <div>{{ notification.content }}</div>
                 <hr>
             {% endfor %}
+            
         </div>
 
         {# Display success flash messages as alerts #}
@@ -38,7 +51,9 @@
             <div class="alert alert-success alert-dismissible fade show" role="alert">
                 {{ flashMessage }}
                 <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                
             </div>
+
         {% endfor %}
 
         {# Display warning flash messages as alerts #}
@@ -48,6 +63,8 @@
                 <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
             </div>
         {% endfor %}
+              
+    </div>
 
         <div class="row">
             <div class="col-md-6">
@@ -94,6 +111,15 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/noUiSlider/14.7.0/nouislider.min.css" />
 
     <script>
+         document.addEventListener('DOMContentLoaded', function () {
+            // Your existing JavaScript code...
+
+            // Show the "Add Product" button if the user is a VENDEUR
+            var addProductButton = document.getElementById('add-product-button');
+            if (addProductButton && "{{L}}" === "1") {
+                addProductButton.style.display = 'block';
+            }
+        });
         document.addEventListener('DOMContentLoaded', function () {
             var notificationIcon = document.getElementById('notification-icon');
             var notificationList = document.getElementById('notification-list');

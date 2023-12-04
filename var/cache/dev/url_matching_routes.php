@@ -72,6 +72,7 @@ return [
         '/testmail' => [[['_route' => 'mailing', '_controller' => 'App\\Controller\\UtilisateurController::sendEmail'], null, null, null, false, false, null]],
         '/take-photo' => [[['_route' => 'take_photo', '_controller' => 'App\\Controller\\UtilisateurController::takePic'], null, null, null, false, false, null]],
         '/capture-photo' => [[['_route' => 'capture_photo', '_controller' => 'App\\Controller\\UtilisateurController::capturePhoto'], null, null, null, false, false, null]],
+        '/' => [[['_route' => 'HomePage', '_controller' => 'App\\Controller\\UtilisateurController::Home'], null, null, null, false, false, null]],
     ],
     [ // $regexpList
         0 => '{^(?'

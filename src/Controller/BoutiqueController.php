@@ -10,6 +10,7 @@ use Doctrine\Persistence\ManagerRegistry;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\JsonResponse;
 use Symfony\Component\HttpFoundation\Response;
+use Symfony\Component\HttpFoundation\Session\SessionInterface;
 use Symfony\Component\Routing\Annotation\Route;
 
 class BoutiqueController extends AbstractController
@@ -23,14 +24,23 @@ class BoutiqueController extends AbstractController
     }
 
     #[Route('/shop', name: 'shopping')]
-    public function shop(ProductRepository $productRepository, NotificationRepository $notificationRepository): Response
+    public function shop(SessionInterface $session,ProductRepository $productRepository, NotificationRepository $notificationRepository): Response
     {
+
+        $l=false;
+        $user=$session->get('user');
+        if($user->getType()=='VENDEUR')
+        {
+            $l=true;
+        }
+
         $product = $productRepository->findAll();
         $notifications = $notificationRepository->findAll();
 
         return $this->render('boutique/shop.html.twig', [
             'produit' => $product,
             'notifications' => $notifications,
+            'L'=>$l
         ]);
     }
 

@@ -126,5 +126,6 @@ return [
     'mailing' => [[], ['_controller' => 'App\\Controller\\UtilisateurController::sendEmail'], [], [['text', '/testmail']], [], [], []],
     'take_photo' => [[], ['_controller' => 'App\\Controller\\UtilisateurController::takePic'], [], [['text', '/take-photo']], [], [], []],
     'capture_photo' => [[], ['_controller' => 'App\\Controller\\UtilisateurController::capturePhoto'], [], [['text', '/capture-photo']], [], [], []],
+    'HomePage' => [[], ['_controller' => 'App\\Controller\\UtilisateurController::Home'], [], [['text', '/']], [], [], []],
     'app_event_generate_qr' => [['id'], ['_controller' => 'App\\Controller\\EventUserController@generateQrCode'], [], [['variable', '/', '[^/]++', 'id', true], ['text', '/event/generate-qr']], [], [], []],
 ];

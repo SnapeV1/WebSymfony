@@ -9,6 +9,7 @@ use App\Repository\FormationRepository;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\RedirectResponse;
 use Symfony\Component\HttpFoundation\Response;
+use Symfony\Component\HttpFoundation\Session\SessionInterface;
 use Symfony\Component\Routing\Annotation\Route;
 use Doctrine\Persistence\ManagerRegistry;
 use Symfony\Component\HttpFoundation\Request;
@@ -24,8 +25,9 @@ class CommentaireController extends AbstractController
         return $this->render('commentaire/index.html.twig');
     }
     #[Route('/addComm/{idFormation}', name: 'add_commentaire')]
-    public function addCommentaire(ManagerRegistry $manager, Request $request, int $idFormation): Response
+    public function addCommentaire(SessionInterface $session,ManagerRegistry $manager, Request $request, int $idFormation): Response
     {
+        $user=$session->get('user');
         $em = $manager->getManager();
         $formation = $em->getRepository(Formation::class)->find($idFormation);
     
@@ -40,7 +42,7 @@ class CommentaireController extends AbstractController
             // Perform any validation you need here
     
             $commentaire = new Commentaire();
-            $commentaire->setIdUser(1); // Assuming you have a User entity with getId()
+            $commentaire->setIdUser($user->getId()); // Assuming you have a User entity with getId()
             $commentaire->setFormation($formation);
             $commentaire->setIdFormation($idFormation);
             $commentaire->setText($commentText);

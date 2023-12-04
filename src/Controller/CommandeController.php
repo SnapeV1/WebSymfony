@@ -32,13 +32,14 @@ class CommandeController extends AbstractController
     }
 
     #[Route('/confirm-all-orders', name: 'confirm_all_orders')]
-    public function confirmOrder(Request $request, ManagerRegistry $man, LineorderRepository $lineorderRepository,UtilisateurRepository $utilisateurRepository ): Response
+    public function confirmOrder(SessionInterface $session,Request $request, ManagerRegistry $man, LineorderRepository $lineorderRepository,UtilisateurRepository $utilisateurRepository ): Response
     {
         $entityManager = $man->getManager();
         $commande = new Commande();
     
         $form = $this->createForm(CommandeType::class, $commande);
         $form->handleRequest($request);
+        $user=$session->get('user');
       
 
 
@@ -48,7 +49,7 @@ class CommandeController extends AbstractController
 
 // Set the id_client using the user entity
 
-        $commande->setId_client(2);
+        $commande->setId_client($user->getId());
         $commande->setDate(new \DateTime());
     
         // Fetch line orders from the database

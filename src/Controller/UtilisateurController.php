@@ -858,7 +858,16 @@ file_put_contents('uploads/' . $fileName, $image_base64);
 
 
 
+#[Route('/', name: 'HomePage')]
+public function Home(SessionInterface $session, UtilisateurRepository $repo, ManagerRegistry $manager):Response 
+{
+    $user= $session->get('user');
+        if($user === null || $user->getId()===null){
+          return  $this->redirectToRoute('login_utilisateur');
+        }
 
+    return  $this->render('Home.html.twig');
+}
 
 
 

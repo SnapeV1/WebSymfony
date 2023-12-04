@@ -29,8 +29,13 @@ class GroupController extends AbstractController
     }
 
     #[Route('/getGroups/{userid}', name: 'groups_getall')]
-    public function getAllForUser(EntityManagerInterface $entityManager,GroupsRepository $repo, MembreRepository $membreRepo, ManagerRegistry $manager, Request $req, int $userid): Response
+    public function getAllForUser(EntityManagerInterface $entityManager,GroupsRepository $repo, MembreRepository $membreRepo, ManagerRegistry $manager, Request $req, int $userid,SessionInterface $session): Response
     {
+        $user= $session->get('user');
+        if($user === null || $user->getId()===null){
+          return  $this->redirectToRoute('login_utilisateur');
+        }
+$userid=$user->getId();
         $membres = $membreRepo->findBy(['user' => $userid, 'role' => 'Admin']);
         
      
@@ -79,7 +84,7 @@ class GroupController extends AbstractController
         $groups = new Groups();
         $form = $this->createForm(GroupType::class, $groups);
         $form->handleRequest($req);
-
+        $userid=$user->getId();
         if ($form->isSubmitted() && $form->isValid()) {
             $uploadedFile = $form['logo']->getData();
 

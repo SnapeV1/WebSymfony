@@ -32,7 +32,7 @@ class __TwigTemplate_52d32ca6a810a3de72ad25410648286d extends Template
     protected function doGetParent(array $context)
     {
         // line 1
-        return "admin.html.twig";
+        return "connected.html.twig";
     }
 
     protected function doDisplay(array $context, array $blocks = [])
@@ -44,7 +44,7 @@ class __TwigTemplate_52d32ca6a810a3de72ad25410648286d extends Template
         $__internal_6f47bbe9983af81f1e7450e9a3e3768f = $this->extensions["Symfony\\Bridge\\Twig\\Extension\\ProfilerExtension"];
         $__internal_6f47bbe9983af81f1e7450e9a3e3768f->enter($__internal_6f47bbe9983af81f1e7450e9a3e3768f_prof = new \Twig\Profiler\Profile($this->getTemplateName(), "template", "admin/admin.html.twig"));
 
-        $this->parent = $this->loadTemplate("admin.html.twig", "admin/admin.html.twig", 1);
+        $this->parent = $this->loadTemplate("connected.html.twig", "admin/admin.html.twig", 1);
         $this->parent->display($context, array_merge($this->blocks, $blocks));
         
         $__internal_5a27a8ba21ca79b61932376b2fa922d2->leave($__internal_5a27a8ba21ca79b61932376b2fa922d2_prof);
@@ -65,24 +65,22 @@ class __TwigTemplate_52d32ca6a810a3de72ad25410648286d extends Template
         $__internal_6f47bbe9983af81f1e7450e9a3e3768f->enter($__internal_6f47bbe9983af81f1e7450e9a3e3768f_prof = new \Twig\Profiler\Profile($this->getTemplateName(), "block", "body"));
 
         // line 4
-        echo "    ";
+        echo "    <!-- Include Bootstrap CSS -->
+  ";
+        // line 5
         $this->displayParentBlock("body", $context, $blocks);
         echo "
-    <script src=\"https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js\"></script>
-
-    <!-- jQuery -->
-    <script src=\"https://code.jquery.com/jquery-3.6.0.min.js\"></script>
 
     <!-- Display success flash messages as alerts -->
     ";
-        // line 11
+        // line 8
         $context['_parent'] = $context;
-        $context['_seq'] = twig_ensure_traversable(twig_get_attribute($this->env, $this->source, (isset($context["app"]) || array_key_exists("app", $context) ? $context["app"] : (function () { throw new RuntimeError('Variable "app" does not exist.', 11, $this->source); })()), "flashes", ["success"], "method", false, false, false, 11));
+        $context['_seq'] = twig_ensure_traversable(twig_get_attribute($this->env, $this->source, (isset($context["app"]) || array_key_exists("app", $context) ? $context["app"] : (function () { throw new RuntimeError('Variable "app" does not exist.', 8, $this->source); })()), "flashes", ["success"], "method", false, false, false, 8));
         foreach ($context['_seq'] as $context["_key"] => $context["flashMessage"]) {
-            // line 12
+            // line 9
             echo "        <div class=\"alert alert-success alert-dismissible fade show\" role=\"alert\">
             ";
-            // line 13
+            // line 10
             echo twig_escape_filter($this->env, $context["flashMessage"], "html", null, true);
             echo "
             <button type=\"button\" class=\"btn-close\" data-bs-dismiss=\"alert\" aria-label=\"Close\"></button>
@@ -92,7 +90,7 @@ class __TwigTemplate_52d32ca6a810a3de72ad25410648286d extends Template
         $_parent = $context['_parent'];
         unset($context['_seq'], $context['_iterated'], $context['_key'], $context['flashMessage'], $context['_parent'], $context['loop']);
         $context = array_intersect_key($context, $_parent) + $_parent;
-        // line 17
+        // line 14
         echo "
     <div class=\"d-flex justify-content-between align-items-center\">
         <h1>All products</h1>
@@ -105,15 +103,15 @@ class __TwigTemplate_52d32ca6a810a3de72ad25410648286d extends Template
                 </button>
                 <div class=\"dropdown-menu\">
                     <a class=\"dropdown-item\" href=\"";
-        // line 28
+        // line 25
         echo $this->extensions['Symfony\Bridge\Twig\Extension\RoutingExtension']->getPath("export_pdf");
         echo "\">Export as PDF</a>
                     <a class=\"dropdown-item\" href=\"";
-        // line 29
+        // line 26
         echo $this->extensions['Symfony\Bridge\Twig\Extension\RoutingExtension']->getPath("export_xml");
         echo "\">Export as XML</a>
                     <a class=\"dropdown-item\" href=\"";
-        // line 30
+        // line 27
         echo $this->extensions['Symfony\Bridge\Twig\Extension\RoutingExtension']->getPath("export_excel");
         echo "\">Export as Excel</a>
                 </div>
@@ -140,64 +138,64 @@ class __TwigTemplate_52d32ca6a810a3de72ad25410648286d extends Template
         <tbody>
             <!-- Table rows -->
             ";
-        // line 54
+        // line 51
         $context['_parent'] = $context;
-        $context['_seq'] = twig_ensure_traversable((isset($context["list"]) || array_key_exists("list", $context) ? $context["list"] : (function () { throw new RuntimeError('Variable "list" does not exist.', 54, $this->source); })()));
+        $context['_seq'] = twig_ensure_traversable((isset($context["list"]) || array_key_exists("list", $context) ? $context["list"] : (function () { throw new RuntimeError('Variable "list" does not exist.', 51, $this->source); })()));
         foreach ($context['_seq'] as $context["_key"] => $context["p"]) {
-            // line 55
+            // line 52
             echo "                <tr>
                     <!-- Cell content -->
                     <td>";
+            // line 54
+            echo twig_escape_filter($this->env, twig_get_attribute($this->env, $this->source, $context["p"], "nom", [], "any", false, false, false, 54), "html", null, true);
+            echo "</td>
+                    <td>";
+            // line 55
+            echo twig_escape_filter($this->env, twig_get_attribute($this->env, $this->source, $context["p"], "prix", [], "any", false, false, false, 55), "html", null, true);
+            echo "</td>
+                    <td>";
+            // line 56
+            echo twig_escape_filter($this->env, twig_get_attribute($this->env, $this->source, $context["p"], "qte", [], "any", false, false, false, 56), "html", null, true);
+            echo "</td>
+                    <td>";
             // line 57
-            echo twig_escape_filter($this->env, twig_get_attribute($this->env, $this->source, $context["p"], "nom", [], "any", false, false, false, 57), "html", null, true);
+            echo twig_escape_filter($this->env, twig_get_attribute($this->env, $this->source, $context["p"], "categ", [], "any", false, false, false, 57), "html", null, true);
             echo "</td>
                     <td>";
             // line 58
-            echo twig_escape_filter($this->env, twig_get_attribute($this->env, $this->source, $context["p"], "prix", [], "any", false, false, false, 58), "html", null, true);
+            echo twig_escape_filter($this->env, twig_get_attribute($this->env, $this->source, $context["p"], "matiere", [], "any", false, false, false, 58), "html", null, true);
             echo "</td>
                     <td>";
             // line 59
-            echo twig_escape_filter($this->env, twig_get_attribute($this->env, $this->source, $context["p"], "qte", [], "any", false, false, false, 59), "html", null, true);
-            echo "</td>
-                    <td>";
-            // line 60
-            echo twig_escape_filter($this->env, twig_get_attribute($this->env, $this->source, $context["p"], "categ", [], "any", false, false, false, 60), "html", null, true);
-            echo "</td>
-                    <td>";
-            // line 61
-            echo twig_escape_filter($this->env, twig_get_attribute($this->env, $this->source, $context["p"], "matiere", [], "any", false, false, false, 61), "html", null, true);
-            echo "</td>
-                    <td>";
-            // line 62
-            echo twig_escape_filter($this->env, twig_get_attribute($this->env, $this->source, $context["p"], "description", [], "any", false, false, false, 62), "html", null, true);
+            echo twig_escape_filter($this->env, twig_get_attribute($this->env, $this->source, $context["p"], "description", [], "any", false, false, false, 59), "html", null, true);
             echo "</td>
                     <td>
                         ";
-            // line 64
-            if ( !(null === twig_get_attribute($this->env, $this->source, $context["p"], "image", [], "any", false, false, false, 64))) {
-                // line 65
+            // line 61
+            if ( !(null === twig_get_attribute($this->env, $this->source, $context["p"], "image", [], "any", false, false, false, 61))) {
+                // line 62
                 echo "                            <img src=\"";
-                echo twig_escape_filter($this->env, $this->extensions['Symfony\Bridge\Twig\Extension\AssetExtension']->getAssetUrl(("pictures/" . twig_get_attribute($this->env, $this->source, $context["p"], "image", [], "any", false, false, false, 65))), "html", null, true);
+                echo twig_escape_filter($this->env, $this->extensions['Symfony\Bridge\Twig\Extension\AssetExtension']->getAssetUrl(("pictures/" . twig_get_attribute($this->env, $this->source, $context["p"], "image", [], "any", false, false, false, 62))), "html", null, true);
                 echo "\" alt=\"";
-                echo twig_escape_filter($this->env, twig_get_attribute($this->env, $this->source, $context["p"], "nom", [], "any", false, false, false, 65), "html", null, true);
+                echo twig_escape_filter($this->env, twig_get_attribute($this->env, $this->source, $context["p"], "nom", [], "any", false, false, false, 62), "html", null, true);
                 echo "\" width=\"200\" height=\"120\">
                         ";
             } else {
-                // line 67
+                // line 64
                 echo "                            No image
                         ";
             }
-            // line 69
+            // line 66
             echo "                    </td>
                     <td>
                         <!-- Action links -->
                         <a href=\"";
-            // line 72
-            echo twig_escape_filter($this->env, $this->extensions['Symfony\Bridge\Twig\Extension\RoutingExtension']->getPath("Product_updated_admin", ["id" => twig_get_attribute($this->env, $this->source, $context["p"], "idpdts", [], "any", false, false, false, 72)]), "html", null, true);
+            // line 69
+            echo twig_escape_filter($this->env, $this->extensions['Symfony\Bridge\Twig\Extension\RoutingExtension']->getPath("Product_updated_admin", ["id" => twig_get_attribute($this->env, $this->source, $context["p"], "idpdts", [], "any", false, false, false, 69)]), "html", null, true);
             echo "\">Edit</a>
                         <a href=\"";
-            // line 73
-            echo twig_escape_filter($this->env, $this->extensions['Symfony\Bridge\Twig\Extension\RoutingExtension']->getPath("delete_product_admin", ["id" => twig_get_attribute($this->env, $this->source, $context["p"], "idpdts", [], "any", false, false, false, 73)]), "html", null, true);
+            // line 70
+            echo twig_escape_filter($this->env, $this->extensions['Symfony\Bridge\Twig\Extension\RoutingExtension']->getPath("delete_product_admin", ["id" => twig_get_attribute($this->env, $this->source, $context["p"], "idpdts", [], "any", false, false, false, 70)]), "html", null, true);
             echo "\">Delete</a>
                     </td>
                 </tr>
@@ -206,16 +204,17 @@ class __TwigTemplate_52d32ca6a810a3de72ad25410648286d extends Template
         $_parent = $context['_parent'];
         unset($context['_seq'], $context['_iterated'], $context['_key'], $context['p'], $context['_parent'], $context['loop']);
         $context = array_intersect_key($context, $_parent) + $_parent;
-        // line 77
+        // line 74
         echo "        </tbody>
     </table>
 
     <!-- Add product button -->
     <a href=\"";
-        // line 81
+        // line 78
         echo $this->extensions['Symfony\Bridge\Twig\Extension\RoutingExtension']->getPath("add_product_admin");
         echo "\">Add product</a>
-";
+
+    <!-- Include Bootstrap JavaScript and Popper.js -->";
         
         $__internal_6f47bbe9983af81f1e7450e9a3e3768f->leave($__internal_6f47bbe9983af81f1e7450e9a3e3768f_prof);
 
@@ -236,19 +235,16 @@ class __TwigTemplate_52d32ca6a810a3de72ad25410648286d extends Template
 
     public function getDebugInfo()
     {
-        return array (  216 => 81,  210 => 77,  200 => 73,  196 => 72,  191 => 69,  187 => 67,  179 => 65,  177 => 64,  172 => 62,  168 => 61,  164 => 60,  160 => 59,  156 => 58,  152 => 57,  148 => 55,  144 => 54,  117 => 30,  113 => 29,  109 => 28,  96 => 17,  86 => 13,  83 => 12,  79 => 11,  68 => 4,  58 => 3,  35 => 1,);
+        return array (  214 => 78,  208 => 74,  198 => 70,  194 => 69,  189 => 66,  185 => 64,  177 => 62,  175 => 61,  170 => 59,  166 => 58,  162 => 57,  158 => 56,  154 => 55,  150 => 54,  146 => 52,  142 => 51,  115 => 27,  111 => 26,  107 => 25,  94 => 14,  84 => 10,  81 => 9,  77 => 8,  71 => 5,  68 => 4,  58 => 3,  35 => 1,);
     }
 
     public function getSourceContext()
     {
-        return new Source("{% extends 'admin.html.twig' %}
+        return new Source("{% extends 'connected.html.twig' %}
 
 {% block body %}
-    {{ parent() }}
-    <script src=\"https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js\"></script>
-
-    <!-- jQuery -->
-    <script src=\"https://code.jquery.com/jquery-3.6.0.min.js\"></script>
+    <!-- Include Bootstrap CSS -->
+  {{parent()}}
 
     <!-- Display success flash messages as alerts -->
     {% for flashMessage in app.flashes('success') %}
@@ -322,6 +318,8 @@ class __TwigTemplate_52d32ca6a810a3de72ad25410648286d extends Template
 
     <!-- Add product button -->
     <a href=\"{{ path('add_product_admin') }}\">Add product</a>
-{% endblock %}", "admin/admin.html.twig", "C:\\Users\\hamad\\OneDrive\\Desktop\\WebSymfony\\templates\\admin\\admin.html.twig");
+
+    <!-- Include Bootstrap JavaScript and Popper.js -->{% endblock %}
+", "admin/admin.html.twig", "C:\\Users\\hamad\\OneDrive\\Desktop\\WebSymfony\\templates\\admin\\admin.html.twig");
     }
 }

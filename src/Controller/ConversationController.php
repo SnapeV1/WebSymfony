@@ -42,7 +42,8 @@ class ConversationController extends AbstractController
         int $user1Id,
         int $user2Id,
         ConversationRepository $conversationRepository,
-        EncryptionService $encryptionService // Inject the EncryptionService
+        EncryptionService $encryptionService, // Inject the EncryptionService
+        SessionInterface $session
     ): Response {
     
         // Fetch conversations for user1Id and user2Id
@@ -50,7 +51,7 @@ class ConversationController extends AbstractController
             'iduser1' => $user1Id,
             'iduser2' => $user2Id,
         ]);
-    
+    $user=$session->get('user');
         // Fetch conversations for user2Id and user1Id
         $conversations2 = $conversationRepository->findBy([
             'iduser1' => $user2Id,
@@ -68,7 +69,7 @@ class ConversationController extends AbstractController
         // Decrypt messages for conversations
         $decryptedConversations = [];
         foreach ($conversations as $conversation) {
-            $decryptedMessage = $encryptionService->decrypt($conversation->getMsg());
+            $decryptedMessage = $encryptionService->decrypt($conversation->getMsg(),5);
             $decryptedConversation = clone $conversation;
             $decryptedConversation->setMsg($decryptedMessage);
             $decryptedConversations[] = $decryptedConversation;
@@ -77,7 +78,7 @@ class ConversationController extends AbstractController
         // Decrypt messages for conversations2
         $decryptedConversations2 = [];
         foreach ($conversations2 as $conversation) {
-            $decryptedMessage = $encryptionService->decrypt($conversation->getMsg());
+            $decryptedMessage = $encryptionService->decrypt($conversation->getMsg(),5);
             $decryptedConversation = clone $conversation;
             $decryptedConversation->setMsg($decryptedMessage);
             $decryptedConversations2[] = $decryptedConversation;
@@ -116,8 +117,9 @@ $this->entityManager->flush();
     {
         $userRepository = $this->entityManager->getRepository(Utilisateur::class);
         $users = $userRepository->findAll();
-    
-        // Retrieve notifications for user1Id
+        $user=$session->get('user');
+        $user1Id=$user->getId();
+       
         $notificationRepository = $this->entityManager->getRepository(Notification::class);
         $notifications = $notificationRepository->findBy(['iduser' => $user1Id]);
        
@@ -148,9 +150,11 @@ public function sendMessage(
     Request $request,
     ConversationRepository $conversationRepository,
     EntityManagerInterface $entityManager,
-    EncryptionService $encryptionService
+    EncryptionService $encryptionService,
+    SessionInterface $session
 ): Response {
-   
+    $user=$session->get('user');
+    $user1Id=$user->getId();
 
     // Get the sender and receiver users from the database
     $sender = $entityManager->getRepository(Utilisateur::class)->find($user1Id);
@@ -163,7 +167,7 @@ public function sendMessage(
     $message = $request->request->get('message'); // Assuming the message is sent via POST request
 
     // Encrypt the message
-    $encryptedMessage = $encryptionService->encrypt($message); // Replace 'yourSecretKey' with your actual secret key
+    $encryptedMessage = $encryptionService->encrypt($message,5); // Replace 'yourSecretKey' with your actual secret key
 
     // Create a new conversation entity
     $newConversation = new Conversation();
@@ -194,15 +198,19 @@ public function sendMessage(
 
 
 #[Route('/messageDel/{id}/{user1Id}/{user2Id}', name: 'delete_message')]
-public function delete_message(Request $request, EntityManagerInterface $entityManager, $id,$user1Id,$user2Id): Response
+public function delete_message(Request $request, EntityManagerInterface $entityManager, $id,$user1Id,$user2Id,SessionInterface $session): Response
 {
+    
+   
+        $user=$session->get('user');
+        $user1Id=$user->getId();
     // Find the group from the database
     $conv = $entityManager->getRepository(Conversation::class)->find($id);
 
 
     if ($conv instanceof Conversation) {
         // Update the group name
-        $conv->setMsg("pokhBM3SDjeiZJSwi4BAwDNwUWtIb21pa0lIVGZKSHcweE5lSWc9PQ==");
+        $conv->setMsg("Rjxxflj Zsxjsy");
         
 
 

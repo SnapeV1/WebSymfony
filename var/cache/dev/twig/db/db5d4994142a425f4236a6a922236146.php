@@ -74,62 +74,131 @@ class __TwigTemplate_3fecccfc7db71e00b890fa926c559155 extends Template
         // line 7
         $context['_parent'] = $context;
         $context['_seq'] = twig_ensure_traversable($context["training"]);
+        $context['loop'] = [
+          'parent' => $context['_parent'],
+          'index0' => 0,
+          'index'  => 1,
+          'first'  => true,
+        ];
+        if (is_array($context['_seq']) || (is_object($context['_seq']) && $context['_seq'] instanceof \Countable)) {
+            $length = count($context['_seq']);
+            $context['loop']['revindex0'] = $length - 1;
+            $context['loop']['revindex'] = $length;
+            $context['loop']['length'] = $length;
+            $context['loop']['last'] = 1 === $length;
+        }
         foreach ($context['_seq'] as $context["_key"] => $context["training"]) {
             // line 8
             echo "                <div class=\"col-md-4 mb-4\">
                     <div class=\"card\">
                         ";
             // line 10
-            $context["videoPath"] = $this->extensions['Symfony\Bridge\Twig\Extension\AssetExtension']->getAssetUrl(("uploads/" . twig_get_attribute($this->env, $this->source, $context["training"], "video", [], "any", false, false, false, 10)));
-            // line 11
+            if ((0 == twig_get_attribute($this->env, $this->source, $context["loop"], "index", [], "any", false, false, false, 10) % 4)) {
+                // line 11
+                echo "                            </div><div class=\"row\">
+                        ";
+            }
+            // line 13
+            echo "
+                        ";
+            // line 14
+            $context["videoPath"] = $this->extensions['Symfony\Bridge\Twig\Extension\AssetExtension']->getAssetUrl(("uploads/" . twig_get_attribute($this->env, $this->source, $context["training"], "video", [], "any", false, false, false, 14)));
+            // line 15
             echo "                        <video controls poster=\"";
-            echo twig_escape_filter($this->env, (isset($context["videoPath"]) || array_key_exists("videoPath", $context) ? $context["videoPath"] : (function () { throw new RuntimeError('Variable "videoPath" does not exist.', 11, $this->source); })()), "html", null, true);
+            echo twig_escape_filter($this->env, (isset($context["videoPath"]) || array_key_exists("videoPath", $context) ? $context["videoPath"] : (function () { throw new RuntimeError('Variable "videoPath" does not exist.', 15, $this->source); })()), "html", null, true);
             echo ".jpg\" class=\"card-img-top\" style=\"max-height: 300px; width: 100%; object-fit: cover;\">
                             <source src=\"";
-            // line 12
-            echo twig_escape_filter($this->env, (isset($context["videoPath"]) || array_key_exists("videoPath", $context) ? $context["videoPath"] : (function () { throw new RuntimeError('Variable "videoPath" does not exist.', 12, $this->source); })()), "html", null, true);
+            // line 16
+            echo twig_escape_filter($this->env, (isset($context["videoPath"]) || array_key_exists("videoPath", $context) ? $context["videoPath"] : (function () { throw new RuntimeError('Variable "videoPath" does not exist.', 16, $this->source); })()), "html", null, true);
             echo "\" type=\"video/mp4\">
                             Your browser does not support the video tag.
                         </video>
+
                         <div class=\"card-body text-center d-flex flex-column align-items-center\">
                             <h5 class=\"card-title\">";
-            // line 16
-            echo twig_escape_filter($this->env, twig_get_attribute($this->env, $this->source, $context["training"], "titre", [], "any", false, false, false, 16), "html", null, true);
+            // line 21
+            echo twig_escape_filter($this->env, twig_get_attribute($this->env, $this->source, $context["training"], "titre", [], "any", false, false, false, 21), "html", null, true);
             echo "</h5>
                             <p class=\"card-text\">Prix : ";
-            // line 17
-            echo twig_escape_filter($this->env, twig_get_attribute($this->env, $this->source, $context["training"], "prix", [], "any", false, false, false, 17), "html", null, true);
+            // line 22
+            echo twig_escape_filter($this->env, twig_get_attribute($this->env, $this->source, $context["training"], "prix", [], "any", false, false, false, 22), "html", null, true);
             echo " dt</p>
 
-                            <!-- Regrouper le bouton S'inscrire, l'icône de cœur et le nombre de likes dans une ligne -->
+                                            <!-- Regrouper le bouton S'inscrire, l'icône de cœur et le nombre de likes dans une ligne -->
                             <div class=\"d-flex align-items-center\">
                                 <a href=\"";
-            // line 21
-            echo twig_escape_filter($this->env, $this->extensions['Symfony\Bridge\Twig\Extension\RoutingExtension']->getPath("book_training", ["idFormation" => twig_get_attribute($this->env, $this->source, $context["training"], "id", [], "any", false, false, false, 21)]), "html", null, true);
+            // line 26
+            echo twig_escape_filter($this->env, $this->extensions['Symfony\Bridge\Twig\Extension\RoutingExtension']->getPath("book_training", ["idFormation" => twig_get_attribute($this->env, $this->source, $context["training"], "id", [], "any", false, false, false, 26)]), "html", null, true);
             echo "\" class=\"btn btn-primary\" style=\"margin-right: 10px;\">S'inscrire</a>
 
                                 <!-- Heart icon for likes -->
                                 <i class=\"fas fa-heart\" id=\"likeIcon";
-            // line 24
-            echo twig_escape_filter($this->env, twig_get_attribute($this->env, $this->source, $context["training"], "id", [], "any", false, false, false, 24), "html", null, true);
+            // line 29
+            echo twig_escape_filter($this->env, twig_get_attribute($this->env, $this->source, $context["training"], "id", [], "any", false, false, false, 29), "html", null, true);
             echo "\" onclick=\"likeFormation(";
-            echo twig_escape_filter($this->env, twig_get_attribute($this->env, $this->source, $context["training"], "id", [], "any", false, false, false, 24), "html", null, true);
+            echo twig_escape_filter($this->env, twig_get_attribute($this->env, $this->source, $context["training"], "id", [], "any", false, false, false, 29), "html", null, true);
             echo ")\"></i>
 
                                 
                                 <!-- Like count -->
                                 <span id=\"likeCount";
-            // line 28
-            echo twig_escape_filter($this->env, twig_get_attribute($this->env, $this->source, $context["training"], "id", [], "any", false, false, false, 28), "html", null, true);
+            // line 33
+            echo twig_escape_filter($this->env, twig_get_attribute($this->env, $this->source, $context["training"], "id", [], "any", false, false, false, 33), "html", null, true);
             echo "\" class=\"ml-2\">";
-            echo twig_escape_filter($this->env, twig_get_attribute($this->env, $this->source, $context["training"], "likes", [], "any", false, false, false, 28), "html", null, true);
+            echo twig_escape_filter($this->env, twig_get_attribute($this->env, $this->source, $context["training"], "likes", [], "any", false, false, false, 33), "html", null, true);
             echo "</span>
 
                                 <!-- Icône de commentaire -->
+                                
                             </div>
+                    
+                        </div>
+                    </div>
+                </div>
+            ";
+            ++$context['loop']['index0'];
+            ++$context['loop']['index'];
+            $context['loop']['first'] = false;
+            if (isset($context['loop']['length'])) {
+                --$context['loop']['revindex0'];
+                --$context['loop']['revindex'];
+                $context['loop']['last'] = 0 === $context['loop']['revindex0'];
+            }
+        }
+        $_parent = $context['_parent'];
+        unset($context['_seq'], $context['_iterated'], $context['_key'], $context['training'], $context['_parent'], $context['loop']);
+        $context = array_intersect_key($context, $_parent) + $_parent;
+        // line 43
+        echo "        </div>
+    </div>
 
-                            <script>
-                                function likeFormation(formationId) {
+    <div class=\"col-md-12 d-flex justify-content-end mt-1\">
+        ";
+        // line 47
+        if ((isset($context["L"]) || array_key_exists("L", $context) ? $context["L"] : (function () { throw new RuntimeError('Variable "L" does not exist.', 47, $this->source); })())) {
+            // line 48
+            echo "            <a href=\"";
+            echo $this->extensions['Symfony\Bridge\Twig\Extension\RoutingExtension']->getPath("add_formation");
+            echo "\" id=\"add-training-link\" class=\"btn btn-link\">
+                <i class=\"fas fa-plus-circle\"></i> Add training
+            </a>
+        ";
+        }
+        // line 52
+        echo "    </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            var addProductButton = document.getElementById('add-training-link');
+            if (addProductButton && \"";
+        // line 57
+        echo twig_escape_filter($this->env, (isset($context["L"]) || array_key_exists("L", $context) ? $context["L"] : (function () { throw new RuntimeError('Variable "L" does not exist.', 57, $this->source); })()), "html", null, true);
+        echo "\" === \"1\") {
+                addProductButton.style.display = 'block';
+            }
+             });
+
+             function likeFormation(formationId) {
                                     // Make an AJAX request to the like_formation route
                                     fetch(`/like/\${formationId}`, { method: 'POST' })
                                         .then(response => {
@@ -153,29 +222,16 @@ class __TwigTemplate_3fecccfc7db71e00b890fa926c559155 extends Template
                                             console.error('Error liking formation:', error);
                                         });
                                 }
-                            </script>
+       
+    </script>
 
-                            <style>
-                                /* Add a style for the 'liked' class */
-                                .liked {
-                                    color: #EE0F0F; /* Change the color to red */
-                                    font-size: 26px; /* Increase the font size */
-                                }
-
-                                
-                            </style>
-
-                        </div>
-                    </div>
-                </div>
-            ";
+    <style>
+        /* Add a style for the 'liked' class */
+        .liked {
+            color: #EE0F0F; /* Change the color to red */
+            font-size: 26px; /* Increase the font size */
         }
-        $_parent = $context['_parent'];
-        unset($context['_seq'], $context['_iterated'], $context['_key'], $context['training'], $context['_parent'], $context['loop']);
-        $context = array_intersect_key($context, $_parent) + $_parent;
-        // line 74
-        echo "        </div>
-    </div>
+    </style>
 ";
         
         $__internal_6f47bbe9983af81f1e7450e9a3e3768f->leave($__internal_6f47bbe9983af81f1e7450e9a3e3768f_prof);
@@ -197,7 +253,7 @@ class __TwigTemplate_3fecccfc7db71e00b890fa926c559155 extends Template
 
     public function getDebugInfo()
     {
-        return array (  177 => 74,  123 => 28,  114 => 24,  108 => 21,  101 => 17,  97 => 16,  90 => 12,  85 => 11,  83 => 10,  79 => 8,  75 => 7,  68 => 4,  58 => 3,  35 => 1,);
+        return array (  195 => 57,  188 => 52,  180 => 48,  178 => 47,  172 => 43,  146 => 33,  137 => 29,  131 => 26,  124 => 22,  120 => 21,  112 => 16,  107 => 15,  105 => 14,  102 => 13,  98 => 11,  96 => 10,  92 => 8,  75 => 7,  68 => 4,  58 => 3,  35 => 1,);
     }
 
     public function getSourceContext()
@@ -211,16 +267,21 @@ class __TwigTemplate_3fecccfc7db71e00b890fa926c559155 extends Template
             {% for training in training %}
                 <div class=\"col-md-4 mb-4\">
                     <div class=\"card\">
+                        {% if loop.index is divisible by(4) %}
+                            </div><div class=\"row\">
+                        {% endif %}
+
                         {% set videoPath = asset('uploads/' ~ training.video) %}
                         <video controls poster=\"{{ videoPath }}.jpg\" class=\"card-img-top\" style=\"max-height: 300px; width: 100%; object-fit: cover;\">
                             <source src=\"{{ videoPath }}\" type=\"video/mp4\">
                             Your browser does not support the video tag.
                         </video>
+
                         <div class=\"card-body text-center d-flex flex-column align-items-center\">
                             <h5 class=\"card-title\">{{ training.titre }}</h5>
                             <p class=\"card-text\">Prix : {{ training.prix }} dt</p>
 
-                            <!-- Regrouper le bouton S'inscrire, l'icône de cœur et le nombre de likes dans une ligne -->
+                                            <!-- Regrouper le bouton S'inscrire, l'icône de cœur et le nombre de likes dans une ligne -->
                             <div class=\"d-flex align-items-center\">
                                 <a href=\"{{ path('book_training', {'idFormation': training.id}) }}\" class=\"btn btn-primary\" style=\"margin-right: 10px;\">S'inscrire</a>
 
@@ -232,10 +293,33 @@ class __TwigTemplate_3fecccfc7db71e00b890fa926c559155 extends Template
                                 <span id=\"likeCount{{ training.id }}\" class=\"ml-2\">{{ training.likes }}</span>
 
                                 <!-- Icône de commentaire -->
+                                
                             </div>
+                    
+                        </div>
+                    </div>
+                </div>
+            {% endfor %}
+        </div>
+    </div>
 
-                            <script>
-                                function likeFormation(formationId) {
+    <div class=\"col-md-12 d-flex justify-content-end mt-1\">
+        {% if L %}
+            <a href=\"{{ path('add_formation') }}\" id=\"add-training-link\" class=\"btn btn-link\">
+                <i class=\"fas fa-plus-circle\"></i> Add training
+            </a>
+        {% endif %}
+    </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            var addProductButton = document.getElementById('add-training-link');
+            if (addProductButton && \"{{L}}\" === \"1\") {
+                addProductButton.style.display = 'block';
+            }
+             });
+
+             function likeFormation(formationId) {
                                     // Make an AJAX request to the like_formation route
                                     fetch(`/like/\${formationId}`, { method: 'POST' })
                                         .then(response => {
@@ -259,24 +343,16 @@ class __TwigTemplate_3fecccfc7db71e00b890fa926c559155 extends Template
                                             console.error('Error liking formation:', error);
                                         });
                                 }
-                            </script>
+       
+    </script>
 
-                            <style>
-                                /* Add a style for the 'liked' class */
-                                .liked {
-                                    color: #EE0F0F; /* Change the color to red */
-                                    font-size: 26px; /* Increase the font size */
-                                }
-
-                                
-                            </style>
-
-                        </div>
-                    </div>
-                </div>
-            {% endfor %}
-        </div>
-    </div>
+    <style>
+        /* Add a style for the 'liked' class */
+        .liked {
+            color: #EE0F0F; /* Change the color to red */
+            font-size: 26px; /* Increase the font size */
+        }
+    </style>
 {% endblock %}
 ", "training/train.html.twig", "C:\\Users\\hamad\\OneDrive\\Desktop\\WebSymfony\\templates\\training\\train.html.twig");
     }

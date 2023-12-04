@@ -7,16 +7,21 @@
             {% for training in training %}
                 <div class="col-md-4 mb-4">
                     <div class="card">
+                        {% if loop.index is divisible by(4) %}
+                            </div><div class="row">
+                        {% endif %}
+
                         {% set videoPath = asset('uploads/' ~ training.video) %}
                         <video controls poster="{{ videoPath }}.jpg" class="card-img-top" style="max-height: 300px; width: 100%; object-fit: cover;">
                             <source src="{{ videoPath }}" type="video/mp4">
                             Your browser does not support the video tag.
                         </video>
+
                         <div class="card-body text-center d-flex flex-column align-items-center">
                             <h5 class="card-title">{{ training.titre }}</h5>
                             <p class="card-text">Prix : {{ training.prix }} dt</p>
 
-                            <!-- Regrouper le bouton S'inscrire, l'icône de cœur et le nombre de likes dans une ligne -->
+                                            <!-- Regrouper le bouton S'inscrire, l'icône de cœur et le nombre de likes dans une ligne -->
                             <div class="d-flex align-items-center">
                                 <a href="{{ path('book_training', {'idFormation': training.id}) }}" class="btn btn-primary" style="margin-right: 10px;">S'inscrire</a>
 
@@ -28,10 +33,33 @@
                                 <span id="likeCount{{ training.id }}" class="ml-2">{{ training.likes }}</span>
 
                                 <!-- Icône de commentaire -->
+                                
                             </div>
+                    
+                        </div>
+                    </div>
+                </div>
+            {% endfor %}
+        </div>
+    </div>
 
-                            <script>
-                                function likeFormation(formationId) {
+    <div class="col-md-12 d-flex justify-content-end mt-1">
+        {% if L %}
+            <a href="{{ path('add_formation') }}" id="add-training-link" class="btn btn-link">
+                <i class="fas fa-plus-circle"></i> Add training
+            </a>
+        {% endif %}
+    </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            var addProductButton = document.getElementById('add-training-link');
+            if (addProductButton && "{{L}}" === "1") {
+                addProductButton.style.display = 'block';
+            }
+             });
+
+             function likeFormation(formationId) {
                                     // Make an AJAX request to the like_formation route
                                     fetch(`/like/${formationId}`, { method: 'POST' })
                                         .then(response => {
@@ -55,22 +83,14 @@
                                             console.error('Error liking formation:', error);
                                         });
                                 }
-                            </script>
+       
+    </script>
 
-                            <style>
-                                /* Add a style for the 'liked' class */
-                                .liked {
-                                    color: #EE0F0F; /* Change the color to red */
-                                    font-size: 26px; /* Increase the font size */
-                                }
-
-                                
-                            </style>
-
-                        </div>
-                    </div>
-                </div>
-            {% endfor %}
-        </div>
-    </div>
+    <style>
+        /* Add a style for the 'liked' class */
+        .liked {
+            color: #EE0F0F; /* Change the color to red */
+            font-size: 26px; /* Increase the font size */
+        }
+    </style>
 {% endblock %}

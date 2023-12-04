@@ -1,11 +1,8 @@
-{% extends 'admin.html.twig' %}
+{% extends 'connected.html.twig' %}
 
 {% block body %}
-    {{ parent() }}
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
-
-    <!-- jQuery -->
-    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <!-- Include Bootstrap CSS -->
+  {{parent()}}
 
     <!-- Display success flash messages as alerts -->
     {% for flashMessage in app.flashes('success') %}
@@ -79,4 +76,5 @@
 
     <!-- Add product button -->
     <a href="{{ path('add_product_admin') }}">Add product</a>
-{% endblock %}
+
+    <!-- Include Bootstrap JavaScript and Popper.js -->{% endblock %}

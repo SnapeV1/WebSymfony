@@ -105,13 +105,16 @@ class __TwigTemplate_21e2b87cf08efd6c9ea987c44eca0f1f extends Template
                             </a>
                            
                             <div class=\"sb-sidenav-menu-heading\">Addons</div>
-                            <a class=\"nav-link\" href=\"charts.html\">
+                            <a class=\"nav-link\" href=\"";
+        // line 34
+        echo $this->extensions['Symfony\Bridge\Twig\Extension\RoutingExtension']->getPath("OnShowAddProductAdmin");
+        echo "\">
                                 <div class=\"sb-nav-link-icon\"><i class=\"fas fa-chart-area\"></i></div>
-                                Charts
+                                Product
                             </a>
-                            <a class=\"nav-link\" href=\"tables.html\">
+                            <a class=\"nav-link\" href=\"index.html\">
                                 <div class=\"sb-nav-link-icon\"><i class=\"fas fa-table\"></i></div>
-                                Tables
+                                Training
                             </a>
                         </div>
                     </div>
@@ -167,7 +170,7 @@ class __TwigTemplate_21e2b87cf08efd6c9ea987c44eca0f1f extends Template
 
     public function getDebugInfo()
     {
-        return array (  141 => 51,  129 => 52,  127 => 51,  100 => 27,  86 => 16,  78 => 11,  69 => 4,  59 => 3,  36 => 1,);
+        return array (  144 => 51,  132 => 52,  130 => 51,  110 => 34,  100 => 27,  86 => 16,  78 => 11,  69 => 4,  59 => 3,  36 => 1,);
     }
 
     public function getSourceContext()
@@ -205,13 +208,13 @@ class __TwigTemplate_21e2b87cf08efd6c9ea987c44eca0f1f extends Template
                             </a>
                            
                             <div class=\"sb-sidenav-menu-heading\">Addons</div>
-                            <a class=\"nav-link\" href=\"charts.html\">
+                            <a class=\"nav-link\" href=\"{{path('OnShowAddProductAdmin')}}\">
                                 <div class=\"sb-nav-link-icon\"><i class=\"fas fa-chart-area\"></i></div>
-                                Charts
+                                Product
                             </a>
-                            <a class=\"nav-link\" href=\"tables.html\">
+                            <a class=\"nav-link\" href=\"index.html\">
                                 <div class=\"sb-nav-link-icon\"><i class=\"fas fa-table\"></i></div>
-                                Tables
+                                Training
                             </a>
                         </div>
                     </div>

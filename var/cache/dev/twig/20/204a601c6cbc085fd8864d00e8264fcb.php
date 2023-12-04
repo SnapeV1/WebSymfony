@@ -33,7 +33,7 @@ class __TwigTemplate_7ceb65e253bf729d71de53e6ce2323e1 extends Template
     protected function doGetParent(array $context)
     {
         // line 1
-        return "admin.html.twig";
+        return "connected.html.twig";
     }
 
     protected function doDisplay(array $context, array $blocks = [])
@@ -45,7 +45,7 @@ class __TwigTemplate_7ceb65e253bf729d71de53e6ce2323e1 extends Template
         $__internal_6f47bbe9983af81f1e7450e9a3e3768f = $this->extensions["Symfony\\Bridge\\Twig\\Extension\\ProfilerExtension"];
         $__internal_6f47bbe9983af81f1e7450e9a3e3768f->enter($__internal_6f47bbe9983af81f1e7450e9a3e3768f_prof = new \Twig\Profiler\Profile($this->getTemplateName(), "template", "admin/add.html.twig"));
 
-        $this->parent = $this->loadTemplate("admin.html.twig", "admin/add.html.twig", 1);
+        $this->parent = $this->loadTemplate("connected.html.twig", "admin/add.html.twig", 1);
         $this->parent->display($context, array_merge($this->blocks, $blocks));
         
         $__internal_5a27a8ba21ca79b61932376b2fa922d2->leave($__internal_5a27a8ba21ca79b61932376b2fa922d2_prof);
@@ -85,9 +85,7 @@ class __TwigTemplate_7ceb65e253bf729d71de53e6ce2323e1 extends Template
         $__internal_6f47bbe9983af81f1e7450e9a3e3768f->enter($__internal_6f47bbe9983af81f1e7450e9a3e3768f_prof = new \Twig\Profiler\Profile($this->getTemplateName(), "block", "body"));
 
         // line 6
-        echo "  ";
-        $this->displayParentBlock("body", $context, $blocks);
-        echo "
+        echo "  
   <div class=\"container\">
     <div class=\"row justify-content-center\">
       <div class=\"col-lg-7\">
@@ -192,17 +190,17 @@ class __TwigTemplate_7ceb65e253bf729d71de53e6ce2323e1 extends Template
 
     public function getDebugInfo()
     {
-        return array (  166 => 47,  160 => 44,  154 => 41,  148 => 38,  142 => 35,  136 => 32,  130 => 29,  124 => 26,  118 => 23,  111 => 19,  107 => 18,  102 => 16,  88 => 6,  78 => 5,  59 => 3,  36 => 1,);
+        return array (  164 => 47,  158 => 44,  152 => 41,  146 => 38,  140 => 35,  134 => 32,  128 => 29,  122 => 26,  116 => 23,  109 => 19,  105 => 18,  100 => 16,  88 => 6,  78 => 5,  59 => 3,  36 => 1,);
     }
 
     public function getSourceContext()
     {
-        return new Source("{% extends 'admin.html.twig' %}
+        return new Source("{% extends 'connected.html.twig' %}
 
 {% block title %}Add Product{% endblock %}
 
 {% block body %}
-  {{ parent() }}
+  
   <div class=\"container\">
     <div class=\"row justify-content-center\">
       <div class=\"col-lg-7\">

@@ -4,6 +4,7 @@ namespace App\Controller;
 
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Response;
+use Symfony\Component\HttpFoundation\Session\SessionInterface;
 use Symfony\Component\Routing\Annotation\Route;
 use App\Repository\FormationRepository;
 use App\Service\FileUploader;
@@ -30,10 +31,18 @@ class TrainingController extends AbstractController
         ]);
     }
     #[Route('/train' , name:"training" )]
-    public function shop(FormationRepository $formationRepository) {
+    public function shop(SessionInterface $session,FormationRepository $formationRepository) {
+        $l=false;
+        $user=$session->get('user');
+        if($user->getType()=='FORMATEUR')
+        {
+            $l=true;
+        }
+
         $formation=$formationRepository->findAll();
         return $this->render('training/train.html.twig' ,[
             'training'=>$formation,
+            'L'=>$l,
         ]);
     }
     
