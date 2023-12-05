@@ -33,7 +33,7 @@ class __TwigTemplate_d6123f513f8a84834b2b5673cbbd0804 extends Template
     protected function doGetParent(array $context)
     {
         // line 1
-        return "admin.html.twig";
+        return "connected.html.twig";
     }
 
     protected function doDisplay(array $context, array $blocks = [])
@@ -45,7 +45,7 @@ class __TwigTemplate_d6123f513f8a84834b2b5673cbbd0804 extends Template
         $__internal_6f47bbe9983af81f1e7450e9a3e3768f = $this->extensions["Symfony\\Bridge\\Twig\\Extension\\ProfilerExtension"];
         $__internal_6f47bbe9983af81f1e7450e9a3e3768f->enter($__internal_6f47bbe9983af81f1e7450e9a3e3768f_prof = new \Twig\Profiler\Profile($this->getTemplateName(), "template", "group/Admingetall.html.twig"));
 
-        $this->parent = $this->loadTemplate("admin.html.twig", "group/Admingetall.html.twig", 1);
+        $this->parent = $this->loadTemplate("connected.html.twig", "group/Admingetall.html.twig", 1);
         $this->parent->display($context, array_merge($this->blocks, $blocks));
         
         $__internal_5a27a8ba21ca79b61932376b2fa922d2->leave($__internal_5a27a8ba21ca79b61932376b2fa922d2_prof);
@@ -82,7 +82,6 @@ class __TwigTemplate_d6123f513f8a84834b2b5673cbbd0804 extends Template
                             <thead>
                                 <tr>
                                     <th>Group Name</th>
-                                    <th>Owner</th>
                                     <th>Size</th>
                                     <th>Logo</th>
                                     <th></th>
@@ -90,53 +89,49 @@ class __TwigTemplate_d6123f513f8a84834b2b5673cbbd0804 extends Template
                             </thead>
                             <tbody>
                                 ";
-        // line 25
+        // line 24
         $context['_parent'] = $context;
-        $context['_seq'] = twig_ensure_traversable((isset($context["groups"]) || array_key_exists("groups", $context) ? $context["groups"] : (function () { throw new RuntimeError('Variable "groups" does not exist.', 25, $this->source); })()));
+        $context['_seq'] = twig_ensure_traversable((isset($context["groups"]) || array_key_exists("groups", $context) ? $context["groups"] : (function () { throw new RuntimeError('Variable "groups" does not exist.', 24, $this->source); })()));
         foreach ($context['_seq'] as $context["_key"] => $context["group"]) {
-            // line 26
+            // line 25
             echo "                                    <tr style=\"border-bottom: 1px solid #ccc;\">
                                         <td>";
+            // line 26
+            echo twig_escape_filter($this->env, twig_get_attribute($this->env, $this->source, $context["group"], "nom", [], "any", false, false, false, 26), "html", null, true);
+            echo "</td>
+                                        <td>";
             // line 27
-            echo twig_escape_filter($this->env, twig_get_attribute($this->env, $this->source, $context["group"], "nom", [], "any", false, false, false, 27), "html", null, true);
-            echo "</td>
-                                        <td>";
-            // line 28
-            echo twig_escape_filter($this->env, twig_get_attribute($this->env, $this->source, $context["group"], "email", [], "any", false, false, false, 28), "html", null, true);
-            echo "</td>
-                                        <td>";
-            // line 29
-            echo twig_escape_filter($this->env, twig_get_attribute($this->env, $this->source, $context["group"], "size", [], "any", false, false, false, 29), "html", null, true);
+            echo twig_escape_filter($this->env, twig_get_attribute($this->env, $this->source, $context["group"], "size", [], "any", false, false, false, 27), "html", null, true);
             echo "</td>
                                         <td>
                                             <img src=\"";
-            // line 31
-            echo twig_escape_filter($this->env, $this->extensions['Symfony\Bridge\Twig\Extension\AssetExtension']->getAssetUrl(twig_get_attribute($this->env, $this->source, $context["group"], "logo", [], "any", false, false, false, 31)), "html", null, true);
+            // line 29
+            echo twig_escape_filter($this->env, $this->extensions['Symfony\Bridge\Twig\Extension\AssetExtension']->getAssetUrl(twig_get_attribute($this->env, $this->source, $context["group"], "logo", [], "any", false, false, false, 29)), "html", null, true);
             echo "\" alt=\"Group Logo\" style=\"width: 100px; height: auto; border-radius: 5px; box-shadow: 0 0 10px 0 rgba(0,0,0,0.1);\">
                                         </td>
                                         <td>
                                             <a href=\"#\" class=\"btn btn-primary\" onclick=\"return editGroup(";
-            // line 34
-            echo twig_escape_filter($this->env, twig_get_attribute($this->env, $this->source, $context["group"], "id", [], "any", false, false, false, 34), "html", null, true);
+            // line 32
+            echo twig_escape_filter($this->env, twig_get_attribute($this->env, $this->source, $context["group"], "id", [], "any", false, false, false, 32), "html", null, true);
             echo ")\" style=\"text-decoration: none; color: white;\">Edit</a>
                                             <a href=\"#\" class=\"btn btn-danger\" onclick=\"return confirmDelete(";
-            // line 35
-            echo twig_escape_filter($this->env, twig_get_attribute($this->env, $this->source, $context["group"], "id", [], "any", false, false, false, 35), "html", null, true);
+            // line 33
+            echo twig_escape_filter($this->env, twig_get_attribute($this->env, $this->source, $context["group"], "id", [], "any", false, false, false, 33), "html", null, true);
             echo ")\" style=\"text-decoration: none; color: white;\">Delete</a>
                                         </td>
                                     </tr>
                                     <tr id=\"editForm_";
-            // line 38
-            echo twig_escape_filter($this->env, twig_get_attribute($this->env, $this->source, $context["group"], "id", [], "any", false, false, false, 38), "html", null, true);
+            // line 36
+            echo twig_escape_filter($this->env, twig_get_attribute($this->env, $this->source, $context["group"], "id", [], "any", false, false, false, 36), "html", null, true);
             echo "\" style=\"display: none;\">
                                         <td colspan=\"4\">
                                             <form action=\"";
-            // line 40
-            echo twig_escape_filter($this->env, $this->extensions['Symfony\Bridge\Twig\Extension\RoutingExtension']->getPath("admin_updategroup", ["id" => twig_get_attribute($this->env, $this->source, $context["group"], "id", [], "any", false, false, false, 40)]), "html", null, true);
+            // line 38
+            echo twig_escape_filter($this->env, $this->extensions['Symfony\Bridge\Twig\Extension\RoutingExtension']->getPath("admin_updategroup", ["id" => twig_get_attribute($this->env, $this->source, $context["group"], "id", [], "any", false, false, false, 38)]), "html", null, true);
             echo "\" method=\"POST\" enctype=\"multipart/form-data\">
                                                 <input type=\"text\" name=\"group_name\" value=\"";
-            // line 41
-            echo twig_escape_filter($this->env, twig_get_attribute($this->env, $this->source, $context["group"], "nom", [], "any", false, false, false, 41), "html", null, true);
+            // line 39
+            echo twig_escape_filter($this->env, twig_get_attribute($this->env, $this->source, $context["group"], "nom", [], "any", false, false, false, 39), "html", null, true);
             echo "\" />
                                                 <button type=\"submit\">Save</button>
                                             </form>
@@ -147,7 +142,7 @@ class __TwigTemplate_d6123f513f8a84834b2b5673cbbd0804 extends Template
         $_parent = $context['_parent'];
         unset($context['_seq'], $context['_iterated'], $context['_key'], $context['group'], $context['_parent'], $context['loop']);
         $context = array_intersect_key($context, $_parent) + $_parent;
-        // line 47
+        // line 45
         echo "                            </tbody>
                         </table>
                     </div>
@@ -157,15 +152,15 @@ class __TwigTemplate_d6123f513f8a84834b2b5673cbbd0804 extends Template
     </div>
 
     ";
-        // line 55
+        // line 53
         $this->displayBlock('footer', $context, $blocks);
-        // line 56
+        // line 54
         echo "
     <script>
         function confirmDelete(groupId) {
             if (confirm(\"Are you sure you want to delete this group?\")) {
                 window.location.href = \"";
-        // line 60
+        // line 58
         echo $this->extensions['Symfony\Bridge\Twig\Extension\RoutingExtension']->getPath("admin_deletegroup", ["id" => "GROUP_ID"]);
         echo "\".replace('GROUP_ID', groupId);
             }
@@ -189,7 +184,7 @@ class __TwigTemplate_d6123f513f8a84834b2b5673cbbd0804 extends Template
 
     }
 
-    // line 55
+    // line 53
     public function block_footer($context, array $blocks = [])
     {
         $macros = $this->macros;
@@ -220,12 +215,12 @@ class __TwigTemplate_d6123f513f8a84834b2b5673cbbd0804 extends Template
 
     public function getDebugInfo()
     {
-        return array (  193 => 55,  169 => 60,  163 => 56,  161 => 55,  151 => 47,  139 => 41,  135 => 40,  130 => 38,  124 => 35,  120 => 34,  114 => 31,  109 => 29,  105 => 28,  101 => 27,  98 => 26,  94 => 25,  69 => 4,  59 => 3,  36 => 1,);
+        return array (  188 => 53,  164 => 58,  158 => 54,  156 => 53,  146 => 45,  134 => 39,  130 => 38,  125 => 36,  119 => 33,  115 => 32,  109 => 29,  104 => 27,  100 => 26,  97 => 25,  93 => 24,  69 => 4,  59 => 3,  36 => 1,);
     }
 
     public function getSourceContext()
     {
-        return new Source("{% extends 'admin.html.twig' %}
+        return new Source("{% extends 'connected.html.twig' %}
 
 {% block body %}
     {{ parent() }} 
@@ -242,7 +237,6 @@ class __TwigTemplate_d6123f513f8a84834b2b5673cbbd0804 extends Template
                             <thead>
                                 <tr>
                                     <th>Group Name</th>
-                                    <th>Owner</th>
                                     <th>Size</th>
                                     <th>Logo</th>
                                     <th></th>
@@ -252,7 +246,6 @@ class __TwigTemplate_d6123f513f8a84834b2b5673cbbd0804 extends Template
                                 {% for group in groups %}
                                     <tr style=\"border-bottom: 1px solid #ccc;\">
                                         <td>{{ group.nom }}</td>
-                                        <td>{{ group.email }}</td>
                                         <td>{{ group.size }}</td>
                                         <td>
                                             <img src=\"{{ asset(group.logo) }}\" alt=\"Group Logo\" style=\"width: 100px; height: auto; border-radius: 5px; box-shadow: 0 0 10px 0 rgba(0,0,0,0.1);\">

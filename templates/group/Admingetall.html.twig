@@ -1,4 +1,4 @@
-{% extends 'admin.html.twig' %}
+{% extends 'connected.html.twig' %}
 
 {% block body %}
     {{ parent() }} 
@@ -15,7 +15,6 @@
                             <thead>
                                 <tr>
                                     <th>Group Name</th>
-                                    <th>Owner</th>
                                     <th>Size</th>
                                     <th>Logo</th>
                                     <th></th>
@@ -25,7 +24,6 @@
                                 {% for group in groups %}
                                     <tr style="border-bottom: 1px solid #ccc;">
                                         <td>{{ group.nom }}</td>
-                                        <td>{{ group.email }}</td>
                                         <td>{{ group.size }}</td>
                                         <td>
                                             <img src="{{ asset(group.logo) }}" alt="Group Logo" style="width: 100px; height: auto; border-radius: 5px; box-shadow: 0 0 10px 0 rgba(0,0,0,0.1);">

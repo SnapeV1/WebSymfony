@@ -45,13 +45,13 @@ class ConversationController extends AbstractController
         EncryptionService $encryptionService, // Inject the EncryptionService
         SessionInterface $session
     ): Response {
-    
+     
         // Fetch conversations for user1Id and user2Id
         $conversations = $conversationRepository->findBy([
             'iduser1' => $user1Id,
             'iduser2' => $user2Id,
         ]);
-    $user=$session->get('user');
+
         // Fetch conversations for user2Id and user1Id
         $conversations2 = $conversationRepository->findBy([
             'iduser1' => $user2Id,
@@ -112,8 +112,8 @@ $this->entityManager->flush();
     
     
     
-    #[Route('/select-receiver/{user1Id}', name: 'select_receiver')]
-    public function selectReceiver(Request $request, EntityManagerInterface $entityManager, $user1Id,SessionInterface $session): Response
+    #[Route('/select-receiver', name: 'select_receiver')]
+    public function selectReceiver(Request $request, EntityManagerInterface $entityManager,SessionInterface $session): Response
     {
         $userRepository = $this->entityManager->getRepository(Utilisateur::class);
         $users = $userRepository->findAll();
@@ -143,9 +143,8 @@ $this->entityManager->flush();
     }
 
 
-#[Route('/sendmessage/{user1Id}/{user2Id}', name: 'send_message')]
+#[Route('/sendmessage/{user2Id}', name: 'send_message')]
 public function sendMessage(
-    int $user1Id,
     int $user2Id,
     Request $request,
     ConversationRepository $conversationRepository,

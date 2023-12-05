@@ -12,6 +12,7 @@ use Doctrine\Persistence\ManagerRegistry;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
+use Symfony\Component\HttpFoundation\Session\SessionInterface;
 use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Component\Mime\Email;
 use Symfony\Component\Mailer\MailerInterface;
@@ -25,11 +26,24 @@ class MembreController extends AbstractController
         $this->entityManager = $entityManager;
     }
 
-    #[Route('/getmembers/{id}/{userid}', name: 'members_getall')]
-    public function getMembers($id,$userid): Response
+    #[Route('/getmembers/{id}', name: 'members_getall')]
+    public function getMembers($id,SessionInterface $session): Response
     {
-        $members = $this->entityManager->getRepository(Membre::class)->findBy(['group' => $id]);
-        $group =  $this->entityManager->getRepository(Groups::class)->find($id);
+        $user=$session->get('user');
+        $userid=$user->getId();
+        $qb = $this->entityManager->createQueryBuilder();
+        $members = $qb
+            ->select('m')
+            ->from(Membre::class, 'm')
+            ->where('m.group = :groupId')
+            ->andWhere($qb->expr()->neq('m.user', ':userId'))
+            ->setParameter('groupId', $id)
+            ->setParameter('userId', $user)
+            ->getQuery()
+            ->getResult();
+            
+            
+            $group =  $this->entityManager->getRepository(Groups::class)->find($id);
         $group->updatesize($members);
         $this->entityManager->persist($group); 
         $this->entityManager->flush(); 
@@ -51,9 +65,11 @@ class MembreController extends AbstractController
 
 
 
-    #[Route('/addmember/{id}/{userId}', name: 'addmember')]
-    public function addMemberToGroup(Request $request, $id, $userId, EntityManagerInterface $entityManager)
+    #[Route('/addmember/{id}', name: 'addmember')]
+    public function addMemberToGroup(Request $request, $id, EntityManagerInterface $entityManager,SessionInterface $session)
     {
+        $user=$session->get('user');
+        $userId=$user->getId();
         $email = $request->request->get('memberEmail');
         
         // Fetch user by the provided email
@@ -117,10 +133,11 @@ public function updateGroup(Request $request, EntityManagerInterface $entityMana
 
 
 
-#[Route('/sendemailMembers/{id}/{userId}', name: 'sendEmailToAllMembers')]
-public function sendEmail(Request $request, UtilisateurService $serviceMail, int $id, int $userId): Response
+#[Route('/sendemailMembers/{id}', name: 'sendEmailToAllMembers')]
+public function sendEmail(Request $request, UtilisateurService $serviceMail, int $id, SessionInterface $session): Response
 {
-
+    $user=$session->get('user');
+    $userId=$user->getId();
     $members = $this->entityManager->getRepository(Membre::class)->findBy(['group' => $id]);
 
    

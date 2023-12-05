@@ -116,6 +116,13 @@ class __TwigTemplate_21e2b87cf08efd6c9ea987c44eca0f1f extends Template
                                 <div class=\"sb-nav-link-icon\"><i class=\"fas fa-table\"></i></div>
                                 Training
                             </a>
+                             <a class=\"nav-link\" href=\"";
+        // line 42
+        echo $this->extensions['Symfony\Bridge\Twig\Extension\RoutingExtension']->getPath("Admingroups_getall");
+        echo "\">
+                                <div class=\"sb-nav-link-icon\"><i class=\"fas fa-table\"></i></div>
+                                Groups
+                            </a>
                         </div>
                     </div>
                     <div class=\"sb-sidenav-footer\">
@@ -126,9 +133,9 @@ class __TwigTemplate_21e2b87cf08efd6c9ea987c44eca0f1f extends Template
             </div>
          <div id=\"layoutSidenav_content\">
         ";
-        // line 51
+        // line 55
         $this->displayBlock('body', $context, $blocks);
-        // line 52
+        // line 56
         echo "        </div>
         </div>
         ";
@@ -140,7 +147,7 @@ class __TwigTemplate_21e2b87cf08efd6c9ea987c44eca0f1f extends Template
 
     }
 
-    // line 51
+    // line 55
     public function block_body($context, array $blocks = [])
     {
         $macros = $this->macros;
@@ -170,7 +177,7 @@ class __TwigTemplate_21e2b87cf08efd6c9ea987c44eca0f1f extends Template
 
     public function getDebugInfo()
     {
-        return array (  144 => 51,  132 => 52,  130 => 51,  110 => 34,  100 => 27,  86 => 16,  78 => 11,  69 => 4,  59 => 3,  36 => 1,);
+        return array (  151 => 55,  139 => 56,  137 => 55,  121 => 42,  110 => 34,  100 => 27,  86 => 16,  78 => 11,  69 => 4,  59 => 3,  36 => 1,);
     }
 
     public function getSourceContext()
@@ -215,6 +222,10 @@ class __TwigTemplate_21e2b87cf08efd6c9ea987c44eca0f1f extends Template
                             <a class=\"nav-link\" href=\"index.html\">
                                 <div class=\"sb-nav-link-icon\"><i class=\"fas fa-table\"></i></div>
                                 Training
+                            </a>
+                             <a class=\"nav-link\" href=\"{{path('Admingroups_getall')}}\">
+                                <div class=\"sb-nav-link-icon\"><i class=\"fas fa-table\"></i></div>
+                                Groups
                             </a>
                         </div>
                     </div>

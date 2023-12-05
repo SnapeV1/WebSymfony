@@ -12,7 +12,9 @@ use App\Repository\ReservationRepository;
 use Endroid\QrCode\Writer\PngWriter;
 use Endroid\QrCodeBundle\Response\QrCodeResponse;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
+use Symfony\Component\HttpFoundation\JsonResponse;
 use Symfony\Component\HttpFoundation\Response;
+use Symfony\Component\HttpFoundation\Session\SessionInterface;
 use Symfony\Component\Routing\Annotation\Route;
 use Doctrine\Persistence\ManagerRegistry;
 use Dompdf\Dompdf;
@@ -27,60 +29,99 @@ class EventUserController extends AbstractController
     #[Route('/event/user', name: 'app_event_user')]
     public function index(): Response
     {
-        return $this->render('event_user/index.html.twig', [
+        return $this->render('eventuser/index.html.twig', [
             'controller_name' => 'EventUserController',
         ]);
     }
     
 
     #[Route('/EventgetAll', name: 'eventuser_getall')]
-    public function getAll (Request $request,EventUserRepository $repo, ManagerRegistry $manager): Response{
+    public function getAll(Request $request, EventUserRepository $repo, ManagerRegistry $manager): Response
+    {
         $searchNom = $request->query->get('search_nom');
-    $searchLieu = $request->query->get('search_lieu');
+        $searchLieu = $request->query->get('search_lieu');
 
-    $list = $repo->findBySearchCriteria($searchNom, $searchLieu);
-    $this->supprimerEvenementsExpirees($repo, $manager);
+        // Call the method to search with the provided criteria
+        $list = $repo->findBySearchCriteria($searchNom, $searchLieu);
+        $this->supprimerEvenementsExpirees($repo, $manager);
 
-
-
-        return $this->render('event_user/getall.html.twig',['events' => $list]);
-        
-
-}
-
-#[Route('/addEventForm', name: 'author_add')]
-public function addEvent(Request $req, ManagerRegistry $manager): Response{
-    $em = $manager -> getManager();
-    $eventuser = new EventUser;
-   //Appel formulaire
-   $form=$this->createForm(EventUserType::class,$eventuser);
-   $form->handleRequest($req);
-
-   if ($form->isSubmitted() && $form->isValid()) {
-    $uploadedFile =  $form->get('image')->getData();
-    // $uploadedFile = $req->request->all(); // $form['image']->getData();
-    // dd($uploadedFile);
-    // dd($uploadedFile['event_user']['image']);
-
-    if ($uploadedFile) {
-        $imageDirectory = pathinfo($uploadedFile->getClientOriginalName(), PATHINFO_FILENAME);; // Your specified image directory
-        $newFilename = uniqid().'.'.$uploadedFile->guessExtension();
-        // dd($newFilename);
-        try {
-            $destination = $this->getParameter('kernel.project_dir').'/public/uploads';
-            $uploadedFile->move($destination, $newFilename);
-        } catch (FileException $e) {
-            // Handle the file upload exception
+        // Check if the request is an AJAX request
+        if ($request->isXmlHttpRequest()) {
+            // Return a JSON response with the search results
+            $events = [];
+            foreach ($list as $event) {
+                $events[] = [
+                    'nom' => $event->getNom(),
+                    'date' => $event->getDate(),
+                    'lieu' => $event->getLieu(),
+                    'description' => $event->getDescription(),
+                    'image' => $event->getImage(),
+                    'prix' => $event->getPrix(),
+                    'editLink' => $this->generateUrl('event_update', ['id' => $event->getId()]),
+                    'deleteLink' => $this->generateUrl('event_delete', ['id' => $event->getId()]),
+                    'reserveLink' => $this->generateUrl('resv_affiche', ['id' => $event->getId()]),
+                    'qrLink' => $this->generateUrl('event_generate_qr', ['id' => $event->getId()]),
+                ];
+            }
+    
+            // Return a JSON response with the search results
+            return new JsonResponse(['events' => $events]);
         }
 
-        $eventuser->setImage('uploads/'.$newFilename);
+        // Render the template for non-AJAX requests
+        return $this->render('eventuser/getall.html.twig', ['events' => $list]);
     }
 
-    $em->persist($eventuser);
-    $em->flush();
-    return $this->redirectToRoute('eventuser_getall') ;
-}
-return $this->renderForm('event_user/add.html.twig',['f'=>$form]);
+#[Route('/addEventForm', name: 'author_add')]
+public function addEvent(Request $req, ManagerRegistry $manager): Response
+{
+    $em = $manager->getManager();
+    $eventuser = new EventUser;
+
+    
+    $form = $this->createForm(EventUserType::class, $eventuser);
+    $form->handleRequest($req);
+
+    if ($form->isSubmitted() && $form->isValid()) {
+        // Vérification des mots interdits dans la description
+        $forbiddenWords = ['israel', 'america', 'kill'];
+        $description = strtolower($eventuser->getDescription());
+
+        foreach ($forbiddenWords as $word) {
+            if (strpos($description, $word) !== false) {
+                $this->addFlash('error', 'Faite Attention,La description contient des mots interdits.');
+                
+                // Vous pouvez rediriger vers le formulaire ou une autre page en cas d'erreur.
+                return $this->redirectToRoute('author_add');
+            }
+        }
+
+        // Gestion du téléchargement de l'image
+        $uploadedFile = $form->get('image')->getData();
+
+        if ($uploadedFile) {
+            // Logique de téléchargement de l'image ici
+            $imageDirectory = pathinfo($uploadedFile->getClientOriginalName(), PATHINFO_FILENAME);
+            $newFilename = uniqid().'.'.$uploadedFile->guessExtension();
+
+            try {
+                $destination = $this->getParameter('kernel.project_dir').'/public/uploads';
+                $uploadedFile->move($destination, $newFilename);
+            } catch (FileException $e) {
+                // Gérer l'exception en cas d'échec du téléchargement
+            }
+
+            $eventuser->setImage('uploads/'.$newFilename);
+        }
+
+        // Persistez l'entité dans la base de données
+        $em->persist($eventuser);
+        $em->flush();
+
+        return $this->redirectToRoute('eventuser_getall');
+    }
+
+    return $this->renderForm('eventuser/add.html.twig', ['f' => $form]);
 }
 
 #[Route('/updateEvent/{id}', name: 'event_update')]
@@ -112,7 +153,7 @@ public function updateEvent(Request $request, ManagerRegistry $manager, $id, Eve
         return $this->redirectToRoute('eventuser_getall');
     }
 
-    return $this->render('event_user/update.html.twig', [
+    return $this->render('eventuser/update.html.twig', [
         'f' => $form->createView(),
     ]);
 }
@@ -141,20 +182,20 @@ public function updateEvent(Request $request, ManagerRegistry $manager, $id, Eve
 
 
 #[Route('/list_resv/{id}', name: 'resv_affiche')]
-public function afficher_reserv($id, EventUserRepository $repo, ManagerRegistry $manager, ReservationRepository $reservationRepository): Response
+public function afficher_reserv($id, EventUserRepository $repo, ManagerRegistry $manager, ReservationRepository $reservationRepository,SessionInterface $session): Response
 {
     $entityManager = $manager->getManager();
     $event = $repo->find($id);
-
+    $user=$session->get('user');
     // Vérifier si le nombre de réservations est inférieur au maximum
     $maxReservations = 3; // Nombre maximum de réservations par événement
 
     if (count($event->getReservations()) < $maxReservations) {
         // Créer une nouvelle réservation pour cet événement
         $reservation = new Reservation();
-        $reservation->setCin(12345678);
-        $reservation->setNomU('aziz');
-        $reservation->setPrenomU('benslimene');
+        $reservation->setCin($user->getCin());
+        $reservation->setNomU($user->getNom());
+        $reservation->setPrenomU($user->getPrenom());
         $reservation->setEvent($event);
 
         $entityManager->persist($reservation);
@@ -167,7 +208,7 @@ public function afficher_reserv($id, EventUserRepository $repo, ManagerRegistry 
        
 
         // Rediriger vers la liste des événements après la réservation réussie
-        return $this->render('event_user/getresv.html.twig', [
+        return $this->render('eventuser/getresv.html.twig', [
             'events' => $list,
         ]);
     } else {
@@ -189,7 +230,7 @@ public function generatePdf($id, ReservationRepository $reservationRepository)
     $reservation = $reservationRepository->find($id);
 
     // Générer le contenu HTML du PDF (vous devrez créer un fichier twig pour cela)
-    $html = $this->renderView('event_user/pdf.html.twig', [
+    $html = $this->renderView('eventuser/pdf.html.twig', [
         'reservation' => $reservation,
     ]);
 
@@ -232,8 +273,9 @@ public function generateQrCode($id, EventUserRepository $repo): Response
 
     // Générer le contenu du QR Code (utilisez toutes les informations de l'événement)
     $qrContent = sprintf(
-        "Nom de l'événement:  %s\nLieu: %s\nDescription: %s\nPrix: %s",
+        "Nom de l'événement:   %s\nDate: %s\nLieu: %s\nDescription: %s\nPrix: %s",
         $event->getNom(),
+        $event->getDate(),
         $event->getLieu(),
         $event->getDescription(),
         $event->getPrix()

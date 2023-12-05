@@ -1,103 +1,91 @@
 {% extends 'base.html.twig' %}
 
 {% block body %}
-
-{{ parent() }}
-
-<div class="container mt-5">
-    <h2 class="mb-4">All Line Orders</h2>
-   
-    <div class="table-responsive">
-        <table class="table table-bordered">
-            <thead>
-                <tr>
-                    <th>Product</th>
-                    <th>Quantity</th>
-                    <th>Price</th>
-                    <th>Actions</th>
-                </tr>
-            </thead>
-            <tbody>
-                {% for lineorder in lineorders %}
+    {{ parent() }}
+    <div class="container mt-5">
+        <h2 class="mb-4">All Line Orders</h2>
+        <div class="table-responsive">
+            <table class="table table-bordered">
+                <thead>
                     <tr>
-                        <td>{{ lineorder.productname }}</td>
-                        <td>
-                            <span class="quantity-display">{{ lineorder.quantite }}</span>
-                            <button type="button" class="btn btn-link edit-btn" data-lineorder-id="{{ lineorder.idO }}">
-                                <i class="fas fa-edit"></i>
-                            </button>
-                        </td>
-                        <td>{{ lineorder.prix }} €</td>
-                        <td>
-                            <a href="{{ path('delete_lineorder', {'id': lineorder.idO}) }}" onclick="return confirm('Are you sure you want to delete this line order?')" title="Delete">
-                                <i class="fas fa-trash-alt"></i>
-                            </a>
-                        </td>
+                        <th>Product</th>
+                        <th>Quantity</th>
+                        <th>Price</th>
+                        <th>Actions</th>
                     </tr>
-                    <tr class="edit-form" id="editForm{{ lineorder.idO }}" style="display: none;">
-                        <td colspan="4">
-                            <div class="edit-form-content"></div>
-                        </td>
-                    </tr>
-                {% endfor %}
-            </tbody>
-        </table>
-    </div>
+                </thead>
+                <tbody>
+                    {% for lineorder in lineorders %}
+                        <tr>
+                            <td>{{ lineorder.productname }}</td>
+                            <td>
+                                <span class="quantity-display">{{ lineorder.quantite }}</span>
+                                <button type="button" class="btn btn-link edit-btn" data-lineorder-id="{{ lineorder.idO }}">
+                                    <i class="fas fa-edit"></i>
+                                </button>
+                            </td>
+                            <td>{{ lineorder.prix }} €</td>
+                            <td>
+                                <a href="{{ path('delete_lineorder', {'id': lineorder.idO}) }}" onclick="return confirm('Are you sure you want to delete this line order?')" title="Delete">
+                                    <i class="fas fa-trash-alt"></i>
+                                </a>
+                            </td>
+                        </tr>
+                        <tr class="edit-form" id="editForm{{ lineorder.idO }}" style="display: none;">
+                            <td colspan="4">
+                                <div class="edit-form-content"></div>
+                            </td>
+                        </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        </div>
+
+        {# Confirm All Orders Link #}
+  <style>
+    #confirmAllOrdersLink {
+        color: black; /* Default color */
+        cursor: pointer;
+        transition: color 0.3s ease; /* Smooth transition effect */
+    }
+
+    #confirmAllOrdersLink:hover {
+        color:#C87A19; /* Color when the cursor is on the link (gold) */
+    }
+</style>
+
+<div class="mt-5">
+    <h3 class="text-center font-weight-light my-4">
+        <span id="confirmAllOrdersLink">Confirm All Orders</span>
+    </h3>
+</div>
 
 
-    {# Confirm All Orders Link #}
-    <style>
-        #confirmAllOrdersLink {
-            color: black; /* Default color */
-            cursor: pointer;
-            transition: color 0.3s ease; /* Smooth transition effect */
-        }
+        {# Confirm All Orders Form #}
+        <form action="{{ path('confirm_all_orders') }}" method="post" id="confirmAllOrdersForm" style="display: none;">
+           
+               <div class=" text-center mb-3">
+                    {{ form_row(confirmationForm.nomc) }}
+                </div>
+                <div  class=" text-center mb-3">
+                    {{ form_row(confirmationForm.adresse) }}
+                </div>
+                <div  class=" text-center mb-3">
+                    {{ form_row(confirmationForm.numtel) }}
+                </div>
+                <div  class=" text-center mb-3">
+                    {{ form_row(confirmationForm.email) }}
+                </div>
+                <div class="mt-5 text-center">
+                <button type="submit" class="btn btn-primary ">
+                    Confirm All Orders
+                </button>
+                </div>
+            </form>
 
-        #confirmAllOrdersLink:hover {
-            color: #C87A19; /* Color when the cursor is on the link (gold) */
-        }
-    </style>
-
-    <div class="mt-5">
-        <h3 class="text-center font-weight-light my-4">
-            <span id="confirmAllOrdersLink">Confirm All Orders</span>
-        </h3>
-    </div>
-
-    {# Confirm All Orders Form #}
-    <form action="{{ path('confirm_all_orders') }}" method="post" id="confirmAllOrdersForm" style="display: none;">
-        <div class=" text-center mb-3">
-            {{ form_row(confirmationForm.nomc) }}
-        </div>
-        <div class=" text-center mb-3">
-            {{ form_row(confirmationForm.adresse) }}
-        </div>
-        <div class=" text-center mb-3">
-            {{ form_row(confirmationForm.numtel) }}
-        </div>
-        <div class=" text-center mb-3">
-            {{ form_row(confirmationForm.email) }}
-        </div>
-        <div class="mt-5 text-center">
-            <button type="submit" class="btn btn-primary ">
-                Confirm All Orders
-            </button>
-        </div>
-    </form>
+            </div>
 
     <script>
-        // Use your desired initial coordinates
-        var initialCoordinates = [36.9003, 10.1959];
-        var initialZoom = 14;
-
-        // Initialize the map
-        var map = L.map('map').setView(initialCoordinates, initialZoom);
-
-        // Add the OpenStreetMap layer
-        L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
-            attribution: '© OpenStreetMap contributors',
-        }).addTo(map);
-
         $(document).ready(function () {
             // Toggle the visibility of the edit form when the "Edit" button is clicked
             $('.edit-btn').click(function () {
@@ -135,6 +123,7 @@
             });
         });
     </script>
-</div>
+</body>
 
+</html>
 {% endblock %}

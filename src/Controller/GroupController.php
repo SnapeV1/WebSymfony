@@ -28,8 +28,8 @@ class GroupController extends AbstractController
         ]);
     }
 
-    #[Route('/getGroups/{userid}', name: 'groups_getall')]
-    public function getAllForUser(EntityManagerInterface $entityManager,GroupsRepository $repo, MembreRepository $membreRepo, ManagerRegistry $manager, Request $req, int $userid,SessionInterface $session): Response
+    #[Route('/getGroups', name: 'groups_getall')]
+    public function getAllForUser(EntityManagerInterface $entityManager,GroupsRepository $repo, MembreRepository $membreRepo, ManagerRegistry $manager, Request $req, SessionInterface $session): Response
     {
         $user= $session->get('user');
         if($user === null || $user->getId()===null){
@@ -76,8 +76,8 @@ $userid=$user->getId();
 
 
 
-    #[Route('/addGroup/{userid}', name: 'addgroup')]
-    public function addGroup(EntityManagerInterface $entityManager,ManagerRegistry $manager, Request $req,ValidatorInterface $validator,int $userid,SessionInterface $session): Response
+    #[Route('/addGroup', name: 'addgroup')]
+    public function addGroup(EntityManagerInterface $entityManager,ManagerRegistry $manager, Request $req,ValidatorInterface $validator,SessionInterface $session): Response
     {
         $user=$session->get('user');
         $em = $manager->getManager();
@@ -121,9 +121,11 @@ $userid=$user->getId();
         ]);
     }
 
-    #[Route('/deletegroup/{id}/{userid}', name: 'deletegroup')]
-public function deletegroup($id, EntityManagerInterface $entityManager, GroupsRepository $repo,int $userid): Response
+    #[Route('/deletegroup/{id}', name: 'deletegroup')]
+public function deletegroup($id, EntityManagerInterface $entityManager, GroupsRepository $repo,SessionInterface $session): Response
 {
+    $user=$session->get('user');
+    $userid=$user->getId();
     $emm = $entityManager;
     $query = $entityManager->createQuery(
         'SELECT m FROM App\Entity\Membre m WHERE m.group = :id'
@@ -147,12 +149,13 @@ public function deletegroup($id, EntityManagerInterface $entityManager, GroupsRe
     return $this->redirectToRoute('groups_getall', ['userid' => $userid]);
 }
 
-#[Route('/editgroup/{id}/{userid}', name: 'update_group')]
-public function updateGroup(Request $request, EntityManagerInterface $entityManager, $id,int $userid): Response
+#[Route('/editgroup/{id}', name: 'update_group')]
+public function updateGroup(Request $request, EntityManagerInterface $entityManager, $id,SessionInterface $session): Response
 {
     // Find the group from the database
     $group = $entityManager->getRepository(Groups::class)->find($id);
-
+    $user=$session->get('user');
+    $userid=$user->getId();
     // Get the new group name from the form submission
     $newGroupName = $request->request->get('group_name');
 
@@ -195,10 +198,10 @@ return new Response('Group not found', Response::HTTP_NOT_FOUND);
 //ADMIN
 
 #[Route('/admin/getGroups', name: 'Admingroups_getall')]
-public function getAllForAdmin(EntityManagerInterface $entityManager,GroupsRepository $repo, MembreRepository $membreRepo, ManagerRegistry $manager, Request $req): Response
+public function getAllForAdmin(SessionInterface $session,EntityManagerInterface $entityManager,GroupsRepository $repo, MembreRepository $membreRepo, ManagerRegistry $manager, Request $req): Response
 {
-    $groups = $repo->getAllWithOwners();
-
+    $groups = $repo->findAll();
+    $user=$session->get('user');
     
     return $this->render('group/Admingetall.html.twig', [
         'groups' => $groups,

@@ -100,7 +100,7 @@
                 <a href= "service.html" class="nav-item nav-link active">Home</a>
                 <a href="{{ path('shopping')}}" class="nav-item nav-link">Shop</a>
                     <a href="{{ path('training')}}" class="nav-item nav-link">Training</a>
-                <a href="project.html" class="nav-item nav-link">Event</a>
+                <a href="{{ path('eventuser_getall')}}" class="nav-item nav-link">Event</a>
                 <div class="nav-item dropdown">
                     <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown">Interact with others</a>
                     <div class="dropdown-menu fade-up m-0"> 
@@ -112,6 +112,7 @@
                     </div>
                 </div>
                 <a href={{path('my_reclamation')}} class="nav-item nav-link">Contact</a>
+                <a href={{path('profil_utilisateur')}} class="nav-item nav-link">Profil</a>
                  <a href={{path('logout_utilisateur')}} class="nav-item nav-link">Log out</a>
           
 <!-- Add the shopping basket and notification icons here -->

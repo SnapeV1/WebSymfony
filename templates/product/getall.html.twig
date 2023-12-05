@@ -62,7 +62,7 @@
                     <td>{{ p.description }}</td>
                     <td>
                         {% if p.image is not null %}
-                            <img src="{{ asset('pictures/' ~ p.image) }}" alt="{{ p.nom }}" width="200" height="120">
+                            <img src="{{ asset('uploads/' ~ p.image) }}" alt="{{ p.nom }}" width="200" height="120">
                         {% else %}
                             No image
                         {% endif %}

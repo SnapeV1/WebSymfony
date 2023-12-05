@@ -177,7 +177,7 @@ class __TwigTemplate_777c498bf53fbff8f8cb5f8f94fc944b extends Template
             if ( !(null === twig_get_attribute($this->env, $this->source, $context["p"], "image", [], "any", false, false, false, 64))) {
                 // line 65
                 echo "                            <img src=\"";
-                echo twig_escape_filter($this->env, $this->extensions['Symfony\Bridge\Twig\Extension\AssetExtension']->getAssetUrl(("pictures/" . twig_get_attribute($this->env, $this->source, $context["p"], "image", [], "any", false, false, false, 65))), "html", null, true);
+                echo twig_escape_filter($this->env, $this->extensions['Symfony\Bridge\Twig\Extension\AssetExtension']->getAssetUrl(("uploads/" . twig_get_attribute($this->env, $this->source, $context["p"], "image", [], "any", false, false, false, 65))), "html", null, true);
                 echo "\" alt=\"";
                 echo twig_escape_filter($this->env, twig_get_attribute($this->env, $this->source, $context["p"], "nom", [], "any", false, false, false, 65), "html", null, true);
                 echo "\" width=\"200\" height=\"120\">
@@ -305,7 +305,7 @@ class __TwigTemplate_777c498bf53fbff8f8cb5f8f94fc944b extends Template
                     <td>{{ p.description }}</td>
                     <td>
                         {% if p.image is not null %}
-                            <img src=\"{{ asset('pictures/' ~ p.image) }}\" alt=\"{{ p.nom }}\" width=\"200\" height=\"120\">
+                            <img src=\"{{ asset('uploads/' ~ p.image) }}\" alt=\"{{ p.nom }}\" width=\"200\" height=\"120\">
                         {% else %}
                             No image
                         {% endif %}

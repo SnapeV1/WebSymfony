@@ -1,0 +1,65 @@
+{# templates/event_user/add.html.twig #}
+
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    {{ parent() }}
+    <div class="container">
+        <div class="container text-center">
+            <h1>Add event</h1>
+        </div>
+         {% for flashError in app.session.flashbag.get('error') %}
+                    <div class="alert alert-danger text-center mt-2 col-md-5  mx-auto" style="background-color: #F6ACAC; color: #000000; border: 3px solid #B21515; padding: 10px;border-radius: 10px;">
+                        {{ flashError }}
+                    </div>
+                {% endfor %}
+        <div class="row justify-content-center">
+            <div class="col-md-6">
+                {{ form_start(f, {'attr': {'novalidate': 'novalidate'}}) }}
+                <div class="form-group">
+                    {{ form_label(f.nom, 'Event name') }}
+                    {{ form_widget(f.nom, { 'attr': {'class': 'form-control'} }) }}
+                    {{ form_errors(f.nom) }}
+                </div>
+
+                <div class="form-group">
+                    {{ form_label(f.date, 'Event date') }}
+                    {{ form_widget(f.date, { 'attr': {'class': 'form-control' } }) }}
+                    {{ form_errors(f.date) }}
+                </div>
+
+                <div class="form-group">
+                    {{ form_label(f.lieu, 'Place') }}
+                    {{ form_widget(f.lieu, { 'attr': {'class': 'form-control' } }) }}
+                    {{ form_errors(f.lieu) }}
+                </div>
+
+                <div class="form-group">
+                    {{ form_label(f.description, 'Description') }}
+                    {{ form_widget(f.description, { 'attr': {'class': 'form-control' } }) }}
+                    {{ form_errors(f.description) }}
+                    {% if app.request.get('action') == 'author_add' and app.session.getFlashBag().get('error') %}
+                        <div class="alert alert-danger mt-2">
+                            {{ app.session.getFlashBag().get('error')|first }}
+                        </div>
+                    {% endif %}
+                </div>
+
+                <div class="form-group">
+                    {{ form_label(f.image, 'Picture') }}
+                    {{ form_widget(f.image, { 'attr': {'class': 'form-control' } }) }}
+                    {{ form_errors(f.image) }}
+                </div>
+
+                <div class="form-group">
+                    {{ form_label(f.prix, 'Prise') }}
+                    {{ form_widget(f.prix, { 'attr': {'class': 'form-control' } }) }}
+                    {{ form_errors(f.prix) }}
+                </div>
+
+                <button type="submit" class="btn btn-primary">Add</button>
+                {{ form_end(f) }}
+            </div>
+        </div>
+    </div>
+{% endblock %}

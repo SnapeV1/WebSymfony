@@ -54,6 +54,7 @@ public function addProduct(ManagerRegistry $man, Request $req, FileUploader $fil
         if ($imageFile) {
             $imageFileName = $fileUploader->upload($imageFile);
             $product->setImage($imageFileName);
+            
         }
 
         $manager->persist($product);

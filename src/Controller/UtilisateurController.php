@@ -64,7 +64,7 @@ class UtilisateurController extends AbstractController
                 $form->get('password')->addError(new FormError('Your password is weak!')); 
             }else{
             
-
+            $user->setPassword($pass);
             $imageFile = $form->get('pic')->getData();
         if ($imageFile) 
         {
@@ -103,6 +103,7 @@ class UtilisateurController extends AbstractController
 
 
 
+
 #[Route('/verification  ', name: 'addInBase_utilisateur')]
 public function savePerson(ManagerRegistry $man, SessionInterface $session,LoggerInterface $logger,Request $req):Response
 {
@@ -113,6 +114,7 @@ public function savePerson(ManagerRegistry $man, SessionInterface $session,Logge
     $remainingAttempts = $session->get('verification_attempts', 3);
     $codeTrue=$session->get('code');
     $user=$session->get('inscrit');
+    
 
    
 
@@ -258,7 +260,6 @@ public function updateAuthor(Request $requ,ManagerRegistry $manager,$id,Utilisat
     public function Profil(UtilisateurRepository $repo,SessionInterface $session ):Response
     {
         $l=true;
-        $bl='base.html.twig';
         $sUser=$session->get('user');
         if(!$sUser)
         {
@@ -267,19 +268,10 @@ public function updateAuthor(Request $requ,ManagerRegistry $manager,$id,Utilisat
         $user= $repo->find($sUser->getId());
        
         $user->setPic( "/uploads/" . $user->getPic());
-        if($user->getType()=='ADMIN')
-            {
-                return $this->render('utilisateur/adminProfil.html.twig',[
-                    'user'=>$user,
-                    'l'=>$l,
-                    
-                ]);
-            }
 
         return $this->render('utilisateur/one.html.twig',[
             'user'=>$user,
-            'l'=>$l,
-            
+            'l'=>$l
         ]);
     }
 
@@ -302,13 +294,12 @@ public function updateAuthor(Request $requ,ManagerRegistry $manager,$id,Utilisat
     #[Route('/login', name: 'login_utilisateur')]
     public function login(UtilisateurRepository $repo, Request $req, SessionInterface $session): Response
     {
-      
+     //   $user= new Utilisateur();
       $sUser=$session->get('user');
       $session->set('bool',true);
       
         if($sUser)
         {
-            
             return $this->redirectToRoute('profil_utilisateur');
         }else
         {
@@ -339,7 +330,7 @@ public function updateAuthor(Request $requ,ManagerRegistry $manager,$id,Utilisat
     else if($user->getPassword()==$password)
     {
         $session->set('user',$user);
-        return $this->redirectToRoute('profil_utilisateur');
+        return $this->redirectToRoute('all_utilisateur');
     }else
     {
         $form->get('password')->addError(new FormError('Wrong Password'));
@@ -351,8 +342,7 @@ public function updateAuthor(Request $requ,ManagerRegistry $manager,$id,Utilisat
     
     return $this->renderForm('utilisateur/login.html.twig',[
         'f'=>$form,
-        'l'=>$lab,
-        
+        'l'=>$lab
     ]);
 
 }
@@ -742,25 +732,6 @@ if($form2->isSubmitted())
         ]);
     }
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-    
-
-
-
     #[Route('/logout', name: 'logout_utilisateur')]
     public function logout(SessionInterface $session):Response
     {
@@ -856,8 +827,6 @@ file_put_contents('uploads/' . $fileName, $image_base64);
 }
 
 
-
-
 #[Route('/', name: 'HomePage')]
 public function Home(SessionInterface $session, UtilisateurRepository $repo, ManagerRegistry $manager):Response 
 {
@@ -868,17 +837,4 @@ public function Home(SessionInterface $session, UtilisateurRepository $repo, Man
 
     return  $this->render('Home.html.twig');
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
 }

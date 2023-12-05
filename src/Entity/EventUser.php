@@ -13,6 +13,7 @@ use Symfony\Component\Validator\Context\ExecutionContextInterface;
 
 
 #[Assert\Callback(callback: 'validateDate')]
+#[ORM\Table(name: "eventuser")]
 class EventUser
 {
     #[ORM\Id]
@@ -47,6 +48,12 @@ class EventUser
     #[Assert\NotBlank(message:"Le prix ne doit pas être vide.")]
     #[Assert\Type(type:"integer", message:"Le prix doit être un entier.")]
     private ?int $prix = null;
+
+
+    #[ORM\Column(length: 255)]
+   
+    private ?string $path_qr = "";
+
 
     #[ORM\OneToMany(mappedBy: 'event', targetEntity: Reservation::class )]
     #[ORM\JoinColumn(name:"event_id", referencedColumnName:"id", onDelete:"CASCADE")]
@@ -134,6 +141,18 @@ class EventUser
     public function setPrix(int $prix): static
     {
         $this->prix = $prix;
+
+        return $this;
+    }
+
+    public function getpath_qr(): ?string
+    {
+        return $this->path_qr;
+    }
+
+    public function setpath_qr(string $path_qr): static
+    {
+        $this->path_qr = $path_qr;
 
         return $this;
     }

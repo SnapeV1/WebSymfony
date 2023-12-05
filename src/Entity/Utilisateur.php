@@ -7,9 +7,14 @@ use Doctrine\ORM\Mapping as ORM;
 use App\Repository\UtilisateurRepository;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
+use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
 use Symfony\Component\Validator\Constraints as Assert;
 
+
 #[ORM\Entity(repositoryClass: UtilisateurRepository::class)]
+#[UniqueEntity(fields: ["username"], message: "Username already exists")]
+#[UniqueEntity(fields: ["email"], message: "Email exists already")]
+#[UniqueEntity(fields: ["cin"], message: "Cin exists already")]
 class Utilisateur
 {
     #[ORM\Id]
@@ -25,8 +30,8 @@ class Utilisateur
     #[ORM\Column(length:30)]
     private ?string $prenom=null;
 
-    #[Assert\NotBlank(message:"Birthdate can't be empty")]
-    #[Assert\Date(message:"Invalid date")]
+  //  #[Assert\NotBlank(message:"Birthdate can't be empty")]
+  //  #[Assert\Date(message:"Invalid date")]
     #[ORM\Column(length:30)]
     private $dateNaissance=null;
 
@@ -42,7 +47,7 @@ class Utilisateur
 
     #[ORM\Column(length:20)]
     private ?string $username=null;
-    #[Assert\NotBlank(message:"Password can't be null")]
+   // #[Assert\NotBlank(message:"Password can't be null")]
     #[ORM\Column(length:40)]
     private ?string $password=null;
     #[Assert\NotBlank(message:"Email can't be empty")]
