@@ -59,7 +59,7 @@ class ReclamationController extends AbstractController
     public function add(ManagerRegistry $man, Request $req, SessionInterface $session,UtilisateurRepository $uRepo): Response
     {
         $user= $uRepo->find($session->get('user')->getId());
-        echo $user->getUsername();
+       
         if(!$user){
             return $this->redirectToRoute('login_utilisateur');
         }else{
@@ -80,7 +80,7 @@ class ReclamationController extends AbstractController
             $rec->setSender($user);
             $maanger->persist($rec);
             $maanger->flush();
-           return  $this->redirectToRoute('all_reclamation');
+           return  $this->redirectToRoute('my_reclamation');
         }
         return $this->renderForm('reclamation/add.html.twig',[
             'f'=>$form

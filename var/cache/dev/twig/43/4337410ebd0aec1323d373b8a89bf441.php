@@ -65,6 +65,7 @@ class __TwigTemplate_055fdc9b69333b5077d57be78286e71e extends Template
         $__internal_6f47bbe9983af81f1e7450e9a3e3768f->enter($__internal_6f47bbe9983af81f1e7450e9a3e3768f_prof = new \Twig\Profiler\Profile($this->getTemplateName(), "block", "body"));
 
         // line 4
+        $this->displayParentBlock("body", $context, $blocks);
         echo "
 <div class=\"card mb-4\">
     <div class=\"card-header\">
@@ -165,7 +166,7 @@ class __TwigTemplate_055fdc9b69333b5077d57be78286e71e extends Template
 
     public function getDebugInfo()
     {
-        return array (  138 => 50,  132 => 46,  121 => 41,  117 => 40,  113 => 39,  109 => 38,  105 => 36,  101 => 35,  68 => 4,  58 => 3,  35 => 1,);
+        return array (  139 => 50,  133 => 46,  122 => 41,  118 => 40,  114 => 39,  110 => 38,  106 => 36,  102 => 35,  68 => 4,  58 => 3,  35 => 1,);
     }
 
     public function getSourceContext()
@@ -173,7 +174,7 @@ class __TwigTemplate_055fdc9b69333b5077d57be78286e71e extends Template
         return new Source("{% extends 'base.html.twig' %}
 
 {% block body %}
-
+{{parent()}}
 <div class=\"card mb-4\">
     <div class=\"card-header\">
         <i class=\"fas fa-table me-1\"></i>

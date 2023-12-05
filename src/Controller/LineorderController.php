@@ -33,7 +33,10 @@ class LineorderController extends AbstractController
         ManagerRegistry $man
     ): Response {
         $product = $productRepository->find($id);
-    
+        if ($product === null) {
+            // Handle the case where the product is not found
+            return $this->redirectToRoute('shopping');
+        }
         // Get quantity from the form submission
         $quantity = $request->request->get('quantity');
         if ($product->getQte() >= $quantity) {

@@ -1,4 +1,4 @@
-{% extends 'admin.html.twig' %}
+{% extends 'connected.html.twig' %}
 
 {% block body %}
     {{ parent() }}
@@ -23,7 +23,7 @@
                     {% for event in events %}
                         <tr class="table-active">
                             <td>{{ event.getNomA() ?? event.getNom() }}</td>
-                            <td>{{ event.getDateA() ?? event.getDate()|date('d-m-Y') }}</td>
+                            <td>{{ event.getDateA() ?? event.getDate() }}</td>
                             <td>{{ event.getLieuA() ?? event.getLieu() }}</td>
                             <td>{{ event.getDescriptionA() ?? event.getDescription() }}</td>
                             <td><img src="{{ asset(event.getImageA() ?? event.getImage()) }}" class="custom-block-image img-fluid" alt=""></td>
@@ -41,5 +41,14 @@
                 </tbody>
             </table>
         </div>
+         <div class="text-center mt-3">
+                <a href="{{ path('eventadmin_add_form') }}" class="btn btn-success">Add Event</a>
+                <!-- Replace 'your_add_route_here' with the actual route for adding events -->
+            </div>
+
+             <div class="text-center mt-3">
+                <a href="{{ path('rev_getall') }}" class="btn btn-info">Reservations</a>
+                <!-- Replace 'your_reservations_route_here' with the actual route for reservations -->
+            </div>
     </div>
 {% endblock %}

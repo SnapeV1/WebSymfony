@@ -15,6 +15,7 @@ use App\Service\FileUploader;
 use App\Service\UtilisateurService;
 
 use LoginForm;
+use PhpParser\Node\Stmt\Else_;
 use Psr\Log\LoggerInterface;
 use Symfony\Component\Form\Extension\Core\Type\IntegerType;
 use Symfony\Component\Form\Extension\Core\Type\PasswordType;
@@ -269,6 +270,13 @@ public function updateAuthor(Request $requ,ManagerRegistry $manager,$id,Utilisat
        
         $user->setPic( "/uploads/" . $user->getPic());
 
+        if($user->getType()=='ADMIN')
+        {
+            return $this->render('utilisateur/adminProfil.html.twig',[
+                'user'=>$user,
+                'l'=>$l
+            ]);
+        }
         return $this->render('utilisateur/one.html.twig',[
             'user'=>$user,
             'l'=>$l
@@ -330,7 +338,12 @@ public function updateAuthor(Request $requ,ManagerRegistry $manager,$id,Utilisat
     else if($user->getPassword()==$password)
     {
         $session->set('user',$user);
+        if($user->getType()=='ADMIN'){
         return $this->redirectToRoute('all_utilisateur');
+        }else
+        {
+            return $this->redirectToRoute('HomePage');
+        }
     }else
     {
         $form->get('password')->addError(new FormError('Wrong Password'));
@@ -732,6 +745,25 @@ if($form2->isSubmitted())
         ]);
     }
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    
+
+
+
     #[Route('/logout', name: 'logout_utilisateur')]
     public function logout(SessionInterface $session):Response
     {
@@ -751,7 +783,7 @@ if($form2->isSubmitted())
             }
             return false;
         }
-        return false;
+
     }
 
 
@@ -825,6 +857,24 @@ file_put_contents('uploads/' . $fileName, $image_base64);
 
     return $this->redirectToRoute('profil_utilisateur');
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 #[Route('/', name: 'HomePage')]

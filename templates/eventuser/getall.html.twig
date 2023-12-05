@@ -50,12 +50,13 @@
                     {% for event in events %}
                         <tr class="table-active">
                             <td>{{ event.nom }}</td>
-                            <td>{{ event.date|date('d-m-Y') }}</td>
+                            <td>{{ event.date }}</td>
                             <td>{{ event.lieu }}</td>
                             <td>{{ event.description }}</td>
                             <td><img src="{{ asset(event.image) }}" class="custom-block-image img-fluid" alt=""></td>
                             <td>{{ event.prix }}</td>
                             <td>
+                            
                                 <div class="btn-group d-flex align-items-center" role="group">
                                     <a href="{{ path('event_update', {'id': event.id}) }}" class="btn btn-primary" style="margin-right: 10px;">Update</a>
                                     <a href="{{ path('event_delete', {'id': event.id}) }}" class="btn btn-danger" style="margin-right: 10px;" onclick="return confirm('Êtes-vous sûr de vouloir supprimer cet événement?')">Delete</a>

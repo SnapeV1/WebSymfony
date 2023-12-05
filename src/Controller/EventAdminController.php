@@ -41,7 +41,7 @@ public function getAll(EventAdminRepository $eventAdminRepo, EventUserRepository
     // Fusionner les deux tableaux d'événements
     $allEvents = array_merge($adminEvents, $userEvents);
 
-    return $this->render('event_admin/getall.html.twig', ['events' => $allEvents]);
+    return $this->render('eventadmin/getall.html.twig', ['events' => $allEvents]);
 }
 
 
@@ -79,7 +79,7 @@ public function addEventform(Request$req, ManagerRegistry $manager): Response{
     $em->flush();
     return $this->redirectToRoute('eventadmin_getall') ;
 }
-return $this->renderForm('event_admin/add.html.twig',['f'=>$form]);
+return $this->renderForm('eventadmin/add.html.twig',['f'=>$form]);
 }
 
 #[Route('/updateEventAdmin/{id}', name: 'eventadmin_update')]
@@ -111,7 +111,7 @@ public function updateEvent(Request $request, ManagerRegistry $manager, $id, Eve
         return $this->redirectToRoute('eventadmin_getall');
     }
 
-    return $this->render('event_admin/update.html.twig', [
+    return $this->render('eventadmin/update.html.twig', [
         'f' => $form->createView(),
     ]);
 }
@@ -141,7 +141,7 @@ public function deleteEventForm(ManagerRegistry $manager, $id, EventAdminReposit
 #[Route('/getrev', name: 'rev_getall')]
     public function getrev (ReservationRepository $repo): Response{
         $list = $repo->findAll(); /*select * from author*/
-        return $this->render('event_admin/getrevA.html.twig',['events' => $list]);
+        return $this->render('eventadmin/getrevA.html.twig',['events' => $list]);
 
 }
 
@@ -190,7 +190,7 @@ public function updaterevA(Request $request, ManagerRegistry $manager, $id, Rese
     }
 
     // Affichage du formulaire de mise à jour
-    return $this->render('event_admin/updaterev.html.twig', [
+    return $this->render('eventadmin/updaterev.html.twig', [
         'f' => $form->createView(),
     ]);
 }
