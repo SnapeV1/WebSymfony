@@ -67,6 +67,7 @@ class __TwigTemplate_055fdc9b69333b5077d57be78286e71e extends Template
         // line 4
         $this->displayParentBlock("body", $context, $blocks);
         echo "
+
 <div class=\"card mb-4\">
     <div class=\"card-header\">
         <i class=\"fas fa-table me-1\"></i>
@@ -80,6 +81,7 @@ class __TwigTemplate_055fdc9b69333b5077d57be78286e71e extends Template
                     <th>Sender Name</th>
                     <th>State</th>
                     <th>Delete</th>
+                    <th>See Response</th>
 
                     
                 </tr>
@@ -90,6 +92,7 @@ class __TwigTemplate_055fdc9b69333b5077d57be78286e71e extends Template
                     <th>Sender Name</th>
                     <th>State</th>
                     <th>Delete</th>
+                    <th>See Response</th>
                     
                     
                 </tr>
@@ -98,30 +101,41 @@ class __TwigTemplate_055fdc9b69333b5077d57be78286e71e extends Template
                                         
                                         
             ";
-        // line 35
+        // line 38
         $context['_parent'] = $context;
-        $context['_seq'] = twig_ensure_traversable((isset($context["list"]) || array_key_exists("list", $context) ? $context["list"] : (function () { throw new RuntimeError('Variable "list" does not exist.', 35, $this->source); })()));
+        $context['_seq'] = twig_ensure_traversable((isset($context["list"]) || array_key_exists("list", $context) ? $context["list"] : (function () { throw new RuntimeError('Variable "list" does not exist.', 38, $this->source); })()));
         foreach ($context['_seq'] as $context["_key"] => $context["a"]) {
-            // line 36
+            // line 39
             echo "                                    
             <tr>
                 <td>";
-            // line 38
-            echo twig_escape_filter($this->env, twig_get_attribute($this->env, $this->source, $context["a"], "id", [], "any", false, false, false, 38), "html", null, true);
+            // line 41
+            echo twig_escape_filter($this->env, twig_get_attribute($this->env, $this->source, $context["a"], "id", [], "any", false, false, false, 41), "html", null, true);
             echo " </td>
                 <td>";
-            // line 39
-            echo twig_escape_filter($this->env, twig_get_attribute($this->env, $this->source, twig_get_attribute($this->env, $this->source, $context["a"], "sender", [], "any", false, false, false, 39), "nom", [], "any", false, false, false, 39), "html", null, true);
+            // line 42
+            echo twig_escape_filter($this->env, twig_get_attribute($this->env, $this->source, twig_get_attribute($this->env, $this->source, $context["a"], "sender", [], "any", false, false, false, 42), "nom", [], "any", false, false, false, 42), "html", null, true);
             echo " </td>
                 <td>";
-            // line 40
-            echo twig_escape_filter($this->env, twig_get_attribute($this->env, $this->source, $context["a"], "etat", [], "any", false, false, false, 40), "html", null, true);
+            // line 43
+            echo twig_escape_filter($this->env, twig_get_attribute($this->env, $this->source, $context["a"], "etat", [], "any", false, false, false, 43), "html", null, true);
             echo " </td>
                 <td><a href=";
-            // line 41
-            echo twig_escape_filter($this->env, $this->extensions['Symfony\Bridge\Twig\Extension\RoutingExtension']->getPath("delete_reclamation", ["id" => twig_get_attribute($this->env, $this->source, $context["a"], "id", [], "any", false, false, false, 41)]), "html", null, true);
+            // line 44
+            echo twig_escape_filter($this->env, $this->extensions['Symfony\Bridge\Twig\Extension\RoutingExtension']->getPath("delete_reclamation", ["id" => twig_get_attribute($this->env, $this->source, $context["a"], "id", [], "any", false, false, false, 44)]), "html", null, true);
             echo " <i class=\"fa-solid fa-trash-can fa-lg\"></i> </td>
-                
+
+                ";
+            // line 46
+            if ( !(null === twig_get_attribute($this->env, $this->source, $context["a"], "reponse", [], "any", false, false, false, 46))) {
+                // line 47
+                echo "                <td><a href=";
+                echo twig_escape_filter($this->env, $this->extensions['Symfony\Bridge\Twig\Extension\RoutingExtension']->getPath("seeAnswer_reclamation", ["id" => twig_get_attribute($this->env, $this->source, $context["a"], "id", [], "any", false, false, false, 47)]), "html", null, true);
+                echo " <i class=\"fa-solid fa-arrow-right fa-lg\"></i> </td>
+                ";
+            }
+            // line 49
+            echo "                
                                             
             </tr>
             ";
@@ -129,13 +143,13 @@ class __TwigTemplate_055fdc9b69333b5077d57be78286e71e extends Template
         $_parent = $context['_parent'];
         unset($context['_seq'], $context['_iterated'], $context['_key'], $context['a'], $context['_parent'], $context['loop']);
         $context = array_intersect_key($context, $_parent) + $_parent;
-        // line 46
+        // line 53
         echo "                                     
                                        
             </tbody>
         </table>
         <a href=";
-        // line 50
+        // line 57
         echo $this->extensions['Symfony\Bridge\Twig\Extension\RoutingExtension']->getPath("add_reclamation");
         echo ">
          <button type=\"button\" class=\"btn btn-primary \" >Send New Message <i class=\"fa-solid fa-paper-plane fa-sm\"></i> </button>
@@ -166,7 +180,7 @@ class __TwigTemplate_055fdc9b69333b5077d57be78286e71e extends Template
 
     public function getDebugInfo()
     {
-        return array (  139 => 50,  133 => 46,  122 => 41,  118 => 40,  114 => 39,  110 => 38,  106 => 36,  102 => 35,  68 => 4,  58 => 3,  35 => 1,);
+        return array (  153 => 57,  147 => 53,  138 => 49,  132 => 47,  130 => 46,  125 => 44,  121 => 43,  117 => 42,  113 => 41,  109 => 39,  105 => 38,  68 => 4,  58 => 3,  35 => 1,);
     }
 
     public function getSourceContext()
@@ -175,6 +189,7 @@ class __TwigTemplate_055fdc9b69333b5077d57be78286e71e extends Template
 
 {% block body %}
 {{parent()}}
+
 <div class=\"card mb-4\">
     <div class=\"card-header\">
         <i class=\"fas fa-table me-1\"></i>
@@ -188,6 +203,7 @@ class __TwigTemplate_055fdc9b69333b5077d57be78286e71e extends Template
                     <th>Sender Name</th>
                     <th>State</th>
                     <th>Delete</th>
+                    <th>See Response</th>
 
                     
                 </tr>
@@ -198,6 +214,7 @@ class __TwigTemplate_055fdc9b69333b5077d57be78286e71e extends Template
                     <th>Sender Name</th>
                     <th>State</th>
                     <th>Delete</th>
+                    <th>See Response</th>
                     
                     
                 </tr>
@@ -212,6 +229,10 @@ class __TwigTemplate_055fdc9b69333b5077d57be78286e71e extends Template
                 <td>{{a.sender.nom}} </td>
                 <td>{{a.etat}} </td>
                 <td><a href={{path('delete_reclamation',{id:a.id})}} <i class=\"fa-solid fa-trash-can fa-lg\"></i> </td>
+
+                {% if a.reponse is not null %}
+                <td><a href={{path('seeAnswer_reclamation',{id:a.id})}} <i class=\"fa-solid fa-arrow-right fa-lg\"></i> </td>
+                {% endif %}
                 
                                             
             </tr>

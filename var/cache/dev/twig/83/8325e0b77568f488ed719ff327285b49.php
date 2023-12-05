@@ -246,7 +246,10 @@ class __TwigTemplate_341a7908890fc255d4d96547371ec4ac extends Template
         </button>
         <div class=\"collapse navbar-collapse\" id=\"navbarCollapse\">
             <div class=\"navbar-nav ms-auto p-4 p-lg-0\">
-                <a href= \"service.html\" class=\"nav-item nav-link active\">Home</a>
+                <a href=\"";
+        // line 100
+        echo $this->extensions['Symfony\Bridge\Twig\Extension\RoutingExtension']->getPath("HomePage");
+        echo "\" class=\"nav-item nav-link\">Home</a>
                 <a href=\"";
         // line 101
         echo $this->extensions['Symfony\Bridge\Twig\Extension\RoutingExtension']->getPath("shopping");
@@ -578,7 +581,7 @@ getWeather();
 
     public function getDebugInfo()
     {
-        return array (  553 => 291,  548 => 289,  543 => 287,  538 => 285,  476 => 226,  470 => 223,  466 => 222,  462 => 221,  458 => 220,  454 => 219,  450 => 218,  446 => 217,  442 => 216,  436 => 212,  426 => 211,  413 => 208,  409 => 207,  405 => 206,  401 => 205,  338 => 144,  328 => 143,  294 => 119,  288 => 116,  284 => 115,  280 => 114,  271 => 108,  267 => 107,  260 => 103,  256 => 102,  252 => 101,  238 => 89,  236 => 88,  184 => 38,  174 => 37,  162 => 32,  156 => 29,  151 => 27,  145 => 24,  141 => 23,  137 => 22,  125 => 12,  115 => 11,  96 => 5,  85 => 298,  82 => 211,  80 => 143,  78 => 37,  71 => 34,  69 => 11,  63 => 8,  58 => 6,  54 => 5,  48 => 1,);
+        return array (  556 => 291,  551 => 289,  546 => 287,  541 => 285,  479 => 226,  473 => 223,  469 => 222,  465 => 221,  461 => 220,  457 => 219,  453 => 218,  449 => 217,  445 => 216,  439 => 212,  429 => 211,  416 => 208,  412 => 207,  408 => 206,  404 => 205,  341 => 144,  331 => 143,  297 => 119,  291 => 116,  287 => 115,  283 => 114,  274 => 108,  270 => 107,  263 => 103,  259 => 102,  255 => 101,  251 => 100,  238 => 89,  236 => 88,  184 => 38,  174 => 37,  162 => 32,  156 => 29,  151 => 27,  145 => 24,  141 => 23,  137 => 22,  125 => 12,  115 => 11,  96 => 5,  85 => 298,  82 => 211,  80 => 143,  78 => 37,  71 => 34,  69 => 11,  63 => 8,  58 => 6,  54 => 5,  48 => 1,);
     }
 
     public function getSourceContext()
@@ -682,7 +685,7 @@ getWeather();
         </button>
         <div class=\"collapse navbar-collapse\" id=\"navbarCollapse\">
             <div class=\"navbar-nav ms-auto p-4 p-lg-0\">
-                <a href= \"service.html\" class=\"nav-item nav-link active\">Home</a>
+                <a href=\"{{ path('HomePage')}}\" class=\"nav-item nav-link\">Home</a>
                 <a href=\"{{ path('shopping')}}\" class=\"nav-item nav-link\">Shop</a>
                     <a href=\"{{ path('training')}}\" class=\"nav-item nav-link\">Training</a>
                 <a href=\"{{ path('eventuser_getall')}}\" class=\"nav-item nav-link\">Event</a>

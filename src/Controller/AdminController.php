@@ -115,11 +115,11 @@ public function exportPdf(Request $request, ProductRepository $repo): Response
    
 
     $dompdf = new Dompdf($pdfOptions);
-    $base64Image = base64_encode(file_get_contents('pictures/' .  $repo->findImageById($productId)));
+    
 
 
     // Render the PDF template with the list of products
-    $html = $this->renderView('admin/pdf.html.twig', ['list' => $list,'base64Image' => $base64Image]);
+    $html = $this->renderView('admin/pdf.html.twig', ['list' => $list]);
 
     // Load HTML content into Dompdf
     $dompdf->loadHtml($html);

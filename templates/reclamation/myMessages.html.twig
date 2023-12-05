@@ -2,6 +2,7 @@
 
 {% block body %}
 {{parent()}}
+
 <div class="card mb-4">
     <div class="card-header">
         <i class="fas fa-table me-1"></i>
@@ -15,6 +16,7 @@
                     <th>Sender Name</th>
                     <th>State</th>
                     <th>Delete</th>
+                    <th>See Response</th>
 
                     
                 </tr>
@@ -25,6 +27,7 @@
                     <th>Sender Name</th>
                     <th>State</th>
                     <th>Delete</th>
+                    <th>See Response</th>
                     
                     
                 </tr>
@@ -39,6 +42,10 @@
                 <td>{{a.sender.nom}} </td>
                 <td>{{a.etat}} </td>
                 <td><a href={{path('delete_reclamation',{id:a.id})}} <i class="fa-solid fa-trash-can fa-lg"></i> </td>
+
+                {% if a.reponse is not null %}
+                <td><a href={{path('seeAnswer_reclamation',{id:a.id})}} <i class="fa-solid fa-arrow-right fa-lg"></i> </td>
+                {% endif %}
                 
                                             
             </tr>

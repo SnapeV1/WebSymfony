@@ -183,8 +183,9 @@ return [
                     .'|/([^/]++)(*:1586)'
                     .'|delete/([^/]++)(*:1610)'
                     .'|answer/([^/]++)(*:1634)'
+                    .'|seeanswer/([^/]++)(*:1661)'
                 .')'
-                .'|/booktraining/([^/]++)(*:1666)'
+                .'|/booktraining/([^/]++)(*:1693)'
             .')/?$}sDu',
     ],
     [ // $dynamicRoutes
@@ -246,7 +247,8 @@ return [
         1586 => [[['_route' => 'one_reclamation', '_controller' => 'App\\Controller\\ReclamationController::getOne'], ['id'], null, null, false, true, null]],
         1610 => [[['_route' => 'delete_reclamation', '_controller' => 'App\\Controller\\ReclamationController::delete'], ['id'], null, null, false, true, null]],
         1634 => [[['_route' => 'answer_reclamation', '_controller' => 'App\\Controller\\ReclamationController::answer'], ['id'], null, null, false, true, null]],
-        1666 => [
+        1661 => [[['_route' => 'seeAnswer_reclamation', '_controller' => 'App\\Controller\\ReclamationController::seeAnswer'], ['id'], null, null, false, true, null]],
+        1693 => [
             [['_route' => 'book_training', '_controller' => 'App\\Controller\\TrainingController::bookTraining'], ['idFormation'], null, null, false, true, null],
             [null, null, null, null, false, false, 0],
         ],

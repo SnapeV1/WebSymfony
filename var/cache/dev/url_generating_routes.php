@@ -102,6 +102,7 @@ return [
     'add_reclamation' => [[], ['_controller' => 'App\\Controller\\ReclamationController::add'], [], [['text', '/reclamer']], [], [], []],
     'answer_reclamation' => [['id'], ['_controller' => 'App\\Controller\\ReclamationController::answer'], [], [['variable', '/', '[^/]++', 'id', true], ['text', '/reclamationanswer']], [], [], []],
     'my_reclamation' => [[], ['_controller' => 'App\\Controller\\ReclamationController::getReclamationById'], [], [['text', '/mymessages']], [], [], []],
+    'seeAnswer_reclamation' => [['id'], ['_controller' => 'App\\Controller\\ReclamationController::seeAnswer'], [], [['variable', '/', '[^/]++', 'id', true], ['text', '/reclamationseeanswer']], [], [], []],
     'app_training' => [[], ['_controller' => 'App\\Controller\\TrainingController::index'], [], [['text', '/training']], [], [], []],
     'training' => [[], ['_controller' => 'App\\Controller\\TrainingController::shop'], [], [['text', '/train']], [], [], []],
     'like_formation' => [['id'], ['_controller' => 'App\\Controller\\TrainingController::likeFormation'], [], [['variable', '/', '[^/]++', 'id', true], ['text', '/like']], [], [], []],

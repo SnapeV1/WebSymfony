@@ -10,6 +10,8 @@ use App\Repository\ReclamationRepository;
 use App\Repository\UtilisateurRepository;
 use Doctrine\Persistence\ManagerRegistry;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
+use Symfony\Component\Form\Extension\Core\Type\SubmitType;
+use Symfony\Component\Form\Extension\Core\Type\TextareaType;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\HttpFoundation\Session\SessionInterface;
@@ -132,5 +134,42 @@ class ReclamationController extends AbstractController
             'list'=> $list
         ]);
     }
+
+
+    #[Route('/reclamationseeanswer/{id}', name: 'seeAnswer_reclamation')]
+    public function seeAnswer(Request $req, ReclamationRepository $repo,$id):Response
+    {
+        $form = $this->createFormBuilder()
+        ->add('contenu', TextareaType::class,[
+           
+            'label'=>'Your message.',
+        ]) 
+        ->add('reponse', TextareaType::class,[
+            
+            'label'=>'Our team response.',
+        ]) 
+        ->add('Respond', SubmitType::class,[
+            'label' => 'Back',
+        ])
+        ->getForm();
+
+        $rec=$repo->find($id);
+
+        $form->get('contenu')->setData($rec->getContenu());
+        $form->get('reponse')->setData($rec->getReponse());
+
+        $form->handleRequest($req);
+        if($form->isSubmitted())
+        {
+            return $this->redirectToRoute('my_reclamation');
+        }
+        
+
+
+        return $this->renderForm('reclamation/respond.html.twig',[
+            'f'=>$form
+        ]);
+    }
+
 
 }

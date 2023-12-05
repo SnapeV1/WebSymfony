@@ -204,7 +204,12 @@ class __TwigTemplate_a100324ba463d70a7b0c8c334112eefe extends Template
             <div class=\"row g-0 mx-lg-0\">
                 <div class=\"col-lg-6 ps-lg-0\" style=\"min-height: 400px;\">
                     <div class=\"position-relative h-100\">
-                        <img class=\"position-absolute img-fluid w-100 h-100\" src=\"img/about.jpg\" style=\"object-fit: cover;\" alt=\"\">
+                       
+
+                        <img class=\"position-absolute img-fluid w-100 h-100\" src=\"";
+        // line 143
+        echo twig_escape_filter($this->env, $this->extensions['Symfony\Bridge\Twig\Extension\AssetExtension']->getAssetUrl("Team Members/Amine.png"), "html", null, true);
+        echo " style=\"object-fit: cover;\" alt=\"\">
                     </div>
                 </div>
                 <div class=\"col-lg-6 about-text py-5 wow fadeIn\" data-wow-delay=\"0.5s\">
@@ -212,7 +217,7 @@ class __TwigTemplate_a100324ba463d70a7b0c8c334112eefe extends Template
                         <div class=\"section-title text-start\">
                             <h1 class=\"display-5 mb-4\">About Us</h1>
                         </div>
-                        <p class=\"mb-4 pb-2\">Tempor erat elitr rebum at clita. Diam dolor diam ipsum sit. Aliqu diam amet diam et eos. Clita erat ipsum et lorem et sit, sed stet lorem sit clita duo justo erat amet</p>
+                        <p class=\"mb-4 pb-2\">At EcoArt, we are passionate about curating a collection of artisanal products crafted with a deep commitment to ecological sustainability. Our mission is to bring you a unique blend of artistry and environmental consciousness, showcasing the beauty of handmade creations that tread lightly on our planet.</p>
                         <div class=\"row g-4 mb-4 pb-2\">
                             <div class=\"col-sm-6 wow fadeIn\" data-wow-delay=\"0.1s\">
                                 <div class=\"d-flex align-items-center\">
@@ -256,11 +261,14 @@ class __TwigTemplate_a100324ba463d70a7b0c8c334112eefe extends Template
                 <div class=\"col-md-6 col-lg-4 wow fadeInUp\" data-wow-delay=\"0.1s\">
                     <div class=\"service-item\">
                         <div class=\"overflow-hidden\">
-                            <img class=\"img-fluid\" src=\"img/service-1.jpg\" alt=\"\">
+<img class=\"img-fluid\" src=\"";
+        // line 195
+        echo twig_escape_filter($this->env, $this->extensions['Symfony\Bridge\Twig\Extension\AssetExtension']->getAssetUrl("img/prd2.jpg"), "html", null, true);
+        echo "\" alt=\"\">
                         </div>
                         <div class=\"p-4 text-center border border-5 border-light border-top-0\">
-                            <h4 class=\"mb-3\">General Carpentry</h4>
-                            <p>Stet stet justo dolor sed duo. Ut clita sea sit ipsum diam lorem diam.</p>
+                            <h4 class=\"mb-3\">Artisanal Product Curation</h4>
+                            <p>Discover a carefully curated selection of artisanal products, each handcrafted with precision and passion. Our collection includes home decor, fashion accessories, and lifestyle items, all crafted with a keen eye for design and a dedication to sustainability.</p>
                             <a class=\"fw-medium\" href=\"\">Read More<i class=\"fa fa-arrow-right ms-2\"></i></a>
                         </div>
                     </div>
@@ -268,11 +276,14 @@ class __TwigTemplate_a100324ba463d70a7b0c8c334112eefe extends Template
                 <div class=\"col-md-6 col-lg-4 wow fadeInUp\" data-wow-delay=\"0.3s\">
                     <div class=\"service-item\">
                         <div class=\"overflow-hidden\">
-                            <img class=\"img-fluid\" src=\"img/service-2.jpg\" alt=\"\">
+                           <img class=\"img-fluid\" src=\"";
+        // line 207
+        echo twig_escape_filter($this->env, $this->extensions['Symfony\Bridge\Twig\Extension\AssetExtension']->getAssetUrl("img/craft.jpg"), "html", null, true);
+        echo "\" alt=\"\">
                         </div>
                         <div class=\"p-4 text-center border border-5 border-light border-top-0\">
-                            <h4 class=\"mb-3\">Furniture Manufacturing</h4>
-                            <p>Stet stet justo dolor sed duo. Ut clita sea sit ipsum diam lorem diam.</p>
+                            <h4 class=\"mb-3\">Custom Artisanal Creations</h4>
+                            <p>levate your surroundings with bespoke artisanal creations tailored to your unique taste and preferences. Collaborate with our artisans to bring your vision to life, whether it's a custom piece of furniture, personalized accessories, or one-of-a-kind decor items.</p>
                             <a class=\"fw-medium\" href=\"\">Read More<i class=\"fa fa-arrow-right ms-2\"></i></a>
                         </div>
                     </div>
@@ -280,11 +291,14 @@ class __TwigTemplate_a100324ba463d70a7b0c8c334112eefe extends Template
                 <div class=\"col-md-6 col-lg-4 wow fadeInUp\" data-wow-delay=\"0.5s\">
                     <div class=\"service-item\">
                         <div class=\"overflow-hidden\">
-                            <img class=\"img-fluid\" src=\"img/service-3.jpg\" alt=\"\">
+                           <img class=\"img-fluid\" src=\"";
+        // line 219
+        echo twig_escape_filter($this->env, $this->extensions['Symfony\Bridge\Twig\Extension\AssetExtension']->getAssetUrl("img/rajel.jpg"), "html", null, true);
+        echo "\" alt=\"\">
                         </div>
                         <div class=\"p-4 text-center border border-5 border-light border-top-0\">
-                            <h4 class=\"mb-3\">Furniture Remodeling</h4>
-                            <p>Stet stet justo dolor sed duo. Ut clita sea sit ipsum diam lorem diam.</p>
+                            <h4 class=\"mb-3\">Workshops Experiences</h4>
+                            <p>Immerse yourself in the world of artisanal craftsmanship through our workshops and experiences. Learn traditional crafting techniques, discover sustainable practices, and engage with our community of artisans to gain hands-on knowledge.</p>
                             <a class=\"fw-medium\" href=\"\">Read More<i class=\"fa fa-arrow-right ms-2\"></i></a>
                         </div>
                     </div>
@@ -292,11 +306,14 @@ class __TwigTemplate_a100324ba463d70a7b0c8c334112eefe extends Template
                 <div class=\"col-md-6 col-lg-4 wow fadeInUp\" data-wow-delay=\"0.1s\">
                     <div class=\"service-item\">
                         <div class=\"overflow-hidden\">
-                            <img class=\"img-fluid\" src=\"img/service-4.jpg\" alt=\"\">
+                           <img class=\"img-fluid\" src=\"";
+        // line 231
+        echo twig_escape_filter($this->env, $this->extensions['Symfony\Bridge\Twig\Extension\AssetExtension']->getAssetUrl("img/prd1.jpg"), "html", null, true);
+        echo "\" alt=\"\">
                         </div>
                         <div class=\"p-4 text-center border border-5 border-light border-top-0\">
-                            <h4 class=\"mb-3\">Wooden Floor</h4>
-                            <p>Stet stet justo dolor sed duo. Ut clita sea sit ipsum diam lorem diam.</p>
+                            <h4 class=\"mb-3\">Corporate Sustainability Partnerships</h4>
+                            <p>Foster a culture of sustainability within your organization through our corporate partnerships. We offer consultation services to help businesses integrate eco-friendly practices, source sustainable corporate gifts, and align with environmentally responsible values.</p>
                             <a class=\"fw-medium\" href=\"\">Read More<i class=\"fa fa-arrow-right ms-2\"></i></a>
                         </div>
                     </div>
@@ -304,11 +321,14 @@ class __TwigTemplate_a100324ba463d70a7b0c8c334112eefe extends Template
                 <div class=\"col-md-6 col-lg-4 wow fadeInUp\" data-wow-delay=\"0.3s\">
                     <div class=\"service-item\">
                         <div class=\"overflow-hidden\">
-                            <img class=\"img-fluid\" src=\"img/service-5.jpg\" alt=\"\">
+                           <img class=\"img-fluid\" src=\"";
+        // line 243
+        echo twig_escape_filter($this->env, $this->extensions['Symfony\Bridge\Twig\Extension\AssetExtension']->getAssetUrl("img/kosksi.jpg"), "html", null, true);
+        echo "\" alt=\"\">
                         </div>
                         <div class=\"p-4 text-center border border-5 border-light border-top-0\">
-                            <h4 class=\"mb-3\">Wooden Furniture</h4>
-                            <p>Stet stet justo dolor sed duo. Ut clita sea sit ipsum diam lorem diam.</p>
+                            <h4 class=\"mb-3\">Educational Outreach Programs</h4>
+                            <p>EcoArt is dedicated to spreading awareness about sustainable living. Engage with our educational outreach programs, where we share insights on eco-friendly practices, ethical consumerism,environmentally responsible values and the positive impact of supporting artisanal communities .</p>
                             <a class=\"fw-medium\" href=\"\">Read More<i class=\"fa fa-arrow-right ms-2\"></i></a>
                         </div>
                     </div>
@@ -316,11 +336,14 @@ class __TwigTemplate_a100324ba463d70a7b0c8c334112eefe extends Template
                 <div class=\"col-md-6 col-lg-4 wow fadeInUp\" data-wow-delay=\"0.5s\">
                     <div class=\"service-item\">
                         <div class=\"overflow-hidden\">
-                            <img class=\"img-fluid\" src=\"img/service-6.jpg\" alt=\"\">
+                           <img class=\"img-fluid\" src=\"";
+        // line 255
+        echo twig_escape_filter($this->env, $this->extensions['Symfony\Bridge\Twig\Extension\AssetExtension']->getAssetUrl("img/a.jpg"), "html", null, true);
+        echo "\" alt=\"\">
                         </div>
                         <div class=\"p-4 text-center border border-5 border-light border-top-0\">
-                            <h4 class=\"mb-3\">Custom Work</h4>
-                            <p>Stet stet justo dolor sed duo. Ut clita sea sit ipsum diam lorem diam.</p>
+                            <h4 class=\"mb-3\">Event Creation</h4>
+                            <p>At EcoArt, we extend our commitment to sustainable living to the world of events. Our event creation and development services seamlessly blend artisanal craftsmanship, eco-friendly practices, and creative concepts to bring your celebrations to life.EcoArt is your partner in crafting events with a purpose.</p>
                             <a class=\"fw-medium\" href=\"\">Read More<i class=\"fa fa-arrow-right ms-2\"></i></a>
                         </div>
                     </div>
@@ -340,7 +363,14 @@ class __TwigTemplate_a100324ba463d70a7b0c8c334112eefe extends Template
                         <div class=\"section-title text-start\">
                             <h1 class=\"display-5 mb-4\">Why Choose Us</h1>
                         </div>
-                        <p class=\"mb-4 pb-2\">Tempor erat elitr rebum at clita. Diam dolor diam ipsum sit. Aliqu diam amet diam et eos. Clita erat ipsum et lorem et sit, sed stet lorem sit clita duo justo erat amet</p>
+                        <p class=\"mb-4 pb-2\"> <h2>Quality with Purpose:</h2>
+Every service offered by EcoArt is infused with a commitment to quality craftsmanship and a purposeful dedication to sustainable living.
+
+<h2>Community and Connection:</h2>
+Join a community that values creativity, eco-consciousness, and the unique stories behind each artisanal creation.
+
+<h2>Positive Impact:</h2>
+By choosing EcoArt's services, you contribute to a positive impact on the environment, support local communities, and embrace a lifestyle that harmonizes with nature.</p>
                         <div class=\"row g-4\">
                             <div class=\"col-6\">
                                 <div class=\"d-flex align-items-center\">
@@ -427,7 +457,7 @@ class __TwigTemplate_a100324ba463d70a7b0c8c334112eefe extends Template
                         </div>
                         <div class=\"border border-5 border-light border-top-0 p-4\">
                             <p class=\"text-primary fw-medium mb-2\">General Carpentry</p>
-                            <h5 class=\"lh-base mb-0\">Wooden Furniture Manufacturing And Remodeling</a>
+                            <h5 class=\"lh-base mb-0\">Sustainable Art Installations</a>
                         </div>
                     </div>
                 </div>
@@ -442,7 +472,7 @@ class __TwigTemplate_a100324ba463d70a7b0c8c334112eefe extends Template
                         </div>
                         <div class=\"border border-5 border-light border-top-0 p-4\">
                             <p class=\"text-primary fw-medium mb-2\">Custom Carpentry</p>
-                            <h5 class=\"lh-base mb-0\">Wooden Furniture Manufacturing And Remodeling</a>
+                            <h5 class=\"lh-base mb-0\"> Community Engagement Initiatives</a>
                         </div>
                     </div>
                 </div>
@@ -457,7 +487,7 @@ class __TwigTemplate_a100324ba463d70a7b0c8c334112eefe extends Template
                         </div>
                         <div class=\"border border-5 border-light border-top-0 p-4\">
                             <p class=\"text-primary fw-medium mb-2\">General Carpentry</p>
-                            <h5 class=\"lh-base mb-0\">Wooden Furniture Manufacturing And Remodeling</a>
+                            <h5 class=\"lh-base mb-0\">Eco-Friendly Event Showcases</a>
                         </div>
                     </div>
                 </div>
@@ -472,7 +502,7 @@ class __TwigTemplate_a100324ba463d70a7b0c8c334112eefe extends Template
                         </div>
                         <div class=\"border border-5 border-light border-top-0 p-4\">
                             <p class=\"text-primary fw-medium mb-2\">Custom Carpentry</p>
-                            <h5 class=\"lh-base mb-0\">Wooden Furniture Manufacturing And Remodeling</a>
+                            <h5 class=\"lh-base mb-0\">Artisanal Collaboration Series</a>
                         </div>
                     </div>
                 </div>
@@ -487,7 +517,7 @@ class __TwigTemplate_a100324ba463d70a7b0c8c334112eefe extends Template
                         </div>
                         <div class=\"border border-5 border-light border-top-0 p-4\">
                             <p class=\"text-primary fw-medium mb-2\">General Carpentry</p>
-                            <h5 class=\"lh-base mb-0\">Wooden Furniture Manufacturing And Remodeling</a>
+                            <h5 class=\"lh-base mb-0\">Artisan Empowerment Initiatives</a>
                         </div>
                     </div>
                 </div>
@@ -502,7 +532,7 @@ class __TwigTemplate_a100324ba463d70a7b0c8c334112eefe extends Template
                         </div>
                         <div class=\"border border-5 border-light border-top-0 p-4\">
                             <p class=\"text-primary fw-medium mb-2\">Custom Carpentry</p>
-                            <h5 class=\"lh-base mb-0\">Wooden Furniture Manufacturing And Remodeling</a>
+                            <h5 class=\"lh-base mb-0\">Green Corporate Partnerships</a>
                         </div>
                     </div>
                 </div>
@@ -526,7 +556,8 @@ class __TwigTemplate_a100324ba463d70a7b0c8c334112eefe extends Template
                         <div class=\"section-title text-start\">
                             <h1 class=\"display-5 mb-4\">Free Quote</h1>
                         </div>
-                        <p class=\"mb-4 pb-2\">Tempor erat elitr rebum at clita. Diam dolor diam ipsum sit. Aliqu diam amet diam et eos. Clita erat ipsum et lorem et sit, sed stet lorem sit clita duo justo erat amet</p>
+                        <p class=\"mb-4 pb-2\">
+\"EcoArt: Where the canvas meets conscience, and creativity intertwines with care for our planet. In every stroke and shade, we paint a sustainable tomorrow. It's not just about creating art; it's about crafting a legacy of mindful living, where each creation is a brushstroke in the masterpiece of environmental harmony. With EcoArt, let's reimagine the canvas of our world, blending artistry with eco-consciousness, and sculpting a future where creativity thrives in the embrace of a thriving Earth.\"</p>
                         <form>
                             <div class=\"row g-3\">
                                 <div class=\"col-12 col-sm-6\">
@@ -573,7 +604,7 @@ class __TwigTemplate_a100324ba463d70a7b0c8c334112eefe extends Template
                     <div class=\"team-item\">
                         <div class=\"overflow-hidden position-relative\">
     <img class=\"img-fluid\" src=\"";
-        // line 509
+        // line 519
         echo twig_escape_filter($this->env, $this->extensions['Symfony\Bridge\Twig\Extension\AssetExtension']->getAssetUrl("Team Members/Amine.png"), "html", null, true);
         echo "\" alt=\"\">
                             <div class=\"team-social\">
@@ -592,7 +623,7 @@ class __TwigTemplate_a100324ba463d70a7b0c8c334112eefe extends Template
                     <div class=\"team-item\">
                         <div class=\"overflow-hidden position-relative\">
     <img class=\"img-fluid\" src=\"";
-        // line 525
+        // line 535
         echo twig_escape_filter($this->env, $this->extensions['Symfony\Bridge\Twig\Extension\AssetExtension']->getAssetUrl("Team Members/Yoser.png"), "html", null, true);
         echo "\" alt=\"\">
                             <div class=\"team-social\">
@@ -713,7 +744,7 @@ class __TwigTemplate_a100324ba463d70a7b0c8c334112eefe extends Template
 
     public function getDebugInfo()
     {
-        return array (  596 => 525,  577 => 509,  68 => 3,  58 => 2,  35 => 1,);
+        return array (  627 => 535,  608 => 519,  341 => 255,  326 => 243,  311 => 231,  296 => 219,  281 => 207,  266 => 195,  211 => 143,  68 => 3,  58 => 2,  35 => 1,);
     }
 
     public function getSourceContext()
@@ -858,7 +889,9 @@ class __TwigTemplate_a100324ba463d70a7b0c8c334112eefe extends Template
             <div class=\"row g-0 mx-lg-0\">
                 <div class=\"col-lg-6 ps-lg-0\" style=\"min-height: 400px;\">
                     <div class=\"position-relative h-100\">
-                        <img class=\"position-absolute img-fluid w-100 h-100\" src=\"img/about.jpg\" style=\"object-fit: cover;\" alt=\"\">
+                       
+
+                        <img class=\"position-absolute img-fluid w-100 h-100\" src=\"{{ asset('Team Members/Amine.png') }} style=\"object-fit: cover;\" alt=\"\">
                     </div>
                 </div>
                 <div class=\"col-lg-6 about-text py-5 wow fadeIn\" data-wow-delay=\"0.5s\">
@@ -866,7 +899,7 @@ class __TwigTemplate_a100324ba463d70a7b0c8c334112eefe extends Template
                         <div class=\"section-title text-start\">
                             <h1 class=\"display-5 mb-4\">About Us</h1>
                         </div>
-                        <p class=\"mb-4 pb-2\">Tempor erat elitr rebum at clita. Diam dolor diam ipsum sit. Aliqu diam amet diam et eos. Clita erat ipsum et lorem et sit, sed stet lorem sit clita duo justo erat amet</p>
+                        <p class=\"mb-4 pb-2\">At EcoArt, we are passionate about curating a collection of artisanal products crafted with a deep commitment to ecological sustainability. Our mission is to bring you a unique blend of artistry and environmental consciousness, showcasing the beauty of handmade creations that tread lightly on our planet.</p>
                         <div class=\"row g-4 mb-4 pb-2\">
                             <div class=\"col-sm-6 wow fadeIn\" data-wow-delay=\"0.1s\">
                                 <div class=\"d-flex align-items-center\">
@@ -910,11 +943,11 @@ class __TwigTemplate_a100324ba463d70a7b0c8c334112eefe extends Template
                 <div class=\"col-md-6 col-lg-4 wow fadeInUp\" data-wow-delay=\"0.1s\">
                     <div class=\"service-item\">
                         <div class=\"overflow-hidden\">
-                            <img class=\"img-fluid\" src=\"img/service-1.jpg\" alt=\"\">
+<img class=\"img-fluid\" src=\"{{ asset('img/prd2.jpg') }}\" alt=\"\">
                         </div>
                         <div class=\"p-4 text-center border border-5 border-light border-top-0\">
-                            <h4 class=\"mb-3\">General Carpentry</h4>
-                            <p>Stet stet justo dolor sed duo. Ut clita sea sit ipsum diam lorem diam.</p>
+                            <h4 class=\"mb-3\">Artisanal Product Curation</h4>
+                            <p>Discover a carefully curated selection of artisanal products, each handcrafted with precision and passion. Our collection includes home decor, fashion accessories, and lifestyle items, all crafted with a keen eye for design and a dedication to sustainability.</p>
                             <a class=\"fw-medium\" href=\"\">Read More<i class=\"fa fa-arrow-right ms-2\"></i></a>
                         </div>
                     </div>
@@ -922,11 +955,11 @@ class __TwigTemplate_a100324ba463d70a7b0c8c334112eefe extends Template
                 <div class=\"col-md-6 col-lg-4 wow fadeInUp\" data-wow-delay=\"0.3s\">
                     <div class=\"service-item\">
                         <div class=\"overflow-hidden\">
-                            <img class=\"img-fluid\" src=\"img/service-2.jpg\" alt=\"\">
+                           <img class=\"img-fluid\" src=\"{{ asset('img/craft.jpg') }}\" alt=\"\">
                         </div>
                         <div class=\"p-4 text-center border border-5 border-light border-top-0\">
-                            <h4 class=\"mb-3\">Furniture Manufacturing</h4>
-                            <p>Stet stet justo dolor sed duo. Ut clita sea sit ipsum diam lorem diam.</p>
+                            <h4 class=\"mb-3\">Custom Artisanal Creations</h4>
+                            <p>levate your surroundings with bespoke artisanal creations tailored to your unique taste and preferences. Collaborate with our artisans to bring your vision to life, whether it's a custom piece of furniture, personalized accessories, or one-of-a-kind decor items.</p>
                             <a class=\"fw-medium\" href=\"\">Read More<i class=\"fa fa-arrow-right ms-2\"></i></a>
                         </div>
                     </div>
@@ -934,11 +967,11 @@ class __TwigTemplate_a100324ba463d70a7b0c8c334112eefe extends Template
                 <div class=\"col-md-6 col-lg-4 wow fadeInUp\" data-wow-delay=\"0.5s\">
                     <div class=\"service-item\">
                         <div class=\"overflow-hidden\">
-                            <img class=\"img-fluid\" src=\"img/service-3.jpg\" alt=\"\">
+                           <img class=\"img-fluid\" src=\"{{ asset('img/rajel.jpg') }}\" alt=\"\">
                         </div>
                         <div class=\"p-4 text-center border border-5 border-light border-top-0\">
-                            <h4 class=\"mb-3\">Furniture Remodeling</h4>
-                            <p>Stet stet justo dolor sed duo. Ut clita sea sit ipsum diam lorem diam.</p>
+                            <h4 class=\"mb-3\">Workshops Experiences</h4>
+                            <p>Immerse yourself in the world of artisanal craftsmanship through our workshops and experiences. Learn traditional crafting techniques, discover sustainable practices, and engage with our community of artisans to gain hands-on knowledge.</p>
                             <a class=\"fw-medium\" href=\"\">Read More<i class=\"fa fa-arrow-right ms-2\"></i></a>
                         </div>
                     </div>
@@ -946,11 +979,11 @@ class __TwigTemplate_a100324ba463d70a7b0c8c334112eefe extends Template
                 <div class=\"col-md-6 col-lg-4 wow fadeInUp\" data-wow-delay=\"0.1s\">
                     <div class=\"service-item\">
                         <div class=\"overflow-hidden\">
-                            <img class=\"img-fluid\" src=\"img/service-4.jpg\" alt=\"\">
+                           <img class=\"img-fluid\" src=\"{{ asset('img/prd1.jpg') }}\" alt=\"\">
                         </div>
                         <div class=\"p-4 text-center border border-5 border-light border-top-0\">
-                            <h4 class=\"mb-3\">Wooden Floor</h4>
-                            <p>Stet stet justo dolor sed duo. Ut clita sea sit ipsum diam lorem diam.</p>
+                            <h4 class=\"mb-3\">Corporate Sustainability Partnerships</h4>
+                            <p>Foster a culture of sustainability within your organization through our corporate partnerships. We offer consultation services to help businesses integrate eco-friendly practices, source sustainable corporate gifts, and align with environmentally responsible values.</p>
                             <a class=\"fw-medium\" href=\"\">Read More<i class=\"fa fa-arrow-right ms-2\"></i></a>
                         </div>
                     </div>
@@ -958,11 +991,11 @@ class __TwigTemplate_a100324ba463d70a7b0c8c334112eefe extends Template
                 <div class=\"col-md-6 col-lg-4 wow fadeInUp\" data-wow-delay=\"0.3s\">
                     <div class=\"service-item\">
                         <div class=\"overflow-hidden\">
-                            <img class=\"img-fluid\" src=\"img/service-5.jpg\" alt=\"\">
+                           <img class=\"img-fluid\" src=\"{{ asset('img/kosksi.jpg') }}\" alt=\"\">
                         </div>
                         <div class=\"p-4 text-center border border-5 border-light border-top-0\">
-                            <h4 class=\"mb-3\">Wooden Furniture</h4>
-                            <p>Stet stet justo dolor sed duo. Ut clita sea sit ipsum diam lorem diam.</p>
+                            <h4 class=\"mb-3\">Educational Outreach Programs</h4>
+                            <p>EcoArt is dedicated to spreading awareness about sustainable living. Engage with our educational outreach programs, where we share insights on eco-friendly practices, ethical consumerism,environmentally responsible values and the positive impact of supporting artisanal communities .</p>
                             <a class=\"fw-medium\" href=\"\">Read More<i class=\"fa fa-arrow-right ms-2\"></i></a>
                         </div>
                     </div>
@@ -970,11 +1003,11 @@ class __TwigTemplate_a100324ba463d70a7b0c8c334112eefe extends Template
                 <div class=\"col-md-6 col-lg-4 wow fadeInUp\" data-wow-delay=\"0.5s\">
                     <div class=\"service-item\">
                         <div class=\"overflow-hidden\">
-                            <img class=\"img-fluid\" src=\"img/service-6.jpg\" alt=\"\">
+                           <img class=\"img-fluid\" src=\"{{ asset('img/a.jpg') }}\" alt=\"\">
                         </div>
                         <div class=\"p-4 text-center border border-5 border-light border-top-0\">
-                            <h4 class=\"mb-3\">Custom Work</h4>
-                            <p>Stet stet justo dolor sed duo. Ut clita sea sit ipsum diam lorem diam.</p>
+                            <h4 class=\"mb-3\">Event Creation</h4>
+                            <p>At EcoArt, we extend our commitment to sustainable living to the world of events. Our event creation and development services seamlessly blend artisanal craftsmanship, eco-friendly practices, and creative concepts to bring your celebrations to life.EcoArt is your partner in crafting events with a purpose.</p>
                             <a class=\"fw-medium\" href=\"\">Read More<i class=\"fa fa-arrow-right ms-2\"></i></a>
                         </div>
                     </div>
@@ -994,7 +1027,14 @@ class __TwigTemplate_a100324ba463d70a7b0c8c334112eefe extends Template
                         <div class=\"section-title text-start\">
                             <h1 class=\"display-5 mb-4\">Why Choose Us</h1>
                         </div>
-                        <p class=\"mb-4 pb-2\">Tempor erat elitr rebum at clita. Diam dolor diam ipsum sit. Aliqu diam amet diam et eos. Clita erat ipsum et lorem et sit, sed stet lorem sit clita duo justo erat amet</p>
+                        <p class=\"mb-4 pb-2\"> <h2>Quality with Purpose:</h2>
+Every service offered by EcoArt is infused with a commitment to quality craftsmanship and a purposeful dedication to sustainable living.
+
+<h2>Community and Connection:</h2>
+Join a community that values creativity, eco-consciousness, and the unique stories behind each artisanal creation.
+
+<h2>Positive Impact:</h2>
+By choosing EcoArt's services, you contribute to a positive impact on the environment, support local communities, and embrace a lifestyle that harmonizes with nature.</p>
                         <div class=\"row g-4\">
                             <div class=\"col-6\">
                                 <div class=\"d-flex align-items-center\">
@@ -1081,7 +1121,7 @@ class __TwigTemplate_a100324ba463d70a7b0c8c334112eefe extends Template
                         </div>
                         <div class=\"border border-5 border-light border-top-0 p-4\">
                             <p class=\"text-primary fw-medium mb-2\">General Carpentry</p>
-                            <h5 class=\"lh-base mb-0\">Wooden Furniture Manufacturing And Remodeling</a>
+                            <h5 class=\"lh-base mb-0\">Sustainable Art Installations</a>
                         </div>
                     </div>
                 </div>
@@ -1096,7 +1136,7 @@ class __TwigTemplate_a100324ba463d70a7b0c8c334112eefe extends Template
                         </div>
                         <div class=\"border border-5 border-light border-top-0 p-4\">
                             <p class=\"text-primary fw-medium mb-2\">Custom Carpentry</p>
-                            <h5 class=\"lh-base mb-0\">Wooden Furniture Manufacturing And Remodeling</a>
+                            <h5 class=\"lh-base mb-0\"> Community Engagement Initiatives</a>
                         </div>
                     </div>
                 </div>
@@ -1111,7 +1151,7 @@ class __TwigTemplate_a100324ba463d70a7b0c8c334112eefe extends Template
                         </div>
                         <div class=\"border border-5 border-light border-top-0 p-4\">
                             <p class=\"text-primary fw-medium mb-2\">General Carpentry</p>
-                            <h5 class=\"lh-base mb-0\">Wooden Furniture Manufacturing And Remodeling</a>
+                            <h5 class=\"lh-base mb-0\">Eco-Friendly Event Showcases</a>
                         </div>
                     </div>
                 </div>
@@ -1126,7 +1166,7 @@ class __TwigTemplate_a100324ba463d70a7b0c8c334112eefe extends Template
                         </div>
                         <div class=\"border border-5 border-light border-top-0 p-4\">
                             <p class=\"text-primary fw-medium mb-2\">Custom Carpentry</p>
-                            <h5 class=\"lh-base mb-0\">Wooden Furniture Manufacturing And Remodeling</a>
+                            <h5 class=\"lh-base mb-0\">Artisanal Collaboration Series</a>
                         </div>
                     </div>
                 </div>
@@ -1141,7 +1181,7 @@ class __TwigTemplate_a100324ba463d70a7b0c8c334112eefe extends Template
                         </div>
                         <div class=\"border border-5 border-light border-top-0 p-4\">
                             <p class=\"text-primary fw-medium mb-2\">General Carpentry</p>
-                            <h5 class=\"lh-base mb-0\">Wooden Furniture Manufacturing And Remodeling</a>
+                            <h5 class=\"lh-base mb-0\">Artisan Empowerment Initiatives</a>
                         </div>
                     </div>
                 </div>
@@ -1156,7 +1196,7 @@ class __TwigTemplate_a100324ba463d70a7b0c8c334112eefe extends Template
                         </div>
                         <div class=\"border border-5 border-light border-top-0 p-4\">
                             <p class=\"text-primary fw-medium mb-2\">Custom Carpentry</p>
-                            <h5 class=\"lh-base mb-0\">Wooden Furniture Manufacturing And Remodeling</a>
+                            <h5 class=\"lh-base mb-0\">Green Corporate Partnerships</a>
                         </div>
                     </div>
                 </div>
@@ -1180,7 +1220,8 @@ class __TwigTemplate_a100324ba463d70a7b0c8c334112eefe extends Template
                         <div class=\"section-title text-start\">
                             <h1 class=\"display-5 mb-4\">Free Quote</h1>
                         </div>
-                        <p class=\"mb-4 pb-2\">Tempor erat elitr rebum at clita. Diam dolor diam ipsum sit. Aliqu diam amet diam et eos. Clita erat ipsum et lorem et sit, sed stet lorem sit clita duo justo erat amet</p>
+                        <p class=\"mb-4 pb-2\">
+\"EcoArt: Where the canvas meets conscience, and creativity intertwines with care for our planet. In every stroke and shade, we paint a sustainable tomorrow. It's not just about creating art; it's about crafting a legacy of mindful living, where each creation is a brushstroke in the masterpiece of environmental harmony. With EcoArt, let's reimagine the canvas of our world, blending artistry with eco-consciousness, and sculpting a future where creativity thrives in the embrace of a thriving Earth.\"</p>
                         <form>
                             <div class=\"row g-3\">
                                 <div class=\"col-12 col-sm-6\">
