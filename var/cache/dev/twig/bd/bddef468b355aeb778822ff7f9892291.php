@@ -121,28 +121,45 @@ class __TwigTemplate_7aae5c9167e6fbca6bf9d87762df9646 extends Template
             if ( !(null === twig_get_attribute($this->env, $this->source, $context["formation"], "video", [], "any", false, false, false, 30))) {
                 // line 31
                 echo "                            <video controls width=\"150\" height=\"100\">
-                                <source src=\"";
+                               ";
                 // line 32
-                echo twig_escape_filter($this->env, $this->extensions['Symfony\Bridge\Twig\Extension\AssetExtension']->getAssetUrl(("uploads/" . twig_get_attribute($this->env, $this->source, $context["formation"], "video", [], "any", false, false, false, 32))), "html", null, true);
-                echo "\" type=\"video/mp4\">
-                                Your browser does not support the video tag.
+                if ((is_string($__internal_compile_0 = twig_get_attribute($this->env, $this->source, $context["formation"], "video", [], "any", false, false, false, 32)) && is_string($__internal_compile_1 = "file:/") && ('' === $__internal_compile_1 || 0 === strpos($__internal_compile_0, $__internal_compile_1)))) {
+                    // line 33
+                    echo "        ";
+                    // line 34
+                    echo "        ";
+                    $context["filename"] = twig_last($this->env, twig_split_filter($this->env, twig_get_attribute($this->env, $this->source, $context["formation"], "video", [], "any", false, false, false, 34), "/"));
+                    // line 35
+                    echo "        <source src=\"";
+                    echo twig_escape_filter($this->env, $this->extensions['Symfony\Bridge\Twig\Extension\AssetExtension']->getAssetUrl(("uploads/" . (isset($context["filename"]) || array_key_exists("filename", $context) ? $context["filename"] : (function () { throw new RuntimeError('Variable "filename" does not exist.', 35, $this->source); })()))), "html", null, true);
+                    echo "\" type=\"video/mp4\">
+    ";
+                } else {
+                    // line 37
+                    echo "        <source src=\"";
+                    echo twig_escape_filter($this->env, $this->extensions['Symfony\Bridge\Twig\Extension\AssetExtension']->getAssetUrl(("uploads/" . twig_get_attribute($this->env, $this->source, $context["formation"], "video", [], "any", false, false, false, 37))), "html", null, true);
+                    echo "\" type=\"video/mp4\">
+    ";
+                }
+                // line 39
+                echo "    Your browser does not support the video tag.
                             </video>
                         ";
             } else {
-                // line 36
+                // line 42
                 echo "                            No Video
                         ";
             }
-            // line 38
+            // line 44
             echo "                    </td>
                     <td class=\"text-center\">
                         <a href=\"";
-            // line 40
-            echo twig_escape_filter($this->env, $this->extensions['Symfony\Bridge\Twig\Extension\RoutingExtension']->getPath("update_formation", ["id" => twig_get_attribute($this->env, $this->source, $context["formation"], "id", [], "any", false, false, false, 40)]), "html", null, true);
+            // line 46
+            echo twig_escape_filter($this->env, $this->extensions['Symfony\Bridge\Twig\Extension\RoutingExtension']->getPath("update_formation", ["id" => twig_get_attribute($this->env, $this->source, $context["formation"], "id", [], "any", false, false, false, 46)]), "html", null, true);
             echo "\">Edit</a>
                         <a href=\"";
-            // line 41
-            echo twig_escape_filter($this->env, $this->extensions['Symfony\Bridge\Twig\Extension\RoutingExtension']->getPath("delete_formation", ["id" => twig_get_attribute($this->env, $this->source, $context["formation"], "id", [], "any", false, false, false, 41)]), "html", null, true);
+            // line 47
+            echo twig_escape_filter($this->env, $this->extensions['Symfony\Bridge\Twig\Extension\RoutingExtension']->getPath("delete_formation", ["id" => twig_get_attribute($this->env, $this->source, $context["formation"], "id", [], "any", false, false, false, 47)]), "html", null, true);
             echo "\">Delete</a>
                     </td>
                 </tr>
@@ -151,16 +168,16 @@ class __TwigTemplate_7aae5c9167e6fbca6bf9d87762df9646 extends Template
         $_parent = $context['_parent'];
         unset($context['_seq'], $context['_iterated'], $context['_key'], $context['formation'], $context['_parent'], $context['loop']);
         $context = array_intersect_key($context, $_parent) + $_parent;
-        // line 45
+        // line 51
         echo "        </tbody>
     </table>
     
     <a href=\"";
-        // line 48
+        // line 54
         echo $this->extensions['Symfony\Bridge\Twig\Extension\RoutingExtension']->getPath("add_formation");
         echo "\" class=\"btn btn-primary\">Add Formation</a>
         <a href=\"";
-        // line 49
+        // line 55
         echo $this->extensions['Symfony\Bridge\Twig\Extension\RoutingExtension']->getPath("export_formations_excel");
         echo "\" class=\"btn btn-success\">Export to Excel</a>
 
@@ -185,7 +202,7 @@ class __TwigTemplate_7aae5c9167e6fbca6bf9d87762df9646 extends Template
 
     public function getDebugInfo()
     {
-        return array (  164 => 49,  160 => 48,  155 => 45,  145 => 41,  141 => 40,  137 => 38,  133 => 36,  126 => 32,  123 => 31,  121 => 30,  116 => 28,  112 => 27,  108 => 26,  104 => 25,  100 => 24,  96 => 23,  93 => 22,  89 => 21,  68 => 4,  58 => 3,  35 => 1,);
+        return array (  181 => 55,  177 => 54,  172 => 51,  162 => 47,  158 => 46,  154 => 44,  150 => 42,  145 => 39,  139 => 37,  133 => 35,  130 => 34,  128 => 33,  126 => 32,  123 => 31,  121 => 30,  116 => 28,  112 => 27,  108 => 26,  104 => 25,  100 => 24,  96 => 23,  93 => 22,  89 => 21,  68 => 4,  58 => 3,  35 => 1,);
     }
 
     public function getSourceContext()
@@ -221,8 +238,14 @@ class __TwigTemplate_7aae5c9167e6fbca6bf9d87762df9646 extends Template
                     <td class=\"text-center\">
                         {% if formation.video is not null %}
                             <video controls width=\"150\" height=\"100\">
-                                <source src=\"{{ asset('uploads/' ~ formation.video) }}\" type=\"video/mp4\">
-                                Your browser does not support the video tag.
+                               {% if formation.video starts with 'file:/' %}
+        {# Extract filename from the video path #}
+        {% set filename = formation.video|split('/')|last %}
+        <source src=\"{{ asset('uploads/' ~ filename) }}\" type=\"video/mp4\">
+    {% else %}
+        <source src=\"{{ asset('uploads/' ~ formation.video) }}\" type=\"video/mp4\">
+    {% endif %}
+    Your browser does not support the video tag.
                             </video>
                         {% else %}
                             No Video

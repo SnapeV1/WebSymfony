@@ -99,7 +99,7 @@ class __TwigTemplate_d6d3262ea8f25067040fd241f409308a extends Template
             echo "</td>
                             <td>";
             // line 26
-            echo twig_escape_filter($this->env, (((twig_get_attribute($this->env, $this->source, $context["event"], "getDateA", [], "method", true, true, false, 26) &&  !(null === twig_get_attribute($this->env, $this->source, $context["event"], "getDateA", [], "method", false, false, false, 26)))) ? (twig_get_attribute($this->env, $this->source, $context["event"], "getDateA", [], "method", false, false, false, 26)) : (twig_date_format_filter($this->env, twig_get_attribute($this->env, $this->source, $context["event"], "getDate", [], "method", false, false, false, 26), "d-m-Y"))), "html", null, true);
+            echo twig_escape_filter($this->env, (((twig_get_attribute($this->env, $this->source, $context["event"], "getDateA", [], "method", true, true, false, 26) &&  !(null === twig_get_attribute($this->env, $this->source, $context["event"], "getDateA", [], "method", false, false, false, 26)))) ? (twig_get_attribute($this->env, $this->source, $context["event"], "getDateA", [], "method", false, false, false, 26)) : (twig_get_attribute($this->env, $this->source, $context["event"], "getDate", [], "method", false, false, false, 26))), "html", null, true);
             echo "</td>
                             <td>";
             // line 27
@@ -208,7 +208,7 @@ class __TwigTemplate_d6d3262ea8f25067040fd241f409308a extends Template
                     {% for event in events %}
                         <tr class=\"table-active\">
                             <td>{{ event.getNomA() ?? event.getNom() }}</td>
-                            <td>{{ event.getDateA() ?? event.getDate()|date('d-m-Y') }}</td>
+                            <td>{{ event.getDateA() ?? event.getDate() }}</td>
                             <td>{{ event.getLieuA() ?? event.getLieu() }}</td>
                             <td>{{ event.getDescriptionA() ?? event.getDescription() }}</td>
                             <td><img src=\"{{ asset(event.getImageA() ?? event.getImage()) }}\" class=\"custom-block-image img-fluid\" alt=\"\"></td>

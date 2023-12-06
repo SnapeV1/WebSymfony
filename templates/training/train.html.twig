@@ -11,10 +11,20 @@
                             </div><div class="row">
                         {% endif %}
 
-                        {% set videoPath = asset('uploads/' ~ training.video) %}
-                        <video controls poster="{{ videoPath }}.jpg" class="card-img-top" style="max-height: 300px; width: 100%; object-fit: cover;">
-                            <source src="{{ videoPath }}" type="video/mp4">
-                            Your browser does not support the video tag.
+                             {% if training.video is not null %}
+                            <video controls width="150" height="100">
+                               {% if training.video starts with 'file:/' %}
+        {# Extract filename from the video path #}
+        {% set filename = training.video|split('/')|last %}
+        <source src="{{ asset('uploads/' ~ filename) }}" type="video/mp4">
+    {% else %}
+        <source src="{{ asset('uploads/' ~ training.video) }}" type="video/mp4">
+    {% endif %}
+    Your browser does not support the video tag.
+                            </video>
+                        {% else %}
+                            No Video
+                        {% endif %}
                         </video>
 
                         <div class="card-body text-center d-flex flex-column align-items-center">

@@ -50,11 +50,38 @@ $userid=$user->getId();
     
                
                 if ($group) {
-                   
+                    $logoPath = $group->getLogo(); // Assuming getLogo() returns the logo path
+                  
+                    if (strpos($logoPath, 'C:\\') === 0) {
+                        // Logo path starts with 'c:/', move the file
+                        $uploadsDirectory = $this->getParameter('uploads_directory');
+                        
+                        // Extract filename from the original path
+                        $filename = pathinfo($logoPath, PATHINFO_BASENAME);
+                        
+                        // Define the new path
+                        $newPath = $uploadsDirectory . '/' . $filename;
+                     
+                        if (copy($logoPath, $newPath)) {
+                          
+                        } else {
+                            // Handle the case where the file move fails
+                            // You can log an error, throw an exception, or handle it as needed
+                        }
+                        
+                    }
                     $groups[] = $group;
                     $member2 = $entityManager->getRepository(Membre::class)->findBy(['group' => $group->getid()]);
                     $group->updatesize($member2);
                
+
+
+
+
+
+
+                    
+                    
                 }
             }
             

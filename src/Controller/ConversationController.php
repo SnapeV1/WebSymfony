@@ -229,7 +229,8 @@ return new Response('Message not found', Response::HTTP_NOT_FOUND);
 
 // ...
 #[Route("/sse-conversations/{user1Id}/{user2Id}", name: "sse_conversations")]
-public function sseConversations(
+public function sseConversations(){
+    /*
     Request $request,
     int $user1Id,
     int $user2Id,
@@ -280,7 +281,7 @@ public function sseConversations(
     $response->headers->set('Cache-Control', 'no-cache');
     $response->headers->set('Connection', 'keep-alive');
 
-    return $response;
+    return $response;*/
 }
 
 

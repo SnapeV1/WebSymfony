@@ -100,52 +100,75 @@ class __TwigTemplate_3fecccfc7db71e00b890fa926c559155 extends Template
             }
             // line 13
             echo "
-                        ";
+                             ";
             // line 14
-            $context["videoPath"] = $this->extensions['Symfony\Bridge\Twig\Extension\AssetExtension']->getAssetUrl(("uploads/" . twig_get_attribute($this->env, $this->source, $context["training"], "video", [], "any", false, false, false, 14)));
-            // line 15
-            echo "                        <video controls poster=\"";
-            echo twig_escape_filter($this->env, (isset($context["videoPath"]) || array_key_exists("videoPath", $context) ? $context["videoPath"] : (function () { throw new RuntimeError('Variable "videoPath" does not exist.', 15, $this->source); })()), "html", null, true);
-            echo ".jpg\" class=\"card-img-top\" style=\"max-height: 300px; width: 100%; object-fit: cover;\">
-                            <source src=\"";
-            // line 16
-            echo twig_escape_filter($this->env, (isset($context["videoPath"]) || array_key_exists("videoPath", $context) ? $context["videoPath"] : (function () { throw new RuntimeError('Variable "videoPath" does not exist.', 16, $this->source); })()), "html", null, true);
-            echo "\" type=\"video/mp4\">
-                            Your browser does not support the video tag.
-                        </video>
+            if ( !(null === twig_get_attribute($this->env, $this->source, $context["training"], "video", [], "any", false, false, false, 14))) {
+                // line 15
+                echo "                            <video controls width=\"150\" height=\"100\">
+                               ";
+                // line 16
+                if ((is_string($__internal_compile_0 = twig_get_attribute($this->env, $this->source, $context["training"], "video", [], "any", false, false, false, 16)) && is_string($__internal_compile_1 = "file:/") && ('' === $__internal_compile_1 || 0 === strpos($__internal_compile_0, $__internal_compile_1)))) {
+                    // line 17
+                    echo "        ";
+                    // line 18
+                    echo "        ";
+                    $context["filename"] = twig_last($this->env, twig_split_filter($this->env, twig_get_attribute($this->env, $this->source, $context["training"], "video", [], "any", false, false, false, 18), "/"));
+                    // line 19
+                    echo "        <source src=\"";
+                    echo twig_escape_filter($this->env, $this->extensions['Symfony\Bridge\Twig\Extension\AssetExtension']->getAssetUrl(("uploads/" . (isset($context["filename"]) || array_key_exists("filename", $context) ? $context["filename"] : (function () { throw new RuntimeError('Variable "filename" does not exist.', 19, $this->source); })()))), "html", null, true);
+                    echo "\" type=\"video/mp4\">
+    ";
+                } else {
+                    // line 21
+                    echo "        <source src=\"";
+                    echo twig_escape_filter($this->env, $this->extensions['Symfony\Bridge\Twig\Extension\AssetExtension']->getAssetUrl(("uploads/" . twig_get_attribute($this->env, $this->source, $context["training"], "video", [], "any", false, false, false, 21))), "html", null, true);
+                    echo "\" type=\"video/mp4\">
+    ";
+                }
+                // line 23
+                echo "    Your browser does not support the video tag.
+                            </video>
+                        ";
+            } else {
+                // line 26
+                echo "                            No Video
+                        ";
+            }
+            // line 28
+            echo "                        </video>
 
                         <div class=\"card-body text-center d-flex flex-column align-items-center\">
                             <h5 class=\"card-title\">";
-            // line 21
-            echo twig_escape_filter($this->env, twig_get_attribute($this->env, $this->source, $context["training"], "titre", [], "any", false, false, false, 21), "html", null, true);
+            // line 31
+            echo twig_escape_filter($this->env, twig_get_attribute($this->env, $this->source, $context["training"], "titre", [], "any", false, false, false, 31), "html", null, true);
             echo "</h5>
                             <p class=\"card-text\">Prix : ";
-            // line 22
-            echo twig_escape_filter($this->env, twig_get_attribute($this->env, $this->source, $context["training"], "prix", [], "any", false, false, false, 22), "html", null, true);
+            // line 32
+            echo twig_escape_filter($this->env, twig_get_attribute($this->env, $this->source, $context["training"], "prix", [], "any", false, false, false, 32), "html", null, true);
             echo " dt</p>
 
                                             <!-- Regrouper le bouton S'inscrire, l'icône de cœur et le nombre de likes dans une ligne -->
                             <div class=\"d-flex align-items-center\">
                                 <a href=\"";
-            // line 26
-            echo twig_escape_filter($this->env, $this->extensions['Symfony\Bridge\Twig\Extension\RoutingExtension']->getPath("book_training", ["idFormation" => twig_get_attribute($this->env, $this->source, $context["training"], "id", [], "any", false, false, false, 26)]), "html", null, true);
+            // line 36
+            echo twig_escape_filter($this->env, $this->extensions['Symfony\Bridge\Twig\Extension\RoutingExtension']->getPath("book_training", ["idFormation" => twig_get_attribute($this->env, $this->source, $context["training"], "id", [], "any", false, false, false, 36)]), "html", null, true);
             echo "\" class=\"btn btn-primary\" style=\"margin-right: 10px;\">S'inscrire</a>
 
                                 <!-- Heart icon for likes -->
                                 <i class=\"fas fa-heart\" id=\"likeIcon";
-            // line 29
-            echo twig_escape_filter($this->env, twig_get_attribute($this->env, $this->source, $context["training"], "id", [], "any", false, false, false, 29), "html", null, true);
+            // line 39
+            echo twig_escape_filter($this->env, twig_get_attribute($this->env, $this->source, $context["training"], "id", [], "any", false, false, false, 39), "html", null, true);
             echo "\" onclick=\"likeFormation(";
-            echo twig_escape_filter($this->env, twig_get_attribute($this->env, $this->source, $context["training"], "id", [], "any", false, false, false, 29), "html", null, true);
+            echo twig_escape_filter($this->env, twig_get_attribute($this->env, $this->source, $context["training"], "id", [], "any", false, false, false, 39), "html", null, true);
             echo ")\"></i>
 
                                 
                                 <!-- Like count -->
                                 <span id=\"likeCount";
-            // line 33
-            echo twig_escape_filter($this->env, twig_get_attribute($this->env, $this->source, $context["training"], "id", [], "any", false, false, false, 33), "html", null, true);
+            // line 43
+            echo twig_escape_filter($this->env, twig_get_attribute($this->env, $this->source, $context["training"], "id", [], "any", false, false, false, 43), "html", null, true);
             echo "\" class=\"ml-2\">";
-            echo twig_escape_filter($this->env, twig_get_attribute($this->env, $this->source, $context["training"], "likes", [], "any", false, false, false, 33), "html", null, true);
+            echo twig_escape_filter($this->env, twig_get_attribute($this->env, $this->source, $context["training"], "likes", [], "any", false, false, false, 43), "html", null, true);
             echo "</span>
 
                                 <!-- Icône de commentaire -->
@@ -168,15 +191,15 @@ class __TwigTemplate_3fecccfc7db71e00b890fa926c559155 extends Template
         $_parent = $context['_parent'];
         unset($context['_seq'], $context['_iterated'], $context['_key'], $context['training'], $context['_parent'], $context['loop']);
         $context = array_intersect_key($context, $_parent) + $_parent;
-        // line 43
+        // line 53
         echo "        </div>
     </div>
 
     <div class=\"col-md-12 d-flex justify-content-end mt-1\">
         ";
-        // line 47
-        if ((isset($context["L"]) || array_key_exists("L", $context) ? $context["L"] : (function () { throw new RuntimeError('Variable "L" does not exist.', 47, $this->source); })())) {
-            // line 48
+        // line 57
+        if ((isset($context["L"]) || array_key_exists("L", $context) ? $context["L"] : (function () { throw new RuntimeError('Variable "L" does not exist.', 57, $this->source); })())) {
+            // line 58
             echo "            <a href=\"";
             echo $this->extensions['Symfony\Bridge\Twig\Extension\RoutingExtension']->getPath("add_formation");
             echo "\" id=\"add-training-link\" class=\"btn btn-link\">
@@ -184,15 +207,15 @@ class __TwigTemplate_3fecccfc7db71e00b890fa926c559155 extends Template
             </a>
         ";
         }
-        // line 52
+        // line 62
         echo "    </div>
 
     <script>
         document.addEventListener('DOMContentLoaded', function () {
             var addProductButton = document.getElementById('add-training-link');
             if (addProductButton && \"";
-        // line 57
-        echo twig_escape_filter($this->env, (isset($context["L"]) || array_key_exists("L", $context) ? $context["L"] : (function () { throw new RuntimeError('Variable "L" does not exist.', 57, $this->source); })()), "html", null, true);
+        // line 67
+        echo twig_escape_filter($this->env, (isset($context["L"]) || array_key_exists("L", $context) ? $context["L"] : (function () { throw new RuntimeError('Variable "L" does not exist.', 67, $this->source); })()), "html", null, true);
         echo "\" === \"1\") {
                 addProductButton.style.display = 'block';
             }
@@ -253,7 +276,7 @@ class __TwigTemplate_3fecccfc7db71e00b890fa926c559155 extends Template
 
     public function getDebugInfo()
     {
-        return array (  195 => 57,  188 => 52,  180 => 48,  178 => 47,  172 => 43,  146 => 33,  137 => 29,  131 => 26,  124 => 22,  120 => 21,  112 => 16,  107 => 15,  105 => 14,  102 => 13,  98 => 11,  96 => 10,  92 => 8,  75 => 7,  68 => 4,  58 => 3,  35 => 1,);
+        return array (  218 => 67,  211 => 62,  203 => 58,  201 => 57,  195 => 53,  169 => 43,  160 => 39,  154 => 36,  147 => 32,  143 => 31,  138 => 28,  134 => 26,  129 => 23,  123 => 21,  117 => 19,  114 => 18,  112 => 17,  110 => 16,  107 => 15,  105 => 14,  102 => 13,  98 => 11,  96 => 10,  92 => 8,  75 => 7,  68 => 4,  58 => 3,  35 => 1,);
     }
 
     public function getSourceContext()
@@ -271,10 +294,20 @@ class __TwigTemplate_3fecccfc7db71e00b890fa926c559155 extends Template
                             </div><div class=\"row\">
                         {% endif %}
 
-                        {% set videoPath = asset('uploads/' ~ training.video) %}
-                        <video controls poster=\"{{ videoPath }}.jpg\" class=\"card-img-top\" style=\"max-height: 300px; width: 100%; object-fit: cover;\">
-                            <source src=\"{{ videoPath }}\" type=\"video/mp4\">
-                            Your browser does not support the video tag.
+                             {% if training.video is not null %}
+                            <video controls width=\"150\" height=\"100\">
+                               {% if training.video starts with 'file:/' %}
+        {# Extract filename from the video path #}
+        {% set filename = training.video|split('/')|last %}
+        <source src=\"{{ asset('uploads/' ~ filename) }}\" type=\"video/mp4\">
+    {% else %}
+        <source src=\"{{ asset('uploads/' ~ training.video) }}\" type=\"video/mp4\">
+    {% endif %}
+    Your browser does not support the video tag.
+                            </video>
+                        {% else %}
+                            No Video
+                        {% endif %}
                         </video>
 
                         <div class=\"card-body text-center d-flex flex-column align-items-center\">

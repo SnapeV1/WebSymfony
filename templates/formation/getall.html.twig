@@ -29,8 +29,14 @@
                     <td class="text-center">
                         {% if formation.video is not null %}
                             <video controls width="150" height="100">
-                                <source src="{{ asset('uploads/' ~ formation.video) }}" type="video/mp4">
-                                Your browser does not support the video tag.
+                               {% if formation.video starts with 'file:/' %}
+        {# Extract filename from the video path #}
+        {% set filename = formation.video|split('/')|last %}
+        <source src="{{ asset('uploads/' ~ filename) }}" type="video/mp4">
+    {% else %}
+        <source src="{{ asset('uploads/' ~ formation.video) }}" type="video/mp4">
+    {% endif %}
+    Your browser does not support the video tag.
                             </video>
                         {% else %}
                             No Video

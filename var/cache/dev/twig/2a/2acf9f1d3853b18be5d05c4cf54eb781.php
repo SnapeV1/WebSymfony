@@ -136,7 +136,7 @@ class __TwigTemplate_a100324ba463d70a7b0c8c334112eefe extends Template
                     <div class=\"container\">
                         <div class=\"row justify-content-center\">
                             <div class=\"col-12 col-lg-8 text-center\">
-                                <h5 class=\"text-white text-uppercase mb-3 animated slideInDown\">Welcome To WooDY</h5>
+                                <h5 class=\"text-white text-uppercase mb-3 animated slideInDown\">Welcome To EcoArt</h5>
                                 <h1 class=\"display-3 text-white animated slideInDown mb-4\">Best Carpenter & Craftsman Services</h1>
                                 <p class=\"fs-5 fw-medium text-white mb-4 pb-2\">Vero elitr justo clita lorem. Ipsum dolor at sed stet sit diam no. Kasd rebum ipsum et diam justo clita et kasd rebum sea elitr.</p>
                                 <a href=\"\" class=\"btn btn-primary py-md-3 px-md-5 me-3 animated slideInLeft\">Read More</a>
@@ -208,8 +208,8 @@ class __TwigTemplate_a100324ba463d70a7b0c8c334112eefe extends Template
 
                         <img class=\"position-absolute img-fluid w-100 h-100\" src=\"";
         // line 143
-        echo twig_escape_filter($this->env, $this->extensions['Symfony\Bridge\Twig\Extension\AssetExtension']->getAssetUrl("Team Members/Amine.png"), "html", null, true);
-        echo " style=\"object-fit: cover;\" alt=\"\">
+        echo twig_escape_filter($this->env, $this->extensions['Symfony\Bridge\Twig\Extension\AssetExtension']->getAssetUrl("img/EcoArt.png"), "html", null, true);
+        echo "\" style=\"object-fit: cover;\" alt=\"\">
                     </div>
                 </div>
                 <div class=\"col-lg-6 about-text py-5 wow fadeIn\" data-wow-delay=\"0.5s\">
@@ -821,7 +821,7 @@ By choosing EcoArt's services, you contribute to a positive impact on the enviro
                     <div class=\"container\">
                         <div class=\"row justify-content-center\">
                             <div class=\"col-12 col-lg-8 text-center\">
-                                <h5 class=\"text-white text-uppercase mb-3 animated slideInDown\">Welcome To WooDY</h5>
+                                <h5 class=\"text-white text-uppercase mb-3 animated slideInDown\">Welcome To EcoArt</h5>
                                 <h1 class=\"display-3 text-white animated slideInDown mb-4\">Best Carpenter & Craftsman Services</h1>
                                 <p class=\"fs-5 fw-medium text-white mb-4 pb-2\">Vero elitr justo clita lorem. Ipsum dolor at sed stet sit diam no. Kasd rebum ipsum et diam justo clita et kasd rebum sea elitr.</p>
                                 <a href=\"\" class=\"btn btn-primary py-md-3 px-md-5 me-3 animated slideInLeft\">Read More</a>
@@ -891,7 +891,7 @@ By choosing EcoArt's services, you contribute to a positive impact on the enviro
                     <div class=\"position-relative h-100\">
                        
 
-                        <img class=\"position-absolute img-fluid w-100 h-100\" src=\"{{ asset('Team Members/Amine.png') }} style=\"object-fit: cover;\" alt=\"\">
+                        <img class=\"position-absolute img-fluid w-100 h-100\" src=\"{{ asset('img/EcoArt.png') }}\" style=\"object-fit: cover;\" alt=\"\">
                     </div>
                 </div>
                 <div class=\"col-lg-6 about-text py-5 wow fadeIn\" data-wow-delay=\"0.5s\">

@@ -14,6 +14,7 @@ use App\Service\FileUploader;
 use PhpOffice\PhpSpreadsheet\Spreadsheet;
 use PhpOffice\PhpSpreadsheet\Writer\Xlsx;
 use Symfony\Component\HttpFoundation\BinaryFileResponse;
+use Symfony\Component\Filesystem\Filesystem;
 
 class FormationController extends AbstractController
 {
@@ -85,13 +86,32 @@ class FormationController extends AbstractController
 
 
     #[Route('/allformation', name:'all_formation')]
-    public function getAll(FormationRepository $repo):Response
+    public function getAll(FormationRepository $repo, Filesystem $filesystem): Response
     {
-        $list=$repo->findAll();
-        return $this->render('formation/getall.html.twig',[
-            'formations'=>$list
-        ]);
+        $list = $repo->findAll();
 
+        // Specify the destination directory
+        $destinationDirectory = $this->getParameter('kernel.project_dir') . '/public/uploads/';
+
+       
+        foreach ($list as $formation) {
+            $videoPath = $formation->getVideo(); // Assuming getVideo() returns the video path
+
+            // Check if the video path starts with "file:/C"
+            if (strpos($videoPath, 'file:/C') === 0) {
+                // Construct the destination path
+                $videoPathWithoutFile = substr($videoPath, 6);
+
+                $destinationPath = $destinationDirectory . pathinfo($videoPathWithoutFile, PATHINFO_BASENAME);
+
+                // Copy the file
+                $filesystem->copy($videoPathWithoutFile, $destinationPath, true);
+            }
+        }
+
+        return $this->render('formation/getall.html.twig', [
+            'formations' => $list
+        ]);
     }
 
     #[Route('/deleteformation/{id}', name: 'delete_formation')]
