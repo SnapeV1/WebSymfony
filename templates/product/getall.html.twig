@@ -62,10 +62,12 @@
                     <td>{{ p.description }}</td>
                     <td>
                         {% if p.image is not null %}
-                            <img src="{{ asset('uploads/' ~ p.image) }}" alt="{{ p.nom }}" width="200" height="120">
+                        <img src="{{ p.image starts with 'C:\\' ? asset('uploads/' ~ p.image|split('\\')|last) : asset('uploads/'~ p.image) }}"  style="width: 100px; height: auto; border-radius: 5px; box-shadow: 0 0 10px 0 rgba(0,0,0,0.1);">
+
                         {% else %}
                             No image
                         {% endif %}
+                        
                     </td>
                     <td>
                         <!-- Action links -->

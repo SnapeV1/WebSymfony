@@ -34,15 +34,47 @@ class BoutiqueController extends AbstractController
             $l=true;
         }
 
-        $product = $productRepository->findAll();
+        $products = $productRepository->findAll();
         $notifications = $notificationRepository->findAll();
 
-        return $this->render('boutique/shop.html.twig', [
-            'produit' => $product,
-            'notifications' => $notifications,
-            'L'=>$l
-        ]);
+
+
+
+        $uploadsDirectory = $this->getParameter('uploads_directory');
+
+        foreach ($products as $product) {
+            $imgPath = $product->getImage(); // Assuming getVideo() returns the video path
+    
+            // Check if the video path starts with "file:/C"
+            if (strpos($imgPath, 'C:\\') === 0) {
+                // Remove the "file:/" prefix
+     // Extract filename from the original path
+     $filename = pathinfo($imgPath, PATHINFO_BASENAME);
+     
+     // Define the new path
+     $newPath = $uploadsDirectory . '/' . $filename;
+    
+     if (copy($imgPath, $newPath)) {
+        
+       
+     } else {
+         // Handle the case where the file move fails
+         // You can log an error, throw an exception, or handle it as needed
+     }
+     
+            }
+
+
+
+
+        
     }
+    return $this->render('boutique/shop.html.twig', [
+        'produit' => $products,
+        'notifications' => $notifications,
+        'L'=>$l
+    ]);
+}
 
     #[Route('/fetch-notifications', name: 'fetch_notifications')]
     public function fetchNotifications(ManagerRegistry $managerRegistry): JsonResponse

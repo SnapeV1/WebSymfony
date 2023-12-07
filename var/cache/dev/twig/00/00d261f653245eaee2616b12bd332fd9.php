@@ -112,9 +112,12 @@ class __TwigTemplate_21e2b87cf08efd6c9ea987c44eca0f1f extends Template
                                 <div class=\"sb-nav-link-icon\"><i class=\"fas fa-chart-area\"></i></div>
                                 Product
                             </a>
-                            <a class=\"nav-link\" href=\"index.html\">
+                             <a class=\"nav-link\" href=\"";
+        // line 38
+        echo $this->extensions['Symfony\Bridge\Twig\Extension\RoutingExtension']->getPath("all_formation");
+        echo "\">
                                 <div class=\"sb-nav-link-icon\"><i class=\"fas fa-table\"></i></div>
-                                Training
+                                Formations
                             </a>
                              <a class=\"nav-link\" href=\"";
         // line 42
@@ -184,7 +187,7 @@ class __TwigTemplate_21e2b87cf08efd6c9ea987c44eca0f1f extends Template
 
     public function getDebugInfo()
     {
-        return array (  158 => 59,  146 => 60,  144 => 59,  128 => 46,  121 => 42,  110 => 34,  100 => 27,  86 => 16,  78 => 11,  69 => 4,  59 => 3,  36 => 1,);
+        return array (  161 => 59,  149 => 60,  147 => 59,  131 => 46,  124 => 42,  117 => 38,  110 => 34,  100 => 27,  86 => 16,  78 => 11,  69 => 4,  59 => 3,  36 => 1,);
     }
 
     public function getSourceContext()
@@ -226,9 +229,9 @@ class __TwigTemplate_21e2b87cf08efd6c9ea987c44eca0f1f extends Template
                                 <div class=\"sb-nav-link-icon\"><i class=\"fas fa-chart-area\"></i></div>
                                 Product
                             </a>
-                            <a class=\"nav-link\" href=\"index.html\">
+                             <a class=\"nav-link\" href=\"{{path('all_formation')}}\">
                                 <div class=\"sb-nav-link-icon\"><i class=\"fas fa-table\"></i></div>
-                                Training
+                                Formations
                             </a>
                              <a class=\"nav-link\" href=\"{{path('Admingroups_getall')}}\">
                                 <div class=\"sb-nav-link-icon\"><i class=\"fas fa-table\"></i></div>

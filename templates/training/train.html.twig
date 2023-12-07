@@ -12,7 +12,7 @@
                         {% endif %}
 
                              {% if training.video is not null %}
-                            <video controls width="150" height="100">
+                            <video controls width="400" height="300">
                                {% if training.video starts with 'file:/' %}
         {# Extract filename from the video path #}
         {% set filename = training.video|split('/')|last %}

@@ -92,25 +92,41 @@ class __TwigTemplate_437c684bc08d5227f212209650c1f205 extends Template
         if ( !(null === twig_get_attribute($this->env, $this->source, (isset($context["formation"]) || array_key_exists("formation", $context) ? $context["formation"] : (function () { throw new RuntimeError('Variable "formation" does not exist.', 18, $this->source); })()), "video", [], "any", false, false, false, 18))) {
             // line 19
             echo "            <video controls width=\"560\" height=\"315\">
-                <source src=\"";
+                ";
             // line 20
-            echo twig_escape_filter($this->env, $this->extensions['Symfony\Bridge\Twig\Extension\AssetExtension']->getAssetUrl(("uploads/" . twig_get_attribute($this->env, $this->source, (isset($context["formation"]) || array_key_exists("formation", $context) ? $context["formation"] : (function () { throw new RuntimeError('Variable "formation" does not exist.', 20, $this->source); })()), "video", [], "any", false, false, false, 20))), "html", null, true);
-            echo "\" type=\"video/mp4\">
-                Your browser does not support the video tag.
-            </video>
+            if ((is_string($__internal_compile_0 = twig_get_attribute($this->env, $this->source, (isset($context["formation"]) || array_key_exists("formation", $context) ? $context["formation"] : (function () { throw new RuntimeError('Variable "formation" does not exist.', 20, $this->source); })()), "video", [], "any", false, false, false, 20)) && is_string($__internal_compile_1 = "file:/") && ('' === $__internal_compile_1 || 0 === strpos($__internal_compile_0, $__internal_compile_1)))) {
+                // line 21
+                echo "        ";
+                // line 22
+                echo "        ";
+                $context["filename"] = twig_last($this->env, twig_split_filter($this->env, twig_get_attribute($this->env, $this->source, (isset($context["formation"]) || array_key_exists("formation", $context) ? $context["formation"] : (function () { throw new RuntimeError('Variable "formation" does not exist.', 22, $this->source); })()), "video", [], "any", false, false, false, 22), "/"));
+                // line 23
+                echo "        <source src=\"";
+                echo twig_escape_filter($this->env, $this->extensions['Symfony\Bridge\Twig\Extension\AssetExtension']->getAssetUrl(("uploads/" . (isset($context["filename"]) || array_key_exists("filename", $context) ? $context["filename"] : (function () { throw new RuntimeError('Variable "filename" does not exist.', 23, $this->source); })()))), "html", null, true);
+                echo "\" type=\"video/mp4\">
+    ";
+            } else {
+                // line 25
+                echo "        <source src=\"";
+                echo twig_escape_filter($this->env, $this->extensions['Symfony\Bridge\Twig\Extension\AssetExtension']->getAssetUrl(("uploads/" . twig_get_attribute($this->env, $this->source, (isset($context["training"]) || array_key_exists("training", $context) ? $context["training"] : (function () { throw new RuntimeError('Variable "training" does not exist.', 25, $this->source); })()), "video", [], "any", false, false, false, 25))), "html", null, true);
+                echo "\" type=\"video/mp4\">
+    ";
+            }
+            // line 27
+            echo "            </video>
         ";
         } else {
-            // line 24
+            // line 29
             echo "            No Video
         ";
         }
-        // line 26
+        // line 31
         echo "
         ";
-        // line 28
+        // line 33
         echo "        ";
-        if ( !twig_test_empty((isset($context["commentaires"]) || array_key_exists("commentaires", $context) ? $context["commentaires"] : (function () { throw new RuntimeError('Variable "commentaires" does not exist.', 28, $this->source); })()))) {
-            // line 29
+        if ( !twig_test_empty((isset($context["commentaires"]) || array_key_exists("commentaires", $context) ? $context["commentaires"] : (function () { throw new RuntimeError('Variable "commentaires" does not exist.', 33, $this->source); })()))) {
+            // line 34
             echo "            <h2>Commentaires</h2>
             <table class=\"table\">
                 <thead>
@@ -123,37 +139,37 @@ class __TwigTemplate_437c684bc08d5227f212209650c1f205 extends Template
                 </thead>
                 <tbody>
                     ";
-            // line 40
+            // line 45
             $context['_parent'] = $context;
-            $context['_seq'] = twig_ensure_traversable((isset($context["commentaires"]) || array_key_exists("commentaires", $context) ? $context["commentaires"] : (function () { throw new RuntimeError('Variable "commentaires" does not exist.', 40, $this->source); })()));
+            $context['_seq'] = twig_ensure_traversable((isset($context["commentaires"]) || array_key_exists("commentaires", $context) ? $context["commentaires"] : (function () { throw new RuntimeError('Variable "commentaires" does not exist.', 45, $this->source); })()));
             foreach ($context['_seq'] as $context["_key"] => $context["comment"]) {
-                // line 41
+                // line 46
                 echo "                        <tr>
                             <td>";
-                // line 42
-                echo twig_escape_filter($this->env, twig_get_attribute($this->env, $this->source, $context["comment"], "text", [], "any", false, false, false, 42), "html", null, true);
+                // line 47
+                echo twig_escape_filter($this->env, twig_get_attribute($this->env, $this->source, $context["comment"], "text", [], "any", false, false, false, 47), "html", null, true);
                 echo "</td>
                             <td>";
-                // line 43
-                echo twig_escape_filter($this->env, twig_date_format_filter($this->env, twig_get_attribute($this->env, $this->source, $context["comment"], "date", [], "any", false, false, false, 43), "Y-m-d H:i:s"), "html", null, true);
+                // line 48
+                echo twig_escape_filter($this->env, twig_date_format_filter($this->env, twig_get_attribute($this->env, $this->source, $context["comment"], "date", [], "any", false, false, false, 48), "Y-m-d H:i:s"), "html", null, true);
                 echo "</td>
                             <td>";
-                // line 44
-                echo twig_escape_filter($this->env, twig_get_attribute($this->env, $this->source, $context["comment"], "evaluation", [], "any", false, false, false, 44), "html", null, true);
+                // line 49
+                echo twig_escape_filter($this->env, twig_get_attribute($this->env, $this->source, $context["comment"], "evaluation", [], "any", false, false, false, 49), "html", null, true);
                 echo "</td>
                             <td>
                                 <!-- Bouton Delete sous forme d'icône -->
                                 <a href=\"";
-                // line 47
-                echo twig_escape_filter($this->env, $this->extensions['Symfony\Bridge\Twig\Extension\RoutingExtension']->getPath("delete_commentaire", ["id" => twig_get_attribute($this->env, $this->source, $context["comment"], "id", [], "any", false, false, false, 47)]), "html", null, true);
+                // line 52
+                echo twig_escape_filter($this->env, $this->extensions['Symfony\Bridge\Twig\Extension\RoutingExtension']->getPath("delete_commentaire", ["id" => twig_get_attribute($this->env, $this->source, $context["comment"], "id", [], "any", false, false, false, 52), "idFormation" => twig_get_attribute($this->env, $this->source, (isset($context["formation"]) || array_key_exists("formation", $context) ? $context["formation"] : (function () { throw new RuntimeError('Variable "formation" does not exist.', 52, $this->source); })()), "id", [], "any", false, false, false, 52)]), "html", null, true);
                 echo "\" class=\"btn btn-danger btn-sm\" onclick=\"return confirm('Are you sure you want to delete this comment?');\">
                                     <i class=\"fas fa-trash\"></i>
                                 </a>
 
                                 <!-- Bouton Edit sous forme d'icône -->
-                                <a href=\"";
-                // line 52
-                echo twig_escape_filter($this->env, $this->extensions['Symfony\Bridge\Twig\Extension\RoutingExtension']->getPath("edit_commentaire", ["id" => twig_get_attribute($this->env, $this->source, $context["comment"], "id", [], "any", false, false, false, 52)]), "html", null, true);
+<a href=\"";
+                // line 57
+                echo twig_escape_filter($this->env, $this->extensions['Symfony\Bridge\Twig\Extension\RoutingExtension']->getPath("edit_commentaire", ["id" => twig_get_attribute($this->env, $this->source, $context["comment"], "id", [], "any", false, false, false, 57), "idFormation" => twig_get_attribute($this->env, $this->source, (isset($context["formation"]) || array_key_exists("formation", $context) ? $context["formation"] : (function () { throw new RuntimeError('Variable "formation" does not exist.', 57, $this->source); })()), "id", [], "any", false, false, false, 57)]), "html", null, true);
                 echo "\" class=\"btn btn-primary btn-sm\">
                                     <i class=\"fas fa-edit\"></i>
                                 </a>
@@ -164,22 +180,22 @@ class __TwigTemplate_437c684bc08d5227f212209650c1f205 extends Template
             $_parent = $context['_parent'];
             unset($context['_seq'], $context['_iterated'], $context['_key'], $context['comment'], $context['_parent'], $context['loop']);
             $context = array_intersect_key($context, $_parent) + $_parent;
-            // line 58
+            // line 63
             echo "                </tbody>
             </table>
         ";
         } else {
-            // line 61
+            // line 66
             echo "            <p>Aucun commentaire pour le moment.</p>
         ";
         }
-        // line 63
+        // line 68
         echo "
         <h2>Ajouter un commentaire</h2>
         <!-- Your form section -->
         <form id=\"comment-form\" method=\"post\" action=\"";
-        // line 66
-        echo twig_escape_filter($this->env, $this->extensions['Symfony\Bridge\Twig\Extension\RoutingExtension']->getPath("add_commentaire", ["idFormation" => twig_get_attribute($this->env, $this->source, (isset($context["formation"]) || array_key_exists("formation", $context) ? $context["formation"] : (function () { throw new RuntimeError('Variable "formation" does not exist.', 66, $this->source); })()), "id", [], "any", false, false, false, 66)]), "html", null, true);
+        // line 71
+        echo twig_escape_filter($this->env, $this->extensions['Symfony\Bridge\Twig\Extension\RoutingExtension']->getPath("add_commentaire", ["idFormation" => twig_get_attribute($this->env, $this->source, (isset($context["formation"]) || array_key_exists("formation", $context) ? $context["formation"] : (function () { throw new RuntimeError('Variable "formation" does not exist.', 71, $this->source); })()), "id", [], "any", false, false, false, 71)]), "html", null, true);
         echo "\">
             <div class=\"form-group row\">
                 <div class=\"col-md-6\">
@@ -226,7 +242,7 @@ class __TwigTemplate_437c684bc08d5227f212209650c1f205 extends Template
                         // Redirect if badWordCount is 3 or more
                         if (badWordCount >= 3) {
                             window.location.href = \"";
-        // line 111
+        // line 116
         echo $this->extensions['Symfony\Bridge\Twig\Extension\RoutingExtension']->getPath("app_commentaire");
         echo "\";
                         }
@@ -272,7 +288,7 @@ class __TwigTemplate_437c684bc08d5227f212209650c1f205 extends Template
 
     public function getDebugInfo()
     {
-        return array (  230 => 111,  182 => 66,  177 => 63,  173 => 61,  168 => 58,  156 => 52,  148 => 47,  142 => 44,  138 => 43,  134 => 42,  131 => 41,  127 => 40,  114 => 29,  111 => 28,  108 => 26,  104 => 24,  97 => 20,  94 => 19,  92 => 18,  87 => 16,  83 => 15,  68 => 4,  58 => 3,  35 => 1,);
+        return array (  246 => 116,  198 => 71,  193 => 68,  189 => 66,  184 => 63,  172 => 57,  164 => 52,  158 => 49,  154 => 48,  150 => 47,  147 => 46,  143 => 45,  130 => 34,  127 => 33,  124 => 31,  120 => 29,  116 => 27,  110 => 25,  104 => 23,  101 => 22,  99 => 21,  97 => 20,  94 => 19,  92 => 18,  87 => 16,  83 => 15,  68 => 4,  58 => 3,  35 => 1,);
     }
 
     public function getSourceContext()
@@ -296,8 +312,13 @@ class __TwigTemplate_437c684bc08d5227f212209650c1f205 extends Template
 
         {% if formation.video is not null %}
             <video controls width=\"560\" height=\"315\">
-                <source src=\"{{ asset('uploads/' ~ formation.video) }}\" type=\"video/mp4\">
-                Your browser does not support the video tag.
+                {% if formation.video starts with 'file:/' %}
+        {# Extract filename from the video path #}
+        {% set filename = formation.video|split('/')|last %}
+        <source src=\"{{ asset('uploads/' ~ filename) }}\" type=\"video/mp4\">
+    {% else %}
+        <source src=\"{{ asset('uploads/' ~ training.video) }}\" type=\"video/mp4\">
+    {% endif %}
             </video>
         {% else %}
             No Video
@@ -323,12 +344,12 @@ class __TwigTemplate_437c684bc08d5227f212209650c1f205 extends Template
                             <td>{{ comment.evaluation }}</td>
                             <td>
                                 <!-- Bouton Delete sous forme d'icône -->
-                                <a href=\"{{ path('delete_commentaire', {'id': comment.id}) }}\" class=\"btn btn-danger btn-sm\" onclick=\"return confirm('Are you sure you want to delete this comment?');\">
+                                <a href=\"{{ path('delete_commentaire', {'id': comment.id, 'idFormation': formation.id}) }}\" class=\"btn btn-danger btn-sm\" onclick=\"return confirm('Are you sure you want to delete this comment?');\">
                                     <i class=\"fas fa-trash\"></i>
                                 </a>
 
                                 <!-- Bouton Edit sous forme d'icône -->
-                                <a href=\"{{ path('edit_commentaire', {'id': comment.id}) }}\" class=\"btn btn-primary btn-sm\">
+<a href=\"{{ path('edit_commentaire', {'id': comment.id, 'idFormation': formation.id}) }}\" class=\"btn btn-primary btn-sm\">
                                     <i class=\"fas fa-edit\"></i>
                                 </a>
                             </td>

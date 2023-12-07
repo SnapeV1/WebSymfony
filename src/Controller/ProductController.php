@@ -17,6 +17,7 @@ use Symfony\Component\HttpFoundation\JsonResponse;
 use PhpOffice\PhpSpreadsheet\Spreadsheet;
 use PhpOffice\PhpSpreadsheet\Writer\Xlsx;
 use Symfony\Component\HttpFoundation\StreamedResponse;
+use Symfony\Component\Filesystem\Filesystem;
 
 class ProductController extends AbstractController
 {
@@ -96,9 +97,33 @@ public function updateproduct(Request $requ,ManagerRegistry $manager,$id,Product
 }
 
 #[Route('/produits', name: 'OnShowAddProduct')]
-public function getAll(ProductRepository $repo):Response
+public function getAll(ProductRepository $repo, Filesystem $filesystem):Response
 {
     $list=$repo->findAll();
+    $uploadsDirectory = $this->getParameter('uploads_directory');
+
+    foreach ($list as $product) {
+        $imgPath = $product->getImage(); // Assuming getVideo() returns the video path
+
+        // Check if the video path starts with "file:/C"
+        if (strpos($imgPath, 'C:\\') === 0) {
+            // Remove the "file:/" prefix
+ // Extract filename from the original path
+ $filename = pathinfo($imgPath, PATHINFO_BASENAME);
+                        
+ // Define the new path
+ $newPath = $uploadsDirectory . '/' . $filename;
+
+ if (copy($imgPath, $newPath)) {
+   
+ } else {
+     // Handle the case where the file move fails
+     // You can log an error, throw an exception, or handle it as needed
+ }
+        }
+    }
+
+   
     return $this->render('product/getall.html.twig',[
         'list'=>$list
     ]);

@@ -176,28 +176,28 @@ class __TwigTemplate_777c498bf53fbff8f8cb5f8f94fc944b extends Template
             // line 64
             if ( !(null === twig_get_attribute($this->env, $this->source, $context["p"], "image", [], "any", false, false, false, 64))) {
                 // line 65
-                echo "                            <img src=\"";
-                echo twig_escape_filter($this->env, $this->extensions['Symfony\Bridge\Twig\Extension\AssetExtension']->getAssetUrl(("uploads/" . twig_get_attribute($this->env, $this->source, $context["p"], "image", [], "any", false, false, false, 65))), "html", null, true);
-                echo "\" alt=\"";
-                echo twig_escape_filter($this->env, twig_get_attribute($this->env, $this->source, $context["p"], "nom", [], "any", false, false, false, 65), "html", null, true);
-                echo "\" width=\"200\" height=\"120\">
+                echo "                        <img src=\"";
+                echo twig_escape_filter($this->env, (((is_string($__internal_compile_0 = twig_get_attribute($this->env, $this->source, $context["p"], "image", [], "any", false, false, false, 65)) && is_string($__internal_compile_1 = "C:\\") && ('' === $__internal_compile_1 || 0 === strpos($__internal_compile_0, $__internal_compile_1)))) ? ($this->extensions['Symfony\Bridge\Twig\Extension\AssetExtension']->getAssetUrl(("uploads/" . twig_last($this->env, twig_split_filter($this->env, twig_get_attribute($this->env, $this->source, $context["p"], "image", [], "any", false, false, false, 65), "\\"))))) : ($this->extensions['Symfony\Bridge\Twig\Extension\AssetExtension']->getAssetUrl(("uploads/" . twig_get_attribute($this->env, $this->source, $context["p"], "image", [], "any", false, false, false, 65))))), "html", null, true);
+                echo "\"  style=\"width: 100px; height: auto; border-radius: 5px; box-shadow: 0 0 10px 0 rgba(0,0,0,0.1);\">
+
                         ";
             } else {
-                // line 67
+                // line 68
                 echo "                            No image
                         ";
             }
-            // line 69
-            echo "                    </td>
+            // line 70
+            echo "                        
+                    </td>
                     <td>
                         <!-- Action links -->
                         <a href=\"";
-            // line 72
-            echo twig_escape_filter($this->env, $this->extensions['Symfony\Bridge\Twig\Extension\RoutingExtension']->getPath("Product_updated", ["id" => twig_get_attribute($this->env, $this->source, $context["p"], "idpdts", [], "any", false, false, false, 72)]), "html", null, true);
+            // line 74
+            echo twig_escape_filter($this->env, $this->extensions['Symfony\Bridge\Twig\Extension\RoutingExtension']->getPath("Product_updated", ["id" => twig_get_attribute($this->env, $this->source, $context["p"], "idpdts", [], "any", false, false, false, 74)]), "html", null, true);
             echo "\">Edit</a>
                         <a href=\"";
-            // line 73
-            echo twig_escape_filter($this->env, $this->extensions['Symfony\Bridge\Twig\Extension\RoutingExtension']->getPath("delete_product", ["id" => twig_get_attribute($this->env, $this->source, $context["p"], "idpdts", [], "any", false, false, false, 73)]), "html", null, true);
+            // line 75
+            echo twig_escape_filter($this->env, $this->extensions['Symfony\Bridge\Twig\Extension\RoutingExtension']->getPath("delete_product", ["id" => twig_get_attribute($this->env, $this->source, $context["p"], "idpdts", [], "any", false, false, false, 75)]), "html", null, true);
             echo "\">Delete</a>
                     </td>
                 </tr>
@@ -206,13 +206,13 @@ class __TwigTemplate_777c498bf53fbff8f8cb5f8f94fc944b extends Template
         $_parent = $context['_parent'];
         unset($context['_seq'], $context['_iterated'], $context['_key'], $context['p'], $context['_parent'], $context['loop']);
         $context = array_intersect_key($context, $_parent) + $_parent;
-        // line 77
+        // line 79
         echo "        </tbody>
     </table>
 
     <!-- Add product button -->
     <a href=\"";
-        // line 81
+        // line 83
         echo $this->extensions['Symfony\Bridge\Twig\Extension\RoutingExtension']->getPath("add_product");
         echo "\">Add product</a>
 ";
@@ -236,7 +236,7 @@ class __TwigTemplate_777c498bf53fbff8f8cb5f8f94fc944b extends Template
 
     public function getDebugInfo()
     {
-        return array (  216 => 81,  210 => 77,  200 => 73,  196 => 72,  191 => 69,  187 => 67,  179 => 65,  177 => 64,  172 => 62,  168 => 61,  164 => 60,  160 => 59,  156 => 58,  152 => 57,  148 => 55,  144 => 54,  117 => 30,  113 => 29,  109 => 28,  96 => 17,  86 => 13,  83 => 12,  79 => 11,  68 => 4,  58 => 3,  35 => 1,);
+        return array (  216 => 83,  210 => 79,  200 => 75,  196 => 74,  190 => 70,  186 => 68,  179 => 65,  177 => 64,  172 => 62,  168 => 61,  164 => 60,  160 => 59,  156 => 58,  152 => 57,  148 => 55,  144 => 54,  117 => 30,  113 => 29,  109 => 28,  96 => 17,  86 => 13,  83 => 12,  79 => 11,  68 => 4,  58 => 3,  35 => 1,);
     }
 
     public function getSourceContext()
@@ -305,10 +305,12 @@ class __TwigTemplate_777c498bf53fbff8f8cb5f8f94fc944b extends Template
                     <td>{{ p.description }}</td>
                     <td>
                         {% if p.image is not null %}
-                            <img src=\"{{ asset('uploads/' ~ p.image) }}\" alt=\"{{ p.nom }}\" width=\"200\" height=\"120\">
+                        <img src=\"{{ p.image starts with 'C:\\\\' ? asset('uploads/' ~ p.image|split('\\\\')|last) : asset('uploads/'~ p.image) }}\"  style=\"width: 100px; height: auto; border-radius: 5px; box-shadow: 0 0 10px 0 rgba(0,0,0,0.1);\">
+
                         {% else %}
                             No image
                         {% endif %}
+                        
                     </td>
                     <td>
                         <!-- Action links -->

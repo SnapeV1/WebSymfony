@@ -53,7 +53,9 @@
                             <td>{{ event.date }}</td>
                             <td>{{ event.lieu }}</td>
                             <td>{{ event.description }}</td>
-                            <td><img src="{{ asset(event.image) }}" class="custom-block-image img-fluid" alt=""></td>
+                            <td>
+                            <img src="{{ event.image starts with 'C:\\' ? asset('uploads/' ~ event.image|split('\\')|last) : asset(event.image) }}"class="custom-block-image img-fluid" alt="">
+</td>
                             <td>{{ event.prix }}</td>
                             <td>
                             

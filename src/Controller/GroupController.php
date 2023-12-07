@@ -74,14 +74,6 @@ $userid=$user->getId();
                     $member2 = $entityManager->getRepository(Membre::class)->findBy(['group' => $group->getid()]);
                     $group->updatesize($member2);
                
-
-
-
-
-
-
-                    
-                    
                 }
             }
             

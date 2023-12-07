@@ -77,8 +77,8 @@ class CommentaireController extends AbstractController
 
     }
 
-    #[Route('/updateComm/{id}', name: 'edit_commentaire')]
-    public function updatecommentaire(ManagerRegistry $managerRegistry,$id,CommentaireRepository $repo,Request $req): Response
+    #[Route('/updateComm/{id}/{idFormation}', name: 'edit_commentaire')]
+    public function updatecommentaire(ManagerRegistry $managerRegistry,$id,$idFormation,CommentaireRepository $repo,Request $req): Response
     {
         $em = $managerRegistry->getManager();
 
@@ -89,23 +89,29 @@ class CommentaireController extends AbstractController
         if ($form->isSubmitted()) {
             $em->persist($commentaire);
             $em->flush();
-            return $this->redirectToRoute('all_commentaire');
+            return $this->redirectToRoute('add_commentaire',[
+                'idFormation'=>$idFormation
+            ]);
         }
 
         return $this->renderForm('commentaire/addcommentaire.html.twig', [
-            'form' => $form
+            'form' => $form,
+            'idFormation'=>$idFormation
+            
         ]);
     }
 
-    #[Route('/deletecommentaire/{id}', name: 'delete_commentaire')]
-    public function delete(CommentaireRepository $repo,ManagerRegistry $manager,$id):Response
+    #[Route('/deletecommentaire/{id}/{idFormation}', name: 'delete_commentaire')]
+    public function delete(CommentaireRepository $repo,$idFormation,ManagerRegistry $manager,$id):Response
     {
         $commentaire=$repo->find($id);
         $mr=$manager->getManager();
         $mr->remove($commentaire);
         $mr->flush();
 
-        return $this->redirectToRoute('all_commentaire');
+        return $this->redirectToRoute('add_commentaire',[
+            'idFormation'=>$idFormation
+        ]);
 
     }
 

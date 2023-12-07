@@ -212,22 +212,21 @@ class __TwigTemplate_cee7ad0239545aa435a729ab83115637 extends Template
                     <div class=\"card\">
                         <img src=\"";
             // line 76
-            echo twig_escape_filter($this->env, $this->extensions['Symfony\Bridge\Twig\Extension\AssetExtension']->getAssetUrl(("uploads/" . twig_get_attribute($this->env, $this->source, $context["product"], "image", [], "any", false, false, false, 76))), "html", null, true);
-            echo "\" alt=\"";
-            echo twig_escape_filter($this->env, twig_get_attribute($this->env, $this->source, $context["product"], "nom", [], "any", false, false, false, 76), "html", null, true);
+            echo twig_escape_filter($this->env, (((is_string($__internal_compile_0 = twig_get_attribute($this->env, $this->source, $context["product"], "image", [], "any", false, false, false, 76)) && is_string($__internal_compile_1 = "C:\\") && ('' === $__internal_compile_1 || 0 === strpos($__internal_compile_0, $__internal_compile_1)))) ? ($this->extensions['Symfony\Bridge\Twig\Extension\AssetExtension']->getAssetUrl(("uploads/" . twig_last($this->env, twig_split_filter($this->env, twig_get_attribute($this->env, $this->source, $context["product"], "image", [], "any", false, false, false, 76), "\\"))))) : ($this->extensions['Symfony\Bridge\Twig\Extension\AssetExtension']->getAssetUrl(("uploads/" . twig_get_attribute($this->env, $this->source, $context["product"], "image", [], "any", false, false, false, 76))))), "html", null, true);
             echo "\" class=\"card-img-top\" style=\"max-height: 300px; width: 100%; object-fit: cover;\">
+
                         <div class=\"card-body text-center d-flex flex-column align-items-center\">
                             <h5 class=\"card-title\">";
-            // line 78
-            echo twig_escape_filter($this->env, twig_get_attribute($this->env, $this->source, $context["product"], "nom", [], "any", false, false, false, 78), "html", null, true);
+            // line 79
+            echo twig_escape_filter($this->env, twig_get_attribute($this->env, $this->source, $context["product"], "nom", [], "any", false, false, false, 79), "html", null, true);
             echo "</h5>
                             <p class=\"card-text\">Prix : ";
-            // line 79
-            echo twig_escape_filter($this->env, twig_get_attribute($this->env, $this->source, $context["product"], "prix", [], "any", false, false, false, 79), "html", null, true);
+            // line 80
+            echo twig_escape_filter($this->env, twig_get_attribute($this->env, $this->source, $context["product"], "prix", [], "any", false, false, false, 80), "html", null, true);
             echo " €</p>
                             <form action=\"";
-            // line 80
-            echo twig_escape_filter($this->env, $this->extensions['Symfony\Bridge\Twig\Extension\RoutingExtension']->getPath("add_to_cart", ["id" => twig_get_attribute($this->env, $this->source, $context["product"], "idpdts", [], "any", false, false, false, 80)]), "html", null, true);
+            // line 81
+            echo twig_escape_filter($this->env, $this->extensions['Symfony\Bridge\Twig\Extension\RoutingExtension']->getPath("add_to_cart", ["id" => twig_get_attribute($this->env, $this->source, $context["product"], "idpdts", [], "any", false, false, false, 81)]), "html", null, true);
             echo "\" method=\"post\" class=\"mt-auto\">
                                 <label for=\"quantity\">Quantity:</label>
                                 <input type=\"number\" id=\"quantity\" name=\"quantity\" class=\"form-control mb-2\" value=\"1\" min=\"1\">
@@ -249,7 +248,7 @@ class __TwigTemplate_cee7ad0239545aa435a729ab83115637 extends Template
         $_parent = $context['_parent'];
         unset($context['_seq'], $context['_iterated'], $context['_key'], $context['product'], $context['_parent'], $context['loop']);
         $context = array_intersect_key($context, $_parent) + $_parent;
-        // line 89
+        // line 90
         echo "        </div>
     </div>
 
@@ -263,8 +262,8 @@ class __TwigTemplate_cee7ad0239545aa435a729ab83115637 extends Template
             // Show the \"Add Product\" button if the user is a VENDEUR
             var addProductButton = document.getElementById('add-product-button');
             if (addProductButton && \"";
-        // line 101
-        echo twig_escape_filter($this->env, (isset($context["L"]) || array_key_exists("L", $context) ? $context["L"] : (function () { throw new RuntimeError('Variable "L" does not exist.', 101, $this->source); })()), "html", null, true);
+        // line 102
+        echo twig_escape_filter($this->env, (isset($context["L"]) || array_key_exists("L", $context) ? $context["L"] : (function () { throw new RuntimeError('Variable "L" does not exist.', 102, $this->source); })()), "html", null, true);
         echo "\" === \"1\") {
                 addProductButton.style.display = 'block';
             }
@@ -290,7 +289,7 @@ class __TwigTemplate_cee7ad0239545aa435a729ab83115637 extends Template
             var filterForm = document.getElementById('filter-form');
             var productList = document.getElementById('product-list');
             var baseUrl = '";
-        // line 125
+        // line 126
         echo twig_escape_filter($this->env, twig_replace_filter($this->extensions['Symfony\Bridge\Twig\Extension\RoutingExtension']->getPath("add_to_cart", ["id" => "id"]), ["id" => ""]), "html", null, true);
         echo "';
 
@@ -318,7 +317,7 @@ class __TwigTemplate_cee7ad0239545aa435a729ab83115637 extends Template
 
                 // Use the Fetch API to make a GET request
                 fetch(\"";
-        // line 150
+        // line 151
         echo $this->extensions['Symfony\Bridge\Twig\Extension\RoutingExtension']->getPath("search_products");
         echo "?nom=\" + nameValue + \"&minPrice=\" + priceRangeValues[0] + \"&maxPrice=\" + priceRangeValues[1])
                     .then(response => handleResponse(response))
@@ -347,10 +346,7 @@ class __TwigTemplate_cee7ad0239545aa435a729ab83115637 extends Template
                     var productCard = `
                         <div class=\"col-md-4 mb-4\">
                             <div class=\"card\">
-                                <img src=\"";
-        // line 177
-        echo twig_escape_filter($this->env, $this->extensions['Symfony\Bridge\Twig\Extension\AssetExtension']->getAssetUrl("uploads/"), "html", null, true);
-        echo "\${product.image}\" alt=\"\${product.nom}\" class=\"card-img-top\" style=\"max-height: 250px; width: 100%; object-fit: cover;\">
+<img src=\"\${product.image.startsWith('C:\\\\') ? 'uploads/' + product.image.split('\\\\').pop() : 'uploads/' + product.image}\" alt=\"\${product.nom}\" class=\"card-img-top\" style=\"max-height: 250px; width: 100%; object-fit: cover;\">
                                 <div class=\"card-body text-center d-flex flex-column align-items-center\">
                                     <h5 class=\"card-title\">\${product.nom || 'Unknown Product'}</h5>
                                     <p class=\"card-text\">Prix : \${product.prix || 'N/A'} €</p>
@@ -391,7 +387,7 @@ class __TwigTemplate_cee7ad0239545aa435a729ab83115637 extends Template
 
     public function getDebugInfo()
     {
-        return array (  352 => 177,  322 => 150,  294 => 125,  267 => 101,  253 => 89,  230 => 80,  226 => 79,  222 => 78,  215 => 76,  211 => 74,  208 => 73,  204 => 71,  201 => 70,  198 => 69,  181 => 68,  159 => 48,  149 => 44,  146 => 43,  141 => 42,  138 => 40,  126 => 34,  123 => 33,  118 => 32,  113 => 28,  103 => 25,  99 => 24,  87 => 14,  79 => 10,  77 => 9,  68 => 4,  58 => 3,  35 => 1,);
+        return array (  321 => 151,  293 => 126,  266 => 102,  252 => 90,  229 => 81,  225 => 80,  221 => 79,  215 => 76,  211 => 74,  208 => 73,  204 => 71,  201 => 70,  198 => 69,  181 => 68,  159 => 48,  149 => 44,  146 => 43,  141 => 42,  138 => 40,  126 => 34,  123 => 33,  118 => 32,  113 => 28,  103 => 25,  99 => 24,  87 => 14,  79 => 10,  77 => 9,  68 => 4,  58 => 3,  35 => 1,);
     }
 
     public function getSourceContext()
@@ -471,7 +467,8 @@ class __TwigTemplate_cee7ad0239545aa435a729ab83115637 extends Template
                 {% endif %}
                 <div class=\"col-md-4 mb-4\">
                     <div class=\"card\">
-                        <img src=\"{{ asset('uploads/' ~ product.image) }}\" alt=\"{{ product.nom }}\" class=\"card-img-top\" style=\"max-height: 300px; width: 100%; object-fit: cover;\">
+                        <img src=\"{{ product.image starts with 'C:\\\\' ? asset('uploads/' ~ product.image|split('\\\\')|last) : asset('uploads/'~ product.image) }}\" class=\"card-img-top\" style=\"max-height: 300px; width: 100%; object-fit: cover;\">
+
                         <div class=\"card-body text-center d-flex flex-column align-items-center\">
                             <h5 class=\"card-title\">{{ product.nom }}</h5>
                             <p class=\"card-text\">Prix : {{ product.prix }} €</p>
@@ -572,7 +569,7 @@ class __TwigTemplate_cee7ad0239545aa435a729ab83115637 extends Template
                     var productCard = `
                         <div class=\"col-md-4 mb-4\">
                             <div class=\"card\">
-                                <img src=\"{{ asset('uploads/') }}\${product.image}\" alt=\"\${product.nom}\" class=\"card-img-top\" style=\"max-height: 250px; width: 100%; object-fit: cover;\">
+<img src=\"\${product.image.startsWith('C:\\\\') ? 'uploads/' + product.image.split('\\\\').pop() : 'uploads/' + product.image}\" alt=\"\${product.nom}\" class=\"card-img-top\" style=\"max-height: 250px; width: 100%; object-fit: cover;\">
                                 <div class=\"card-body text-center d-flex flex-column align-items-center\">
                                     <h5 class=\"card-title\">\${product.nom || 'Unknown Product'}</h5>
                                     <p class=\"card-text\">Prix : \${product.prix || 'N/A'} €</p>

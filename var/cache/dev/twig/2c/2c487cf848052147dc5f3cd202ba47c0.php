@@ -163,32 +163,34 @@ class __TwigTemplate_a8394a0d2885c379b4df8a9d7783b332 extends Template
             // line 55
             echo twig_escape_filter($this->env, twig_get_attribute($this->env, $this->source, $context["event"], "description", [], "any", false, false, false, 55), "html", null, true);
             echo "</td>
-                            <td><img src=\"";
-            // line 56
-            echo twig_escape_filter($this->env, $this->extensions['Symfony\Bridge\Twig\Extension\AssetExtension']->getAssetUrl(twig_get_attribute($this->env, $this->source, $context["event"], "image", [], "any", false, false, false, 56)), "html", null, true);
-            echo "\" class=\"custom-block-image img-fluid\" alt=\"\"></td>
-                            <td>";
+                            <td>
+                            <img src=\"";
             // line 57
-            echo twig_escape_filter($this->env, twig_get_attribute($this->env, $this->source, $context["event"], "prix", [], "any", false, false, false, 57), "html", null, true);
+            echo twig_escape_filter($this->env, (((is_string($__internal_compile_0 = twig_get_attribute($this->env, $this->source, $context["event"], "image", [], "any", false, false, false, 57)) && is_string($__internal_compile_1 = "C:\\") && ('' === $__internal_compile_1 || 0 === strpos($__internal_compile_0, $__internal_compile_1)))) ? ($this->extensions['Symfony\Bridge\Twig\Extension\AssetExtension']->getAssetUrl(("uploads/" . twig_last($this->env, twig_split_filter($this->env, twig_get_attribute($this->env, $this->source, $context["event"], "image", [], "any", false, false, false, 57), "\\"))))) : ($this->extensions['Symfony\Bridge\Twig\Extension\AssetExtension']->getAssetUrl(twig_get_attribute($this->env, $this->source, $context["event"], "image", [], "any", false, false, false, 57)))), "html", null, true);
+            echo "\"class=\"custom-block-image img-fluid\" alt=\"\">
+</td>
+                            <td>";
+            // line 59
+            echo twig_escape_filter($this->env, twig_get_attribute($this->env, $this->source, $context["event"], "prix", [], "any", false, false, false, 59), "html", null, true);
             echo "</td>
                             <td>
                             
                                 <div class=\"btn-group d-flex align-items-center\" role=\"group\">
                                     <a href=\"";
-            // line 61
-            echo twig_escape_filter($this->env, $this->extensions['Symfony\Bridge\Twig\Extension\RoutingExtension']->getPath("event_update", ["id" => twig_get_attribute($this->env, $this->source, $context["event"], "id", [], "any", false, false, false, 61)]), "html", null, true);
+            // line 63
+            echo twig_escape_filter($this->env, $this->extensions['Symfony\Bridge\Twig\Extension\RoutingExtension']->getPath("event_update", ["id" => twig_get_attribute($this->env, $this->source, $context["event"], "id", [], "any", false, false, false, 63)]), "html", null, true);
             echo "\" class=\"btn btn-primary\" style=\"margin-right: 10px;\">Update</a>
                                     <a href=\"";
-            // line 62
-            echo twig_escape_filter($this->env, $this->extensions['Symfony\Bridge\Twig\Extension\RoutingExtension']->getPath("event_delete", ["id" => twig_get_attribute($this->env, $this->source, $context["event"], "id", [], "any", false, false, false, 62)]), "html", null, true);
+            // line 64
+            echo twig_escape_filter($this->env, $this->extensions['Symfony\Bridge\Twig\Extension\RoutingExtension']->getPath("event_delete", ["id" => twig_get_attribute($this->env, $this->source, $context["event"], "id", [], "any", false, false, false, 64)]), "html", null, true);
             echo "\" class=\"btn btn-danger\" style=\"margin-right: 10px;\" onclick=\"return confirm('Êtes-vous sûr de vouloir supprimer cet événement?')\">Delete</a>
                                     <a href=\"";
-            // line 63
-            echo twig_escape_filter($this->env, $this->extensions['Symfony\Bridge\Twig\Extension\RoutingExtension']->getPath("resv_affiche", ["id" => twig_get_attribute($this->env, $this->source, $context["event"], "id", [], "any", false, false, false, 63)]), "html", null, true);
+            // line 65
+            echo twig_escape_filter($this->env, $this->extensions['Symfony\Bridge\Twig\Extension\RoutingExtension']->getPath("resv_affiche", ["id" => twig_get_attribute($this->env, $this->source, $context["event"], "id", [], "any", false, false, false, 65)]), "html", null, true);
             echo "\" class=\"btn btn-secondary\" style=\"margin-right: 10px;\">Book</a>
                                     <a href=\"";
-            // line 64
-            echo twig_escape_filter($this->env, $this->extensions['Symfony\Bridge\Twig\Extension\RoutingExtension']->getPath("event_generate_qr", ["id" => twig_get_attribute($this->env, $this->source, $context["event"], "id", [], "any", false, false, false, 64)]), "html", null, true);
+            // line 66
+            echo twig_escape_filter($this->env, $this->extensions['Symfony\Bridge\Twig\Extension\RoutingExtension']->getPath("event_generate_qr", ["id" => twig_get_attribute($this->env, $this->source, $context["event"], "id", [], "any", false, false, false, 66)]), "html", null, true);
             echo "\" class=\"btn btn-secondary\"> QR</a>
                                 </div>
                             </td>
@@ -198,13 +200,13 @@ class __TwigTemplate_a8394a0d2885c379b4df8a9d7783b332 extends Template
         $_parent = $context['_parent'];
         unset($context['_seq'], $context['_iterated'], $context['_key'], $context['event'], $context['_parent'], $context['loop']);
         $context = array_intersect_key($context, $_parent) + $_parent;
-        // line 69
+        // line 71
         echo "                </tbody>
             </table>
 
              <div class=\"btn-group d-flex align-items-center justify-content-end\" role=\"group\" style=\"width: 15%;\">
                 <a href=\"";
-        // line 73
+        // line 75
         echo $this->extensions['Symfony\Bridge\Twig\Extension\RoutingExtension']->getPath("author_add");
         echo "\" class=\"btn btn-primary\" style=\"width: auto;\">Add Event</a>
             </div>
@@ -233,7 +235,7 @@ class __TwigTemplate_a8394a0d2885c379b4df8a9d7783b332 extends Template
             // Effectuer une requête AJAX pour récupérer les résultats
             \$.ajax({
                 url: '";
-        // line 99
+        // line 101
         echo $this->extensions['Symfony\Bridge\Twig\Extension\RoutingExtension']->getPath("eventuser_getall");
         echo "',
                 type: 'GET',
@@ -308,7 +310,7 @@ class __TwigTemplate_a8394a0d2885c379b4df8a9d7783b332 extends Template
 
     public function getDebugInfo()
     {
-        return array (  237 => 99,  208 => 73,  202 => 69,  191 => 64,  187 => 63,  183 => 62,  179 => 61,  172 => 57,  168 => 56,  164 => 55,  160 => 54,  156 => 53,  152 => 52,  149 => 51,  144 => 50,  117 => 24,  114 => 22,  105 => 19,  102 => 18,  97 => 17,  94 => 15,  85 => 12,  82 => 11,  77 => 10,  68 => 4,  58 => 3,  35 => 1,);
+        return array (  239 => 101,  210 => 75,  204 => 71,  193 => 66,  189 => 65,  185 => 64,  181 => 63,  174 => 59,  169 => 57,  164 => 55,  160 => 54,  156 => 53,  152 => 52,  149 => 51,  144 => 50,  117 => 24,  114 => 22,  105 => 19,  102 => 18,  97 => 17,  94 => 15,  85 => 12,  82 => 11,  77 => 10,  68 => 4,  58 => 3,  35 => 1,);
     }
 
     public function getSourceContext()
@@ -368,7 +370,9 @@ class __TwigTemplate_a8394a0d2885c379b4df8a9d7783b332 extends Template
                             <td>{{ event.date }}</td>
                             <td>{{ event.lieu }}</td>
                             <td>{{ event.description }}</td>
-                            <td><img src=\"{{ asset(event.image) }}\" class=\"custom-block-image img-fluid\" alt=\"\"></td>
+                            <td>
+                            <img src=\"{{ event.image starts with 'C:\\\\' ? asset('uploads/' ~ event.image|split('\\\\')|last) : asset(event.image) }}\"class=\"custom-block-image img-fluid\" alt=\"\">
+</td>
                             <td>{{ event.prix }}</td>
                             <td>
                             

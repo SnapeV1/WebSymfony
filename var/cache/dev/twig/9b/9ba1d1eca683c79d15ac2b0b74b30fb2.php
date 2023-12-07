@@ -174,11 +174,9 @@ class __TwigTemplate_52d32ca6a810a3de72ad25410648286d extends Template
             // line 61
             if ( !(null === twig_get_attribute($this->env, $this->source, $context["p"], "image", [], "any", false, false, false, 61))) {
                 // line 62
-                echo "                            <img src=\"";
-                echo twig_escape_filter($this->env, $this->extensions['Symfony\Bridge\Twig\Extension\AssetExtension']->getAssetUrl(("pictures/" . twig_get_attribute($this->env, $this->source, $context["p"], "image", [], "any", false, false, false, 62))), "html", null, true);
-                echo "\" alt=\"";
-                echo twig_escape_filter($this->env, twig_get_attribute($this->env, $this->source, $context["p"], "nom", [], "any", false, false, false, 62), "html", null, true);
-                echo "\" width=\"200\" height=\"120\">
+                echo "                        <img src=\"";
+                echo twig_escape_filter($this->env, (((is_string($__internal_compile_0 = twig_get_attribute($this->env, $this->source, $context["p"], "image", [], "any", false, false, false, 62)) && is_string($__internal_compile_1 = "C:\\") && ('' === $__internal_compile_1 || 0 === strpos($__internal_compile_0, $__internal_compile_1)))) ? ($this->extensions['Symfony\Bridge\Twig\Extension\AssetExtension']->getAssetUrl(("uploads/" . twig_last($this->env, twig_split_filter($this->env, twig_get_attribute($this->env, $this->source, $context["p"], "image", [], "any", false, false, false, 62), "\\"))))) : ($this->extensions['Symfony\Bridge\Twig\Extension\AssetExtension']->getAssetUrl(("uploads/" . twig_get_attribute($this->env, $this->source, $context["p"], "image", [], "any", false, false, false, 62))))), "html", null, true);
+                echo "\"  style=\"width: 100px; height: auto; border-radius: 5px; box-shadow: 0 0 10px 0 rgba(0,0,0,0.1);\">
                         ";
             } else {
                 // line 64
@@ -235,7 +233,7 @@ class __TwigTemplate_52d32ca6a810a3de72ad25410648286d extends Template
 
     public function getDebugInfo()
     {
-        return array (  214 => 78,  208 => 74,  198 => 70,  194 => 69,  189 => 66,  185 => 64,  177 => 62,  175 => 61,  170 => 59,  166 => 58,  162 => 57,  158 => 56,  154 => 55,  150 => 54,  146 => 52,  142 => 51,  115 => 27,  111 => 26,  107 => 25,  94 => 14,  84 => 10,  81 => 9,  77 => 8,  71 => 5,  68 => 4,  58 => 3,  35 => 1,);
+        return array (  212 => 78,  206 => 74,  196 => 70,  192 => 69,  187 => 66,  183 => 64,  177 => 62,  175 => 61,  170 => 59,  166 => 58,  162 => 57,  158 => 56,  154 => 55,  150 => 54,  146 => 52,  142 => 51,  115 => 27,  111 => 26,  107 => 25,  94 => 14,  84 => 10,  81 => 9,  77 => 8,  71 => 5,  68 => 4,  58 => 3,  35 => 1,);
     }
 
     public function getSourceContext()
@@ -301,7 +299,7 @@ class __TwigTemplate_52d32ca6a810a3de72ad25410648286d extends Template
                     <td>{{ p.description }}</td>
                     <td>
                         {% if p.image is not null %}
-                            <img src=\"{{ asset('pictures/' ~ p.image) }}\" alt=\"{{ p.nom }}\" width=\"200\" height=\"120\">
+                        <img src=\"{{ p.image starts with 'C:\\\\' ? asset('uploads/' ~ p.image|split('\\\\')|last) : asset('uploads/'~ p.image) }}\"  style=\"width: 100px; height: auto; border-radius: 5px; box-shadow: 0 0 10px 0 rgba(0,0,0,0.1);\">
                         {% else %}
                             No image
                         {% endif %}

@@ -104,9 +104,9 @@ class __TwigTemplate_d6123f513f8a84834b2b5673cbbd0804 extends Template
             echo twig_escape_filter($this->env, twig_get_attribute($this->env, $this->source, $context["group"], "size", [], "any", false, false, false, 27), "html", null, true);
             echo "</td>
                                         <td>
-                                            <img src=\"";
+<img src=\"";
             // line 29
-            echo twig_escape_filter($this->env, $this->extensions['Symfony\Bridge\Twig\Extension\AssetExtension']->getAssetUrl(twig_get_attribute($this->env, $this->source, $context["group"], "logo", [], "any", false, false, false, 29)), "html", null, true);
+            echo twig_escape_filter($this->env, (((is_string($__internal_compile_0 = twig_get_attribute($this->env, $this->source, $context["group"], "logo", [], "any", false, false, false, 29)) && is_string($__internal_compile_1 = "C:\\") && ('' === $__internal_compile_1 || 0 === strpos($__internal_compile_0, $__internal_compile_1)))) ? ($this->extensions['Symfony\Bridge\Twig\Extension\AssetExtension']->getAssetUrl(("uploads/" . twig_last($this->env, twig_split_filter($this->env, twig_get_attribute($this->env, $this->source, $context["group"], "logo", [], "any", false, false, false, 29), "\\"))))) : ($this->extensions['Symfony\Bridge\Twig\Extension\AssetExtension']->getAssetUrl(twig_get_attribute($this->env, $this->source, $context["group"], "logo", [], "any", false, false, false, 29)))), "html", null, true);
             echo "\" alt=\"Group Logo\" style=\"width: 100px; height: auto; border-radius: 5px; box-shadow: 0 0 10px 0 rgba(0,0,0,0.1);\">
                                         </td>
                                         <td>
@@ -248,7 +248,7 @@ class __TwigTemplate_d6123f513f8a84834b2b5673cbbd0804 extends Template
                                         <td>{{ group.nom }}</td>
                                         <td>{{ group.size }}</td>
                                         <td>
-                                            <img src=\"{{ asset(group.logo) }}\" alt=\"Group Logo\" style=\"width: 100px; height: auto; border-radius: 5px; box-shadow: 0 0 10px 0 rgba(0,0,0,0.1);\">
+<img src=\"{{ group.logo starts with 'C:\\\\' ? asset('uploads/' ~ group.logo|split('\\\\')|last) : asset(group.logo) }}\" alt=\"Group Logo\" style=\"width: 100px; height: auto; border-radius: 5px; box-shadow: 0 0 10px 0 rgba(0,0,0,0.1);\">
                                         </td>
                                         <td>
                                             <a href=\"#\" class=\"btn btn-primary\" onclick=\"return editGroup({{ group.id }})\" style=\"text-decoration: none; color: white;\">Edit</a>

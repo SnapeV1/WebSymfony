@@ -104,7 +104,7 @@ class __TwigTemplate_3fecccfc7db71e00b890fa926c559155 extends Template
             // line 14
             if ( !(null === twig_get_attribute($this->env, $this->source, $context["training"], "video", [], "any", false, false, false, 14))) {
                 // line 15
-                echo "                            <video controls width=\"150\" height=\"100\">
+                echo "                            <video controls width=\"400\" height=\"300\">
                                ";
                 // line 16
                 if ((is_string($__internal_compile_0 = twig_get_attribute($this->env, $this->source, $context["training"], "video", [], "any", false, false, false, 16)) && is_string($__internal_compile_1 = "file:/") && ('' === $__internal_compile_1 || 0 === strpos($__internal_compile_0, $__internal_compile_1)))) {
@@ -295,7 +295,7 @@ class __TwigTemplate_3fecccfc7db71e00b890fa926c559155 extends Template
                         {% endif %}
 
                              {% if training.video is not null %}
-                            <video controls width=\"150\" height=\"100\">
+                            <video controls width=\"400\" height=\"300\">
                                {% if training.video starts with 'file:/' %}
         {# Extract filename from the video path #}
         {% set filename = training.video|split('/')|last %}
