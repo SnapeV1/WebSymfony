@@ -2,91 +2,66 @@
 
 {% block body %}
 
-        <div id="layoutAuthentication">
-            <div id="layoutAuthentication_content">
-                <main>
-                    <div class="container">
-                        <div class="row justify-content-center">
-                            <div class="col-lg-5">
-                                <div class="card shadow-lg border-0 rounded-lg mt-5">
-                                    <div class="card-header"><h3 class="text-center font-weight-light my-4">Login</h3></div>
-                                    <div class="card-body">
+<div id="layoutAuthentication" style="background-color: #f8f9fa; background-image: url('{{ asset('your-background-image.jpg') }}'); background-size: cover;">
+    <div id="layoutAuthentication_content">
+        <main>
+            <div class="container">
+                <div class="row justify-content-center">
+                    <div class="col-lg-8">
+                        <!-- Card for the entire content -->
+                        <div class="card shadow-lg border-0 rounded-lg mt-5">
+                            <div class="card-body">
+                                <!-- Apply color-changing animation to the "Login" header -->
+                                <div class="card-header text-center" style="background-color: rgba(255, 255, 255, 0.8);">
+                                    <h3 class="text-center font-weight-light my-4" style="font-family: 'Your Custom Font', sans-serif; animation: rainbowText 5s infinite;">Login</h3>
+                                </div>
 
-                                    {{form_start(f)}}
-
-
-                                    {{form_label(f.username)}}
-                                    {{form_widget(f.username)}}
-                                    {{form_errors(f.username)}}
-
-
-
-                                    {{form_label(f.password)}}
-                                    {{form_widget(f.password)}}
-                                    {{form_errors(f.password)}}
-
-                                    
-                                    
-                                    
-                                    <a href={{path('passwordForgot_utilisateur')}}>Forgot Password?</a>
+                                <div class="row">
+                                    <!-- Column for the image on the left -->
+                                    <div class="col-lg-6">
+                                        <!-- Increasing the top margin of the image -->
+                                        <img src="{{ asset('uploads/EcoArt.png') }}" alt="Your Image" class="img-fluid">
+                                    </div>
+                                    <!-- Column for the form on the right -->
+                                    <div class="col-lg-6">
                                     <br>
-                                    <a href={{path('emailConnection_utilisateur')}}>Connect with your Email</a>
                                     <br>
-
-
-
-                                    {{form_widget(f.Login)}}
-
-
-
-
+                                    <br>
+                                        {{form_start(f)}}
+                                        {{form_widget(f.username)}}
+                                        {{form_errors(f.username)}}
+                                        <br>
+                                        {{form_widget(f.password)}}
+                                        {{form_errors(f.password)}}
+                                        <br>
+                                        <div class="text-center">
+                                            {{form_widget(f.Login, {'attr': {'class': 'btn btn-primary'}})}}
                                         </div>
-                                    <div class="card-footer text-center py-3">
-                                        <div class="small"><a href={{path('add_utilisateur')}}>Need an account? Sign up!</a></div>
+                                        <div class="text-center mt-3">
+                                            <a href="{{ path('passwordForgot_utilisateur') }}">Forgot Password?</a>
+                                            <br>
+                                            <a href="{{ path('emailConnection_utilisateur') }}">Connect with your Email</a>
+                                        </div>
                                     </div>
                                 </div>
                             </div>
+                            <div class="card-footer text-center py-3">
+                                <div class="small"><a href="{{ path('add_utilisateur') }}">Need an account? Sign up!</a></div>
+                            </div>
                         </div>
                     </div>
-                </main>
-            </div
+                </div>
             </div>
+        </main>
+    </div>
+</div>
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+<style>
+    @keyframes rainbowText {
+        0% { color: #000000; } /* Red */
+        0% { color: #ff9900; } /* Orange */
+      
+    }
+</style>
 
 {% endblock %}

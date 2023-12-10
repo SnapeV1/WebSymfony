@@ -62,6 +62,7 @@ class CommentaireController extends AbstractController
         return $this->render('commentaire/tabbela.html.twig', [
             'formation' => $formation,
             'commentaires' => $commentaires,
+            'user'=>$user
         ]);
     }
     
@@ -78,9 +79,10 @@ class CommentaireController extends AbstractController
     }
 
     #[Route('/updateComm/{id}/{idFormation}', name: 'edit_commentaire')]
-    public function updatecommentaire(ManagerRegistry $managerRegistry,$id,$idFormation,CommentaireRepository $repo,Request $req): Response
+    public function updatecommentaire(ManagerRegistry $managerRegistry,$id,$idFormation,CommentaireRepository $repo,Request $req,SessionInterface $session): Response
     {
         $em = $managerRegistry->getManager();
+        $user=$session->get('user');
 
         $commentaire  = $repo->find($id);
         $form = $this->createForm(CommentaireType::class, $commentaire);
@@ -96,7 +98,8 @@ class CommentaireController extends AbstractController
 
         return $this->renderForm('commentaire/addcommentaire.html.twig', [
             'form' => $form,
-            'idFormation'=>$idFormation
+            'idFormation'=>$idFormation,
+            'user'=>$user
             
         ]);
     }

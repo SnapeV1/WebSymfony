@@ -267,9 +267,24 @@ public function updateAuthor(Request $requ,ManagerRegistry $manager,$id,Utilisat
             return $this->redirectToRoute('login_utilisateur');
         }
         $user= $repo->find($sUser->getId());
-       
-        $user->setPic( "/uploads/" . $user->getPic());
-
+        $logoPath=$user->getPic();
+      
+        if (strpos($logoPath, 'C:\\') === 0) {
+            // Logo path starts with 'c:/', move the file
+            $uploadsDirectory = $this->getParameter('uploads_directory');
+            
+            // Extract filename from the original path
+            $filename = pathinfo($logoPath, PATHINFO_BASENAME);
+            
+            // Define the new path
+            $newPath = $uploadsDirectory . '/' . $filename;
+            if (copy($logoPath, $newPath)) {
+              
+            } else {
+                // Handle the case where the file move fails
+                // You can log an error, throw an exception, or handle it as needed
+            }
+        
         if($user->getType()=='ADMIN')
         {
             return $this->render('utilisateur/adminProfil.html.twig',[
@@ -277,13 +292,13 @@ public function updateAuthor(Request $requ,ManagerRegistry $manager,$id,Utilisat
                 'l'=>$l
             ]);
         }
-        return $this->render('utilisateur/one.html.twig',[
-            'user'=>$user,
-            'l'=>$l
-        ]);
+       
     }
-
-
+    return $this->render('utilisateur/one.html.twig',[
+        'user'=>$user,
+        'l'=>$l
+    ]);
+    }
 
 
 
@@ -308,7 +323,8 @@ public function updateAuthor(Request $requ,ManagerRegistry $manager,$id,Utilisat
       
         if($sUser)
         {
-            return $this->redirectToRoute('profil_utilisateur');
+            return $this->redirectToRoute('HomePage',[
+                'user'=>$sUser  ]);
         }else
         {
 
@@ -342,7 +358,8 @@ public function updateAuthor(Request $requ,ManagerRegistry $manager,$id,Utilisat
         return $this->redirectToRoute('all_utilisateur');
         }else
         {
-            return $this->redirectToRoute('HomePage');
+            return $this->redirectToRoute('HomePage',[
+                'user'=>$user  ]);
         }
     }else
     {
@@ -814,10 +831,11 @@ if($form2->isSubmitted())
 
 
     #[Route('/take-photo', name: 'take_photo')]
-    public function takePic():Response
+    public function takePic(SessionInterface $session):Response
     {
-
-      return  $this->render('utilisateur/takePicture.html.twig');
+        $user=$session->get('user');
+      return  $this->render('utilisateur/takePicture.html.twig',[
+        'user'=>$user  ]);
     }
 
 
@@ -884,7 +902,10 @@ public function Home(SessionInterface $session, UtilisateurRepository $repo, Man
         if($user === null || $user->getId()===null){
           return  $this->redirectToRoute('login_utilisateur');
         }
+        
+    return  $this->render('Home.html.twig',[
+        'user'=>$user  ]);
+      
 
-    return  $this->render('Home.html.twig');
 }
 }

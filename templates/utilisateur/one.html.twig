@@ -19,14 +19,14 @@
 
               {% if l%}
               <a href="{{ path('take_photo') }}">
-              <img src="{{asset(user.pic)}}"
-                alt={{user.username}} class="img-fluid my-5" style="width: 120px;" />
+<img src="{{ user.pic starts with 'C:\\' ? asset('uploads/' ~ user.pic|split('\\')|last) : asset('uploads/' ~user.pic) }}" alt="pic" style="width: 80px; height: auto; border-radius: 5px; box-shadow: 0 0 10px 0 rgba(0,0,0,0.1);">
+
 
                 </a>
                 {% endif %}
 
                 {% if not l %}
-                <img src="{{asset(user.pic)}}"alt={{user.username}} class="img-fluid my-5" style="width: 80px;" />
+<img src="{{ user.pic starts with 'C:\\' ? asset('uploads/' ~ user.pic|split('\\')|last) : asset(user.pic) }}" alt="pic" style="width: 80px; height: auto; border-radius: 5px; box-shadow: 0 0 10px 0 rgba(0,0,0,0.1);">
                  {% endif %}
                 
               <h5>{{user.nom}} {{user.prenom}} </h5>

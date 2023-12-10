@@ -6,6 +6,7 @@ use Dompdf\Options;
 use App\Entity\Product;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Response;
+use Symfony\Component\HttpFoundation\Session\SessionInterface;
 use Symfony\Component\Routing\Annotation\Route;
 use Doctrine\Persistence\ManagerRegistry;
 use Symfony\Component\HttpFoundation\Request;
@@ -33,11 +34,11 @@ class ProductController extends AbstractController
 // ... (other use statements)
 
 #[Route('/ajouterproduit', name: 'add_product')]
-public function addProduct(ManagerRegistry $man, Request $req, FileUploader $fileUploader): Response
+public function addProduct(ManagerRegistry $man, Request $req, FileUploader $fileUploader,SessionInterface $session): Response
 {
     $product = new Product();
     $manager = $man->getManager();
-
+$user=$session->get('user');
     $form = $this->createForm(ProductType::class, $product);
     $form->handleRequest($req);
 
@@ -68,12 +69,14 @@ public function addProduct(ManagerRegistry $man, Request $req, FileUploader $fil
 
     return $this->renderForm('product/add.html.twig', [
         'f' => $form,
+        'user'=>$user 
     ]);
 }
 
 #[Route('/updateproduct/{id}',name:'Product_updated')]
-public function updateproduct(Request $requ,ManagerRegistry $manager,$id,ProductRepository $repo, FileUploader $fileUploader): Response
+public function updateproduct(Request $requ,ManagerRegistry $manager,$id,ProductRepository $repo, FileUploader $fileUploader,SessionInterface $session): Response
 {
+    $user=$session->get('user');
     $mR= $manager->getManager();
     $product= $repo->find($id);
     $form=$this->createForm(ProductType::class,$product);
@@ -92,16 +95,17 @@ public function updateproduct(Request $requ,ManagerRegistry $manager,$id,Product
     return $this->redirectToRoute('OnShowAddProduct');
     }
     return $this->renderForm('product/add.html.twig',[
-    'f'=>$form
+    'f'=>$form,
+    'user'=>$user 
 ]);
 }
 
 #[Route('/produits', name: 'OnShowAddProduct')]
-public function getAll(ProductRepository $repo, Filesystem $filesystem):Response
+public function getAll(ProductRepository $repo, Filesystem $filesystem,SessionInterface $session):Response
 {
     $list=$repo->findAll();
     $uploadsDirectory = $this->getParameter('uploads_directory');
-
+    $user=$session->get('user');
     foreach ($list as $product) {
         $imgPath = $product->getImage(); // Assuming getVideo() returns the video path
 
@@ -125,13 +129,15 @@ public function getAll(ProductRepository $repo, Filesystem $filesystem):Response
 
    
     return $this->render('product/getall.html.twig',[
-        'list'=>$list
+        'list'=>$list,
+        'user'=>$user 
     ]);
 
 }
 #[Route('/productdelete/{id}', name: 'delete_product')]
-public function delete(ProductRepository $repo,ManagerRegistry $manager,$id):Response
+public function delete(ProductRepository $repo,ManagerRegistry $manager,$id,SessionInterface $session):Response
 {
+    $user=$session->get('user');
     $product=$repo->find($id);
     $mr=$manager->getManager();
     $mr->remove($product);
@@ -141,8 +147,8 @@ public function delete(ProductRepository $repo,ManagerRegistry $manager,$id):Res
 
 }
 #[Route('/search/products', name: 'search_products')]
-public function searchCriteria(Request $request, ProductRepository $productRepository): JsonResponse
-{
+public function searchCriteria(Request $request, ProductRepository $productRepository,SessionInterface $session): JsonResponse
+{ $user=$session->get('user');
     $criteria = [
         'nom' => $request->query->get('nom'),
         'min_price' => $request->query->get('minPrice'),
@@ -193,5 +199,18 @@ public function deleteProductIfQuantityZero($id, ManagerRegistry $doctrine): Res
     return $this->redirectToRoute('OnShowAddProduct');
 }
 
+
+
+#[Route('/OneProduct', name: 'OneProduct')]
+public function OneProduct(): Response
+{
+
+
+
+    
+    return $this->render('product/index.html.twig', [
+        'controller_name' => 'ProductController',
+    ]);
+}
 
 }

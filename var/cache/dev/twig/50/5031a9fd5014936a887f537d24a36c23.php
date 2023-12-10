@@ -69,22 +69,28 @@ class __TwigTemplate_cee7ad0239545aa435a729ab83115637 extends Template
         $this->displayParentBlock("body", $context, $blocks);
         echo "
 
- 
-    <div class=\"container mt-5\">
-           <div class=\"col-md-12 d-flex justify-content-end mt-1\">
-    ";
-        // line 9
-        if ((isset($context["L"]) || array_key_exists("L", $context) ? $context["L"] : (function () { throw new RuntimeError('Variable "L" does not exist.', 9, $this->source); })())) {
-            // line 10
-            echo "        <a href=\"";
+     <link rel=\"stylesheet\" type=\"text/css\" href=\"";
+        // line 6
+        echo twig_escape_filter($this->env, $this->extensions['Symfony\Bridge\Twig\Extension\AssetExtension']->getAssetUrl("css/cardstyle.css"), "html", null, true);
+        echo "\">
+
+    
+    <div class=\"container mt-3 text-center\">
+        <h1 class=\"mb-4\">SHOP</h1>
+        <div class=\"col-md-12 d-flex justify-content-end mt-1\">
+            ";
+        // line 12
+        if ((isset($context["L"]) || array_key_exists("L", $context) ? $context["L"] : (function () { throw new RuntimeError('Variable "L" does not exist.', 12, $this->source); })())) {
+            // line 13
+            echo "                <a href=\"";
             echo $this->extensions['Symfony\Bridge\Twig\Extension\RoutingExtension']->getPath("add_product");
             echo "\" class=\"btn-link\">
-            <i class=\"fas fa-plus-circle\"></i> Add Product
-        </a>
-    ";
+                    <i class=\"fas fa-plus-circle\"></i> Add Product
+                </a>
+            ";
         }
-        // line 14
-        echo "</div>
+        // line 17
+        echo "        </div>
 
            
             
@@ -95,13 +101,13 @@ class __TwigTemplate_cee7ad0239545aa435a729ab83115637 extends Template
         <!-- Notification list (initially hidden) -->
         <div id=\"notification-list\" style=\"display: none;\">
             ";
-        // line 24
+        // line 27
         $context['_parent'] = $context;
-        $context['_seq'] = twig_ensure_traversable((isset($context["notifications"]) || array_key_exists("notifications", $context) ? $context["notifications"] : (function () { throw new RuntimeError('Variable "notifications" does not exist.', 24, $this->source); })()));
+        $context['_seq'] = twig_ensure_traversable((isset($context["notifications"]) || array_key_exists("notifications", $context) ? $context["notifications"] : (function () { throw new RuntimeError('Variable "notifications" does not exist.', 27, $this->source); })()));
         foreach ($context['_seq'] as $context["_key"] => $context["notification"]) {
-            // line 25
+            // line 28
             echo "                <div>";
-            echo twig_escape_filter($this->env, twig_get_attribute($this->env, $this->source, $context["notification"], "content", [], "any", false, false, false, 25), "html", null, true);
+            echo twig_escape_filter($this->env, twig_get_attribute($this->env, $this->source, $context["notification"], "content", [], "any", false, false, false, 28), "html", null, true);
             echo "</div>
                 <hr>
             ";
@@ -109,20 +115,20 @@ class __TwigTemplate_cee7ad0239545aa435a729ab83115637 extends Template
         $_parent = $context['_parent'];
         unset($context['_seq'], $context['_iterated'], $context['_key'], $context['notification'], $context['_parent'], $context['loop']);
         $context = array_intersect_key($context, $_parent) + $_parent;
-        // line 28
+        // line 31
         echo "            
         </div>
 
         ";
-        // line 32
+        // line 35
         echo "        ";
         $context['_parent'] = $context;
-        $context['_seq'] = twig_ensure_traversable(twig_get_attribute($this->env, $this->source, (isset($context["app"]) || array_key_exists("app", $context) ? $context["app"] : (function () { throw new RuntimeError('Variable "app" does not exist.', 32, $this->source); })()), "flashes", ["success"], "method", false, false, false, 32));
+        $context['_seq'] = twig_ensure_traversable(twig_get_attribute($this->env, $this->source, (isset($context["app"]) || array_key_exists("app", $context) ? $context["app"] : (function () { throw new RuntimeError('Variable "app" does not exist.', 35, $this->source); })()), "flashes", ["success"], "method", false, false, false, 35));
         foreach ($context['_seq'] as $context["_key"] => $context["flashMessage"]) {
-            // line 33
+            // line 36
             echo "            <div class=\"alert alert-success alert-dismissible fade show\" role=\"alert\">
                 ";
-            // line 34
+            // line 37
             echo twig_escape_filter($this->env, $context["flashMessage"], "html", null, true);
             echo "
                 <button type=\"button\" class=\"btn-close\" data-bs-dismiss=\"alert\" aria-label=\"Close\"></button>
@@ -134,18 +140,18 @@ class __TwigTemplate_cee7ad0239545aa435a729ab83115637 extends Template
         $_parent = $context['_parent'];
         unset($context['_seq'], $context['_iterated'], $context['_key'], $context['flashMessage'], $context['_parent'], $context['loop']);
         $context = array_intersect_key($context, $_parent) + $_parent;
-        // line 40
+        // line 43
         echo "
         ";
-        // line 42
+        // line 45
         echo "        ";
         $context['_parent'] = $context;
-        $context['_seq'] = twig_ensure_traversable(twig_get_attribute($this->env, $this->source, (isset($context["app"]) || array_key_exists("app", $context) ? $context["app"] : (function () { throw new RuntimeError('Variable "app" does not exist.', 42, $this->source); })()), "flashes", ["warning"], "method", false, false, false, 42));
+        $context['_seq'] = twig_ensure_traversable(twig_get_attribute($this->env, $this->source, (isset($context["app"]) || array_key_exists("app", $context) ? $context["app"] : (function () { throw new RuntimeError('Variable "app" does not exist.', 45, $this->source); })()), "flashes", ["warning"], "method", false, false, false, 45));
         foreach ($context['_seq'] as $context["_key"] => $context["flashMessage"]) {
-            // line 43
+            // line 46
             echo "            <div class=\"alert alert-warning alert-dismissible fade show\" role=\"alert\">
                 ";
-            // line 44
+            // line 47
             echo twig_escape_filter($this->env, $context["flashMessage"], "html", null, true);
             echo "
                 <button type=\"button\" class=\"btn-close\" data-bs-dismiss=\"alert\" aria-label=\"Close\"></button>
@@ -155,78 +161,59 @@ class __TwigTemplate_cee7ad0239545aa435a729ab83115637 extends Template
         $_parent = $context['_parent'];
         unset($context['_seq'], $context['_iterated'], $context['_key'], $context['flashMessage'], $context['_parent'], $context['loop']);
         $context = array_intersect_key($context, $_parent) + $_parent;
-        // line 48
+        // line 51
         echo "              
+  <div class=\"row\">
+    <!-- Left Column: Search and Filter -->
+    <div class=\"col-md-4\">
+        <div class=\"mx-auto p-4\" style=\"background-color: #f8f9fa; border-radius: 15px; box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);\">
+            <h4 class=\"text-center mb-3\">Filter Products</h4>
+            <form id=\"filter-form\">
+                <div class=\"mb-3\">
+                    <label for=\"search\" class=\"form-label\">Search by Name:</label>
+                    <input type=\"text\" id=\"search\" name=\"criteria[nom]\" class=\"form-control\">
+                </div>
+                <div class=\"mb-3\">
+                    <label for=\"price-range\" class=\"form-label\">Price Range:</label>
+                    <div id=\"price-range\" class=\"mb-2\"></div>
+                    <div id=\"price-range-values\" class=\"text-muted\">0€ - 3000€</div>
+                </div>
+                <button id=\"filter-button\" type=\"submit\" class=\"btn btn-primary w-100\">Apply Filters</button>
+            </form>
+        </div>
     </div>
 
-        <div class=\"row\">
-            <div class=\"col-md-6\">
-                <form id=\"filter-form\" class=\"mb-3\">
-                    <label for=\"search\">Search by Name:</label>
-                    <input type=\"text\" id=\"search\" name=\"criteria[nom]\" class=\"form-control\">
-                    <label for=\"price-range\">Price Range:</label>
-                    <div id=\"price-range\"></div>
-                    <div id=\"price-range-values\">0€ - 3000€</div>
-                    <button id=\"filter-button\" type=\"submit\" class=\"btn btn-primary\">Filter</button>
-                </form>
-            </div>
-            <div class=\"col-md-12 mt-3\">
-                <!-- This space intentionally left blank -->
-            </div>
-        </div>
-
-        <div class=\"row\" id=\"product-list\">
+    <!-- Right Column: Product Cards -->
+    <div class=\"col-md-8\">
+        <div class=\"row row-cols-1 row-cols-md-2 row-cols-lg-3\" id=\"product-list\">
             ";
-        // line 68
+        // line 75
         $context['_parent'] = $context;
-        $context['_seq'] = twig_ensure_traversable((isset($context["produit"]) || array_key_exists("produit", $context) ? $context["produit"] : (function () { throw new RuntimeError('Variable "produit" does not exist.', 68, $this->source); })()));
-        $context['loop'] = [
-          'parent' => $context['_parent'],
-          'index0' => 0,
-          'index'  => 1,
-          'first'  => true,
-        ];
-        if (is_array($context['_seq']) || (is_object($context['_seq']) && $context['_seq'] instanceof \Countable)) {
-            $length = count($context['_seq']);
-            $context['loop']['revindex0'] = $length - 1;
-            $context['loop']['revindex'] = $length;
-            $context['loop']['length'] = $length;
-            $context['loop']['last'] = 1 === $length;
-        }
+        $context['_seq'] = twig_ensure_traversable((isset($context["produit"]) || array_key_exists("produit", $context) ? $context["produit"] : (function () { throw new RuntimeError('Variable "produit" does not exist.', 75, $this->source); })()));
         foreach ($context['_seq'] as $context["_key"] => $context["product"]) {
-            // line 69
-            echo "                ";
-            if ((twig_get_attribute($this->env, $this->source, $context["loop"], "first", [], "any", false, false, false, 69) || ((twig_get_attribute($this->env, $this->source, $context["loop"], "index0", [], "any", false, false, false, 69) % 100) == 0))) {
-                // line 70
-                echo "                    ";
-                if ( !twig_get_attribute($this->env, $this->source, $context["loop"], "first", [], "any", false, false, false, 70)) {
-                    // line 71
-                    echo "                        </div><div class=\"row\">
-                    ";
-                }
-                // line 73
-                echo "                ";
-            }
-            // line 74
-            echo "                <div class=\"col-md-4 mb-4\">
-                    <div class=\"card\">
-                        <img src=\"";
             // line 76
-            echo twig_escape_filter($this->env, (((is_string($__internal_compile_0 = twig_get_attribute($this->env, $this->source, $context["product"], "image", [], "any", false, false, false, 76)) && is_string($__internal_compile_1 = "C:\\") && ('' === $__internal_compile_1 || 0 === strpos($__internal_compile_0, $__internal_compile_1)))) ? ($this->extensions['Symfony\Bridge\Twig\Extension\AssetExtension']->getAssetUrl(("uploads/" . twig_last($this->env, twig_split_filter($this->env, twig_get_attribute($this->env, $this->source, $context["product"], "image", [], "any", false, false, false, 76), "\\"))))) : ($this->extensions['Symfony\Bridge\Twig\Extension\AssetExtension']->getAssetUrl(("uploads/" . twig_get_attribute($this->env, $this->source, $context["product"], "image", [], "any", false, false, false, 76))))), "html", null, true);
-            echo "\" class=\"card-img-top\" style=\"max-height: 300px; width: 100%; object-fit: cover;\">
+            echo "                <div class=\"col mb-4\">      
 
-                        <div class=\"card-body text-center d-flex flex-column align-items-center\">
-                            <h5 class=\"card-title\">";
+                    <div class=\"card\" data-bs-toggle=\"modal\" data-bs-target=\"#productModal";
+            // line 78
+            echo twig_escape_filter($this->env, twig_get_attribute($this->env, $this->source, $context["product"], "idpdts", [], "any", false, false, false, 78), "html", null, true);
+            echo "\" style=\"border-radius: 15px; overflow: hidden; height: 100%;\">
+                        <img src=\"";
             // line 79
-            echo twig_escape_filter($this->env, twig_get_attribute($this->env, $this->source, $context["product"], "nom", [], "any", false, false, false, 79), "html", null, true);
+            echo twig_escape_filter($this->env, (((is_string($__internal_compile_0 = twig_get_attribute($this->env, $this->source, $context["product"], "image", [], "any", false, false, false, 79)) && is_string($__internal_compile_1 = "C:\\") && ('' === $__internal_compile_1 || 0 === strpos($__internal_compile_0, $__internal_compile_1)))) ? ($this->extensions['Symfony\Bridge\Twig\Extension\AssetExtension']->getAssetUrl(("uploads/" . twig_last($this->env, twig_split_filter($this->env, twig_get_attribute($this->env, $this->source, $context["product"], "image", [], "any", false, false, false, 79), "\\"))))) : ($this->extensions['Symfony\Bridge\Twig\Extension\AssetExtension']->getAssetUrl(("uploads/" . twig_get_attribute($this->env, $this->source, $context["product"], "image", [], "any", false, false, false, 79))))), "html", null, true);
+            echo "\" class=\"card-img-top\" style=\"max-height: 150px; width: 100%; object-fit: cover; border-radius: 15px;\">
+                        <div class=\"card-body text-center d-flex flex-column align-items-center\" style=\"height: 100%;\">
+                            <h5 class=\"card-title\">";
+            // line 81
+            echo twig_escape_filter($this->env, twig_get_attribute($this->env, $this->source, $context["product"], "nom", [], "any", false, false, false, 81), "html", null, true);
             echo "</h5>
                             <p class=\"card-text\">Prix : ";
-            // line 80
-            echo twig_escape_filter($this->env, twig_get_attribute($this->env, $this->source, $context["product"], "prix", [], "any", false, false, false, 80), "html", null, true);
+            // line 82
+            echo twig_escape_filter($this->env, twig_get_attribute($this->env, $this->source, $context["product"], "prix", [], "any", false, false, false, 82), "html", null, true);
             echo " €</p>
                             <form action=\"";
-            // line 81
-            echo twig_escape_filter($this->env, $this->extensions['Symfony\Bridge\Twig\Extension\RoutingExtension']->getPath("add_to_cart", ["id" => twig_get_attribute($this->env, $this->source, $context["product"], "idpdts", [], "any", false, false, false, 81)]), "html", null, true);
+            // line 83
+            echo twig_escape_filter($this->env, $this->extensions['Symfony\Bridge\Twig\Extension\RoutingExtension']->getPath("add_to_cart", ["id" => twig_get_attribute($this->env, $this->source, $context["product"], "idpdts", [], "any", false, false, false, 83)]), "html", null, true);
             echo "\" method=\"post\" class=\"mt-auto\">
                                 <label for=\"quantity\">Quantity:</label>
                                 <input type=\"number\" id=\"quantity\" name=\"quantity\" class=\"form-control mb-2\" value=\"1\" min=\"1\">
@@ -235,22 +222,67 @@ class __TwigTemplate_cee7ad0239545aa435a729ab83115637 extends Template
                         </div>
                     </div>
                 </div>
+                <div class=\"modal fade\" id=\"productModal";
+            // line 91
+            echo twig_escape_filter($this->env, twig_get_attribute($this->env, $this->source, $context["product"], "idpdts", [], "any", false, false, false, 91), "html", null, true);
+            echo "\" tabindex=\"-1\" aria-labelledby=\"productModalLabel";
+            echo twig_escape_filter($this->env, twig_get_attribute($this->env, $this->source, $context["product"], "idpdts", [], "any", false, false, false, 91), "html", null, true);
+            echo "\" aria-hidden=\"true\">
+        <div class=\"modal-dialog\">
+            <div class=\"modal-content\">
+                <div class=\"modal-header\">
+                    <h5 class=\"modal-title\" id=\"productModalLabel";
+            // line 95
+            echo twig_escape_filter($this->env, twig_get_attribute($this->env, $this->source, $context["product"], "idpdts", [], "any", false, false, false, 95), "html", null, true);
+            echo "\">";
+            echo twig_escape_filter($this->env, twig_get_attribute($this->env, $this->source, $context["product"], "nom", [], "any", false, false, false, 95), "html", null, true);
+            echo "</h5>
+                    
+                    <button type=\"button\" class=\"btn-close\" data-bs-dismiss=\"modal\" aria-label=\"Close\"></button>
+                </div>
+                <div class=\"modal-body\">
+    <img src=\"";
+            // line 100
+            echo twig_escape_filter($this->env, (((is_string($__internal_compile_2 = twig_get_attribute($this->env, $this->source, $context["product"], "image", [], "any", false, false, false, 100)) && is_string($__internal_compile_3 = "C:\\") && ('' === $__internal_compile_3 || 0 === strpos($__internal_compile_2, $__internal_compile_3)))) ? ($this->extensions['Symfony\Bridge\Twig\Extension\AssetExtension']->getAssetUrl(("uploads/" . twig_last($this->env, twig_split_filter($this->env, twig_get_attribute($this->env, $this->source, $context["product"], "image", [], "any", false, false, false, 100), "\\"))))) : ($this->extensions['Symfony\Bridge\Twig\Extension\AssetExtension']->getAssetUrl(("uploads/" . twig_get_attribute($this->env, $this->source, $context["product"], "image", [], "any", false, false, false, 100))))), "html", null, true);
+            echo "\" class=\"card-img-top\" style=\"max-height: 400px; width: 100%; object-fit: cover; border-radius: 15px;\">
+                 <span class=\"title\">Description:</span> ";
+            // line 101
+            echo twig_escape_filter($this->env, twig_get_attribute($this->env, $this->source, $context["product"], "description", [], "any", false, false, false, 101), "html", null, true);
+            echo "<br>
+
+    <span class=\"title\">Material:</span> ";
+            // line 103
+            echo twig_escape_filter($this->env, twig_get_attribute($this->env, $this->source, $context["product"], "matiere", [], "any", false, false, false, 103), "html", null, true);
+            echo "<br>
+
+    <span class=\"title\">Price:</span> ";
+            // line 105
+            echo twig_escape_filter($this->env, twig_get_attribute($this->env, $this->source, $context["product"], "prix", [], "any", false, false, false, 105), "html", null, true);
+            echo "\$<br>
+
+    <span class=\"title\">Available Quantity:</span> ";
+            // line 107
+            echo twig_escape_filter($this->env, twig_get_attribute($this->env, $this->source, $context["product"], "qte", [], "any", false, false, false, 107), "html", null, true);
+            echo "<br>
+
+                </div>
+                <div class=\"modal-footer\">
+<p class=\"brand\">EcoArt</p>                </div>
+            </div>
+        </div>
+    </div>
             ";
-            ++$context['loop']['index0'];
-            ++$context['loop']['index'];
-            $context['loop']['first'] = false;
-            if (isset($context['loop']['length'])) {
-                --$context['loop']['revindex0'];
-                --$context['loop']['revindex'];
-                $context['loop']['last'] = 0 === $context['loop']['revindex0'];
-            }
         }
         $_parent = $context['_parent'];
         unset($context['_seq'], $context['_iterated'], $context['_key'], $context['product'], $context['_parent'], $context['loop']);
         $context = array_intersect_key($context, $_parent) + $_parent;
-        // line 90
+        // line 116
         echo "        </div>
     </div>
+</div>
+
+
+
 
     <script src=\"https://cdnjs.cloudflare.com/ajax/libs/noUiSlider/14.7.0/nouislider.min.js\"></script>
     <link rel=\"stylesheet\" href=\"https://cdnjs.cloudflare.com/ajax/libs/noUiSlider/14.7.0/nouislider.min.css\" />
@@ -262,8 +294,8 @@ class __TwigTemplate_cee7ad0239545aa435a729ab83115637 extends Template
             // Show the \"Add Product\" button if the user is a VENDEUR
             var addProductButton = document.getElementById('add-product-button');
             if (addProductButton && \"";
-        // line 102
-        echo twig_escape_filter($this->env, (isset($context["L"]) || array_key_exists("L", $context) ? $context["L"] : (function () { throw new RuntimeError('Variable "L" does not exist.', 102, $this->source); })()), "html", null, true);
+        // line 132
+        echo twig_escape_filter($this->env, (isset($context["L"]) || array_key_exists("L", $context) ? $context["L"] : (function () { throw new RuntimeError('Variable "L" does not exist.', 132, $this->source); })()), "html", null, true);
         echo "\" === \"1\") {
                 addProductButton.style.display = 'block';
             }
@@ -289,7 +321,7 @@ class __TwigTemplate_cee7ad0239545aa435a729ab83115637 extends Template
             var filterForm = document.getElementById('filter-form');
             var productList = document.getElementById('product-list');
             var baseUrl = '";
-        // line 126
+        // line 156
         echo twig_escape_filter($this->env, twig_replace_filter($this->extensions['Symfony\Bridge\Twig\Extension\RoutingExtension']->getPath("add_to_cart", ["id" => "id"]), ["id" => ""]), "html", null, true);
         echo "';
 
@@ -317,7 +349,7 @@ class __TwigTemplate_cee7ad0239545aa435a729ab83115637 extends Template
 
                 // Use the Fetch API to make a GET request
                 fetch(\"";
-        // line 151
+        // line 181
         echo $this->extensions['Symfony\Bridge\Twig\Extension\RoutingExtension']->getPath("search_products");
         echo "?nom=\" + nameValue + \"&minPrice=\" + priceRangeValues[0] + \"&maxPrice=\" + priceRangeValues[1])
                     .then(response => handleResponse(response))
@@ -387,7 +419,7 @@ class __TwigTemplate_cee7ad0239545aa435a729ab83115637 extends Template
 
     public function getDebugInfo()
     {
-        return array (  321 => 151,  293 => 126,  266 => 102,  252 => 90,  229 => 81,  225 => 80,  221 => 79,  215 => 76,  211 => 74,  208 => 73,  204 => 71,  201 => 70,  198 => 69,  181 => 68,  159 => 48,  149 => 44,  146 => 43,  141 => 42,  138 => 40,  126 => 34,  123 => 33,  118 => 32,  113 => 28,  103 => 25,  99 => 24,  87 => 14,  79 => 10,  77 => 9,  68 => 4,  58 => 3,  35 => 1,);
+        return array (  353 => 181,  325 => 156,  298 => 132,  280 => 116,  265 => 107,  260 => 105,  255 => 103,  250 => 101,  246 => 100,  236 => 95,  227 => 91,  216 => 83,  212 => 82,  208 => 81,  203 => 79,  199 => 78,  195 => 76,  191 => 75,  165 => 51,  155 => 47,  152 => 46,  147 => 45,  144 => 43,  132 => 37,  129 => 36,  124 => 35,  119 => 31,  109 => 28,  105 => 27,  93 => 17,  85 => 13,  83 => 12,  74 => 6,  68 => 4,  58 => 3,  35 => 1,);
     }
 
     public function getSourceContext()
@@ -397,15 +429,18 @@ class __TwigTemplate_cee7ad0239545aa435a729ab83115637 extends Template
 {% block body %}
     {{ parent() }}
 
- 
-    <div class=\"container mt-5\">
-           <div class=\"col-md-12 d-flex justify-content-end mt-1\">
-    {% if L %}
-        <a href=\"{{ path('add_product') }}\" class=\"btn-link\">
-            <i class=\"fas fa-plus-circle\"></i> Add Product
-        </a>
-    {% endif %}
-</div>
+     <link rel=\"stylesheet\" type=\"text/css\" href=\"{{ asset('css/cardstyle.css') }}\">
+
+    
+    <div class=\"container mt-3 text-center\">
+        <h1 class=\"mb-4\">SHOP</h1>
+        <div class=\"col-md-12 d-flex justify-content-end mt-1\">
+            {% if L %}
+                <a href=\"{{ path('add_product') }}\" class=\"btn-link\">
+                    <i class=\"fas fa-plus-circle\"></i> Add Product
+                </a>
+            {% endif %}
+        </div>
 
            
             
@@ -440,36 +475,35 @@ class __TwigTemplate_cee7ad0239545aa435a729ab83115637 extends Template
             </div>
         {% endfor %}
               
+  <div class=\"row\">
+    <!-- Left Column: Search and Filter -->
+    <div class=\"col-md-4\">
+        <div class=\"mx-auto p-4\" style=\"background-color: #f8f9fa; border-radius: 15px; box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);\">
+            <h4 class=\"text-center mb-3\">Filter Products</h4>
+            <form id=\"filter-form\">
+                <div class=\"mb-3\">
+                    <label for=\"search\" class=\"form-label\">Search by Name:</label>
+                    <input type=\"text\" id=\"search\" name=\"criteria[nom]\" class=\"form-control\">
+                </div>
+                <div class=\"mb-3\">
+                    <label for=\"price-range\" class=\"form-label\">Price Range:</label>
+                    <div id=\"price-range\" class=\"mb-2\"></div>
+                    <div id=\"price-range-values\" class=\"text-muted\">0€ - 3000€</div>
+                </div>
+                <button id=\"filter-button\" type=\"submit\" class=\"btn btn-primary w-100\">Apply Filters</button>
+            </form>
+        </div>
     </div>
 
-        <div class=\"row\">
-            <div class=\"col-md-6\">
-                <form id=\"filter-form\" class=\"mb-3\">
-                    <label for=\"search\">Search by Name:</label>
-                    <input type=\"text\" id=\"search\" name=\"criteria[nom]\" class=\"form-control\">
-                    <label for=\"price-range\">Price Range:</label>
-                    <div id=\"price-range\"></div>
-                    <div id=\"price-range-values\">0€ - 3000€</div>
-                    <button id=\"filter-button\" type=\"submit\" class=\"btn btn-primary\">Filter</button>
-                </form>
-            </div>
-            <div class=\"col-md-12 mt-3\">
-                <!-- This space intentionally left blank -->
-            </div>
-        </div>
-
-        <div class=\"row\" id=\"product-list\">
+    <!-- Right Column: Product Cards -->
+    <div class=\"col-md-8\">
+        <div class=\"row row-cols-1 row-cols-md-2 row-cols-lg-3\" id=\"product-list\">
             {% for product in produit %}
-                {% if loop.first or loop.index0 % 100 == 0 %}
-                    {% if not loop.first %}
-                        </div><div class=\"row\">
-                    {% endif %}
-                {% endif %}
-                <div class=\"col-md-4 mb-4\">
-                    <div class=\"card\">
-                        <img src=\"{{ product.image starts with 'C:\\\\' ? asset('uploads/' ~ product.image|split('\\\\')|last) : asset('uploads/'~ product.image) }}\" class=\"card-img-top\" style=\"max-height: 300px; width: 100%; object-fit: cover;\">
+                <div class=\"col mb-4\">      
 
-                        <div class=\"card-body text-center d-flex flex-column align-items-center\">
+                    <div class=\"card\" data-bs-toggle=\"modal\" data-bs-target=\"#productModal{{ product.idpdts }}\" style=\"border-radius: 15px; overflow: hidden; height: 100%;\">
+                        <img src=\"{{ product.image starts with 'C:\\\\' ? asset('uploads/' ~ product.image|split('\\\\')|last) : asset('uploads/'~ product.image) }}\" class=\"card-img-top\" style=\"max-height: 150px; width: 100%; object-fit: cover; border-radius: 15px;\">
+                        <div class=\"card-body text-center d-flex flex-column align-items-center\" style=\"height: 100%;\">
                             <h5 class=\"card-title\">{{ product.nom }}</h5>
                             <p class=\"card-text\">Prix : {{ product.prix }} €</p>
                             <form action=\"{{ path('add_to_cart', {'id': product.idpdts}) }}\" method=\"post\" class=\"mt-auto\">
@@ -480,9 +514,37 @@ class __TwigTemplate_cee7ad0239545aa435a729ab83115637 extends Template
                         </div>
                     </div>
                 </div>
+                <div class=\"modal fade\" id=\"productModal{{ product.idpdts }}\" tabindex=\"-1\" aria-labelledby=\"productModalLabel{{ product.idpdts }}\" aria-hidden=\"true\">
+        <div class=\"modal-dialog\">
+            <div class=\"modal-content\">
+                <div class=\"modal-header\">
+                    <h5 class=\"modal-title\" id=\"productModalLabel{{ product.idpdts }}\">{{ product.nom }}</h5>
+                    
+                    <button type=\"button\" class=\"btn-close\" data-bs-dismiss=\"modal\" aria-label=\"Close\"></button>
+                </div>
+                <div class=\"modal-body\">
+    <img src=\"{{ product.image starts with 'C:\\\\' ? asset('uploads/' ~ product.image|split('\\\\')|last) : asset('uploads/'~ product.image) }}\" class=\"card-img-top\" style=\"max-height: 400px; width: 100%; object-fit: cover; border-radius: 15px;\">
+                 <span class=\"title\">Description:</span> {{ product.description }}<br>
+
+    <span class=\"title\">Material:</span> {{ product.matiere }}<br>
+
+    <span class=\"title\">Price:</span> {{ product.prix }}\$<br>
+
+    <span class=\"title\">Available Quantity:</span> {{ product.qte }}<br>
+
+                </div>
+                <div class=\"modal-footer\">
+<p class=\"brand\">EcoArt</p>                </div>
+            </div>
+        </div>
+    </div>
             {% endfor %}
         </div>
     </div>
+</div>
+
+
+
 
     <script src=\"https://cdnjs.cloudflare.com/ajax/libs/noUiSlider/14.7.0/nouislider.min.js\"></script>
     <link rel=\"stylesheet\" href=\"https://cdnjs.cloudflare.com/ajax/libs/noUiSlider/14.7.0/nouislider.min.css\" />

@@ -66,13 +66,12 @@ class BoutiqueController extends AbstractController
 
 
 
-
-        
     }
     return $this->render('boutique/shop.html.twig', [
         'produit' => $products,
         'notifications' => $notifications,
-        'L'=>$l
+        'L'=>$l,
+        'user'=>$user  
     ]);
 }
 

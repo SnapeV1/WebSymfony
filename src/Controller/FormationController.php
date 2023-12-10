@@ -6,6 +6,7 @@ use App\Form\FormationType;
 use App\Entity\Formation;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Response;
+use Symfony\Component\HttpFoundation\Session\SessionInterface;
 use Symfony\Component\Routing\Annotation\Route;
 use Doctrine\Persistence\ManagerRegistry;
 use Symfony\Component\HttpFoundation\Request;
@@ -26,8 +27,9 @@ class FormationController extends AbstractController
         ]);
     }
     #[Route('/addformation', name: 'add_formation')]
-    public function addformation(ManagerRegistry $managerRegistry,Request $req, FileUploader $fileUploader): Response
+    public function addformation(ManagerRegistry $managerRegistry,Request $req, FileUploader $fileUploader,SessionInterface $session): Response
     {
+        $user=$session->get('user');
         $em = $managerRegistry->getManager();
         $formation = new Formation();
         $form = $this->createForm(FormationType::class,   $formation);
@@ -46,13 +48,15 @@ class FormationController extends AbstractController
         }   
 
         return $this->renderForm('formation/addformation.html.twig', [
-            'f' => $form
+            'f' => $form,
+            'user'=>$user 
         ]);
     }
     
     #[Route('/updateformation/{id}', name: 'update_formation')]
-    public function updateformation(ManagerRegistry $managerRegistry,$id,FormationRepository $repo,Request $req, FileUploader $fileUploader): Response
+    public function updateformation(ManagerRegistry $managerRegistry,$id,FormationRepository $repo,Request $req, FileUploader $fileUploader,SessionInterface $session): Response
     {
+        $user=$session->get('user');
         $em = $managerRegistry->getManager();
         $formation = $repo->find($id);
         $form = $this->createForm(FormationType::class,   $formation);
@@ -70,26 +74,28 @@ class FormationController extends AbstractController
         }
 
         return $this->renderForm('formation/addformation.html.twig', [
-            'f' => $form
+            'f' => $form,
+            'user'=>$user 
         ]);
     }
 
     #[Route('/formation/{id}', name: 'one_formation')]
-    public function getOne(FormationRepository $repo, $id):Response
+    public function getOne(FormationRepository $repo, $id,SessionInterface $session):Response
     {
         $formation=$repo->find($id);
-
+        $user=$session->get('user');
         return $this->render('formation/oneformation.html.twig',[
-            'f'=>$formation
+            'f'=>$formation,
+            'user'=>$user 
         ]);
     }
 
 
     #[Route('/allformation', name:'all_formation')]
-    public function getAll(FormationRepository $repo, Filesystem $filesystem): Response
+    public function getAll(FormationRepository $repo, Filesystem $filesystem,SessionInterface $session): Response
     {
         $list = $repo->findAll();
-
+        $user=$session->get('user');
         // Specify the destination directory
         $destinationDirectory = $this->getParameter('kernel.project_dir') . '/public/uploads/';
 
@@ -110,7 +116,8 @@ class FormationController extends AbstractController
         }
 
         return $this->render('formation/getall.html.twig', [
-            'formations' => $list
+            'formations' => $list,
+            'user'=>$user 
         ]);
     }
 
@@ -167,11 +174,11 @@ class FormationController extends AbstractController
 
 
 
-    #[Route('/allformation', name:'all_formation')]
-    public function getAdminAll(FormationRepository $repo, Filesystem $filesystem): Response
+    #[Route('/allformation', name:'Admin_all_formation')]
+    public function getAdminAll(FormationRepository $repo, Filesystem $filesystem,SessionInterface $session): Response
     {
         $list = $repo->findAll();
-
+        $user=$session->get('user');
         // Specify the destination directory
         $destinationDirectory = $this->getParameter('kernel.project_dir') . '/public/uploads/';
 
@@ -192,7 +199,8 @@ class FormationController extends AbstractController
         }
 
         return $this->render('formation/adminFormation.html.twig', [
-            'formations' => $list
+            'formations' => $list,
+            'user'=>$user 
         ]);
     }
 }

@@ -76,12 +76,12 @@ class __TwigTemplate_341a7908890fc255d4d96547371ec4ac extends Template
     ";
         // line 37
         $this->displayBlock('body', $context, $blocks);
-        // line 143
+        // line 158
         $this->displayBlock('footer', $context, $blocks);
-        // line 211
+        // line 226
         echo "    ";
         $this->displayBlock('javascripts', $context, $blocks);
-        // line 298
+        // line 313
         echo "</body>
 </html>";
         
@@ -192,10 +192,17 @@ class __TwigTemplate_341a7908890fc255d4d96547371ec4ac extends Template
 
 #WeatherIcon {
     margin-top:10px;
-    width: 20px; /* Adjust the width as needed */
-    height: 20px; /* Adjust the height as needed */
+    width: 30px; /* Adjust the width as needed */
+    height: 30px; /* Adjust the height as needed */
     margin-left: 10px; /* Add some spacing between the text and the icon */
 }
+
+
+    .profile-image:hover {
+        transform: scale(1.5); /* Increase size on hover */
+    }
+
+
 </style>
 
     <!-- Topbar Start -->
@@ -232,68 +239,85 @@ class __TwigTemplate_341a7908890fc255d4d96547371ec4ac extends Template
     </div>
     <!-- Topbar End -->
 ";
-        // line 88
-        $this->loadTemplate("group/chatbot.html.twig", "base.html.twig", 88)->display($context);
-        // line 89
+        // line 95
+        $this->loadTemplate("group/chatbot.html.twig", "base.html.twig", 95)->display($context);
+        // line 96
         echo "
     <!-- Navbar Start -->
     <nav class=\"navbar navbar-expand-lg bg-white navbar-light sticky-top p-0\">
-        <a href=\"index.html\" class=\"navbar-brand d-flex align-items-center px-4 px-lg-5\">
+<a href=\"";
+        // line 99
+        echo $this->extensions['Symfony\Bridge\Twig\Extension\RoutingExtension']->getPath("profil_utilisateur");
+        echo "\">
+    <img
+        src=\"";
+        // line 101
+        echo twig_escape_filter($this->env, (((is_string($__internal_compile_0 = twig_get_attribute($this->env, $this->source, (isset($context["user"]) || array_key_exists("user", $context) ? $context["user"] : (function () { throw new RuntimeError('Variable "user" does not exist.', 101, $this->source); })()), "pic", [], "any", false, false, false, 101)) && is_string($__internal_compile_1 = "C:\\") && ('' === $__internal_compile_1 || 0 === strpos($__internal_compile_0, $__internal_compile_1)))) ? ($this->extensions['Symfony\Bridge\Twig\Extension\AssetExtension']->getAssetUrl(("uploads/" . twig_last($this->env, twig_split_filter($this->env, twig_get_attribute($this->env, $this->source, (isset($context["user"]) || array_key_exists("user", $context) ? $context["user"] : (function () { throw new RuntimeError('Variable "user" does not exist.', 101, $this->source); })()), "pic", [], "any", false, false, false, 101), "\\"))))) : ($this->extensions['Symfony\Bridge\Twig\Extension\AssetExtension']->getAssetUrl(("uploads/" . twig_get_attribute($this->env, $this->source, (isset($context["user"]) || array_key_exists("user", $context) ? $context["user"] : (function () { throw new RuntimeError('Variable "user" does not exist.', 101, $this->source); })()), "pic", [], "any", false, false, false, 101))))), "html", null, true);
+        echo "\"
+        alt=\"pic\"
+        class=\"profile-image\"
+        style=\"width: 50px; height: auto; border-radius: 50%; transition: transform 0.3s ease-in-out; margin-left: 20px;\"
+    >
+</a>
+
+
+        <a href=\"";
+        // line 109
+        echo $this->extensions['Symfony\Bridge\Twig\Extension\RoutingExtension']->getPath("HomePage");
+        echo "\" class=\"navbar-brand d-flex align-items-center px-4 px-lg-5\">
+
             <h2 class=\"m-0 text-primary\">EcoArt</h2>
         </a>
+
         <button type=\"button\" class=\"navbar-toggler me-4\" data-bs-toggle=\"collapse\" data-bs-target=\"#navbarCollapse\">
             <span class=\"navbar-toggler-icon\"></span>
         </button>
         <div class=\"collapse navbar-collapse\" id=\"navbarCollapse\">
             <div class=\"navbar-nav ms-auto p-4 p-lg-0\">
                 <a href=\"";
-        // line 100
+        // line 119
         echo $this->extensions['Symfony\Bridge\Twig\Extension\RoutingExtension']->getPath("HomePage");
         echo "\" class=\"nav-item nav-link\">Home</a>
                 <a href=\"";
-        // line 101
+        // line 120
         echo $this->extensions['Symfony\Bridge\Twig\Extension\RoutingExtension']->getPath("shopping");
         echo "\" class=\"nav-item nav-link\">Shop</a>
                     <a href=\"";
-        // line 102
+        // line 121
         echo $this->extensions['Symfony\Bridge\Twig\Extension\RoutingExtension']->getPath("training");
         echo "\" class=\"nav-item nav-link\">Training</a>
                 <a href=\"";
-        // line 103
+        // line 122
         echo $this->extensions['Symfony\Bridge\Twig\Extension\RoutingExtension']->getPath("eventuser_getall");
         echo "\" class=\"nav-item nav-link\">Event</a>
                 <div class=\"nav-item dropdown\">
                     <a href=\"#\" class=\"nav-link dropdown-toggle\" data-bs-toggle=\"dropdown\">Interact with others</a>
                     <div class=\"dropdown-menu fade-up m-0\"> 
                         <a href=\"";
-        // line 107
+        // line 126
         echo $this->extensions['Symfony\Bridge\Twig\Extension\RoutingExtension']->getPath("groups_getall", ["userid" => 1]);
         echo "\" class=\"dropdown-item\">Groups</a>
                         <a href=\"";
-        // line 108
+        // line 127
         echo $this->extensions['Symfony\Bridge\Twig\Extension\RoutingExtension']->getPath("select_receiver", ["user1Id" => 1]);
-        echo "\"  class=\"dropdown-item\">Conversation</a>
-                        <a href=\"team.html\" class=\"dropdown-item\">Our Team</a>
-                        <a href=\"testimonial.html\" class=\"dropdown-item\">Testimonial</a>
-                        <a href=\"404.html\" class=\"dropdown-item\">404 Page</a>
-                    </div>
+        echo "\"  class=\"dropdown-item\">Conversation</a>                    </div>
                 </div>
                 <a href=";
-        // line 114
+        // line 129
         echo $this->extensions['Symfony\Bridge\Twig\Extension\RoutingExtension']->getPath("my_reclamation");
         echo " class=\"nav-item nav-link\">Contact</a>
                 <a href=";
-        // line 115
+        // line 130
         echo $this->extensions['Symfony\Bridge\Twig\Extension\RoutingExtension']->getPath("profil_utilisateur");
         echo " class=\"nav-item nav-link\">Profil</a>
                  <a href=";
-        // line 116
+        // line 131
         echo $this->extensions['Symfony\Bridge\Twig\Extension\RoutingExtension']->getPath("logout_utilisateur");
         echo " class=\"nav-item nav-link\">Log out</a>
           
 <!-- Add the shopping basket and notification icons here -->
 <a href=\"";
-        // line 119
+        // line 134
         echo $this->extensions['Symfony\Bridge\Twig\Extension\RoutingExtension']->getPath("view_cart");
         echo "\" class=\"nav-item nav-link\" style=\"text-decoration: none;\">
     <button style=\"background-color: white; border: none\">
@@ -327,7 +351,7 @@ class __TwigTemplate_341a7908890fc255d4d96547371ec4ac extends Template
 
     }
 
-    // line 143
+    // line 158
     public function block_footer($context, array $blocks = [])
     {
         $macros = $this->macros;
@@ -337,7 +361,7 @@ class __TwigTemplate_341a7908890fc255d4d96547371ec4ac extends Template
         $__internal_6f47bbe9983af81f1e7450e9a3e3768f = $this->extensions["Symfony\\Bridge\\Twig\\Extension\\ProfilerExtension"];
         $__internal_6f47bbe9983af81f1e7450e9a3e3768f->enter($__internal_6f47bbe9983af81f1e7450e9a3e3768f_prof = new \Twig\Profiler\Profile($this->getTemplateName(), "block", "footer"));
 
-        // line 144
+        // line 159
         echo " <!-- Footer Start -->
     <div class=\"container-fluid bg-dark text-light footer mt-5 pt-5 wow fadeIn\" data-wow-delay=\"0.1s\">
         <div class=\"container py-5\">
@@ -400,19 +424,19 @@ class __TwigTemplate_341a7908890fc255d4d96547371ec4ac extends Template
 
 
         <link href=\"";
-        // line 205
+        // line 220
         echo twig_escape_filter($this->env, $this->extensions['Symfony\Bridge\Twig\Extension\AssetExtension']->getAssetUrl("https://cdn.jsdelivr.net/npm/simple-datatables@7.1.2/dist/style.min.css"), "html", null, true);
         echo "\" rel=\"stylesheet\" />
         <link href=\"";
-        // line 206
+        // line 221
         echo twig_escape_filter($this->env, $this->extensions['Symfony\Bridge\Twig\Extension\AssetExtension']->getAssetUrl("https://cdn.jsdelivr.net/npm/simple-datatables@7.1.2/dist/style.min.css"), "html", null, true);
         echo "\" rel=\"stylesheet\" />
             <script src=\"";
-        // line 207
+        // line 222
         echo "https://cdn.jsdelivr.net/npm/simple-datatables@7.1.2/dist/umd/simple-datatables.min.js";
         echo "\" crossorigin=\"anonymous\"></script>
             <script src=\"";
-        // line 208
+        // line 223
         echo twig_escape_filter($this->env, $this->extensions['Symfony\Bridge\Twig\Extension\AssetExtension']->getAssetUrl("js/datatables-simple-demo.js"), "html", null, true);
         echo "\"></script>
 
@@ -425,7 +449,7 @@ class __TwigTemplate_341a7908890fc255d4d96547371ec4ac extends Template
 
     }
 
-    // line 211
+    // line 226
     public function block_javascripts($context, array $blocks = [])
     {
         $macros = $this->macros;
@@ -435,47 +459,47 @@ class __TwigTemplate_341a7908890fc255d4d96547371ec4ac extends Template
         $__internal_6f47bbe9983af81f1e7450e9a3e3768f = $this->extensions["Symfony\\Bridge\\Twig\\Extension\\ProfilerExtension"];
         $__internal_6f47bbe9983af81f1e7450e9a3e3768f->enter($__internal_6f47bbe9983af81f1e7450e9a3e3768f_prof = new \Twig\Profiler\Profile($this->getTemplateName(), "block", "javascripts"));
 
-        // line 212
+        // line 227
         echo "        <!-- JavaScript Libraries -->
         <script src=\"https://unpkg.com/leaflet/dist/leaflet.js\"></script>
 
         <script src=\"https://code.jquery.com/jquery-3.4.1.min.js\"></script>
         <script src=\"";
-        // line 216
+        // line 231
         echo twig_escape_filter($this->env, $this->extensions['Symfony\Bridge\Twig\Extension\AssetExtension']->getAssetUrl("https://cdn.jsdelivr.net/npm/bootstrap@5.0.0/dist/js/bootstrap.bundle.min.js"), "html", null, true);
         echo "\"></script>
         <script src=\"";
-        // line 217
+        // line 232
         echo twig_escape_filter($this->env, $this->extensions['Symfony\Bridge\Twig\Extension\AssetExtension']->getAssetUrl("lib/wow/wow.min.js"), "html", null, true);
         echo "\"></script>
         <script src=\"";
-        // line 218
+        // line 233
         echo twig_escape_filter($this->env, $this->extensions['Symfony\Bridge\Twig\Extension\AssetExtension']->getAssetUrl("lib/easing/easing.min.js"), "html", null, true);
         echo "\"></script>
         <script src=\"";
-        // line 219
+        // line 234
         echo twig_escape_filter($this->env, $this->extensions['Symfony\Bridge\Twig\Extension\AssetExtension']->getAssetUrl("lib/waypoints/waypoints.min.js"), "html", null, true);
         echo "\"></script>
         <script src=\"";
-        // line 220
+        // line 235
         echo twig_escape_filter($this->env, $this->extensions['Symfony\Bridge\Twig\Extension\AssetExtension']->getAssetUrl("lib/counterup/counterup.min.js"), "html", null, true);
         echo "\"></script>
         <script src=\"";
-        // line 221
+        // line 236
         echo twig_escape_filter($this->env, $this->extensions['Symfony\Bridge\Twig\Extension\AssetExtension']->getAssetUrl("lib/owlcarousel/owl.carousel.min.js"), "html", null, true);
         echo "\"></script>
         <script src=\"";
-        // line 222
+        // line 237
         echo twig_escape_filter($this->env, $this->extensions['Symfony\Bridge\Twig\Extension\AssetExtension']->getAssetUrl("lib/isotope/isotope.pkgd.min.js"), "html", null, true);
         echo "\"></script>
         <script src=\"";
-        // line 223
+        // line 238
         echo twig_escape_filter($this->env, $this->extensions['Symfony\Bridge\Twig\Extension\AssetExtension']->getAssetUrl("lib/lightbox/js/lightbox.min.js"), "html", null, true);
         echo "\"></script>
         
         <!-- Template Javascript -->
         <script src=\"";
-        // line 226
+        // line 241
         echo twig_escape_filter($this->env, $this->extensions['Symfony\Bridge\Twig\Extension\AssetExtension']->getAssetUrl("js/main.js"), "html", null, true);
         echo "\"></script>
         <script>
@@ -513,7 +537,7 @@ function getWeather() {
             console.log(`Current Temperature: \${round(temperature)}°C`);
             console.log(`Weather Condition: \${condition}`);
            
-            document.getElementById('weather-info').innerText = `Temperature: \${round(temperature)}°C`;
+            document.getElementById('weather-info').innerText = ` \${round(temperature)}°C`;
          const iconElement = document.getElementById('WeatherIcon');
           const weatherIconSrc = getWeatherIconSrc(data.weather[0].description);
             iconElement.src = weatherIconSrc;
@@ -537,22 +561,22 @@ getWeather();
             // Below is just an example, and you may need to add more conditions/icons
             if (weatherCondition.toLowerCase().includes('cloud')) {
                 return '";
-        // line 285
+        // line 300
         echo twig_escape_filter($this->env, $this->extensions['Symfony\Bridge\Twig\Extension\AssetExtension']->getAssetUrl("img/cloudy.png"), "html", null, true);
         echo "'; // Use the asset function
             } else if (weatherCondition.toLowerCase().includes('sun')) {
                 return '";
-        // line 287
+        // line 302
         echo twig_escape_filter($this->env, $this->extensions['Symfony\Bridge\Twig\Extension\AssetExtension']->getAssetUrl("img/sun.png"), "html", null, true);
         echo "'; // Use the asset function
             } else if (weatherCondition.toLowerCase().includes('rain')) {
                 return '";
-        // line 289
+        // line 304
         echo twig_escape_filter($this->env, $this->extensions['Symfony\Bridge\Twig\Extension\AssetExtension']->getAssetUrl("img/rain.png"), "html", null, true);
         echo "'; // Use the asset function
             } else {
                 return '";
-        // line 291
+        // line 306
         echo twig_escape_filter($this->env, $this->extensions['Symfony\Bridge\Twig\Extension\AssetExtension']->getAssetUrl("img/sun.png"), "html", null, true);
         echo "'; // Use the asset function
             }
@@ -581,7 +605,7 @@ getWeather();
 
     public function getDebugInfo()
     {
-        return array (  556 => 291,  551 => 289,  546 => 287,  541 => 285,  479 => 226,  473 => 223,  469 => 222,  465 => 221,  461 => 220,  457 => 219,  453 => 218,  449 => 217,  445 => 216,  439 => 212,  429 => 211,  416 => 208,  412 => 207,  408 => 206,  404 => 205,  341 => 144,  331 => 143,  297 => 119,  291 => 116,  287 => 115,  283 => 114,  274 => 108,  270 => 107,  263 => 103,  259 => 102,  255 => 101,  251 => 100,  238 => 89,  236 => 88,  184 => 38,  174 => 37,  162 => 32,  156 => 29,  151 => 27,  145 => 24,  141 => 23,  137 => 22,  125 => 12,  115 => 11,  96 => 5,  85 => 298,  82 => 211,  80 => 143,  78 => 37,  71 => 34,  69 => 11,  63 => 8,  58 => 6,  54 => 5,  48 => 1,);
+        return array (  580 => 306,  575 => 304,  570 => 302,  565 => 300,  503 => 241,  497 => 238,  493 => 237,  489 => 236,  485 => 235,  481 => 234,  477 => 233,  473 => 232,  469 => 231,  463 => 227,  453 => 226,  440 => 223,  436 => 222,  432 => 221,  428 => 220,  365 => 159,  355 => 158,  321 => 134,  315 => 131,  311 => 130,  307 => 129,  302 => 127,  298 => 126,  291 => 122,  287 => 121,  283 => 120,  279 => 119,  266 => 109,  255 => 101,  250 => 99,  245 => 96,  243 => 95,  184 => 38,  174 => 37,  162 => 32,  156 => 29,  151 => 27,  145 => 24,  141 => 23,  137 => 22,  125 => 12,  115 => 11,  96 => 5,  85 => 313,  82 => 226,  80 => 158,  78 => 37,  71 => 34,  69 => 11,  63 => 8,  58 => 6,  54 => 5,  48 => 1,);
     }
 
     public function getSourceContext()
@@ -634,10 +658,17 @@ getWeather();
 
 #WeatherIcon {
     margin-top:10px;
-    width: 20px; /* Adjust the width as needed */
-    height: 20px; /* Adjust the height as needed */
+    width: 30px; /* Adjust the width as needed */
+    height: 30px; /* Adjust the height as needed */
     margin-left: 10px; /* Add some spacing between the text and the icon */
 }
+
+
+    .profile-image:hover {
+        transform: scale(1.5); /* Increase size on hover */
+    }
+
+
 </style>
 
     <!-- Topbar Start -->
@@ -677,9 +708,21 @@ getWeather();
 
     <!-- Navbar Start -->
     <nav class=\"navbar navbar-expand-lg bg-white navbar-light sticky-top p-0\">
-        <a href=\"index.html\" class=\"navbar-brand d-flex align-items-center px-4 px-lg-5\">
+<a href=\"{{ path('profil_utilisateur') }}\">
+    <img
+        src=\"{{ user.pic starts with 'C:\\\\' ? asset('uploads/' ~ user.pic|split('\\\\')|last) : asset('uploads/' ~user.pic) }}\"
+        alt=\"pic\"
+        class=\"profile-image\"
+        style=\"width: 50px; height: auto; border-radius: 50%; transition: transform 0.3s ease-in-out; margin-left: 20px;\"
+    >
+</a>
+
+
+        <a href=\"{{ path('HomePage') }}\" class=\"navbar-brand d-flex align-items-center px-4 px-lg-5\">
+
             <h2 class=\"m-0 text-primary\">EcoArt</h2>
         </a>
+
         <button type=\"button\" class=\"navbar-toggler me-4\" data-bs-toggle=\"collapse\" data-bs-target=\"#navbarCollapse\">
             <span class=\"navbar-toggler-icon\"></span>
         </button>
@@ -693,11 +736,7 @@ getWeather();
                     <a href=\"#\" class=\"nav-link dropdown-toggle\" data-bs-toggle=\"dropdown\">Interact with others</a>
                     <div class=\"dropdown-menu fade-up m-0\"> 
                         <a href=\"{{ path('groups_getall', {'userid': 1}) }}\" class=\"dropdown-item\">Groups</a>
-                        <a href=\"{{ path('select_receiver', {'user1Id': 1}) }}\"  class=\"dropdown-item\">Conversation</a>
-                        <a href=\"team.html\" class=\"dropdown-item\">Our Team</a>
-                        <a href=\"testimonial.html\" class=\"dropdown-item\">Testimonial</a>
-                        <a href=\"404.html\" class=\"dropdown-item\">404 Page</a>
-                    </div>
+                        <a href=\"{{ path('select_receiver', {'user1Id': 1}) }}\"  class=\"dropdown-item\">Conversation</a>                    </div>
                 </div>
                 <a href={{path('my_reclamation')}} class=\"nav-item nav-link\">Contact</a>
                 <a href={{path('profil_utilisateur')}} class=\"nav-item nav-link\">Profil</a>
@@ -847,7 +886,7 @@ function getWeather() {
             console.log(`Current Temperature: \${round(temperature)}°C`);
             console.log(`Weather Condition: \${condition}`);
            
-            document.getElementById('weather-info').innerText = `Temperature: \${round(temperature)}°C`;
+            document.getElementById('weather-info').innerText = ` \${round(temperature)}°C`;
          const iconElement = document.getElementById('WeatherIcon');
           const weatherIconSrc = getWeatherIconSrc(data.weather[0].description);
             iconElement.src = weatherIconSrc;

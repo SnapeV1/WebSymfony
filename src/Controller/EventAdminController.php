@@ -17,6 +17,7 @@ use Symfony\Component\Form\Extension\Core\Type\ResetType;
 use Symfony\Component\HttpFoundation\File\Exception\FileException;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
+use Symfony\Component\HttpFoundation\Session\SessionInterface;
 use Symfony\Component\Routing\Annotation\Route;
 
 class EventAdminController extends AbstractController
@@ -30,18 +31,18 @@ class EventAdminController extends AbstractController
     }
 
     #[Route('/EventAdmingetAll', name: 'eventadmin_getall')]
-public function getAll(EventAdminRepository $eventAdminRepo, EventUserRepository $eventUserRepo): Response
+public function getAll(EventAdminRepository $eventAdminRepo, EventUserRepository $eventUserRepo,SessionInterface $session): Response
 {
     // Récupérer les événements ajoutés par l'admin
     $adminEvents = $eventAdminRepo->findAll();
-
+$user=$session->get('user');
     // Récupérer les événements ajoutés par l'utilisateur
     $userEvents = $eventUserRepo->findAll();
 
     // Fusionner les deux tableaux d'événements
     $allEvents = array_merge($adminEvents, $userEvents);
 
-    return $this->render('eventadmin/getall.html.twig', ['events' => $allEvents]);
+    return $this->render('eventadmin/getall.html.twig', ['events' => $allEvents,'user'=>$user  ]);
 }
 
 

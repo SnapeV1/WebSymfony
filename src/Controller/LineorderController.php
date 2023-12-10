@@ -87,8 +87,9 @@ class LineorderController extends AbstractController
     }
     
     #[Route('/get-lineorders', name: 'view_cart')]
-    public function getLineorders(ManagerRegistry $man, Request $request): Response
+    public function getLineorders(ManagerRegistry $man, Request $request,SessionInterface $session): Response
     {
+        $user=$session->get('user');
         $entityManager = $man->getManager();
         $lineorders = $entityManager->getRepository(Lineorder::class)->findAll();
     
@@ -128,7 +129,7 @@ class LineorderController extends AbstractController
             'lineorders' => $lineorders,
             'editForm' => $editForm->createView(),
             'confirmationForm' => $confirmationForm->createView(),
-
+            'user'=>$user 
         ]);
     }
     
@@ -157,10 +158,10 @@ public function deleteLineorder($id, EntityManagerInterface $entityManager): Res
 // Handle form submission using AJAX
 
 #[Route('/edit-lineorder/{id}', name: 'edit_lineorder')]
-public function editLineorder($id, EntityManagerInterface $entityManager, Request $request): Response
+public function editLineorder($id, EntityManagerInterface $entityManager, Request $request,SessionInterface $session): Response
 {
     $lineorder = $entityManager->getRepository(Lineorder::class)->find($id);
-
+    $user=$session->get('user');
     if (!$lineorder) {
         throw $this->createNotFoundException('Lineorder not found');
     }
@@ -189,6 +190,7 @@ public function editLineorder($id, EntityManagerInterface $entityManager, Reques
 
     return $this->render('lineorder/edit.html.twig', [
         'form' => $form->createView(),
+        'user'=>$user 
     ]);
 }
 

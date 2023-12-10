@@ -68,20 +68,21 @@ class __TwigTemplate_a8394a0d2885c379b4df8a9d7783b332 extends Template
         echo "    ";
         $this->displayParentBlock("body", $context, $blocks);
         echo "
-    
-    <div class=\"container text-center\">
-        <h1>Booking Liste</h1>
-        
+
+    <div class=\"container mt-5\">
+       <h1 class=\"text-center mb-4 template-color\">Event List</h1>
+
+
         ";
-        // line 10
+        // line 11
         echo "        ";
         $context['_parent'] = $context;
-        $context['_seq'] = twig_ensure_traversable(twig_get_attribute($this->env, $this->source, (isset($context["app"]) || array_key_exists("app", $context) ? $context["app"] : (function () { throw new RuntimeError('Variable "app" does not exist.', 10, $this->source); })()), "flashes", ["success"], "method", false, false, false, 10));
+        $context['_seq'] = twig_ensure_traversable(twig_get_attribute($this->env, $this->source, (isset($context["app"]) || array_key_exists("app", $context) ? $context["app"] : (function () { throw new RuntimeError('Variable "app" does not exist.', 11, $this->source); })()), "flashes", ["success"], "method", false, false, false, 11));
         foreach ($context['_seq'] as $context["_key"] => $context["flash_message"]) {
-            // line 11
+            // line 12
             echo "            <div class=\"alert alert-success\">
                 ";
-            // line 12
+            // line 13
             echo twig_escape_filter($this->env, $context["flash_message"], "html", null, true);
             echo "
             </div>
@@ -90,18 +91,18 @@ class __TwigTemplate_a8394a0d2885c379b4df8a9d7783b332 extends Template
         $_parent = $context['_parent'];
         unset($context['_seq'], $context['_iterated'], $context['_key'], $context['flash_message'], $context['_parent'], $context['loop']);
         $context = array_intersect_key($context, $_parent) + $_parent;
-        // line 15
+        // line 16
         echo "
         ";
-        // line 17
+        // line 18
         echo "        ";
         $context['_parent'] = $context;
-        $context['_seq'] = twig_ensure_traversable(twig_get_attribute($this->env, $this->source, (isset($context["app"]) || array_key_exists("app", $context) ? $context["app"] : (function () { throw new RuntimeError('Variable "app" does not exist.', 17, $this->source); })()), "flashes", ["error"], "method", false, false, false, 17));
+        $context['_seq'] = twig_ensure_traversable(twig_get_attribute($this->env, $this->source, (isset($context["app"]) || array_key_exists("app", $context) ? $context["app"] : (function () { throw new RuntimeError('Variable "app" does not exist.', 18, $this->source); })()), "flashes", ["error"], "method", false, false, false, 18));
         foreach ($context['_seq'] as $context["_key"] => $context["flash_message"]) {
-            // line 18
+            // line 19
             echo "            <div class=\"alert alert-danger\">
                 ";
-            // line 19
+            // line 20
             echo twig_escape_filter($this->env, $context["flash_message"], "html", null, true);
             echo "
             </div>
@@ -110,89 +111,94 @@ class __TwigTemplate_a8394a0d2885c379b4df8a9d7783b332 extends Template
         $_parent = $context['_parent'];
         unset($context['_seq'], $context['_iterated'], $context['_key'], $context['flash_message'], $context['_parent'], $context['loop']);
         $context = array_intersect_key($context, $_parent) + $_parent;
-        // line 22
+        // line 23
         echo "
         ";
-        // line 24
-        echo "        <form id=\"searchForm\">
-            <div class=\"row mb-3\">
-                <div class=\"col\">
+        // line 25
+        echo "        <form id=\"searchForm\" class=\"mb-4 text-center\">
+            <div class=\"row justify-content-center\">
+                <div class=\"col-md-6\">
                     <input type=\"text\" class=\"form-control\" name=\"search_nom\" placeholder=\"Event name\">
                 </div>
-                <div class=\"col\">
-                    <input type=\"text\" class=\"form-control\" name=\"search_lieu\" placeholder=\"Place\">
-                </div>
-              
             </div>
         </form>
 
-        <div class=\"mx-auto\" style=\"width: 70%;\">
-            <table class=\"table table-hover\">
-                <thead>
+        <div class=\"table-responsive rounded\">
+            <table class=\"table table-bordered\">
+                <thead class=\"thead-dark\">
                     <tr>
-                        <th scope=\"col\">Event name</th>
-                        <th scope=\"col\">Event date</th>
-                        <th scope=\"col\">Place</th>
-                        <th scope=\"col\">Description</th>
-                        <th scope=\"col\">Picture</th>
-                        <th scope=\"col\">Prise</th>
-                        <th scope=\"col\">Action</th>
+                        <th>Name</th>
+                        <th>Date</th>
+                        <th>Place</th>
+                        <th>Description</th>
+                        <th>Picture</th>
+                        <th>Price</th>
+                        <th></th>
                     </tr>
                 </thead>
-                <tbody id=\"eventTableBody\"> ";
-        // line 50
-        echo "                    ";
+                <tbody>
+                    ";
+        // line 47
         $context['_parent'] = $context;
-        $context['_seq'] = twig_ensure_traversable((isset($context["events"]) || array_key_exists("events", $context) ? $context["events"] : (function () { throw new RuntimeError('Variable "events" does not exist.', 50, $this->source); })()));
+        $context['_seq'] = twig_ensure_traversable((isset($context["events"]) || array_key_exists("events", $context) ? $context["events"] : (function () { throw new RuntimeError('Variable "events" does not exist.', 47, $this->source); })()));
         foreach ($context['_seq'] as $context["_key"] => $context["event"]) {
+            // line 48
+            echo "                        <tr>
+                            <td>";
+            // line 49
+            echo twig_escape_filter($this->env, twig_get_attribute($this->env, $this->source, $context["event"], "nom", [], "any", false, false, false, 49), "html", null, true);
+            echo "</td>
+                            <td>";
+            // line 50
+            echo twig_escape_filter($this->env, twig_get_attribute($this->env, $this->source, $context["event"], "date", [], "any", false, false, false, 50), "html", null, true);
+            echo "</td>
+                            <td>";
             // line 51
-            echo "                        <tr class=\"table-active\">
+            echo twig_escape_filter($this->env, twig_get_attribute($this->env, $this->source, $context["event"], "lieu", [], "any", false, false, false, 51), "html", null, true);
+            echo "</td>
                             <td>";
             // line 52
-            echo twig_escape_filter($this->env, twig_get_attribute($this->env, $this->source, $context["event"], "nom", [], "any", false, false, false, 52), "html", null, true);
+            echo twig_escape_filter($this->env, twig_get_attribute($this->env, $this->source, $context["event"], "description", [], "any", false, false, false, 52), "html", null, true);
             echo "</td>
-                            <td>";
-            // line 53
-            echo twig_escape_filter($this->env, twig_get_attribute($this->env, $this->source, $context["event"], "date", [], "any", false, false, false, 53), "html", null, true);
-            echo "</td>
-                            <td>";
+                            <td>
+                                <img src=\"";
             // line 54
-            echo twig_escape_filter($this->env, twig_get_attribute($this->env, $this->source, $context["event"], "lieu", [], "any", false, false, false, 54), "html", null, true);
-            echo "</td>
+            echo twig_escape_filter($this->env, (((is_string($__internal_compile_0 = twig_get_attribute($this->env, $this->source, $context["event"], "image", [], "any", false, false, false, 54)) && is_string($__internal_compile_1 = "C:\\") && ('' === $__internal_compile_1 || 0 === strpos($__internal_compile_0, $__internal_compile_1)))) ? ($this->extensions['Symfony\Bridge\Twig\Extension\AssetExtension']->getAssetUrl(("uploads/" . twig_last($this->env, twig_split_filter($this->env, twig_get_attribute($this->env, $this->source, $context["event"], "image", [], "any", false, false, false, 54), "\\"))))) : ($this->extensions['Symfony\Bridge\Twig\Extension\AssetExtension']->getAssetUrl(twig_get_attribute($this->env, $this->source, $context["event"], "image", [], "any", false, false, false, 54)))), "html", null, true);
+            echo "\" class=\"img-fluid smaller-image\" alt=\"\">
+                            </td>
                             <td>";
-            // line 55
-            echo twig_escape_filter($this->env, twig_get_attribute($this->env, $this->source, $context["event"], "description", [], "any", false, false, false, 55), "html", null, true);
+            // line 56
+            echo twig_escape_filter($this->env, twig_get_attribute($this->env, $this->source, $context["event"], "prix", [], "any", false, false, false, 56), "html", null, true);
             echo "</td>
-                            <td>
-                            <img src=\"";
-            // line 57
-            echo twig_escape_filter($this->env, (((is_string($__internal_compile_0 = twig_get_attribute($this->env, $this->source, $context["event"], "image", [], "any", false, false, false, 57)) && is_string($__internal_compile_1 = "C:\\") && ('' === $__internal_compile_1 || 0 === strpos($__internal_compile_0, $__internal_compile_1)))) ? ($this->extensions['Symfony\Bridge\Twig\Extension\AssetExtension']->getAssetUrl(("uploads/" . twig_last($this->env, twig_split_filter($this->env, twig_get_attribute($this->env, $this->source, $context["event"], "image", [], "any", false, false, false, 57), "\\"))))) : ($this->extensions['Symfony\Bridge\Twig\Extension\AssetExtension']->getAssetUrl(twig_get_attribute($this->env, $this->source, $context["event"], "image", [], "any", false, false, false, 57)))), "html", null, true);
-            echo "\"class=\"custom-block-image img-fluid\" alt=\"\">
-</td>
-                            <td>";
+                          <td>
+    <div class=\"btn-group\" role=\"group\">
+        <a href=\"";
             // line 59
-            echo twig_escape_filter($this->env, twig_get_attribute($this->env, $this->source, $context["event"], "prix", [], "any", false, false, false, 59), "html", null, true);
-            echo "</td>
-                            <td>
-                            
-                                <div class=\"btn-group d-flex align-items-center\" role=\"group\">
-                                    <a href=\"";
-            // line 63
-            echo twig_escape_filter($this->env, $this->extensions['Symfony\Bridge\Twig\Extension\RoutingExtension']->getPath("event_update", ["id" => twig_get_attribute($this->env, $this->source, $context["event"], "id", [], "any", false, false, false, 63)]), "html", null, true);
-            echo "\" class=\"btn btn-primary\" style=\"margin-right: 10px;\">Update</a>
-                                    <a href=\"";
-            // line 64
-            echo twig_escape_filter($this->env, $this->extensions['Symfony\Bridge\Twig\Extension\RoutingExtension']->getPath("event_delete", ["id" => twig_get_attribute($this->env, $this->source, $context["event"], "id", [], "any", false, false, false, 64)]), "html", null, true);
-            echo "\" class=\"btn btn-danger\" style=\"margin-right: 10px;\" onclick=\"return confirm('Êtes-vous sûr de vouloir supprimer cet événement?')\">Delete</a>
-                                    <a href=\"";
+            echo twig_escape_filter($this->env, $this->extensions['Symfony\Bridge\Twig\Extension\RoutingExtension']->getPath("event_update", ["id" => twig_get_attribute($this->env, $this->source, $context["event"], "id", [], "any", false, false, false, 59)]), "html", null, true);
+            echo "\" style=\"margin-right: 10px;\">
+            <i class=\"fas fa-edit\"></i> 
+        </a>
+        <a href=\"";
+            // line 62
+            echo twig_escape_filter($this->env, $this->extensions['Symfony\Bridge\Twig\Extension\RoutingExtension']->getPath("event_delete", ["id" => twig_get_attribute($this->env, $this->source, $context["event"], "id", [], "any", false, false, false, 62)]), "html", null, true);
+            echo "\" onclick=\"return confirm('Are you sure you want to delete this event?')\" style=\"margin-right: 10px;\">
+            <i class=\"fas fa-trash-alt\"></i>
+        </a>
+        <a href=\"";
             // line 65
             echo twig_escape_filter($this->env, $this->extensions['Symfony\Bridge\Twig\Extension\RoutingExtension']->getPath("resv_affiche", ["id" => twig_get_attribute($this->env, $this->source, $context["event"], "id", [], "any", false, false, false, 65)]), "html", null, true);
-            echo "\" class=\"btn btn-secondary\" style=\"margin-right: 10px;\">Book</a>
-                                    <a href=\"";
-            // line 66
-            echo twig_escape_filter($this->env, $this->extensions['Symfony\Bridge\Twig\Extension\RoutingExtension']->getPath("event_generate_qr", ["id" => twig_get_attribute($this->env, $this->source, $context["event"], "id", [], "any", false, false, false, 66)]), "html", null, true);
-            echo "\" class=\"btn btn-secondary\"> QR</a>
-                                </div>
+            echo "\" style=\"margin-right: 10px;\">
+            <i class=\"fas fa-book\"></i> 
+        </a>
+        <a href=\"";
+            // line 68
+            echo twig_escape_filter($this->env, $this->extensions['Symfony\Bridge\Twig\Extension\RoutingExtension']->getPath("event_generate_qr", ["id" => twig_get_attribute($this->env, $this->source, $context["event"], "id", [], "any", false, false, false, 68)]), "html", null, true);
+            echo "\">
+            <i class=\"fas fa-qrcode\"></i>
+        </a>
+    </div>
+</td>
+
                             </td>
                         </tr>
                     ";
@@ -200,19 +206,21 @@ class __TwigTemplate_a8394a0d2885c379b4df8a9d7783b332 extends Template
         $_parent = $context['_parent'];
         unset($context['_seq'], $context['_iterated'], $context['_key'], $context['event'], $context['_parent'], $context['loop']);
         $context = array_intersect_key($context, $_parent) + $_parent;
-        // line 71
+        // line 77
         echo "                </tbody>
             </table>
+        </div>
 
-             <div class=\"btn-group d-flex align-items-center justify-content-end\" role=\"group\" style=\"width: 15%;\">
-                <a href=\"";
-        // line 75
+        <div class=\"d-flex justify-content-end mt-3\">
+            <a href=\"";
+        // line 82
         echo $this->extensions['Symfony\Bridge\Twig\Extension\RoutingExtension']->getPath("author_add");
-        echo "\" class=\"btn btn-primary\" style=\"width: auto;\">Add Event</a>
-            </div>
+        echo "\"class=\"btn btn-primary\">
+                <i class=\"fas fa-plus\"></i> Add Event
+            </a>
         </div>
     </div>
-   
+
     <script src=\"https://code.jquery.com/jquery-3.6.4.min.js\"></script>
     <script>
         \$(document).ready(function () {
@@ -232,10 +240,10 @@ class __TwigTemplate_a8394a0d2885c379b4df8a9d7783b332 extends Template
             console.log('Search Nom:', searchNom);
             console.log('Search Lieu:', searchLieu);
 
-            // Effectuer une requête AJAX pour récupérer les résultats
+            // Perform an AJAX request to get the results
             \$.ajax({
                 url: '";
-        // line 101
+        // line 109
         echo $this->extensions['Symfony\Bridge\Twig\Extension\RoutingExtension']->getPath("eventuser_getall");
         echo "',
                 type: 'GET',
@@ -249,7 +257,7 @@ class __TwigTemplate_a8394a0d2885c379b4df8a9d7783b332 extends Template
                     updateTableContent(response.events);
                 },
                 error: function (error) {
-                    console.error('Erreur AJAX:', error);
+                    console.error('AJAX Error:', error);
                 }
             });
         }
@@ -274,11 +282,19 @@ class __TwigTemplate_a8394a0d2885c379b4df8a9d7783b332 extends Template
                     '<td><img src=\"' + event.image + '\" class=\"custom-block-image img-fluid\" alt=\"\"></td>' +
                     '<td>' + event.prix + '</td>' +
                     '<td>' +
-                    '<div class=\"btn-group d-flex align-items-center\" role=\"group\">' +
-                    '<a href=\"' + event.editLink + '\" class=\"btn btn-primary\" style=\"margin-right: 10px;\">Éditer</a>' +
-                    '<a href=\"' + event.deleteLink + '\" class=\"btn btn-danger\" style=\"margin-right: 10px;\" onclick=\"return confirm(\\'Êtes-vous sûr de vouloir supprimer cet événement?\\')\">Supprimer</a>' +
-                    '<a href=\"' + event.reserveLink + '\" class=\"btn btn-secondary\" style=\"margin-right: 10px;\">Réserver</a>' +
-                    '<a href=\"' + event.qrLink + '\" class=\"btn btn-secondary\"> QR</a>' +
+                    '<div class=\"btn-group\" role=\"group\">' +
+                    '<a href=\"' + event.editLink + '\" class=\"btn btn-primary\">' +
+                    '<i class=\"fas fa-edit\"></i> Edit' +
+                    '</a>' +
+                    '<a href=\"' + event.deleteLink + '\" class=\"btn btn-danger\" onclick=\"return confirm(\\'Are you sure you want to delete this event?\\')\">' +
+                    '<i class=\"fas fa-trash-alt\"></i> Delete' +
+                    '</a>' +
+                    '<a href=\"' + event.reserveLink + '\" class=\"btn btn-secondary\">' +
+                    '<i class=\"fas fa-book\"></i> Book' +
+                    '</a>' +
+                    '<a href=\"' + event.qrLink + '\" class=\"btn btn-secondary\">' +
+                    '<i class=\"fas fa-qrcode\"></i> QR' +
+                    '</a>' +
                     '</div>' +
                     '</td>' +
                     '</tr>';
@@ -289,6 +305,32 @@ class __TwigTemplate_a8394a0d2885c379b4df8a9d7783b332 extends Template
         }
     </script>
 
+    <style>
+        .smaller-image {
+            max-width: 100px; /* Adjust the maximum width as needed */
+            max-height: 100px; /* Adjust the maximum height as needed */
+            border-radius: 8px; /* Add border-radius for rounded corners */
+        }
+
+        .rounded {
+            border-radius: 15px; /* Adjust the border radius as needed */
+            overflow: hidden; /* Hide any content that overflows the rounded corners */
+            box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1); /* Add a subtle box shadow for depth */
+        }
+
+        .table thead th {
+            text-align: center; /* Center-align text in table header cells */
+        }
+
+        .table tbody td {
+            vertical-align: middle; /* Align content vertically in table cells */
+        }
+    .template-color {
+        color: #C87A19; /* Replace with your desired color code */
+    }
+
+
+    </style>
 ";
         
         $__internal_6f47bbe9983af81f1e7450e9a3e3768f->leave($__internal_6f47bbe9983af81f1e7450e9a3e3768f_prof);
@@ -310,7 +352,7 @@ class __TwigTemplate_a8394a0d2885c379b4df8a9d7783b332 extends Template
 
     public function getDebugInfo()
     {
-        return array (  239 => 101,  210 => 75,  204 => 71,  193 => 66,  189 => 65,  185 => 64,  181 => 63,  174 => 59,  169 => 57,  164 => 55,  160 => 54,  156 => 53,  152 => 52,  149 => 51,  144 => 50,  117 => 24,  114 => 22,  105 => 19,  102 => 18,  97 => 17,  94 => 15,  85 => 12,  82 => 11,  77 => 10,  68 => 4,  58 => 3,  35 => 1,);
+        return array (  247 => 109,  217 => 82,  210 => 77,  195 => 68,  189 => 65,  183 => 62,  177 => 59,  171 => 56,  166 => 54,  161 => 52,  157 => 51,  153 => 50,  149 => 49,  146 => 48,  142 => 47,  118 => 25,  115 => 23,  106 => 20,  103 => 19,  98 => 18,  95 => 16,  86 => 13,  83 => 12,  78 => 11,  68 => 4,  58 => 3,  35 => 1,);
     }
 
     public function getSourceContext()
@@ -319,81 +361,89 @@ class __TwigTemplate_a8394a0d2885c379b4df8a9d7783b332 extends Template
 
 {% block body %}
     {{ parent() }}
-    
-    <div class=\"container text-center\">
-        <h1>Booking Liste</h1>
-        
-        {# Afficher les messages de succès #}
+
+    <div class=\"container mt-5\">
+       <h1 class=\"text-center mb-4 template-color\">Event List</h1>
+
+
+        {# Display success messages #}
         {% for flash_message in app.flashes('success') %}
             <div class=\"alert alert-success\">
                 {{ flash_message }}
             </div>
         {% endfor %}
 
-        {# Afficher les messages d'erreur #}
+        {# Display error messages #}
         {% for flash_message in app.flashes('error') %}
             <div class=\"alert alert-danger\">
                 {{ flash_message }}
             </div>
         {% endfor %}
 
-        {# Formulaire de recherche AJAX #}
-        <form id=\"searchForm\">
-            <div class=\"row mb-3\">
-                <div class=\"col\">
+        {# AJAX Search Form #}
+        <form id=\"searchForm\" class=\"mb-4 text-center\">
+            <div class=\"row justify-content-center\">
+                <div class=\"col-md-6\">
                     <input type=\"text\" class=\"form-control\" name=\"search_nom\" placeholder=\"Event name\">
                 </div>
-                <div class=\"col\">
-                    <input type=\"text\" class=\"form-control\" name=\"search_lieu\" placeholder=\"Place\">
-                </div>
-              
             </div>
         </form>
 
-        <div class=\"mx-auto\" style=\"width: 70%;\">
-            <table class=\"table table-hover\">
-                <thead>
+        <div class=\"table-responsive rounded\">
+            <table class=\"table table-bordered\">
+                <thead class=\"thead-dark\">
                     <tr>
-                        <th scope=\"col\">Event name</th>
-                        <th scope=\"col\">Event date</th>
-                        <th scope=\"col\">Place</th>
-                        <th scope=\"col\">Description</th>
-                        <th scope=\"col\">Picture</th>
-                        <th scope=\"col\">Prise</th>
-                        <th scope=\"col\">Action</th>
+                        <th>Name</th>
+                        <th>Date</th>
+                        <th>Place</th>
+                        <th>Description</th>
+                        <th>Picture</th>
+                        <th>Price</th>
+                        <th></th>
                     </tr>
                 </thead>
-                <tbody id=\"eventTableBody\"> {# Add the id here #}
+                <tbody>
                     {% for event in events %}
-                        <tr class=\"table-active\">
+                        <tr>
                             <td>{{ event.nom }}</td>
                             <td>{{ event.date }}</td>
                             <td>{{ event.lieu }}</td>
                             <td>{{ event.description }}</td>
                             <td>
-                            <img src=\"{{ event.image starts with 'C:\\\\' ? asset('uploads/' ~ event.image|split('\\\\')|last) : asset(event.image) }}\"class=\"custom-block-image img-fluid\" alt=\"\">
-</td>
+                                <img src=\"{{ event.image starts with 'C:\\\\' ? asset('uploads/' ~ event.image|split('\\\\')|last) : asset(event.image) }}\" class=\"img-fluid smaller-image\" alt=\"\">
+                            </td>
                             <td>{{ event.prix }}</td>
-                            <td>
-                            
-                                <div class=\"btn-group d-flex align-items-center\" role=\"group\">
-                                    <a href=\"{{ path('event_update', {'id': event.id}) }}\" class=\"btn btn-primary\" style=\"margin-right: 10px;\">Update</a>
-                                    <a href=\"{{ path('event_delete', {'id': event.id}) }}\" class=\"btn btn-danger\" style=\"margin-right: 10px;\" onclick=\"return confirm('Êtes-vous sûr de vouloir supprimer cet événement?')\">Delete</a>
-                                    <a href=\"{{ path('resv_affiche', {'id': event.id}) }}\" class=\"btn btn-secondary\" style=\"margin-right: 10px;\">Book</a>
-                                    <a href=\"{{ path('event_generate_qr', {'id': event.id}) }}\" class=\"btn btn-secondary\"> QR</a>
-                                </div>
+                          <td>
+    <div class=\"btn-group\" role=\"group\">
+        <a href=\"{{ path('event_update', {'id': event.id}) }}\" style=\"margin-right: 10px;\">
+            <i class=\"fas fa-edit\"></i> 
+        </a>
+        <a href=\"{{ path('event_delete', {'id': event.id}) }}\" onclick=\"return confirm('Are you sure you want to delete this event?')\" style=\"margin-right: 10px;\">
+            <i class=\"fas fa-trash-alt\"></i>
+        </a>
+        <a href=\"{{ path('resv_affiche', {'id': event.id}) }}\" style=\"margin-right: 10px;\">
+            <i class=\"fas fa-book\"></i> 
+        </a>
+        <a href=\"{{ path('event_generate_qr', {'id': event.id}) }}\">
+            <i class=\"fas fa-qrcode\"></i>
+        </a>
+    </div>
+</td>
+
                             </td>
                         </tr>
                     {% endfor %}
                 </tbody>
             </table>
+        </div>
 
-             <div class=\"btn-group d-flex align-items-center justify-content-end\" role=\"group\" style=\"width: 15%;\">
-                <a href=\"{{ path('author_add') }}\" class=\"btn btn-primary\" style=\"width: auto;\">Add Event</a>
-            </div>
+        <div class=\"d-flex justify-content-end mt-3\">
+            <a href=\"{{ path('author_add') }}\"class=\"btn btn-primary\">
+                <i class=\"fas fa-plus\"></i> Add Event
+            </a>
         </div>
     </div>
-   
+
     <script src=\"https://code.jquery.com/jquery-3.6.4.min.js\"></script>
     <script>
         \$(document).ready(function () {
@@ -413,7 +463,7 @@ class __TwigTemplate_a8394a0d2885c379b4df8a9d7783b332 extends Template
             console.log('Search Nom:', searchNom);
             console.log('Search Lieu:', searchLieu);
 
-            // Effectuer une requête AJAX pour récupérer les résultats
+            // Perform an AJAX request to get the results
             \$.ajax({
                 url: '{{ path('eventuser_getall') }}',
                 type: 'GET',
@@ -427,7 +477,7 @@ class __TwigTemplate_a8394a0d2885c379b4df8a9d7783b332 extends Template
                     updateTableContent(response.events);
                 },
                 error: function (error) {
-                    console.error('Erreur AJAX:', error);
+                    console.error('AJAX Error:', error);
                 }
             });
         }
@@ -452,11 +502,19 @@ class __TwigTemplate_a8394a0d2885c379b4df8a9d7783b332 extends Template
                     '<td><img src=\"' + event.image + '\" class=\"custom-block-image img-fluid\" alt=\"\"></td>' +
                     '<td>' + event.prix + '</td>' +
                     '<td>' +
-                    '<div class=\"btn-group d-flex align-items-center\" role=\"group\">' +
-                    '<a href=\"' + event.editLink + '\" class=\"btn btn-primary\" style=\"margin-right: 10px;\">Éditer</a>' +
-                    '<a href=\"' + event.deleteLink + '\" class=\"btn btn-danger\" style=\"margin-right: 10px;\" onclick=\"return confirm(\\'Êtes-vous sûr de vouloir supprimer cet événement?\\')\">Supprimer</a>' +
-                    '<a href=\"' + event.reserveLink + '\" class=\"btn btn-secondary\" style=\"margin-right: 10px;\">Réserver</a>' +
-                    '<a href=\"' + event.qrLink + '\" class=\"btn btn-secondary\"> QR</a>' +
+                    '<div class=\"btn-group\" role=\"group\">' +
+                    '<a href=\"' + event.editLink + '\" class=\"btn btn-primary\">' +
+                    '<i class=\"fas fa-edit\"></i> Edit' +
+                    '</a>' +
+                    '<a href=\"' + event.deleteLink + '\" class=\"btn btn-danger\" onclick=\"return confirm(\\'Are you sure you want to delete this event?\\')\">' +
+                    '<i class=\"fas fa-trash-alt\"></i> Delete' +
+                    '</a>' +
+                    '<a href=\"' + event.reserveLink + '\" class=\"btn btn-secondary\">' +
+                    '<i class=\"fas fa-book\"></i> Book' +
+                    '</a>' +
+                    '<a href=\"' + event.qrLink + '\" class=\"btn btn-secondary\">' +
+                    '<i class=\"fas fa-qrcode\"></i> QR' +
+                    '</a>' +
                     '</div>' +
                     '</td>' +
                     '</tr>';
@@ -467,6 +525,32 @@ class __TwigTemplate_a8394a0d2885c379b4df8a9d7783b332 extends Template
         }
     </script>
 
+    <style>
+        .smaller-image {
+            max-width: 100px; /* Adjust the maximum width as needed */
+            max-height: 100px; /* Adjust the maximum height as needed */
+            border-radius: 8px; /* Add border-radius for rounded corners */
+        }
+
+        .rounded {
+            border-radius: 15px; /* Adjust the border radius as needed */
+            overflow: hidden; /* Hide any content that overflows the rounded corners */
+            box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1); /* Add a subtle box shadow for depth */
+        }
+
+        .table thead th {
+            text-align: center; /* Center-align text in table header cells */
+        }
+
+        .table tbody td {
+            vertical-align: middle; /* Align content vertically in table cells */
+        }
+    .template-color {
+        color: #C87A19; /* Replace with your desired color code */
+    }
+
+
+    </style>
 {% endblock %}
 ", "eventuser/getall.html.twig", "C:\\Users\\hamad\\OneDrive\\Desktop\\WebSymfony\\templates\\eventuser\\getall.html.twig");
     }

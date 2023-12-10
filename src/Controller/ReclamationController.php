@@ -28,20 +28,24 @@ class ReclamationController extends AbstractController
     }
 
     #[Route('/reclamationall', name: 'all_reclamation')]
-    public function getAll(ReclamationRepository $repo):Response
+    public function getAll(ReclamationRepository $repo,SessionInterface $session):Response
     {
+        $user=$session->get('user');
         $list=$repo->findAll();
         return $this->render('reclamation/getall.html.twig',[
-            'list'=>$list
+            'list'=>$list,
+            'user'=>$user 
         ]);
     }
 
     #[Route('/reclamation/{id}', name: 'one_reclamation')]
-    public function getOne(ReclamationRepository $repo, $id):Response
+    public function getOne(ReclamationRepository $repo, $id,SessionInterface $session):Response
     {
+        $user=$session->get('user');
         $reclam=$repo->find($id);
         return $this->render('reclamation/one.html.twig',[
-            'reclam'=>$reclam
+            'reclam'=>$reclam,
+            'user'=>$user 
         ]);
     }
 
@@ -69,11 +73,6 @@ class ReclamationController extends AbstractController
         $rec=new Reclamation();
         $maanger=$man->getManager();
        
-        
-
-        
-    
-      
         $form=$this->createForm(ReclamationSendType::class,$rec);
         $form->handleRequest($req);
         if($form->isSubmitted())
@@ -85,7 +84,8 @@ class ReclamationController extends AbstractController
            return  $this->redirectToRoute('my_reclamation');
         }
         return $this->renderForm('reclamation/add.html.twig',[
-            'f'=>$form
+            'f'=>$form,
+            'user'=>$user 
         ]);
     }
     }
@@ -112,7 +112,8 @@ class ReclamationController extends AbstractController
            return  $this->redirectToRoute('all_reclamation');
         }
         return $this->renderForm('reclamation/respond.html.twig',[
-            'f'=>$form
+            'f'=>$form,
+            'user'=>$user 
         ]);
     }
     }
@@ -131,14 +132,16 @@ class ReclamationController extends AbstractController
         $list=$repo->getBySenderId($user->getId());
 
         return  $this->render('reclamation/myMessages.html.twig',[
-            'list'=> $list
+            'list'=> $list,
+            'user'=>$user 
         ]);
     }
 
 
     #[Route('/reclamationseeanswer/{id}', name: 'seeAnswer_reclamation')]
-    public function seeAnswer(Request $req, ReclamationRepository $repo,$id):Response
+    public function seeAnswer(Request $req, ReclamationRepository $repo,$id,SessionInterface $session):Response
     {
+        $user=$session->get('user');
         $form = $this->createFormBuilder()
         ->add('contenu', TextareaType::class,[
            
@@ -167,7 +170,8 @@ class ReclamationController extends AbstractController
 
 
         return $this->renderForm('reclamation/respond.html.twig',[
-            'f'=>$form
+            'f'=>$form,
+            'user'=>$user 
         ]);
     }
 

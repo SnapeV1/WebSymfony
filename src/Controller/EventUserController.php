@@ -36,11 +36,11 @@ class EventUserController extends AbstractController
     
 
     #[Route('/EventgetAll', name: 'eventuser_getall')]
-    public function getAll(Request $request, EventUserRepository $repo, ManagerRegistry $manager): Response
+    public function getAll(Request $request, EventUserRepository $repo, ManagerRegistry $manager,SessionInterface $session): Response
     {
         $searchNom = $request->query->get('search_nom');
         $searchLieu = $request->query->get('search_lieu');
-
+$user=$session->get('user');
         // Call the method to search with the provided criteria
         $list = $repo->findBySearchCriteria($searchNom, $searchLieu);
         $this->supprimerEvenementsExpirees($repo, $manager);
@@ -77,6 +77,7 @@ class EventUserController extends AbstractController
             $events = [];
             foreach ($list as $event) {
                 $events[] = [
+                    'id'=>$event->getId(),
                     'nom' => $event->getNom(),
                     'date' => $event->getDate(),
                     'lieu' => $event->getLieu(),
@@ -95,15 +96,15 @@ class EventUserController extends AbstractController
         }
 
         // Render the template for non-AJAX requests
-        return $this->render('eventuser/getall.html.twig', ['events' => $list]);
+        return $this->render('eventuser/getall.html.twig', ['events' => $list,'user'=>$user ]);
     }
 
 #[Route('/addEventForm', name: 'author_add')]
-public function addEvent(Request $req, ManagerRegistry $manager): Response
+public function addEvent(Request $req, ManagerRegistry $manager,SessionInterface $session): Response
 {
     $em = $manager->getManager();
     $eventuser = new EventUser;
-
+$user=$session->get('user');
     
     $form = $this->createForm(EventUserType::class, $eventuser);
     $form->handleRequest($req);
@@ -147,12 +148,13 @@ public function addEvent(Request $req, ManagerRegistry $manager): Response
         return $this->redirectToRoute('eventuser_getall');
     }
 
-    return $this->renderForm('eventuser/add.html.twig', ['f' => $form]);
+    return $this->renderForm('eventuser/add.html.twig', ['f' => $form,'user'=>$user ]);
 }
 
 #[Route('/updateEvent/{id}', name: 'event_update')]
-public function updateEvent(Request $request, ManagerRegistry $manager, $id, EventUserRepository $repo): Response
+public function updateEvent(Request $request, ManagerRegistry $manager, $id, EventUserRepository $repo,SessionInterface $session): Response
 {
+   $user= $session->get('user');
     $entityManager = $manager->getManager();
     $event = $repo->find($id);
 
@@ -181,6 +183,7 @@ public function updateEvent(Request $request, ManagerRegistry $manager, $id, Eve
 
     return $this->render('eventuser/update.html.twig', [
         'f' => $form->createView(),
+       'user'=>$user 
     ]);
 }
 
@@ -235,7 +238,7 @@ public function afficher_reserv($id, EventUserRepository $repo, ManagerRegistry 
 
         // Rediriger vers la liste des événements après la réservation réussie
         return $this->render('eventuser/getresv.html.twig', [
-            'events' => $list,
+            'events' => $list,'user'=>$user 
         ]);
     } else {
         // Ajouter un message d'erreur si le nombre de réservations est complet
@@ -250,14 +253,16 @@ public function afficher_reserv($id, EventUserRepository $repo, ManagerRegistry 
 
 
 #[Route('/generate-pdf/{id}', name: 'generate_pdf')]
-public function generatePdf($id, ReservationRepository $reservationRepository)
+public function generatePdf($id, ReservationRepository $reservationRepository,SessionInterface $session)
 {
+    $user=$session->get('user');
     // Récupérer la réservation depuis la base de données
     $reservation = $reservationRepository->find($id);
 
     // Générer le contenu HTML du PDF (vous devrez créer un fichier twig pour cela)
     $html = $this->renderView('eventuser/pdf.html.twig', [
         'reservation' => $reservation,
+        'user'=>$user 
     ]);
 
     // Utiliser la bibliothèque Dompdf pour générer le PDF

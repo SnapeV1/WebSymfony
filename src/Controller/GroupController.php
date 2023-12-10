@@ -86,7 +86,8 @@ $userid=$user->getId();
     
         return $this->render('group/getall.html.twig', [
             'groups' => $groups,
-            'userid' => $userid
+            'userid' => $userid,
+            'user'=>$user 
         ]);
     }
     
@@ -136,7 +137,8 @@ $userid=$user->getId();
 
         return $this->renderForm('group/add.html.twig', [
             'f' => $form,
-            'userid' => $userid
+            'userid' => $userid,
+            'user'=>$user 
         ]);
     }
 
@@ -224,6 +226,7 @@ public function getAllForAdmin(SessionInterface $session,EntityManagerInterface 
     
     return $this->render('group/Admingetall.html.twig', [
         'groups' => $groups,
+        'user'=>$user 
     ]);
 }
 

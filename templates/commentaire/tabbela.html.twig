@@ -22,7 +22,7 @@
         {% set filename = formation.video|split('/')|last %}
         <source src="{{ asset('uploads/' ~ filename) }}" type="video/mp4">
     {% else %}
-        <source src="{{ asset('uploads/' ~ training.video) }}" type="video/mp4">
+        <source src="{{ asset('uploads/' ~ formation.video) }}" type="video/mp4">
     {% endif %}
             </video>
         {% else %}
@@ -31,7 +31,7 @@
 
         {# Afficher les commentaires dans un tableau #}
         {% if commentaires is not empty %}
-            <h2>Commentaires</h2>
+            <h2>Comments</h2>
             <table class="table">
                 <thead>
                     <tr>
@@ -66,13 +66,13 @@
             <p>Aucun commentaire pour le moment.</p>
         {% endif %}
 
-        <h2>Ajouter un commentaire</h2>
+        <h2>Add a Comment</h2>
         <!-- Your form section -->
         <form id="comment-form" method="post" action="{{ path('add_commentaire', {'idFormation': formation.id}) }}">
             <div class="form-group row">
                 <div class="col-md-6">
                     <label for="comment_text">Comment</label>
-                    <textarea class="form-control" rows="8" placeholder="Saisissez votre commentaire ici..." id="comment_text" name="comment_text"></textarea>
+                    <textarea class="form-control" rows="8" placeholder="Comment here..." id="comment_text" name="comment_text"></textarea>
                 </div>
 
                 <div class="col-md-1">
@@ -86,7 +86,7 @@
                     </select>
                 </div>
             </div>
-            <button type="submit" class="btn btn-primary">Ajouter un commentaire</button>
+            <button type="submit" class="btn btn-primary">Comment</button>
         </form>
         <!-- Facebook SDK script -->
     <script async defer crossorigin="anonymous" src="https://connect.facebook.net/en_US/sdk.js#xfbml=1&version=v13.0&appId=788068436664746&autoLogAppEvents=1" nonce="none"></script>

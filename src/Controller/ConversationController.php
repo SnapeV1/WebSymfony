@@ -45,7 +45,7 @@ class ConversationController extends AbstractController
         EncryptionService $encryptionService, // Inject the EncryptionService
         SessionInterface $session
     ): Response {
-     
+     $user=$session->get('user');
         // Fetch conversations for user1Id and user2Id
         $conversations = $conversationRepository->findBy([
             'iduser1' => $user1Id,
@@ -106,7 +106,9 @@ $this->entityManager->flush();
             'lastDateMsg1' => $lastDateMsg1,
             'lastDateMsg2' => $lastDateMsg2,
             'iduser2' => $user2Id,
-            'iduser1' => $user1Id
+            'iduser1' => $user1Id,
+            'user'=>$user  
+
         ]);
     }
     
@@ -139,6 +141,7 @@ $this->entityManager->flush();
         return $this->render('conversation/select_receiver.html.twig', [
             'users' => $users,
             'user1Id' => $user1Id,
+            'user'=>$user 
         ]);
     }
 
@@ -188,6 +191,7 @@ public function sendMessage(
     return $this->redirectToRoute('display_conversations', [
         'user1Id' => $user1Id,
         'user2Id' => $user2Id,
+        'user'=>$user  
     ]);
     // Redirect to conversation index or appropriate route
 }
@@ -219,6 +223,7 @@ $entityManager->flush();
 return $this->redirectToRoute('display_conversations', [
     'user1Id' => $user1Id,
     'user2Id' => $user2Id,
+    'user'=>$user  
 ]);
 }
 

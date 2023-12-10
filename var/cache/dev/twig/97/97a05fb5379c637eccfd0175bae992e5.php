@@ -108,7 +108,7 @@ class __TwigTemplate_437c684bc08d5227f212209650c1f205 extends Template
             } else {
                 // line 25
                 echo "        <source src=\"";
-                echo twig_escape_filter($this->env, $this->extensions['Symfony\Bridge\Twig\Extension\AssetExtension']->getAssetUrl(("uploads/" . twig_get_attribute($this->env, $this->source, (isset($context["training"]) || array_key_exists("training", $context) ? $context["training"] : (function () { throw new RuntimeError('Variable "training" does not exist.', 25, $this->source); })()), "video", [], "any", false, false, false, 25))), "html", null, true);
+                echo twig_escape_filter($this->env, $this->extensions['Symfony\Bridge\Twig\Extension\AssetExtension']->getAssetUrl(("uploads/" . twig_get_attribute($this->env, $this->source, (isset($context["formation"]) || array_key_exists("formation", $context) ? $context["formation"] : (function () { throw new RuntimeError('Variable "formation" does not exist.', 25, $this->source); })()), "video", [], "any", false, false, false, 25))), "html", null, true);
                 echo "\" type=\"video/mp4\">
     ";
             }
@@ -127,7 +127,7 @@ class __TwigTemplate_437c684bc08d5227f212209650c1f205 extends Template
         echo "        ";
         if ( !twig_test_empty((isset($context["commentaires"]) || array_key_exists("commentaires", $context) ? $context["commentaires"] : (function () { throw new RuntimeError('Variable "commentaires" does not exist.', 33, $this->source); })()))) {
             // line 34
-            echo "            <h2>Commentaires</h2>
+            echo "            <h2>Comments</h2>
             <table class=\"table\">
                 <thead>
                     <tr>
@@ -191,7 +191,7 @@ class __TwigTemplate_437c684bc08d5227f212209650c1f205 extends Template
         }
         // line 68
         echo "
-        <h2>Ajouter un commentaire</h2>
+        <h2>Add a Comment</h2>
         <!-- Your form section -->
         <form id=\"comment-form\" method=\"post\" action=\"";
         // line 71
@@ -200,7 +200,7 @@ class __TwigTemplate_437c684bc08d5227f212209650c1f205 extends Template
             <div class=\"form-group row\">
                 <div class=\"col-md-6\">
                     <label for=\"comment_text\">Comment</label>
-                    <textarea class=\"form-control\" rows=\"8\" placeholder=\"Saisissez votre commentaire ici...\" id=\"comment_text\" name=\"comment_text\"></textarea>
+                    <textarea class=\"form-control\" rows=\"8\" placeholder=\"Comment here...\" id=\"comment_text\" name=\"comment_text\"></textarea>
                 </div>
 
                 <div class=\"col-md-1\">
@@ -214,7 +214,7 @@ class __TwigTemplate_437c684bc08d5227f212209650c1f205 extends Template
                     </select>
                 </div>
             </div>
-            <button type=\"submit\" class=\"btn btn-primary\">Ajouter un commentaire</button>
+            <button type=\"submit\" class=\"btn btn-primary\">Comment</button>
         </form>
         <!-- Facebook SDK script -->
     <script async defer crossorigin=\"anonymous\" src=\"https://connect.facebook.net/en_US/sdk.js#xfbml=1&version=v13.0&appId=788068436664746&autoLogAppEvents=1\" nonce=\"none\"></script>
@@ -317,7 +317,7 @@ class __TwigTemplate_437c684bc08d5227f212209650c1f205 extends Template
         {% set filename = formation.video|split('/')|last %}
         <source src=\"{{ asset('uploads/' ~ filename) }}\" type=\"video/mp4\">
     {% else %}
-        <source src=\"{{ asset('uploads/' ~ training.video) }}\" type=\"video/mp4\">
+        <source src=\"{{ asset('uploads/' ~ formation.video) }}\" type=\"video/mp4\">
     {% endif %}
             </video>
         {% else %}
@@ -326,7 +326,7 @@ class __TwigTemplate_437c684bc08d5227f212209650c1f205 extends Template
 
         {# Afficher les commentaires dans un tableau #}
         {% if commentaires is not empty %}
-            <h2>Commentaires</h2>
+            <h2>Comments</h2>
             <table class=\"table\">
                 <thead>
                     <tr>
@@ -361,13 +361,13 @@ class __TwigTemplate_437c684bc08d5227f212209650c1f205 extends Template
             <p>Aucun commentaire pour le moment.</p>
         {% endif %}
 
-        <h2>Ajouter un commentaire</h2>
+        <h2>Add a Comment</h2>
         <!-- Your form section -->
         <form id=\"comment-form\" method=\"post\" action=\"{{ path('add_commentaire', {'idFormation': formation.id}) }}\">
             <div class=\"form-group row\">
                 <div class=\"col-md-6\">
                     <label for=\"comment_text\">Comment</label>
-                    <textarea class=\"form-control\" rows=\"8\" placeholder=\"Saisissez votre commentaire ici...\" id=\"comment_text\" name=\"comment_text\"></textarea>
+                    <textarea class=\"form-control\" rows=\"8\" placeholder=\"Comment here...\" id=\"comment_text\" name=\"comment_text\"></textarea>
                 </div>
 
                 <div class=\"col-md-1\">
@@ -381,7 +381,7 @@ class __TwigTemplate_437c684bc08d5227f212209650c1f205 extends Template
                     </select>
                 </div>
             </div>
-            <button type=\"submit\" class=\"btn btn-primary\">Ajouter un commentaire</button>
+            <button type=\"submit\" class=\"btn btn-primary\">Comment</button>
         </form>
         <!-- Facebook SDK script -->
     <script async defer crossorigin=\"anonymous\" src=\"https://connect.facebook.net/en_US/sdk.js#xfbml=1&version=v13.0&appId=788068436664746&autoLogAppEvents=1\" nonce=\"none\"></script>

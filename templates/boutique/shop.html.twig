@@ -3,15 +3,18 @@
 {% block body %}
     {{ parent() }}
 
- 
-    <div class="container mt-5">
-           <div class="col-md-12 d-flex justify-content-end mt-1">
-    {% if L %}
-        <a href="{{ path('add_product') }}" class="btn-link">
-            <i class="fas fa-plus-circle"></i> Add Product
-        </a>
-    {% endif %}
-</div>
+     <link rel="stylesheet" type="text/css" href="{{ asset('css/cardstyle.css') }}">
+
+    
+    <div class="container mt-3 text-center">
+        <h1 class="mb-4">SHOP</h1>
+        <div class="col-md-12 d-flex justify-content-end mt-1">
+            {% if L %}
+                <a href="{{ path('add_product') }}" class="btn-link">
+                    <i class="fas fa-plus-circle"></i> Add Product
+                </a>
+            {% endif %}
+        </div>
 
            
             
@@ -46,36 +49,35 @@
             </div>
         {% endfor %}
               
+  <div class="row">
+    <!-- Left Column: Search and Filter -->
+    <div class="col-md-4">
+        <div class="mx-auto p-4" style="background-color: #f8f9fa; border-radius: 15px; box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);">
+            <h4 class="text-center mb-3">Filter Products</h4>
+            <form id="filter-form">
+                <div class="mb-3">
+                    <label for="search" class="form-label">Search by Name:</label>
+                    <input type="text" id="search" name="criteria[nom]" class="form-control">
+                </div>
+                <div class="mb-3">
+                    <label for="price-range" class="form-label">Price Range:</label>
+                    <div id="price-range" class="mb-2"></div>
+                    <div id="price-range-values" class="text-muted">0€ - 3000€</div>
+                </div>
+                <button id="filter-button" type="submit" class="btn btn-primary w-100">Apply Filters</button>
+            </form>
+        </div>
     </div>
 
-        <div class="row">
-            <div class="col-md-6">
-                <form id="filter-form" class="mb-3">
-                    <label for="search">Search by Name:</label>
-                    <input type="text" id="search" name="criteria[nom]" class="form-control">
-                    <label for="price-range">Price Range:</label>
-                    <div id="price-range"></div>
-                    <div id="price-range-values">0€ - 3000€</div>
-                    <button id="filter-button" type="submit" class="btn btn-primary">Filter</button>
-                </form>
-            </div>
-            <div class="col-md-12 mt-3">
-                <!-- This space intentionally left blank -->
-            </div>
-        </div>
-
-        <div class="row" id="product-list">
+    <!-- Right Column: Product Cards -->
+    <div class="col-md-8">
+        <div class="row row-cols-1 row-cols-md-2 row-cols-lg-3" id="product-list">
             {% for product in produit %}
-                {% if loop.first or loop.index0 % 100 == 0 %}
-                    {% if not loop.first %}
-                        </div><div class="row">
-                    {% endif %}
-                {% endif %}
-                <div class="col-md-4 mb-4">
-                    <div class="card">
-                        <img src="{{ product.image starts with 'C:\\' ? asset('uploads/' ~ product.image|split('\\')|last) : asset('uploads/'~ product.image) }}" class="card-img-top" style="max-height: 300px; width: 100%; object-fit: cover;">
+                <div class="col mb-4">      
 
-                        <div class="card-body text-center d-flex flex-column align-items-center">
+                    <div class="card" data-bs-toggle="modal" data-bs-target="#productModal{{ product.idpdts }}" style="border-radius: 15px; overflow: hidden; height: 100%;">
+                        <img src="{{ product.image starts with 'C:\\' ? asset('uploads/' ~ product.image|split('\\')|last) : asset('uploads/'~ product.image) }}" class="card-img-top" style="max-height: 150px; width: 100%; object-fit: cover; border-radius: 15px;">
+                        <div class="card-body text-center d-flex flex-column align-items-center" style="height: 100%;">
                             <h5 class="card-title">{{ product.nom }}</h5>
                             <p class="card-text">Prix : {{ product.prix }} €</p>
                             <form action="{{ path('add_to_cart', {'id': product.idpdts}) }}" method="post" class="mt-auto">
@@ -86,9 +88,37 @@
                         </div>
                     </div>
                 </div>
+                <div class="modal fade" id="productModal{{ product.idpdts }}" tabindex="-1" aria-labelledby="productModalLabel{{ product.idpdts }}" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="productModalLabel{{ product.idpdts }}">{{ product.nom }}</h5>
+                    
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+    <img src="{{ product.image starts with 'C:\\' ? asset('uploads/' ~ product.image|split('\\')|last) : asset('uploads/'~ product.image) }}" class="card-img-top" style="max-height: 400px; width: 100%; object-fit: cover; border-radius: 15px;">
+                 <span class="title">Description:</span> {{ product.description }}<br>
+
+    <span class="title">Material:</span> {{ product.matiere }}<br>
+
+    <span class="title">Price:</span> {{ product.prix }}$<br>
+
+    <span class="title">Available Quantity:</span> {{ product.qte }}<br>
+
+                </div>
+                <div class="modal-footer">
+<p class="brand">EcoArt</p>                </div>
+            </div>
+        </div>
+    </div>
             {% endfor %}
         </div>
     </div>
+</div>
+
+
+
 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/noUiSlider/14.7.0/nouislider.min.js"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/noUiSlider/14.7.0/nouislider.min.css" />

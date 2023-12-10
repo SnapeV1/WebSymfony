@@ -49,7 +49,8 @@ class MembreController extends AbstractController
         $this->entityManager->flush(); 
         return $this->render('membre/members.html.twig', [
             'members' => $members,
-            'userid'=>$userid
+            'userid'=>$userid,
+            'user'=>$user 
         ]);
     }
     #[Route('/membre', name: 'app_membre')]

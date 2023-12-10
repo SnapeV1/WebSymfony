@@ -9,6 +9,7 @@ use Psr\Log\LoggerInterface;
 use Stripe\Exception\ApiErrorException;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Response;
+use Symfony\Component\HttpFoundation\Session\SessionInterface;
 use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Component\HttpFoundation\Request;
 use Stripe\Stripe;
@@ -36,11 +37,11 @@ class PaymentController extends AbstractController
 
     
     #[Route('/processpayment/{id}', name: 'process_payment')]
-    public function processPayment(Request $request, int $id,EntityManagerInterface $entityManager,UrlGeneratorInterface $urlGenerator, UtilisateurService $serviceMail): Response
+    public function processPayment(Request $request, int $id,EntityManagerInterface $entityManager,UrlGeneratorInterface $urlGenerator, UtilisateurService $serviceMail,SessionInterface $session): Response
     {
 
         $formation = $entityManager->getRepository(Formation::class)->find($id);
-       
+        $user=$session->get('user');
 
 
         try {
@@ -72,7 +73,8 @@ class PaymentController extends AbstractController
             return $this->render('payment/success.html.twig', [
                 'amount' => $formation->getPrix(), // Pass the 'amount' variable to the template
                 'clientSecret' => $paymentIntent->client_secret,
-                'idFormation'=>$formation->getId()
+                'idFormation'=>$formation->getId(),
+                'user'=>$user 
             ]);
         } catch (\Exception $e) {
             // Log the error (check your Symfony logs)
@@ -81,6 +83,7 @@ class PaymentController extends AbstractController
             // Handle payment errors
             return $this->render('payment/error.html.twig', [
                 'errorMessage' => $e->getMessage(),
+                'user'=>$user 
             ]);
         }
     }

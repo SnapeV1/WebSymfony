@@ -32,7 +32,7 @@ class __TwigTemplate_dcd82f82da6549f501c995412f4d758b extends Template
     protected function doGetParent(array $context)
     {
         // line 2
-        return "connected.html.twig";
+        return "base.html.twig";
     }
 
     protected function doDisplay(array $context, array $blocks = [])
@@ -44,7 +44,7 @@ class __TwigTemplate_dcd82f82da6549f501c995412f4d758b extends Template
         $__internal_6f47bbe9983af81f1e7450e9a3e3768f = $this->extensions["Symfony\\Bridge\\Twig\\Extension\\ProfilerExtension"];
         $__internal_6f47bbe9983af81f1e7450e9a3e3768f->enter($__internal_6f47bbe9983af81f1e7450e9a3e3768f_prof = new \Twig\Profiler\Profile($this->getTemplateName(), "template", "utilisateur/takePicture.html.twig"));
 
-        $this->parent = $this->loadTemplate("connected.html.twig", "utilisateur/takePicture.html.twig", 2);
+        $this->parent = $this->loadTemplate("base.html.twig", "utilisateur/takePicture.html.twig", 2);
         $this->parent->display($context, array_merge($this->blocks, $blocks));
         
         $__internal_5a27a8ba21ca79b61932376b2fa922d2->leave($__internal_5a27a8ba21ca79b61932376b2fa922d2_prof);
@@ -65,6 +65,7 @@ class __TwigTemplate_dcd82f82da6549f501c995412f4d758b extends Template
         $__internal_6f47bbe9983af81f1e7450e9a3e3768f->enter($__internal_6f47bbe9983af81f1e7450e9a3e3768f_prof = new \Twig\Profiler\Profile($this->getTemplateName(), "block", "body"));
 
         // line 4
+        $this->displayParentBlock("body", $context, $blocks);
         echo "
 
 
@@ -160,15 +161,15 @@ class __TwigTemplate_dcd82f82da6549f501c995412f4d758b extends Template
 
     public function getDebugInfo()
     {
-        return array (  79 => 10,  75 => 9,  68 => 4,  58 => 3,  35 => 2,);
+        return array (  80 => 10,  76 => 9,  68 => 4,  58 => 3,  35 => 2,);
     }
 
     public function getSourceContext()
     {
         return new Source("
-{% extends 'connected.html.twig' %}
+{% extends 'base.html.twig' %}
 {% block body%}
-
+{{parent()}}
 
 
 

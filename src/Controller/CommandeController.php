@@ -120,11 +120,11 @@ class CommandeController extends AbstractController
         return $this->redirectToRoute('view_invoice', ['id' => $commande->getId_c()]);
     }
     #[Route('/view-invoice/{id}', name: 'view_invoice')]
-    public function viewInvoice($id, CommandeRepository $commandeRepository, HistoriqueRepository $historiqueRepository): Response
+    public function viewInvoice($id, CommandeRepository $commandeRepository, HistoriqueRepository $historiqueRepository,SessionInterface $session): Response
     {
         // Retrieve the Commande entity
         $commande = $commandeRepository->find($id);
-
+        $user=$session->get('user');
         if (!$commande) {
             // Handle not found scenario, e.g., redirect or show an error page
             throw $this->createNotFoundException('Invoice not found');
@@ -136,6 +136,7 @@ class CommandeController extends AbstractController
         return $this->render('commande/view_invoice.html.twig', [
             'commande' => $commande,
             'historiqueRecords' => $historiqueRecords,
+            'user'=>$user 
         ]);
     }
 }

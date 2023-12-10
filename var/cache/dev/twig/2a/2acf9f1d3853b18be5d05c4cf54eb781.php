@@ -94,13 +94,23 @@ class __TwigTemplate_a100324ba463d70a7b0c8c334112eefe extends Template
 <body>
    
 
-
-    <!-- Carousel Start -->
-    <div class=\"container-fluid p-0 pb-5\">
-        <div class=\"owl-carousel header-carousel position-relative\">
-            <div class=\"owl-carousel-item position-relative\">
-                <img class=\"img-fluid\" src=\"img/carousel-1.jpg\" alt=\"\">
-                <div class=\"position-absolute top-0 start-0 w-100 h-100 d-flex align-items-center\" style=\"background: rgba(53, 53, 53, .7);\">
+<!-- Carousel Start -->
+<div class=\"container-fluid p-0 pb-5\">
+    <div class=\"owl-carousel header-carousel position-relative\">
+        ";
+        // line 34
+        $context['_parent'] = $context;
+        $context['_seq'] = twig_ensure_traversable(["uploads/403626751_1288313181849311_5137030668488353358_n.jpg", "uploads/a-65702f5e8b41d.jpg", "uploads/403632698_661443679497767_9177273439615897975_n.jpg"]);
+        foreach ($context['_seq'] as $context["_key"] => $context["image"]) {
+            // line 35
+            echo "            <div class=\"owl-carousel-item position-relative\">
+                <div class=\"img-wrapper\">
+                    <img class=\"img-fluid\" src=\"";
+            // line 37
+            echo twig_escape_filter($this->env, $this->extensions['Symfony\Bridge\Twig\Extension\AssetExtension']->getAssetUrl($context["image"]), "html", null, true);
+            echo "\" alt=\"\">
+                </div>
+                <div class=\"position-absolute top-0 start-0 w-100 h-100 d-flex align-items-center\" style=\"background: rgba(53, 53, 53, .7); width: 100%; height: 300px;\">
                     <div class=\"container\">
                         <div class=\"row justify-content-center\">
                             <div class=\"col-12 col-lg-8 text-center\">
@@ -114,41 +124,27 @@ class __TwigTemplate_a100324ba463d70a7b0c8c334112eefe extends Template
                     </div>
                 </div>
             </div>
-            <div class=\"owl-carousel-item position-relative\">
-                <img class=\"img-fluid\" src=\"img/carousel-2.jpg\" alt=\"\">
-                <div class=\"position-absolute top-0 start-0 w-100 h-100 d-flex align-items-center\" style=\"background: rgba(53, 53, 53, .7);\">
-                    <div class=\"container\">
-                        <div class=\"row justify-content-center\">
-                            <div class=\"col-12 col-lg-8 text-center\">
-                                <h5 class=\"text-white text-uppercase mb-3 animated slideInDown\">Welcome To EcoArt</h5>
-                                <h1 class=\"display-3 text-white animated slideInDown mb-4\">Best Craftsman Trainings</h1>
-                                <p class=\"fs-5 fw-medium text-white mb-4 pb-2\">Vero elitr justo clita lorem. Ipsum dolor at sed stet sit diam no. Kasd rebum ipsum et diam justo clita et kasd rebum sea elitr.</p>
-                                <a href=\"\" class=\"btn btn-primary py-md-3 px-md-5 me-3 animated slideInLeft\">Read More</a>
-                                <a href=\"\" class=\"btn btn-light py-md-3 px-md-5 animated slideInRight\">Free Quote</a>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class=\"owl-carousel-item position-relative\">
-                <img class=\"img-fluid\" src=\"img/carousel-3.jpg\" alt=\"\">
-                <div class=\"position-absolute top-0 start-0 w-100 h-100 d-flex align-items-center\" style=\"background: rgba(53, 53, 53, .7);\">
-                    <div class=\"container\">
-                        <div class=\"row justify-content-center\">
-                            <div class=\"col-12 col-lg-8 text-center\">
-                                <h5 class=\"text-white text-uppercase mb-3 animated slideInDown\">Welcome To EcoArt</h5>
-                                <h1 class=\"display-3 text-white animated slideInDown mb-4\">Best Carpenter & Craftsman Services</h1>
-                                <p class=\"fs-5 fw-medium text-white mb-4 pb-2\">Vero elitr justo clita lorem. Ipsum dolor at sed stet sit diam no. Kasd rebum ipsum et diam justo clita et kasd rebum sea elitr.</p>
-                                <a href=\"\" class=\"btn btn-primary py-md-3 px-md-5 me-3 animated slideInLeft\">Read More</a>
-                                <a href=\"\" class=\"btn btn-light py-md-3 px-md-5 animated slideInRight\">Free Quote</a>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-    <!-- Carousel End -->
+        ";
+        }
+        $_parent = $context['_parent'];
+        unset($context['_seq'], $context['_iterated'], $context['_key'], $context['image'], $context['_parent'], $context['loop']);
+        $context = array_intersect_key($context, $_parent) + $_parent;
+        // line 54
+        echo "    </div>
+</div>
+
+<style>
+    .img-wrapper {
+        height: 900px; /* Set a fixed height for all image wrappers */
+        overflow: hidden;
+    }
+
+    .img-fluid {
+        height: 100%; /* Set a fixed height for all images */
+        width: auto; /* Maintain aspect ratio */
+    }
+</style>
+
 
 
     <!-- Feature Start -->
@@ -207,7 +203,7 @@ class __TwigTemplate_a100324ba463d70a7b0c8c334112eefe extends Template
                        
 
                         <img class=\"position-absolute img-fluid w-100 h-100\" src=\"";
-        // line 143
+        // line 126
         echo twig_escape_filter($this->env, $this->extensions['Symfony\Bridge\Twig\Extension\AssetExtension']->getAssetUrl("img/EcoArt.png"), "html", null, true);
         echo "\" style=\"object-fit: cover;\" alt=\"\">
                     </div>
@@ -262,7 +258,7 @@ class __TwigTemplate_a100324ba463d70a7b0c8c334112eefe extends Template
                     <div class=\"service-item\">
                         <div class=\"overflow-hidden\">
 <img class=\"img-fluid\" src=\"";
-        // line 195
+        // line 178
         echo twig_escape_filter($this->env, $this->extensions['Symfony\Bridge\Twig\Extension\AssetExtension']->getAssetUrl("img/prd2.jpg"), "html", null, true);
         echo "\" alt=\"\">
                         </div>
@@ -277,7 +273,7 @@ class __TwigTemplate_a100324ba463d70a7b0c8c334112eefe extends Template
                     <div class=\"service-item\">
                         <div class=\"overflow-hidden\">
                            <img class=\"img-fluid\" src=\"";
-        // line 207
+        // line 190
         echo twig_escape_filter($this->env, $this->extensions['Symfony\Bridge\Twig\Extension\AssetExtension']->getAssetUrl("img/craft.jpg"), "html", null, true);
         echo "\" alt=\"\">
                         </div>
@@ -292,7 +288,7 @@ class __TwigTemplate_a100324ba463d70a7b0c8c334112eefe extends Template
                     <div class=\"service-item\">
                         <div class=\"overflow-hidden\">
                            <img class=\"img-fluid\" src=\"";
-        // line 219
+        // line 202
         echo twig_escape_filter($this->env, $this->extensions['Symfony\Bridge\Twig\Extension\AssetExtension']->getAssetUrl("img/rajel.jpg"), "html", null, true);
         echo "\" alt=\"\">
                         </div>
@@ -307,7 +303,7 @@ class __TwigTemplate_a100324ba463d70a7b0c8c334112eefe extends Template
                     <div class=\"service-item\">
                         <div class=\"overflow-hidden\">
                            <img class=\"img-fluid\" src=\"";
-        // line 231
+        // line 214
         echo twig_escape_filter($this->env, $this->extensions['Symfony\Bridge\Twig\Extension\AssetExtension']->getAssetUrl("img/prd1.jpg"), "html", null, true);
         echo "\" alt=\"\">
                         </div>
@@ -322,7 +318,7 @@ class __TwigTemplate_a100324ba463d70a7b0c8c334112eefe extends Template
                     <div class=\"service-item\">
                         <div class=\"overflow-hidden\">
                            <img class=\"img-fluid\" src=\"";
-        // line 243
+        // line 226
         echo twig_escape_filter($this->env, $this->extensions['Symfony\Bridge\Twig\Extension\AssetExtension']->getAssetUrl("img/kosksi.jpg"), "html", null, true);
         echo "\" alt=\"\">
                         </div>
@@ -337,7 +333,7 @@ class __TwigTemplate_a100324ba463d70a7b0c8c334112eefe extends Template
                     <div class=\"service-item\">
                         <div class=\"overflow-hidden\">
                            <img class=\"img-fluid\" src=\"";
-        // line 255
+        // line 238
         echo twig_escape_filter($this->env, $this->extensions['Symfony\Bridge\Twig\Extension\AssetExtension']->getAssetUrl("img/a.jpg"), "html", null, true);
         echo "\" alt=\"\">
                         </div>
@@ -604,7 +600,7 @@ By choosing EcoArt's services, you contribute to a positive impact on the enviro
                     <div class=\"team-item\">
                         <div class=\"overflow-hidden position-relative\">
     <img class=\"img-fluid\" src=\"";
-        // line 519
+        // line 502
         echo twig_escape_filter($this->env, $this->extensions['Symfony\Bridge\Twig\Extension\AssetExtension']->getAssetUrl("Team Members/Amine.png"), "html", null, true);
         echo "\" alt=\"\">
                             <div class=\"team-social\">
@@ -623,7 +619,7 @@ By choosing EcoArt's services, you contribute to a positive impact on the enviro
                     <div class=\"team-item\">
                         <div class=\"overflow-hidden position-relative\">
     <img class=\"img-fluid\" src=\"";
-        // line 535
+        // line 518
         echo twig_escape_filter($this->env, $this->extensions['Symfony\Bridge\Twig\Extension\AssetExtension']->getAssetUrl("Team Members/Yoser.png"), "html", null, true);
         echo "\" alt=\"\">
                             <div class=\"team-social\">
@@ -744,7 +740,7 @@ By choosing EcoArt's services, you contribute to a positive impact on the enviro
 
     public function getDebugInfo()
     {
-        return array (  627 => 535,  608 => 519,  341 => 255,  326 => 243,  311 => 231,  296 => 219,  281 => 207,  266 => 195,  211 => 143,  68 => 3,  58 => 2,  35 => 1,);
+        return array (  623 => 518,  604 => 502,  337 => 238,  322 => 226,  307 => 214,  292 => 202,  277 => 190,  262 => 178,  207 => 126,  133 => 54,  110 => 37,  106 => 35,  102 => 34,  68 => 3,  58 => 2,  35 => 1,);
     }
 
     public function getSourceContext()
@@ -779,13 +775,15 @@ By choosing EcoArt's services, you contribute to a positive impact on the enviro
 <body>
    
 
-
-    <!-- Carousel Start -->
-    <div class=\"container-fluid p-0 pb-5\">
-        <div class=\"owl-carousel header-carousel position-relative\">
+<!-- Carousel Start -->
+<div class=\"container-fluid p-0 pb-5\">
+    <div class=\"owl-carousel header-carousel position-relative\">
+        {% for image in ['uploads/403626751_1288313181849311_5137030668488353358_n.jpg', 'uploads/a-65702f5e8b41d.jpg', 'uploads/403632698_661443679497767_9177273439615897975_n.jpg'] %}
             <div class=\"owl-carousel-item position-relative\">
-                <img class=\"img-fluid\" src=\"img/carousel-1.jpg\" alt=\"\">
-                <div class=\"position-absolute top-0 start-0 w-100 h-100 d-flex align-items-center\" style=\"background: rgba(53, 53, 53, .7);\">
+                <div class=\"img-wrapper\">
+                    <img class=\"img-fluid\" src=\"{{ asset(image) }}\" alt=\"\">
+                </div>
+                <div class=\"position-absolute top-0 start-0 w-100 h-100 d-flex align-items-center\" style=\"background: rgba(53, 53, 53, .7); width: 100%; height: 300px;\">
                     <div class=\"container\">
                         <div class=\"row justify-content-center\">
                             <div class=\"col-12 col-lg-8 text-center\">
@@ -799,41 +797,22 @@ By choosing EcoArt's services, you contribute to a positive impact on the enviro
                     </div>
                 </div>
             </div>
-            <div class=\"owl-carousel-item position-relative\">
-                <img class=\"img-fluid\" src=\"img/carousel-2.jpg\" alt=\"\">
-                <div class=\"position-absolute top-0 start-0 w-100 h-100 d-flex align-items-center\" style=\"background: rgba(53, 53, 53, .7);\">
-                    <div class=\"container\">
-                        <div class=\"row justify-content-center\">
-                            <div class=\"col-12 col-lg-8 text-center\">
-                                <h5 class=\"text-white text-uppercase mb-3 animated slideInDown\">Welcome To EcoArt</h5>
-                                <h1 class=\"display-3 text-white animated slideInDown mb-4\">Best Craftsman Trainings</h1>
-                                <p class=\"fs-5 fw-medium text-white mb-4 pb-2\">Vero elitr justo clita lorem. Ipsum dolor at sed stet sit diam no. Kasd rebum ipsum et diam justo clita et kasd rebum sea elitr.</p>
-                                <a href=\"\" class=\"btn btn-primary py-md-3 px-md-5 me-3 animated slideInLeft\">Read More</a>
-                                <a href=\"\" class=\"btn btn-light py-md-3 px-md-5 animated slideInRight\">Free Quote</a>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class=\"owl-carousel-item position-relative\">
-                <img class=\"img-fluid\" src=\"img/carousel-3.jpg\" alt=\"\">
-                <div class=\"position-absolute top-0 start-0 w-100 h-100 d-flex align-items-center\" style=\"background: rgba(53, 53, 53, .7);\">
-                    <div class=\"container\">
-                        <div class=\"row justify-content-center\">
-                            <div class=\"col-12 col-lg-8 text-center\">
-                                <h5 class=\"text-white text-uppercase mb-3 animated slideInDown\">Welcome To EcoArt</h5>
-                                <h1 class=\"display-3 text-white animated slideInDown mb-4\">Best Carpenter & Craftsman Services</h1>
-                                <p class=\"fs-5 fw-medium text-white mb-4 pb-2\">Vero elitr justo clita lorem. Ipsum dolor at sed stet sit diam no. Kasd rebum ipsum et diam justo clita et kasd rebum sea elitr.</p>
-                                <a href=\"\" class=\"btn btn-primary py-md-3 px-md-5 me-3 animated slideInLeft\">Read More</a>
-                                <a href=\"\" class=\"btn btn-light py-md-3 px-md-5 animated slideInRight\">Free Quote</a>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
+        {% endfor %}
     </div>
-    <!-- Carousel End -->
+</div>
+
+<style>
+    .img-wrapper {
+        height: 900px; /* Set a fixed height for all image wrappers */
+        overflow: hidden;
+    }
+
+    .img-fluid {
+        height: 100%; /* Set a fixed height for all images */
+        width: auto; /* Maintain aspect ratio */
+    }
+</style>
+
 
 
     <!-- Feature Start -->

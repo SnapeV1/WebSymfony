@@ -66,125 +66,100 @@ class __TwigTemplate_e59c030e2371b21ee029b3dd9246d6bf extends Template
 
         // line 4
         echo "
-        <div id=\"layoutAuthentication\">
-            <div id=\"layoutAuthentication_content\">
-                <main>
-                    <div class=\"container\">
-                        <div class=\"row justify-content-center\">
-                            <div class=\"col-lg-5\">
-                                <div class=\"card shadow-lg border-0 rounded-lg mt-5\">
-                                    <div class=\"card-header\"><h3 class=\"text-center font-weight-light my-4\">Login</h3></div>
-                                    <div class=\"card-body\">
+<div id=\"layoutAuthentication\" style=\"background-color: #f8f9fa; background-image: url('";
+        // line 5
+        echo twig_escape_filter($this->env, $this->extensions['Symfony\Bridge\Twig\Extension\AssetExtension']->getAssetUrl("your-background-image.jpg"), "html", null, true);
+        echo "'); background-size: cover;\">
+    <div id=\"layoutAuthentication_content\">
+        <main>
+            <div class=\"container\">
+                <div class=\"row justify-content-center\">
+                    <div class=\"col-lg-8\">
+                        <!-- Card for the entire content -->
+                        <div class=\"card shadow-lg border-0 rounded-lg mt-5\">
+                            <div class=\"card-body\">
+                                <!-- Apply color-changing animation to the \"Login\" header -->
+                                <div class=\"card-header text-center\" style=\"background-color: rgba(255, 255, 255, 0.8);\">
+                                    <h3 class=\"text-center font-weight-light my-4\" style=\"font-family: 'Your Custom Font', sans-serif; animation: rainbowText 5s infinite;\">Login</h3>
+                                </div>
 
-                                    ";
-        // line 15
-        echo         $this->env->getRuntime('Symfony\Component\Form\FormRenderer')->renderBlock((isset($context["f"]) || array_key_exists("f", $context) ? $context["f"] : (function () { throw new RuntimeError('Variable "f" does not exist.', 15, $this->source); })()), 'form_start');
+                                <div class=\"row\">
+                                    <!-- Column for the image on the left -->
+                                    <div class=\"col-lg-6\">
+                                        <!-- Increasing the top margin of the image -->
+                                        <img src=\"";
+        // line 23
+        echo twig_escape_filter($this->env, $this->extensions['Symfony\Bridge\Twig\Extension\AssetExtension']->getAssetUrl("uploads/EcoArt.png"), "html", null, true);
+        echo "\" alt=\"Your Image\" class=\"img-fluid\">
+                                    </div>
+                                    <!-- Column for the form on the right -->
+                                    <div class=\"col-lg-6\">
+                                    <br>
+                                    <br>
+                                    <br>
+                                        ";
+        // line 30
+        echo         $this->env->getRuntime('Symfony\Component\Form\FormRenderer')->renderBlock((isset($context["f"]) || array_key_exists("f", $context) ? $context["f"] : (function () { throw new RuntimeError('Variable "f" does not exist.', 30, $this->source); })()), 'form_start');
         echo "
-
-
-                                    ";
-        // line 18
-        echo $this->env->getRuntime('Symfony\Component\Form\FormRenderer')->searchAndRenderBlock(twig_get_attribute($this->env, $this->source, (isset($context["f"]) || array_key_exists("f", $context) ? $context["f"] : (function () { throw new RuntimeError('Variable "f" does not exist.', 18, $this->source); })()), "username", [], "any", false, false, false, 18), 'label');
-        echo "
-                                    ";
-        // line 19
-        echo $this->env->getRuntime('Symfony\Component\Form\FormRenderer')->searchAndRenderBlock(twig_get_attribute($this->env, $this->source, (isset($context["f"]) || array_key_exists("f", $context) ? $context["f"] : (function () { throw new RuntimeError('Variable "f" does not exist.', 19, $this->source); })()), "username", [], "any", false, false, false, 19), 'widget');
-        echo "
-                                    ";
-        // line 20
-        echo $this->env->getRuntime('Symfony\Component\Form\FormRenderer')->searchAndRenderBlock(twig_get_attribute($this->env, $this->source, (isset($context["f"]) || array_key_exists("f", $context) ? $context["f"] : (function () { throw new RuntimeError('Variable "f" does not exist.', 20, $this->source); })()), "username", [], "any", false, false, false, 20), 'errors');
-        echo "
-
-
-
-                                    ";
-        // line 24
-        echo $this->env->getRuntime('Symfony\Component\Form\FormRenderer')->searchAndRenderBlock(twig_get_attribute($this->env, $this->source, (isset($context["f"]) || array_key_exists("f", $context) ? $context["f"] : (function () { throw new RuntimeError('Variable "f" does not exist.', 24, $this->source); })()), "password", [], "any", false, false, false, 24), 'label');
-        echo "
-                                    ";
-        // line 25
-        echo $this->env->getRuntime('Symfony\Component\Form\FormRenderer')->searchAndRenderBlock(twig_get_attribute($this->env, $this->source, (isset($context["f"]) || array_key_exists("f", $context) ? $context["f"] : (function () { throw new RuntimeError('Variable "f" does not exist.', 25, $this->source); })()), "password", [], "any", false, false, false, 25), 'widget');
-        echo "
-                                    ";
-        // line 26
-        echo $this->env->getRuntime('Symfony\Component\Form\FormRenderer')->searchAndRenderBlock(twig_get_attribute($this->env, $this->source, (isset($context["f"]) || array_key_exists("f", $context) ? $context["f"] : (function () { throw new RuntimeError('Variable "f" does not exist.', 26, $this->source); })()), "password", [], "any", false, false, false, 26), 'errors');
-        echo "
-
-                                    
-                                    
-                                    
-                                    <a href=";
+                                        ";
         // line 31
-        echo $this->extensions['Symfony\Bridge\Twig\Extension\RoutingExtension']->getPath("passwordForgot_utilisateur");
-        echo ">Forgot Password?</a>
-                                    <br>
-                                    <a href=";
-        // line 33
-        echo $this->extensions['Symfony\Bridge\Twig\Extension\RoutingExtension']->getPath("emailConnection_utilisateur");
-        echo ">Connect with your Email</a>
-                                    <br>
-
-
-
-                                    ";
-        // line 38
-        echo $this->env->getRuntime('Symfony\Component\Form\FormRenderer')->searchAndRenderBlock(twig_get_attribute($this->env, $this->source, (isset($context["f"]) || array_key_exists("f", $context) ? $context["f"] : (function () { throw new RuntimeError('Variable "f" does not exist.', 38, $this->source); })()), "Login", [], "any", false, false, false, 38), 'widget');
+        echo $this->env->getRuntime('Symfony\Component\Form\FormRenderer')->searchAndRenderBlock(twig_get_attribute($this->env, $this->source, (isset($context["f"]) || array_key_exists("f", $context) ? $context["f"] : (function () { throw new RuntimeError('Variable "f" does not exist.', 31, $this->source); })()), "username", [], "any", false, false, false, 31), 'widget');
         echo "
-
-
-
-
+                                        ";
+        // line 32
+        echo $this->env->getRuntime('Symfony\Component\Form\FormRenderer')->searchAndRenderBlock(twig_get_attribute($this->env, $this->source, (isset($context["f"]) || array_key_exists("f", $context) ? $context["f"] : (function () { throw new RuntimeError('Variable "f" does not exist.', 32, $this->source); })()), "username", [], "any", false, false, false, 32), 'errors');
+        echo "
+                                        <br>
+                                        ";
+        // line 34
+        echo $this->env->getRuntime('Symfony\Component\Form\FormRenderer')->searchAndRenderBlock(twig_get_attribute($this->env, $this->source, (isset($context["f"]) || array_key_exists("f", $context) ? $context["f"] : (function () { throw new RuntimeError('Variable "f" does not exist.', 34, $this->source); })()), "password", [], "any", false, false, false, 34), 'widget');
+        echo "
+                                        ";
+        // line 35
+        echo $this->env->getRuntime('Symfony\Component\Form\FormRenderer')->searchAndRenderBlock(twig_get_attribute($this->env, $this->source, (isset($context["f"]) || array_key_exists("f", $context) ? $context["f"] : (function () { throw new RuntimeError('Variable "f" does not exist.', 35, $this->source); })()), "password", [], "any", false, false, false, 35), 'errors');
+        echo "
+                                        <br>
+                                        <div class=\"text-center\">
+                                            ";
+        // line 38
+        echo $this->env->getRuntime('Symfony\Component\Form\FormRenderer')->searchAndRenderBlock(twig_get_attribute($this->env, $this->source, (isset($context["f"]) || array_key_exists("f", $context) ? $context["f"] : (function () { throw new RuntimeError('Variable "f" does not exist.', 38, $this->source); })()), "Login", [], "any", false, false, false, 38), 'widget', ["attr" => ["class" => "btn btn-primary"]]);
+        echo "
                                         </div>
-                                    <div class=\"card-footer text-center py-3\">
-                                        <div class=\"small\"><a href=";
-        // line 45
-        echo $this->extensions['Symfony\Bridge\Twig\Extension\RoutingExtension']->getPath("add_utilisateur");
-        echo ">Need an account? Sign up!</a></div>
+                                        <div class=\"text-center mt-3\">
+                                            <a href=\"";
+        // line 41
+        echo $this->extensions['Symfony\Bridge\Twig\Extension\RoutingExtension']->getPath("passwordForgot_utilisateur");
+        echo "\">Forgot Password?</a>
+                                            <br>
+                                            <a href=\"";
+        // line 43
+        echo $this->extensions['Symfony\Bridge\Twig\Extension\RoutingExtension']->getPath("emailConnection_utilisateur");
+        echo "\">Connect with your Email</a>
+                                        </div>
                                     </div>
                                 </div>
                             </div>
+                            <div class=\"card-footer text-center py-3\">
+                                <div class=\"small\"><a href=\"";
+        // line 49
+        echo $this->extensions['Symfony\Bridge\Twig\Extension\RoutingExtension']->getPath("add_utilisateur");
+        echo "\">Need an account? Sign up!</a></div>
+                            </div>
                         </div>
                     </div>
-                </main>
-            </div
+                </div>
             </div>
+        </main>
+    </div>
+</div>
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+<style>
+    @keyframes rainbowText {
+        0% { color: #000000; } /* Red */
+        0% { color: #ff9900; } /* Orange */
+      
+    }
+</style>
 
 ";
         
@@ -207,7 +182,7 @@ class __TwigTemplate_e59c030e2371b21ee029b3dd9246d6bf extends Template
 
     public function getDebugInfo()
     {
-        return array (  141 => 45,  131 => 38,  123 => 33,  118 => 31,  110 => 26,  106 => 25,  102 => 24,  95 => 20,  91 => 19,  87 => 18,  81 => 15,  68 => 4,  58 => 3,  35 => 1,);
+        return array (  145 => 49,  136 => 43,  131 => 41,  125 => 38,  119 => 35,  115 => 34,  110 => 32,  106 => 31,  102 => 30,  92 => 23,  71 => 5,  68 => 4,  58 => 3,  35 => 1,);
     }
 
     public function getSourceContext()
@@ -216,93 +191,69 @@ class __TwigTemplate_e59c030e2371b21ee029b3dd9246d6bf extends Template
 
 {% block body %}
 
-        <div id=\"layoutAuthentication\">
-            <div id=\"layoutAuthentication_content\">
-                <main>
-                    <div class=\"container\">
-                        <div class=\"row justify-content-center\">
-                            <div class=\"col-lg-5\">
-                                <div class=\"card shadow-lg border-0 rounded-lg mt-5\">
-                                    <div class=\"card-header\"><h3 class=\"text-center font-weight-light my-4\">Login</h3></div>
-                                    <div class=\"card-body\">
+<div id=\"layoutAuthentication\" style=\"background-color: #f8f9fa; background-image: url('{{ asset('your-background-image.jpg') }}'); background-size: cover;\">
+    <div id=\"layoutAuthentication_content\">
+        <main>
+            <div class=\"container\">
+                <div class=\"row justify-content-center\">
+                    <div class=\"col-lg-8\">
+                        <!-- Card for the entire content -->
+                        <div class=\"card shadow-lg border-0 rounded-lg mt-5\">
+                            <div class=\"card-body\">
+                                <!-- Apply color-changing animation to the \"Login\" header -->
+                                <div class=\"card-header text-center\" style=\"background-color: rgba(255, 255, 255, 0.8);\">
+                                    <h3 class=\"text-center font-weight-light my-4\" style=\"font-family: 'Your Custom Font', sans-serif; animation: rainbowText 5s infinite;\">Login</h3>
+                                </div>
 
-                                    {{form_start(f)}}
-
-
-                                    {{form_label(f.username)}}
-                                    {{form_widget(f.username)}}
-                                    {{form_errors(f.username)}}
-
-
-
-                                    {{form_label(f.password)}}
-                                    {{form_widget(f.password)}}
-                                    {{form_errors(f.password)}}
-
-                                    
-                                    
-                                    
-                                    <a href={{path('passwordForgot_utilisateur')}}>Forgot Password?</a>
+                                <div class=\"row\">
+                                    <!-- Column for the image on the left -->
+                                    <div class=\"col-lg-6\">
+                                        <!-- Increasing the top margin of the image -->
+                                        <img src=\"{{ asset('uploads/EcoArt.png') }}\" alt=\"Your Image\" class=\"img-fluid\">
+                                    </div>
+                                    <!-- Column for the form on the right -->
+                                    <div class=\"col-lg-6\">
                                     <br>
-                                    <a href={{path('emailConnection_utilisateur')}}>Connect with your Email</a>
                                     <br>
-
-
-
-                                    {{form_widget(f.Login)}}
-
-
-
-
+                                    <br>
+                                        {{form_start(f)}}
+                                        {{form_widget(f.username)}}
+                                        {{form_errors(f.username)}}
+                                        <br>
+                                        {{form_widget(f.password)}}
+                                        {{form_errors(f.password)}}
+                                        <br>
+                                        <div class=\"text-center\">
+                                            {{form_widget(f.Login, {'attr': {'class': 'btn btn-primary'}})}}
                                         </div>
-                                    <div class=\"card-footer text-center py-3\">
-                                        <div class=\"small\"><a href={{path('add_utilisateur')}}>Need an account? Sign up!</a></div>
+                                        <div class=\"text-center mt-3\">
+                                            <a href=\"{{ path('passwordForgot_utilisateur') }}\">Forgot Password?</a>
+                                            <br>
+                                            <a href=\"{{ path('emailConnection_utilisateur') }}\">Connect with your Email</a>
+                                        </div>
                                     </div>
                                 </div>
                             </div>
+                            <div class=\"card-footer text-center py-3\">
+                                <div class=\"small\"><a href=\"{{ path('add_utilisateur') }}\">Need an account? Sign up!</a></div>
+                            </div>
                         </div>
                     </div>
-                </main>
-            </div
+                </div>
             </div>
+        </main>
+    </div>
+</div>
 
+<style>
+    @keyframes rainbowText {
+        0% { color: #000000; } /* Red */
+        0% { color: #ff9900; } /* Orange */
+      
+    }
+</style>
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-{% endblock %}", "utilisateur/login.html.twig", "C:\\Users\\hamad\\OneDrive\\Desktop\\WebSymfony\\templates\\utilisateur\\login.html.twig");
+{% endblock %}
+", "utilisateur/login.html.twig", "C:\\Users\\hamad\\OneDrive\\Desktop\\WebSymfony\\templates\\utilisateur\\login.html.twig");
     }
 }

@@ -86,14 +86,11 @@ class __TwigTemplate_782df80fd8a45f5f2aad00a8c27a7525 extends Template
             echo "              <a href=\"";
             echo $this->extensions['Symfony\Bridge\Twig\Extension\RoutingExtension']->getPath("take_photo");
             echo "\">
-              <img src=\"";
+<img src=\"";
             // line 22
-            echo twig_escape_filter($this->env, $this->extensions['Symfony\Bridge\Twig\Extension\AssetExtension']->getAssetUrl(twig_get_attribute($this->env, $this->source, (isset($context["user"]) || array_key_exists("user", $context) ? $context["user"] : (function () { throw new RuntimeError('Variable "user" does not exist.', 22, $this->source); })()), "pic", [], "any", false, false, false, 22)), "html", null, true);
-            echo "\"
-                alt=";
-            // line 23
-            echo twig_escape_filter($this->env, twig_get_attribute($this->env, $this->source, (isset($context["user"]) || array_key_exists("user", $context) ? $context["user"] : (function () { throw new RuntimeError('Variable "user" does not exist.', 23, $this->source); })()), "username", [], "any", false, false, false, 23), "html", null, true);
-            echo " class=\"img-fluid my-5\" style=\"width: 120px;\" />
+            echo twig_escape_filter($this->env, (((is_string($__internal_compile_0 = twig_get_attribute($this->env, $this->source, (isset($context["user"]) || array_key_exists("user", $context) ? $context["user"] : (function () { throw new RuntimeError('Variable "user" does not exist.', 22, $this->source); })()), "pic", [], "any", false, false, false, 22)) && is_string($__internal_compile_1 = "C:\\") && ('' === $__internal_compile_1 || 0 === strpos($__internal_compile_0, $__internal_compile_1)))) ? ($this->extensions['Symfony\Bridge\Twig\Extension\AssetExtension']->getAssetUrl(("uploads/" . twig_last($this->env, twig_split_filter($this->env, twig_get_attribute($this->env, $this->source, (isset($context["user"]) || array_key_exists("user", $context) ? $context["user"] : (function () { throw new RuntimeError('Variable "user" does not exist.', 22, $this->source); })()), "pic", [], "any", false, false, false, 22), "\\"))))) : ($this->extensions['Symfony\Bridge\Twig\Extension\AssetExtension']->getAssetUrl(("uploads/" . twig_get_attribute($this->env, $this->source, (isset($context["user"]) || array_key_exists("user", $context) ? $context["user"] : (function () { throw new RuntimeError('Variable "user" does not exist.', 22, $this->source); })()), "pic", [], "any", false, false, false, 22))))), "html", null, true);
+            echo "\" alt=\"pic\" style=\"width: 80px; height: auto; border-radius: 5px; box-shadow: 0 0 10px 0 rgba(0,0,0,0.1);\">
+
 
                 </a>
                 ";
@@ -104,11 +101,9 @@ class __TwigTemplate_782df80fd8a45f5f2aad00a8c27a7525 extends Template
         // line 28
         if ( !(isset($context["l"]) || array_key_exists("l", $context) ? $context["l"] : (function () { throw new RuntimeError('Variable "l" does not exist.', 28, $this->source); })())) {
             // line 29
-            echo "                <img src=\"";
-            echo twig_escape_filter($this->env, $this->extensions['Symfony\Bridge\Twig\Extension\AssetExtension']->getAssetUrl(twig_get_attribute($this->env, $this->source, (isset($context["user"]) || array_key_exists("user", $context) ? $context["user"] : (function () { throw new RuntimeError('Variable "user" does not exist.', 29, $this->source); })()), "pic", [], "any", false, false, false, 29)), "html", null, true);
-            echo "\"alt=";
-            echo twig_escape_filter($this->env, twig_get_attribute($this->env, $this->source, (isset($context["user"]) || array_key_exists("user", $context) ? $context["user"] : (function () { throw new RuntimeError('Variable "user" does not exist.', 29, $this->source); })()), "username", [], "any", false, false, false, 29), "html", null, true);
-            echo " class=\"img-fluid my-5\" style=\"width: 80px;\" />
+            echo "<img src=\"";
+            echo twig_escape_filter($this->env, (((is_string($__internal_compile_2 = twig_get_attribute($this->env, $this->source, (isset($context["user"]) || array_key_exists("user", $context) ? $context["user"] : (function () { throw new RuntimeError('Variable "user" does not exist.', 29, $this->source); })()), "pic", [], "any", false, false, false, 29)) && is_string($__internal_compile_3 = "C:\\") && ('' === $__internal_compile_3 || 0 === strpos($__internal_compile_2, $__internal_compile_3)))) ? ($this->extensions['Symfony\Bridge\Twig\Extension\AssetExtension']->getAssetUrl(("uploads/" . twig_last($this->env, twig_split_filter($this->env, twig_get_attribute($this->env, $this->source, (isset($context["user"]) || array_key_exists("user", $context) ? $context["user"] : (function () { throw new RuntimeError('Variable "user" does not exist.', 29, $this->source); })()), "pic", [], "any", false, false, false, 29), "\\"))))) : ($this->extensions['Symfony\Bridge\Twig\Extension\AssetExtension']->getAssetUrl(twig_get_attribute($this->env, $this->source, (isset($context["user"]) || array_key_exists("user", $context) ? $context["user"] : (function () { throw new RuntimeError('Variable "user" does not exist.', 29, $this->source); })()), "pic", [], "any", false, false, false, 29)))), "html", null, true);
+            echo "\" alt=\"pic\" style=\"width: 80px; height: auto; border-radius: 5px; box-shadow: 0 0 10px 0 rgba(0,0,0,0.1);\">
                  ";
         }
         // line 31
@@ -238,7 +233,7 @@ class __TwigTemplate_782df80fd8a45f5f2aad00a8c27a7525 extends Template
 
     public function getDebugInfo()
     {
-        return array (  205 => 78,  198 => 74,  195 => 73,  193 => 72,  189 => 71,  184 => 68,  179 => 66,  176 => 65,  174 => 64,  170 => 63,  159 => 55,  152 => 51,  141 => 42,  130 => 35,  128 => 34,  124 => 33,  118 => 32,  115 => 31,  107 => 29,  105 => 28,  102 => 27,  95 => 23,  91 => 22,  86 => 21,  84 => 20,  68 => 7,  58 => 6,  35 => 2,);
+        return array (  200 => 78,  193 => 74,  190 => 73,  188 => 72,  184 => 71,  179 => 68,  174 => 66,  171 => 65,  169 => 64,  165 => 63,  154 => 55,  147 => 51,  136 => 42,  125 => 35,  123 => 34,  119 => 33,  113 => 32,  110 => 31,  104 => 29,  102 => 28,  99 => 27,  91 => 22,  86 => 21,  84 => 20,  68 => 7,  58 => 6,  35 => 2,);
     }
 
     public function getSourceContext()
@@ -264,14 +259,14 @@ class __TwigTemplate_782df80fd8a45f5f2aad00a8c27a7525 extends Template
 
               {% if l%}
               <a href=\"{{ path('take_photo') }}\">
-              <img src=\"{{asset(user.pic)}}\"
-                alt={{user.username}} class=\"img-fluid my-5\" style=\"width: 120px;\" />
+<img src=\"{{ user.pic starts with 'C:\\\\' ? asset('uploads/' ~ user.pic|split('\\\\')|last) : asset('uploads/' ~user.pic) }}\" alt=\"pic\" style=\"width: 80px; height: auto; border-radius: 5px; box-shadow: 0 0 10px 0 rgba(0,0,0,0.1);\">
+
 
                 </a>
                 {% endif %}
 
                 {% if not l %}
-                <img src=\"{{asset(user.pic)}}\"alt={{user.username}} class=\"img-fluid my-5\" style=\"width: 80px;\" />
+<img src=\"{{ user.pic starts with 'C:\\\\' ? asset('uploads/' ~ user.pic|split('\\\\')|last) : asset(user.pic) }}\" alt=\"pic\" style=\"width: 80px; height: auto; border-radius: 5px; box-shadow: 0 0 10px 0 rgba(0,0,0,0.1);\">
                  {% endif %}
                 
               <h5>{{user.nom}} {{user.prenom}} </h5>
