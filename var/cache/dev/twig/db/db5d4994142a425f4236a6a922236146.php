@@ -134,7 +134,7 @@ class __TwigTemplate_3fecccfc7db71e00b890fa926c559155 extends Template
                     <a href=\"";
             // line 63
             echo twig_escape_filter($this->env, $this->extensions['Symfony\Bridge\Twig\Extension\RoutingExtension']->getPath("checkTraining", ["idFormation" => twig_get_attribute($this->env, $this->source, $context["training"], "id", [], "any", false, false, false, 63)]), "html", null, true);
-            echo "\" style=\"text-decoration: none; color: inherit;\">
+            echo "\" target=\"_blank\" style=\"text-decoration: none; color: inherit;\">
 
     <div class=\"card\" style=\"border-radius: 15px; overflow: hidden; box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); width: 100%; height: 100%;\">
                  
@@ -199,7 +199,7 @@ class __TwigTemplate_3fecccfc7db71e00b890fa926c559155 extends Template
                             <a href=\"";
             // line 98
             echo twig_escape_filter($this->env, $this->extensions['Symfony\Bridge\Twig\Extension\RoutingExtension']->getPath("book_training", ["idFormation" => twig_get_attribute($this->env, $this->source, $context["training"], "id", [], "any", false, false, false, 98)]), "html", null, true);
-            echo "\" class=\"btn btn-primary\">S'inscrire</a>
+            echo "\" class=\"btn btn-primary\">Book</a>
                             <div class=\"d-flex align-items-center\">
                                 <!-- Heart icon for likes -->
                                 <i class=\"fas fa-heart\" id=\"likeIcon";
@@ -390,7 +390,7 @@ class __TwigTemplate_3fecccfc7db71e00b890fa926c559155 extends Template
     <div class=\"row row-cols-1 row-cols-md-2 row-cols-lg-3\">
         {% for training in training %}
             <div class=\"col mb-4\">
-                    <a href=\"{{ path('checkTraining', {'idFormation': training.id}) }}\" style=\"text-decoration: none; color: inherit;\">
+                    <a href=\"{{ path('checkTraining', {'idFormation': training.id}) }}\" target=\"_blank\" style=\"text-decoration: none; color: inherit;\">
 
     <div class=\"card\" style=\"border-radius: 15px; overflow: hidden; box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); width: 100%; height: 100%;\">
                  
@@ -425,7 +425,7 @@ class __TwigTemplate_3fecccfc7db71e00b890fa926c559155 extends Template
                         <p class=\"card-text\">Prix : {{ training.prix }} dt</p>
                         <!-- Registration button and likes section -->
                         <div class=\"d-flex justify-content-between align-items-center\">
-                            <a href=\"{{ path('book_training', {'idFormation': training.id}) }}\" class=\"btn btn-primary\">S'inscrire</a>
+                            <a href=\"{{ path('book_training', {'idFormation': training.id}) }}\" class=\"btn btn-primary\">Book</a>
                             <div class=\"d-flex align-items-center\">
                                 <!-- Heart icon for likes -->
                                 <i class=\"fas fa-heart\" id=\"likeIcon{{ training.id }}\" onclick=\"likeFormation({{ training.id }})\"></i>

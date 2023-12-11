@@ -267,7 +267,10 @@ class __TwigTemplate_cee7ad0239545aa435a729ab83115637 extends Template
 
                 </div>
                 <div class=\"modal-footer\">
-<p class=\"brand\">EcoArt</p>                </div>
+<a class=\"brand\" href=\"";
+            // line 111
+            echo twig_escape_filter($this->env, $this->extensions['Symfony\Bridge\Twig\Extension\RoutingExtension']->getPath("add_to_cartByCard", ["id" => twig_get_attribute($this->env, $this->source, $context["product"], "idpdts", [], "any", false, false, false, 111)]), "html", null, true);
+            echo "\" method=\"post\" class=\"mt-auto\">BUY NOW</a>    </div>
             </div>
         </div>
     </div>
@@ -419,7 +422,7 @@ class __TwigTemplate_cee7ad0239545aa435a729ab83115637 extends Template
 
     public function getDebugInfo()
     {
-        return array (  353 => 181,  325 => 156,  298 => 132,  280 => 116,  265 => 107,  260 => 105,  255 => 103,  250 => 101,  246 => 100,  236 => 95,  227 => 91,  216 => 83,  212 => 82,  208 => 81,  203 => 79,  199 => 78,  195 => 76,  191 => 75,  165 => 51,  155 => 47,  152 => 46,  147 => 45,  144 => 43,  132 => 37,  129 => 36,  124 => 35,  119 => 31,  109 => 28,  105 => 27,  93 => 17,  85 => 13,  83 => 12,  74 => 6,  68 => 4,  58 => 3,  35 => 1,);
+        return array (  356 => 181,  328 => 156,  301 => 132,  283 => 116,  272 => 111,  265 => 107,  260 => 105,  255 => 103,  250 => 101,  246 => 100,  236 => 95,  227 => 91,  216 => 83,  212 => 82,  208 => 81,  203 => 79,  199 => 78,  195 => 76,  191 => 75,  165 => 51,  155 => 47,  152 => 46,  147 => 45,  144 => 43,  132 => 37,  129 => 36,  124 => 35,  119 => 31,  109 => 28,  105 => 27,  93 => 17,  85 => 13,  83 => 12,  74 => 6,  68 => 4,  58 => 3,  35 => 1,);
     }
 
     public function getSourceContext()
@@ -534,7 +537,7 @@ class __TwigTemplate_cee7ad0239545aa435a729ab83115637 extends Template
 
                 </div>
                 <div class=\"modal-footer\">
-<p class=\"brand\">EcoArt</p>                </div>
+<a class=\"brand\" href=\"{{ path('add_to_cartByCard', {'id': product.idpdts}) }}\" method=\"post\" class=\"mt-auto\">BUY NOW</a>    </div>
             </div>
         </div>
     </div>

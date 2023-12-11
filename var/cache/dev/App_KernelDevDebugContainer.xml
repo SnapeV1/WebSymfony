@@ -6911,7 +6911,7 @@
         <argument key="se" type="service_closure" id="App\Service\UtilisateurService"/>
       </argument>
     </service>
-    <service id=".service_locator.jvT59f4" class="Symfony\Component\DependencyInjection\ServiceLocator">
+    <service id=".service_locator.HteUKwU" class="Symfony\Component\DependencyInjection\ServiceLocator">
       <tag name="container.service_locator"/>
       <argument type="collection">
         <argument key="App\Controller\AdminController::addproduct" type="service_closure" id=".service_locator.40fCRwy"/>
@@ -6963,6 +6963,7 @@
         <argument key="App\Controller\GroupController::getAllForUser" type="service_closure" id=".service_locator.RJk_i1L"/>
         <argument key="App\Controller\GroupController::updateGroup" type="service_closure" id=".service_locator.aKM6MDa"/>
         <argument key="App\Controller\LineorderController::addToCart" type="service_closure" id=".service_locator.0sZ22ew"/>
+        <argument key="App\Controller\LineorderController::addToCartByCard" type="service_closure" id=".service_locator.0sZ22ew"/>
         <argument key="App\Controller\LineorderController::deleteLineorder" type="service_closure" id=".service_locator.aKM6MDa"/>
         <argument key="App\Controller\LineorderController::editLineorder" type="service_closure" id=".service_locator.aKM6MDa"/>
         <argument key="App\Controller\LineorderController::getLineorders" type="service_closure" id=".service_locator.GBllMQI"/>
@@ -7058,6 +7059,7 @@
         <argument key="App\Controller\GroupController:getAllForUser" type="service_closure" id=".service_locator.RJk_i1L"/>
         <argument key="App\Controller\GroupController:updateGroup" type="service_closure" id=".service_locator.aKM6MDa"/>
         <argument key="App\Controller\LineorderController:addToCart" type="service_closure" id=".service_locator.0sZ22ew"/>
+        <argument key="App\Controller\LineorderController:addToCartByCard" type="service_closure" id=".service_locator.0sZ22ew"/>
         <argument key="App\Controller\LineorderController:deleteLineorder" type="service_closure" id=".service_locator.aKM6MDa"/>
         <argument key="App\Controller\LineorderController:editLineorder" type="service_closure" id=".service_locator.aKM6MDa"/>
         <argument key="App\Controller\LineorderController:getLineorders" type="service_closure" id=".service_locator.GBllMQI"/>
@@ -8001,12 +8003,12 @@
       <argument type="service" id="security.token_storage"/>
     </service>
     <service id="debug.argument_resolver.service.inner" class="Symfony\Component\HttpKernel\Controller\ArgumentResolver\ServiceValueResolver">
-      <argument type="service" id=".service_locator.jvT59f4"/>
+      <argument type="service" id=".service_locator.HteUKwU"/>
     </service>
     <service id="debug.argument_resolver.default.inner" class="Symfony\Component\HttpKernel\Controller\ArgumentResolver\DefaultValueResolver"/>
     <service id="debug.argument_resolver.variadic.inner" class="Symfony\Component\HttpKernel\Controller\ArgumentResolver\VariadicValueResolver"/>
     <service id="debug.argument_resolver.not_tagged_controller.inner" class="Symfony\Component\HttpKernel\Controller\ArgumentResolver\NotTaggedControllerValueResolver">
-      <argument type="service" id=".service_locator.jvT59f4"/>
+      <argument type="service" id=".service_locator.HteUKwU"/>
     </service>
     <service id="debug.traced.messenger.bus.default.inner" class="Symfony\Component\Messenger\MessageBus">
       <argument type="iterator">
@@ -9038,7 +9040,7 @@
     <service id="Endroid\QrCode\Builder\BuilderInterface $defaultQrCodeBuilder" alias="endroid_qr_code.default_builder"/>
     <service id="container.env_var_processors_locator" alias=".service_locator.gSv9zYw" public="true"/>
     <service id="twig.loader.filesystem" alias="twig.loader.native_filesystem"/>
-    <service id="argument_resolver.controller_locator" alias=".service_locator.jvT59f4"/>
+    <service id="argument_resolver.controller_locator" alias=".service_locator.HteUKwU"/>
     <service id="doctrine.id_generator_locator" alias=".service_locator.KLVvNIq"/>
     <service id="twig.loader" alias="twig.loader.native_filesystem"/>
     <service id="Psr\Log\LoggerInterface $requestLogger" alias="monolog.logger.request"/>
@@ -9083,7 +9085,7 @@
     <service id=".service_locator.IAJH1gH" alias=".service_locator.lD4vPjH"/>
     <service id=".service_locator.NRuUB7Q" alias=".service_locator.vqV4LaV"/>
     <service id=".service_locator.6FYQ5jn" alias=".service_locator.G0dLq8i"/>
-    <service id=".service_locator.U_vF8dD" alias=".service_locator.jvT59f4"/>
+    <service id=".service_locator.N2myih5" alias=".service_locator.HteUKwU"/>
     <service id=".service_locator.wKF4yn1" alias=".service_locator.19_mNxd"/>
     <service id=".service_locator.bZPMghW" alias=".service_locator.b6JH02b"/>
     <service id=".service_locator.XW18Svm" alias=".service_locator.TcKhdzh"/>

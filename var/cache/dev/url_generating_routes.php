@@ -80,6 +80,7 @@ return [
     'view_cart' => [[], ['_controller' => 'App\\Controller\\LineorderController::getLineorders'], [], [['text', '/get-lineorders']], [], [], []],
     'delete_lineorder' => [['id'], ['_controller' => 'App\\Controller\\LineorderController::deleteLineorder'], [], [['variable', '/', '[^/]++', 'id', true], ['text', '/delete-lineorder']], [], [], []],
     'edit_lineorder' => [['id'], ['_controller' => 'App\\Controller\\LineorderController::editLineorder'], [], [['variable', '/', '[^/]++', 'id', true], ['text', '/edit-lineorder']], [], [], []],
+    'add_to_cartByCard' => [['id'], ['_controller' => 'App\\Controller\\LineorderController::addToCartByCard'], [], [['variable', '/', '[^/]++', 'id', true], ['text', '/add-to-cartByCard']], [], [], []],
     'members_getall' => [['id'], ['_controller' => 'App\\Controller\\MembreController::getMembers'], [], [['variable', '/', '[^/]++', 'id', true], ['text', '/getmembers']], [], [], []],
     'app_membre' => [[], ['_controller' => 'App\\Controller\\MembreController::index'], [], [['text', '/membre']], [], [], []],
     'addmember' => [['id'], ['_controller' => 'App\\Controller\\MembreController::addMemberToGroup'], [], [['variable', '/', '[^/]++', 'id', true], ['text', '/addmember']], [], [], []],

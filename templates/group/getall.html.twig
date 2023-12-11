@@ -3,13 +3,13 @@
 {% block body %}
     {{ parent() }}
 
-    <div style="margin-top: 50px;">
-        <h1 style="text-align: center; color= "#C87A19";">List of Groups</h1>
+    <div style="margin-top: 50px; animation: fadeInUp 1s ease;">
+        <h1 style="text-align: center; color: #C87A19; transform: rotate(-5deg); transition: transform 0.3s;">List of Groups</h1>
         {% if groups is empty %}
-            <p style="text-align: center;">Maybe create a group?</p>
+            <p style="text-align: center; animation: fadeIn 1s ease;">Maybe create a group?</p>
         {% else %}
-            <table style="border-collapse: collapse; width: 80%; margin: 0 auto; margin-top: 20px;">
-                <thead style="background-color: #f2f2f2*;">
+            <table style="border-collapse: collapse; width: 80%; margin: 0 auto; margin-top: 20px; animation: fadeIn 1s ease; box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);">
+                <thead style="background-color: #f2f2f2; transition: background-color 0.3s;">
                     <tr>
                         <th style="padding: 10px;">Group Name</th>
                         <th style="padding: 10px;">Size</th>
@@ -19,35 +19,36 @@
                 </thead>
                 <tbody>
                     {% for group in groups %}
-                        <tr style="border-bottom: 1px solid #ccc;">
-                           <td style="padding: 10px;">
-    <a href="{{ path('members_getall', {'id': group.id, 'userid': userid}) }}" style="text-decoration: none; color: bleu ; transition: color 0.3s;">
-        {{ group.nom }}
-    </a>
-</td>
-                            <td style="padding: 10px;">{{ group.size }}</td>
-                            <td style="padding: 10px;">
-                                <img src="{{ group.logo starts with 'C:\\' ? asset('uploads/' ~ group.logo|split('\\')|last) : asset(group.logo) }}" alt="Group Logo" style="width: 100px; height: auto; border-radius: 5px; box-shadow: 0 0 10px 0 rgba(0,0,0,0.1);">
+                        <tr style="border-bottom: 1px solid #ccc; transition: background-color 0.3s;">
+                            <td style="padding: 10px; transition: color 0.3s;" class="group-name">
+                                <a href="{{ path('members_getall', {'id': group.id, 'userid': userid}) }}" style="text-decoration: none; color: #5D8233; position: relative; display: inline-block;">
+                                    {{ group.nom }}
+                                    <span class="underline"></span>
+                                </a>
                             </td>
-                            <td style="padding: 10px;">
-                                <a href="#" onclick="return editGroup({{ group.id }})"  padding: 5px 10px; border-radius: 5px; ">
+                            <td style="padding: 10px; transition: color 0.3s;">{{ group.size }}</td>
+                            <td style="padding: 10px; transition: transform 0.3s;">
+                                <img src="{{ group.logo starts with 'C:\\' ? asset('uploads/' ~ group.logo|split('\\')|last) : asset(group.logo) }}" alt="Group Logo" style="width: 100px; height: auto; border-radius: 5px; box-shadow: 0 0 10px 0 rgba(0,0,0,0.1); transition: transform 0.3s;">
+                            </td>
+                            <td style="padding: 10px; transition: transform 0.3s;">
+                                <a href="#" onclick="return editGroup({{ group.id }})" style="padding: 5px 10px; border-radius: 5px; background-color: #C87A19; color: white; transition: background-color 0.3s; margin:5px;">
                                     <i class="fas fa-edit"></i>
                                 </a>
-                                <a href="#" onclick="return confirmDelete({{ group.id }})" padding: 5px 10px; border-radius: 5px;">
+                                <a href="#" onclick="return confirmDelete({{ group.id }})" style="padding: 5px 10px; border-radius: 5px; background-color: #C87A19; color: white; transition: background-color 0.3s;">
                                     <i class="fas fa-trash-alt"></i>
                                 </a>
                             </td>
                         </tr>
 
-                        <tr id="editForm_{{ group.id }}" style="display: none;">
+                        <tr id="editForm_{{ group.id }}" style="display: none; transition: background-color 0.3s;">
                             <td colspan="4" style="padding: 10px;">
                                 <form action="{{ path('update_group', {'id': group.id, 'userid': userid}) }}" method="POST" enctype="multipart/form-data">
                                     <input type="text" name="group_name" value="{{ group.nom }}" />
                                     
-        <div class="d-flex justify-content-end mt-3">
-                                    <button type="submit" class="btn btn-primary">
-                                        <i class="fas fa-save"></i> Save
-                                    </button>
+                                    <div class="d-flex justify-content-end mt-3">
+                                        <button type="submit" class="btn btn-primary btns" style="background-color: #5D8233; color: white; border: none; padding: 5px 10px; border-radius: 5px; transition: background-color 0.3s;">
+                                            <i class="fas fa-save"></i> Save
+                                        </button>
                                     </div>
                                 </form>
                             </td>
@@ -58,8 +59,8 @@
         {% endif %}
     </div>
     
-    <div style="text-align: center; margin-top: 20px;">
-        <a href="{{ path('addgroup', {'userid': userid}) }}"class="btn btn-primary" style="text-decoration: none; padding: 5px 10px; border-radius: 5px; color: white;">
+    <div style="text-align: center; margin-top: 20px; animation: pulse 1.5s infinite;">
+        <a href="{{ path('addgroup', {'userid': userid}) }}" class="btn btn-primary btns" style="text-decoration: none; padding: 5px 10px; border-radius: 5px; color: white; background-color: #C87A19; transition: background-color 0.3s;">
             <i class="fas fa-plus"></i> Add Group
         </a>
     </div>
@@ -82,10 +83,91 @@
             return false;
         }
     </script>
+
     <style>
-      .template-color {
-        color: bleu; /* Replace with your desired color code */
-    }
+        /* Adding some styles for better appearance */
+        table {
+            box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+            border-radius: 8px;
+            overflow: hidden;
+            margin-top: 10px;
+        }
+
+        th, td {
+            text-align: center;
+            padding: 15px;
+        }
+
+        th {
+            background-color: #f2f2f2;
+        }
+
+        tbody tr:hover {
+            background-color: #f9f9f9;
+        }
+
+        td img {
+            transition: transform 0.3s;
+        }
+
+        tbody tr:hover td img {
+            transform: scale(1.1);
+        }
+
+        a:hover {
+            text-decoration: none;
+        }
+
+        .btn-primary:hover, .btn-danger:hover, .btns:hover {
+            background-color: #4C6E2A; /* Change to your desired hover color */
+        }
+
+        .btn-primary, .btn-danger, .btns {
+            cursor: pointer;
+        }
+
+        .group-name:hover {
+            color: #C87A19; /* Change to your desired hover color */
+            transition: color 0.3s;
+        }
+
+        /* Underline animation */
+        .group-name::after {
+            content: '';
+            display: block;
+            width: 0;
+            height: 2px;
+            background: #C87A19; /* Change to your desired hover color */
+            transition: width 0.8s;
+        }
+
+        .group-name:hover::after {
+            width: 100%;
+        }
+
+        /* Pulse animation for the "Add Group" button */
+        @keyframes pulse {
+            0% { transform: scale(1); }
+            50% { transform: scale(1.05); }
+            100% { transform: scale(1); }
+        }
     </style>
 
+    <style>
+        /* Adding keyframes for animations */
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+
+        @keyframes fadeInUp {
+            from { opacity: 0; transform: translateY(50px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        @keyframes fadeInDown {
+            from { opacity: 0; transform: translateY(-50px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+    </style>
 {% endblock %}

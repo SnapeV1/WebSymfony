@@ -194,4 +194,74 @@ public function editLineorder($id, EntityManagerInterface $entityManager, Reques
     ]);
 }
 
+
+
+
+    #[Route('/add-to-cartByCard/{id}', name: 'add_to_cartByCard')]
+    public function addToCartByCard(
+        $id,
+        ProductRepository $productRepository,
+        EntityManagerInterface $entityManager,
+        SessionInterface $session,
+        Request $request,
+        ProductController $productController,
+        ManagerRegistry $man,
+        
+    ): Response {
+        $user=$session->get('user');
+        $product = $productRepository->find($id);
+        if ($product === null) {
+            // Handle the case where the product is not found
+            return $this->redirectToRoute('shopping');
+        }
+        // Get quantity from the form submission
+        $quantity = 1;
+        if ($product->getQte() >= $quantity) {
+            $lineorder = new Lineorder();
+            $lineorder->setProductname($product->getNom());
+            $lineorder->setQuantite($quantity);
+            $lineorder->setPrix($product->getPrix());
+            $product->setQte($product->getQte() - $quantity);
+    
+            // Vérifiez et supprimez le produit si la quantité est zéro
+            if ($product->getQte() === 0) {
+                $notification = new Notification();
+                $notification->setContent('Stock shortage for '.$product->getNom());
+                $notification->setNotifDate(new \DateTime());
+                
+                // Set the admin user ID (you might need to adjust this based on your user setup)
+                $notification->setIduser($user->getId());
+            
+                // Persist the notification
+                $entityManager->persist($notification);
+                $entityManager->flush();
+            
+                // Appeler la méthode du contrôleur Product pour supprimer le produit
+                $productController->deleteProductIfQuantityZero($id, $man);
+            }
+        } else {
+            // Display a warning if the requested quantity is greater than the available stock
+            $this->addFlash('warning', 'Stock insuffisant. La quantité demandée n\'est pas disponible.');
+            return $this->redirectToRoute('shopping'); // Adjust the route accordingly
+        }
+    
+        // Create a Lineorder entity and set its properties
+ // Set the price from the product
+    
+        // Persist the Lineorder entity
+        $entityManager->persist($lineorder);
+        $entityManager->flush();
+    
+        // Add the Lineorder ID to the session-based cart
+        $cart = $session->get('cart', []);
+        $cart[] = $lineorder->getIdO(); // Use the Lineorder ID or any unique identifier
+        $session->set('cart', $cart);
+    
+        $this->addFlash('success', 'Product added to the cart successfully!');
+    
+        // Redirect back to the shop page
+        return $this->redirectToRoute('shopping');
+    }
+
+
 }
